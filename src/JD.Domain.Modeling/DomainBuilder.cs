@@ -131,7 +131,7 @@ public sealed class DomainBuilder
     /// Adds a rule set to the domain.
     /// </summary>
     /// <param name="ruleSet">The rule set manifest.</param>
-    internal void AddRuleSet(RuleSetManifest ruleSet)
+    public void AddRuleSet(RuleSetManifest ruleSet)
     {
         ArgumentNullException.ThrowIfNull(ruleSet);
         _ruleSets.Add(ruleSet);
@@ -141,7 +141,7 @@ public sealed class DomainBuilder
     /// Adds a configuration to the domain.
     /// </summary>
     /// <param name="configuration">The configuration manifest.</param>
-    internal void AddConfiguration(ConfigurationManifest configuration)
+    public void AddConfiguration(ConfigurationManifest configuration)
     {
         ArgumentNullException.ThrowIfNull(configuration);
         _configurations.Add(configuration);

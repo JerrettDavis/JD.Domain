@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\JD.Domain.Abstractions\JD.Domain.Abstractions.csproj" />
     <ProjectReference Include="..\..\src\JD.Domain.Modeling\JD.Domain.Modeling.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Rules\JD.Domain.Rules.csproj" />
   </ItemGroup>
 
 </Project>
