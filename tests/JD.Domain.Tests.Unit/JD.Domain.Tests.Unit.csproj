@@ -25,6 +25,11 @@
     <ProjectReference Include="..\..\src\JD.Domain.Modeling\JD.Domain.Modeling.csproj" />
     <ProjectReference Include="..\..\src\JD.Domain.Rules\JD.Domain.Rules.csproj" />
     <ProjectReference Include="..\..\src\JD.Domain.Runtime\JD.Domain.Runtime.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Generators.Core\JD.Domain.Generators.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0" />
   </ItemGroup>
 
 </Project>
