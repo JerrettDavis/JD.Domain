@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Authors>Jerrett Davis</Authors>
+    <Description>Core abstractions and contracts for JD.Domain suite - domain modeling, rules, and configuration primitives</Description>
+    <PackageProjectUrl>https://github.com/JerrettDavis/JD.Domain</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/JerrettDavis/JD.Domain</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+</Project>
