@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+
 using JD.Domain.Abstractions;
 
 namespace JD.Domain.Modeling;
@@ -34,7 +39,7 @@ public sealed class EnumBuilder<T> where T : Enum
             TypeName = _enumType.FullName ?? _enumType.Name,
             Namespace = _enumType.Namespace,
             UnderlyingType = underlyingType.FullName ?? underlyingType.Name,
-            Values = values.AsReadOnly()
+            Values = values.ToDictionary(x => x.Key, x => x.Value) as IReadOnlyDictionary<string, object>
         };
     }
 }

@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using JD.Domain.Abstractions;
 
@@ -29,7 +32,7 @@ public sealed class RuleSetBuilder<T> where T : class
     /// <param name="name">The name of the rule set.</param>
     public RuleSetBuilder(string name)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(name);
+        if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(name));
         _name = name;
     }
 
@@ -41,8 +44,8 @@ public sealed class RuleSetBuilder<T> where T : class
     /// <returns>A rule builder for further configuration.</returns>
     public RuleBuilder<T> Invariant(string id, Expression<Func<T, bool>> predicate)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(id);
-        ArgumentNullException.ThrowIfNull(predicate);
+        if (string.IsNullOrWhiteSpace(id)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
+        if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
         var rule = new RuleManifest
         {
@@ -64,8 +67,8 @@ public sealed class RuleSetBuilder<T> where T : class
     /// <returns>A rule builder for further configuration.</returns>
     public RuleBuilder<T> Validator(string id, Expression<Func<T, bool>> predicate)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(id);
-        ArgumentNullException.ThrowIfNull(predicate);
+        if (string.IsNullOrWhiteSpace(id)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
+        if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
         var rule = new RuleManifest
         {
@@ -86,7 +89,7 @@ public sealed class RuleSetBuilder<T> where T : class
     /// <returns>The rule set builder for chaining.</returns>
     public RuleSetBuilder<T> Include(string ruleSetName)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(ruleSetName);
+        if (string.IsNullOrWhiteSpace(ruleSetName)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(ruleSetName));
         
         if (!_includes.Contains(ruleSetName))
         {
@@ -104,7 +107,7 @@ public sealed class RuleSetBuilder<T> where T : class
     /// <returns>The rule set builder for chaining.</returns>
     public RuleSetBuilder<T> WithMetadata(string key, object? value)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(key);
+        if (string.IsNullOrWhiteSpace(key)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(key));
         _metadata[key] = value;
         return this;
     }
@@ -119,9 +122,9 @@ public sealed class RuleSetBuilder<T> where T : class
         {
             Name = _name,
             TargetType = _targetType.FullName ?? _targetType.Name,
-            Rules = _rules.AsReadOnly(),
-            Includes = _includes.AsReadOnly(),
-            Metadata = _metadata.AsReadOnly()
+            Rules = _rules.ToList().AsReadOnly(),
+            Includes = _includes.ToList().AsReadOnly(),
+            Metadata = _metadata.ToDictionary(x => x.Key, x => x.Value) as IReadOnlyDictionary<string, object?>
         };
     }
 

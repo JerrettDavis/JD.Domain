@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using JD.Domain.Abstractions;
 
@@ -30,7 +33,7 @@ public sealed class ValueObjectBuilder<T> where T : class
     /// <returns>The value object builder for chaining.</returns>
     public ValueObjectBuilder<T> WithMetadata(string key, object? value)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(key);
+        if (string.IsNullOrWhiteSpace(key)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(key));
         _metadata[key] = value;
         return this;
     }
@@ -46,8 +49,8 @@ public sealed class ValueObjectBuilder<T> where T : class
             Name = _valueObjectType.Name,
             TypeName = _valueObjectType.FullName ?? _valueObjectType.Name,
             Namespace = _valueObjectType.Namespace,
-            Properties = _properties.AsReadOnly(),
-            Metadata = _metadata.AsReadOnly()
+            Properties = _properties.ToList().AsReadOnly(),
+            Metadata = _metadata.ToDictionary(x => x.Key, x => x.Value) as IReadOnlyDictionary<string, object?>
         };
     }
 

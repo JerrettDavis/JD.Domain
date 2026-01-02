@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+
 using JD.Domain.Abstractions;
 
 namespace JD.Domain.Rules;
@@ -29,7 +34,7 @@ public sealed class RuleBuilder<T> where T : class
     /// <returns>The rule builder for chaining.</returns>
     public RuleBuilder<T> WithMessage(string message)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(message);
+        if (string.IsNullOrWhiteSpace(message)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(message));
 
         _rule = new RuleManifest
         {
@@ -77,7 +82,7 @@ public sealed class RuleBuilder<T> where T : class
     /// <returns>The rule builder for chaining.</returns>
     public RuleBuilder<T> WithTag(string tag)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(tag);
+        if (string.IsNullOrWhiteSpace(tag)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(tag));
 
         var tags = new List<string>(_rule.Tags) { tag };
         _rule = new RuleManifest
@@ -87,7 +92,7 @@ public sealed class RuleBuilder<T> where T : class
             TargetType = _rule.TargetType,
             Message = _rule.Message,
             Severity = _rule.Severity,
-            Tags = tags.AsReadOnly(),
+            Tags = tags.ToList().AsReadOnly(),
             Expression = _rule.Expression,
             Metadata = _rule.Metadata
         };
@@ -104,7 +109,7 @@ public sealed class RuleBuilder<T> where T : class
     /// <returns>The rule builder for chaining.</returns>
     public RuleBuilder<T> WithMetadata(string key, object? value)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(key);
+        if (string.IsNullOrWhiteSpace(key)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(key));
 
         var metadata = new Dictionary<string, object?>(_rule.Metadata)
         {
@@ -120,7 +125,7 @@ public sealed class RuleBuilder<T> where T : class
             Severity = _rule.Severity,
             Tags = _rule.Tags,
             Expression = _rule.Expression,
-            Metadata = metadata.AsReadOnly()
+            Metadata = metadata.ToDictionary(x => x.Key, x => x.Value) as IReadOnlyDictionary<string, object?>
         };
 
         _ruleSetBuilder.ReplaceRule(_rule);

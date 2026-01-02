@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 using JD.Domain.Abstractions;
 
 namespace JD.Domain.Configuration;
@@ -48,7 +52,7 @@ public sealed class IndexBuilder<T> where T : class
     /// <returns>The index builder for chaining.</returns>
     public IndexBuilder<T> HasFilter(string filter)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(filter);
+        if (string.IsNullOrWhiteSpace(filter)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(filter));
 
         _index = new IndexManifest
         {

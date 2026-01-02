@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 using JD.Domain.Abstractions;
 using JD.Domain.Modeling;
 
@@ -19,8 +23,8 @@ public static class DomainBuilderConfigurationExtensions
         this DomainBuilder builder,
         Action<EntityConfigurationBuilder<T>> configure) where T : class
     {
-        ArgumentNullException.ThrowIfNull(builder);
-        ArgumentNullException.ThrowIfNull(configure);
+        if (builder == null) throw new ArgumentNullException(nameof(builder));
+        if (configure == null) throw new ArgumentNullException(nameof(configure));
 
         var configBuilder = new EntityConfigurationBuilder<T>();
         configure(configBuilder);

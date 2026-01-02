@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using JD.Domain.Abstractions;
 using JD.Domain.Modeling;
@@ -20,8 +23,8 @@ public static class DomainBuilderRulesExtensions
         this DomainBuilder builder,
         Action<RuleSetBuilder<T>> configure) where T : class
     {
-        ArgumentNullException.ThrowIfNull(builder);
-        ArgumentNullException.ThrowIfNull(configure);
+        if (builder == null) throw new ArgumentNullException(nameof(builder));
+        if (configure == null) throw new ArgumentNullException(nameof(configure));
 
         var ruleSetBuilder = new RuleSetBuilder<T>();
         configure(ruleSetBuilder);
@@ -45,9 +48,9 @@ public static class DomainBuilderRulesExtensions
         string name,
         Action<RuleSetBuilder<T>> configure) where T : class
     {
-        ArgumentNullException.ThrowIfNull(builder);
-        ArgumentException.ThrowIfNullOrWhiteSpace(name);
-        ArgumentNullException.ThrowIfNull(configure);
+        if (builder == null) throw new ArgumentNullException(nameof(builder));
+        if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(name));
+        if (configure == null) throw new ArgumentNullException(nameof(configure));
 
         var ruleSetBuilder = new RuleSetBuilder<T>(name);
         configure(ruleSetBuilder);

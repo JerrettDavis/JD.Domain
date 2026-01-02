@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+
 using JD.Domain.Abstractions;
 
 namespace JD.Domain.Modeling;
@@ -101,7 +106,7 @@ public sealed class DomainBuilder
     /// <returns>The domain builder for chaining.</returns>
     public DomainBuilder WithMetadata(string key, object? value)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(key);
+        if (string.IsNullOrWhiteSpace(key)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(key));
         _metadata[key] = value;
         return this;
     }
@@ -116,13 +121,13 @@ public sealed class DomainBuilder
         {
             Name = _name,
             Version = _version,
-            Entities = _entities.AsReadOnly(),
-            ValueObjects = _valueObjects.AsReadOnly(),
-            Enums = _enums.AsReadOnly(),
-            RuleSets = _ruleSets.AsReadOnly(),
-            Configurations = _configurations.AsReadOnly(),
-            Sources = _sources.AsReadOnly(),
-            Metadata = _metadata.AsReadOnly(),
+            Entities = _entities.ToList().AsReadOnly(),
+            ValueObjects = _valueObjects.ToList().AsReadOnly(),
+            Enums = _enums.ToList().AsReadOnly(),
+            RuleSets = _ruleSets.ToList().AsReadOnly(),
+            Configurations = _configurations.ToList().AsReadOnly(),
+            Sources = _sources.ToList().AsReadOnly(),
+            Metadata = _metadata.ToDictionary(x => x.Key, x => x.Value) as IReadOnlyDictionary<string, object?>,
             CreatedAt = DateTimeOffset.UtcNow
         };
     }
@@ -133,7 +138,7 @@ public sealed class DomainBuilder
     /// <param name="ruleSet">The rule set manifest.</param>
     public void AddRuleSet(RuleSetManifest ruleSet)
     {
-        ArgumentNullException.ThrowIfNull(ruleSet);
+        if (ruleSet == null) throw new ArgumentNullException(nameof(ruleSet));
         _ruleSets.Add(ruleSet);
     }
 
@@ -143,7 +148,7 @@ public sealed class DomainBuilder
     /// <param name="configuration">The configuration manifest.</param>
     public void AddConfiguration(ConfigurationManifest configuration)
     {
-        ArgumentNullException.ThrowIfNull(configuration);
+        if (configuration == null) throw new ArgumentNullException(nameof(configuration));
         _configurations.Add(configuration);
     }
 }

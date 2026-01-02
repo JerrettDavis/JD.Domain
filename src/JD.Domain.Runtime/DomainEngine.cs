@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
 using JD.Domain.Abstractions;
 
 namespace JD.Domain.Runtime;
@@ -15,7 +21,7 @@ public sealed class DomainEngine : IDomainEngine
     /// <param name="manifest">The domain manifest containing rules to evaluate.</param>
     public DomainEngine(DomainManifest manifest)
     {
-        ArgumentNullException.ThrowIfNull(manifest);
+        if (manifest == null) throw new ArgumentNullException(nameof(manifest));
         _manifest = manifest;
     }
 
@@ -25,10 +31,10 @@ public sealed class DomainEngine : IDomainEngine
         RuleEvaluationOptions? options = null,
         CancellationToken cancellationToken = default) where T : class
     {
-        ArgumentNullException.ThrowIfNull(instance);
+        if (instance == null) throw new ArgumentNullException(nameof(instance));
         
         var result = Evaluate(instance, options);
-        return ValueTask.FromResult(result);
+        return new ValueTask<RuleEvaluationResult>(result);
     }
 
     /// <inheritdoc/>
@@ -36,7 +42,7 @@ public sealed class DomainEngine : IDomainEngine
         T instance,
         RuleEvaluationOptions? options = null) where T : class
     {
-        ArgumentNullException.ThrowIfNull(instance);
+        if (instance == null) throw new ArgumentNullException(nameof(instance));
         
         options ??= RuleEvaluationOptions.Default;
 
@@ -109,11 +115,11 @@ public sealed class DomainEngine : IDomainEngine
         return new RuleEvaluationResult
         {
             IsValid = errors.Count == 0,
-            Errors = errors.AsReadOnly(),
-            Warnings = warnings.AsReadOnly(),
-            Info = info.AsReadOnly(),
+            Errors = errors.ToList().AsReadOnly(),
+            Warnings = warnings.ToList().AsReadOnly(),
+            Info = info.ToList().AsReadOnly(),
             RulesEvaluated = rulesEvaluated,
-            RuleSetsEvaluated = ruleSetsEvaluated.AsReadOnly()
+            RuleSetsEvaluated = ruleSetsEvaluated.ToList().AsReadOnly()
         };
     }
 }

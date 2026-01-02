@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace JD.Domain.Abstractions;
 
 /// <summary>
@@ -44,7 +50,7 @@ public sealed class DomainContext
     /// <returns>A new domain context.</returns>
     public static DomainContext WithCorrelationId(string correlationId)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(correlationId);
+        if (string.IsNullOrWhiteSpace(correlationId)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(correlationId));
         
         return new DomainContext
         {

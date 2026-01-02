@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using JD.Domain.Abstractions;
@@ -75,7 +78,7 @@ public sealed class EntityBuilder<T> where T : class
     /// <returns>The entity builder for chaining.</returns>
     public EntityBuilder<T> ToTable(string tableName, string? schemaName = null)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
+        if (string.IsNullOrWhiteSpace(tableName)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(tableName));
         _tableName = tableName;
         _schemaName = schemaName;
         return this;
@@ -89,7 +92,7 @@ public sealed class EntityBuilder<T> where T : class
     /// <returns>The entity builder for chaining.</returns>
     public EntityBuilder<T> WithMetadata(string key, object? value)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(key);
+        if (string.IsNullOrWhiteSpace(key)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(key));
         _metadata[key] = value;
         return this;
     }
@@ -105,11 +108,11 @@ public sealed class EntityBuilder<T> where T : class
             Name = _entityType.Name,
             TypeName = _entityType.FullName ?? _entityType.Name,
             Namespace = _entityType.Namespace,
-            Properties = _properties.AsReadOnly(),
-            KeyProperties = _keyProperties.AsReadOnly(),
+            Properties = _properties.ToList().AsReadOnly(),
+            KeyProperties = _keyProperties.ToList().AsReadOnly(),
             TableName = _tableName,
             SchemaName = _schemaName,
-            Metadata = _metadata.AsReadOnly()
+            Metadata = _metadata.ToDictionary(x => x.Key, x => x.Value) as IReadOnlyDictionary<string, object?>
         };
     }
 

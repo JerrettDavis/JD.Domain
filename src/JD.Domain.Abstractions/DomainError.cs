@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace JD.Domain.Abstractions;
 
 /// <summary>
@@ -44,8 +50,8 @@ public sealed class DomainError
     /// <returns>A new domain error instance.</returns>
     public static DomainError Create(string code, string message)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(code);
-        ArgumentException.ThrowIfNullOrWhiteSpace(message);
+        if (string.IsNullOrWhiteSpace(code)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(code));
+        if (string.IsNullOrWhiteSpace(message)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(message));
 
         return new DomainError
         {
@@ -63,9 +69,9 @@ public sealed class DomainError
     /// <returns>A new domain error instance.</returns>
     public static DomainError Create(string code, string message, string target)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(code);
-        ArgumentException.ThrowIfNullOrWhiteSpace(message);
-        ArgumentException.ThrowIfNullOrWhiteSpace(target);
+        if (string.IsNullOrWhiteSpace(code)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(code));
+        if (string.IsNullOrWhiteSpace(message)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(message));
+        if (string.IsNullOrWhiteSpace(target)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(target));
 
         return new DomainError
         {

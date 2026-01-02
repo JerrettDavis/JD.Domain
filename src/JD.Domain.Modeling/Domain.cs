@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+
 namespace JD.Domain.Modeling;
 
 /// <summary>
@@ -12,7 +17,7 @@ public static class Domain
     /// <returns>A new domain builder instance.</returns>
     public static DomainBuilder Create(string name)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(name);
+        if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(name));
         return new DomainBuilder(name);
     }
 }

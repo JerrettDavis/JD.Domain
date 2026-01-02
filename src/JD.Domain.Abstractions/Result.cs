@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace JD.Domain.Abstractions;
 
 /// <summary>
@@ -51,7 +55,7 @@ public sealed class Result<T>
 
     private Result(IReadOnlyList<DomainError> errors)
     {
-        ArgumentNullException.ThrowIfNull(errors);
+        if (errors == null) throw new ArgumentNullException(nameof(errors));
         
         if (errors.Count == 0)
         {
@@ -70,7 +74,7 @@ public sealed class Result<T>
     /// <returns>A successful result.</returns>
     public static Result<T> Success(T value)
     {
-        ArgumentNullException.ThrowIfNull(value);
+        if (value == null) throw new ArgumentNullException(nameof(value));
         return new Result<T>(value);
     }
 
@@ -81,7 +85,7 @@ public sealed class Result<T>
     /// <returns>A failure result.</returns>
     public static Result<T> Failure(DomainError error)
     {
-        ArgumentNullException.ThrowIfNull(error);
+        if (error == null) throw new ArgumentNullException(nameof(error));
         return new Result<T>(new[] { error });
     }
 
@@ -116,8 +120,8 @@ public sealed class Result<T>
         Func<T, TResult> onSuccess,
         Func<IReadOnlyList<DomainError>, TResult> onFailure)
     {
-        ArgumentNullException.ThrowIfNull(onSuccess);
-        ArgumentNullException.ThrowIfNull(onFailure);
+        if (onSuccess == null) throw new ArgumentNullException(nameof(onSuccess));
+        if (onFailure == null) throw new ArgumentNullException(nameof(onFailure));
 
         return IsSuccess ? onSuccess(_value!) : onFailure(_errors);
     }
@@ -130,7 +134,7 @@ public sealed class Result<T>
     /// <returns>A result with the mapped value if successful, otherwise the original errors.</returns>
     public Result<TResult> Map<TResult>(Func<T, TResult> map)
     {
-        ArgumentNullException.ThrowIfNull(map);
+        if (map == null) throw new ArgumentNullException(nameof(map));
 
         return IsSuccess
             ? Result<TResult>.Success(map(_value!))
@@ -145,7 +149,7 @@ public sealed class Result<T>
     /// <returns>The result of the binding function if successful, otherwise the original errors.</returns>
     public Result<TResult> Bind<TResult>(Func<T, Result<TResult>> bind)
     {
-        ArgumentNullException.ThrowIfNull(bind);
+        if (bind == null) throw new ArgumentNullException(nameof(bind));
 
         return IsSuccess
             ? bind(_value!)

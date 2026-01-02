@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace JD.Domain.Abstractions;
 
 /// <summary>
@@ -64,7 +70,7 @@ public sealed class RuleEvaluationResult
     /// <returns>An invalid evaluation result.</returns>
     public static RuleEvaluationResult Failure(IReadOnlyList<DomainError> errors)
     {
-        ArgumentNullException.ThrowIfNull(errors);
+        if (errors == null) throw new ArgumentNullException(nameof(errors));
         
         return new RuleEvaluationResult
         {
@@ -80,7 +86,7 @@ public sealed class RuleEvaluationResult
     /// <returns>An invalid evaluation result.</returns>
     public static RuleEvaluationResult Failure(params DomainError[] errors)
     {
-        ArgumentNullException.ThrowIfNull(errors);
+        if (errors == null) throw new ArgumentNullException(nameof(errors));
         
         return new RuleEvaluationResult
         {

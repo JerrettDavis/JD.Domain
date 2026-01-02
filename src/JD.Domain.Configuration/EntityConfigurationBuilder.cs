@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using JD.Domain.Abstractions;
 
@@ -24,7 +27,7 @@ public sealed class EntityConfigurationBuilder<T> where T : class
     /// <returns>The configuration builder for chaining.</returns>
     public EntityConfigurationBuilder<T> ToTable(string tableName, string? schemaName = null)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
+        if (string.IsNullOrWhiteSpace(tableName)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(tableName));
         _tableName = tableName;
         _schemaName = schemaName;
         return this;
@@ -37,7 +40,7 @@ public sealed class EntityConfigurationBuilder<T> where T : class
     /// <returns>An index builder for further configuration.</returns>
     public IndexBuilder<T> HasIndex(params string[] propertyNames)
     {
-        ArgumentNullException.ThrowIfNull(propertyNames);
+        if (propertyNames == null) throw new ArgumentNullException(nameof(propertyNames));
         if (propertyNames.Length == 0)
         {
             throw new ArgumentException("At least one property must be specified", nameof(propertyNames));
@@ -60,7 +63,7 @@ public sealed class EntityConfigurationBuilder<T> where T : class
     /// <returns>The configuration builder for chaining.</returns>
     public EntityConfigurationBuilder<T> WithMetadata(string key, object? value)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(key);
+        if (string.IsNullOrWhiteSpace(key)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(key));
         _metadata[key] = value;
         return this;
     }
@@ -77,9 +80,9 @@ public sealed class EntityConfigurationBuilder<T> where T : class
             EntityTypeName = _entityType.FullName ?? _entityType.Name,
             TableName = _tableName,
             SchemaName = _schemaName,
-            Indexes = _indexes.AsReadOnly(),
-            Relationships = _relationships.AsReadOnly(),
-            Metadata = _metadata.AsReadOnly()
+            Indexes = _indexes.ToList().AsReadOnly(),
+            Relationships = _relationships.ToList().AsReadOnly(),
+            Metadata = _metadata.ToDictionary(x => x.Key, x => x.Value) as IReadOnlyDictionary<string, object?>
         };
     }
 

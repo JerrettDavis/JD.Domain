@@ -37,7 +37,7 @@ public sealed class DomainBuilderTests
     public void Create_WithNullName_ThrowsArgumentException()
     {
         // Act & Assert
-        Assert.Throws<ArgumentNullException>(() => JD.Domain.Modeling.Domain.Create(null!));
+        Assert.Throws<ArgumentException>(() => JD.Domain.Modeling.Domain.Create(null!));
     }
 
     [Fact]

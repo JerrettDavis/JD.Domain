@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
 using JD.Domain.Abstractions;
 
 namespace JD.Domain.Runtime;
@@ -14,7 +20,7 @@ public static class DomainRuntime
     /// <returns>A configured domain engine.</returns>
     public static IDomainEngine CreateEngine(DomainManifest manifest)
     {
-        ArgumentNullException.ThrowIfNull(manifest);
+        if (manifest == null) throw new ArgumentNullException(nameof(manifest));
         return new DomainEngine(manifest);
     }
 
@@ -25,7 +31,7 @@ public static class DomainRuntime
     /// <returns>A configured domain engine.</returns>
     public static IDomainEngine Create(Action<DomainRuntimeOptions> configure)
     {
-        ArgumentNullException.ThrowIfNull(configure);
+        if (configure == null) throw new ArgumentNullException(nameof(configure));
         
         var options = new DomainRuntimeOptions();
         configure(options);
@@ -56,7 +62,7 @@ public sealed class DomainRuntimeOptions
     /// <returns>The options for chaining.</returns>
     public DomainRuntimeOptions AddManifest(DomainManifest manifest)
     {
-        ArgumentNullException.ThrowIfNull(manifest);
+        if (manifest == null) throw new ArgumentNullException(nameof(manifest));
         Manifest = manifest;
         return this;
     }
