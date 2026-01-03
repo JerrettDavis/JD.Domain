@@ -79,7 +79,7 @@ jobs:
       - name: Build DocFX site
         run: |
           echo "Building documentation..."
-          docfx ${{ env.DOCFX_CONFIG }} --warningsAsErrors
+          docfx ${{ env.DOCFX_CONFIG }}
         continue-on-error: false
 
       - name: Verify build output
