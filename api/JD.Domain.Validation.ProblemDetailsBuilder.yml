@@ -1,0 +1,959 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Validation.ProblemDetailsBuilder
+  commentId: T:JD.Domain.Validation.ProblemDetailsBuilder
+  id: ProblemDetailsBuilder
+  parent: JD.Domain.Validation
+  children:
+  - JD.Domain.Validation.ProblemDetailsBuilder.Build
+  - JD.Domain.Validation.ProblemDetailsBuilder.Create
+  - JD.Domain.Validation.ProblemDetailsBuilder.FromEvaluationResult(JD.Domain.Abstractions.RuleEvaluationResult)
+  - JD.Domain.Validation.ProblemDetailsBuilder.FromException(JD.Domain.Abstractions.DomainValidationException)
+  - JD.Domain.Validation.ProblemDetailsBuilder.WithCorrelationId(System.String)
+  - JD.Domain.Validation.ProblemDetailsBuilder.WithDetail(System.String)
+  - JD.Domain.Validation.ProblemDetailsBuilder.WithErrors(System.Collections.Generic.IEnumerable{JD.Domain.Abstractions.DomainError})
+  - JD.Domain.Validation.ProblemDetailsBuilder.WithExtension(System.String,System.Object)
+  - JD.Domain.Validation.ProblemDetailsBuilder.WithInstance(System.String)
+  - JD.Domain.Validation.ProblemDetailsBuilder.WithStatus(System.Int32)
+  - JD.Domain.Validation.ProblemDetailsBuilder.WithTitle(System.String)
+  - JD.Domain.Validation.ProblemDetailsBuilder.WithType(System.String)
+  langs:
+  - csharp
+  - vb
+  name: ProblemDetailsBuilder
+  nameWithType: ProblemDetailsBuilder
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: ProblemDetailsBuilder
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 8
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Fluent builder for creating <xref href="JD.Domain.Validation.ValidationProblemDetails" data-throw-if-not-resolved="false"></xref> instances.
+  example: []
+  syntax:
+    content: public sealed class ProblemDetailsBuilder
+    content.vb: Public NotInheritable Class ProblemDetailsBuilder
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.Create
+  commentId: M:JD.Domain.Validation.ProblemDetailsBuilder.Create
+  id: Create
+  parent: JD.Domain.Validation.ProblemDetailsBuilder
+  langs:
+  - csharp
+  - vb
+  name: Create()
+  nameWithType: ProblemDetailsBuilder.Create()
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.Create()
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Create
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 25
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Creates a new <xref href="JD.Domain.Validation.ProblemDetailsBuilder" data-throw-if-not-resolved="false"></xref> instance.
+  example: []
+  syntax:
+    content: public static ProblemDetailsBuilder Create()
+    return:
+      type: JD.Domain.Validation.ProblemDetailsBuilder
+    content.vb: Public Shared Function Create() As ProblemDetailsBuilder
+  overload: JD.Domain.Validation.ProblemDetailsBuilder.Create*
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithTitle(System.String)
+  commentId: M:JD.Domain.Validation.ProblemDetailsBuilder.WithTitle(System.String)
+  id: WithTitle(System.String)
+  parent: JD.Domain.Validation.ProblemDetailsBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithTitle(string)
+  nameWithType: ProblemDetailsBuilder.WithTitle(string)
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithTitle(string)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithTitle
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 30
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Sets the title of the problem details.
+  example: []
+  syntax:
+    content: public ProblemDetailsBuilder WithTitle(string title)
+    parameters:
+    - id: title
+      type: System.String
+    return:
+      type: JD.Domain.Validation.ProblemDetailsBuilder
+    content.vb: Public Function WithTitle(title As String) As ProblemDetailsBuilder
+  overload: JD.Domain.Validation.ProblemDetailsBuilder.WithTitle*
+  nameWithType.vb: ProblemDetailsBuilder.WithTitle(String)
+  fullName.vb: JD.Domain.Validation.ProblemDetailsBuilder.WithTitle(String)
+  name.vb: WithTitle(String)
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithStatus(System.Int32)
+  commentId: M:JD.Domain.Validation.ProblemDetailsBuilder.WithStatus(System.Int32)
+  id: WithStatus(System.Int32)
+  parent: JD.Domain.Validation.ProblemDetailsBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithStatus(int)
+  nameWithType: ProblemDetailsBuilder.WithStatus(int)
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithStatus(int)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithStatus
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 39
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Sets the HTTP status code.
+  example: []
+  syntax:
+    content: public ProblemDetailsBuilder WithStatus(int status)
+    parameters:
+    - id: status
+      type: System.Int32
+    return:
+      type: JD.Domain.Validation.ProblemDetailsBuilder
+    content.vb: Public Function WithStatus(status As Integer) As ProblemDetailsBuilder
+  overload: JD.Domain.Validation.ProblemDetailsBuilder.WithStatus*
+  nameWithType.vb: ProblemDetailsBuilder.WithStatus(Integer)
+  fullName.vb: JD.Domain.Validation.ProblemDetailsBuilder.WithStatus(Integer)
+  name.vb: WithStatus(Integer)
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithDetail(System.String)
+  commentId: M:JD.Domain.Validation.ProblemDetailsBuilder.WithDetail(System.String)
+  id: WithDetail(System.String)
+  parent: JD.Domain.Validation.ProblemDetailsBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithDetail(string)
+  nameWithType: ProblemDetailsBuilder.WithDetail(string)
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithDetail(string)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithDetail
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 48
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Sets the detail message.
+  example: []
+  syntax:
+    content: public ProblemDetailsBuilder WithDetail(string detail)
+    parameters:
+    - id: detail
+      type: System.String
+    return:
+      type: JD.Domain.Validation.ProblemDetailsBuilder
+    content.vb: Public Function WithDetail(detail As String) As ProblemDetailsBuilder
+  overload: JD.Domain.Validation.ProblemDetailsBuilder.WithDetail*
+  nameWithType.vb: ProblemDetailsBuilder.WithDetail(String)
+  fullName.vb: JD.Domain.Validation.ProblemDetailsBuilder.WithDetail(String)
+  name.vb: WithDetail(String)
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithInstance(System.String)
+  commentId: M:JD.Domain.Validation.ProblemDetailsBuilder.WithInstance(System.String)
+  id: WithInstance(System.String)
+  parent: JD.Domain.Validation.ProblemDetailsBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithInstance(string?)
+  nameWithType: ProblemDetailsBuilder.WithInstance(string?)
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithInstance(string?)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithInstance
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 57
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Sets the instance URI (typically the request path).
+  example: []
+  syntax:
+    content: public ProblemDetailsBuilder WithInstance(string? instance)
+    parameters:
+    - id: instance
+      type: System.String
+    return:
+      type: JD.Domain.Validation.ProblemDetailsBuilder
+    content.vb: Public Function WithInstance(instance As String) As ProblemDetailsBuilder
+  overload: JD.Domain.Validation.ProblemDetailsBuilder.WithInstance*
+  nameWithType.vb: ProblemDetailsBuilder.WithInstance(String)
+  fullName.vb: JD.Domain.Validation.ProblemDetailsBuilder.WithInstance(String)
+  name.vb: WithInstance(String)
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithType(System.String)
+  commentId: M:JD.Domain.Validation.ProblemDetailsBuilder.WithType(System.String)
+  id: WithType(System.String)
+  parent: JD.Domain.Validation.ProblemDetailsBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithType(string)
+  nameWithType: ProblemDetailsBuilder.WithType(string)
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithType(string)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithType
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 66
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Sets the type URI for the problem.
+  example: []
+  syntax:
+    content: public ProblemDetailsBuilder WithType(string type)
+    parameters:
+    - id: type
+      type: System.String
+    return:
+      type: JD.Domain.Validation.ProblemDetailsBuilder
+    content.vb: Public Function WithType(type As String) As ProblemDetailsBuilder
+  overload: JD.Domain.Validation.ProblemDetailsBuilder.WithType*
+  nameWithType.vb: ProblemDetailsBuilder.WithType(String)
+  fullName.vb: JD.Domain.Validation.ProblemDetailsBuilder.WithType(String)
+  name.vb: WithType(String)
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithCorrelationId(System.String)
+  commentId: M:JD.Domain.Validation.ProblemDetailsBuilder.WithCorrelationId(System.String)
+  id: WithCorrelationId(System.String)
+  parent: JD.Domain.Validation.ProblemDetailsBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithCorrelationId(string?)
+  nameWithType: ProblemDetailsBuilder.WithCorrelationId(string?)
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithCorrelationId(string?)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithCorrelationId
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 75
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Sets the correlation ID for request tracking.
+  example: []
+  syntax:
+    content: public ProblemDetailsBuilder WithCorrelationId(string? correlationId)
+    parameters:
+    - id: correlationId
+      type: System.String
+    return:
+      type: JD.Domain.Validation.ProblemDetailsBuilder
+    content.vb: Public Function WithCorrelationId(correlationId As String) As ProblemDetailsBuilder
+  overload: JD.Domain.Validation.ProblemDetailsBuilder.WithCorrelationId*
+  nameWithType.vb: ProblemDetailsBuilder.WithCorrelationId(String)
+  fullName.vb: JD.Domain.Validation.ProblemDetailsBuilder.WithCorrelationId(String)
+  name.vb: WithCorrelationId(String)
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.FromEvaluationResult(JD.Domain.Abstractions.RuleEvaluationResult)
+  commentId: M:JD.Domain.Validation.ProblemDetailsBuilder.FromEvaluationResult(JD.Domain.Abstractions.RuleEvaluationResult)
+  id: FromEvaluationResult(JD.Domain.Abstractions.RuleEvaluationResult)
+  parent: JD.Domain.Validation.ProblemDetailsBuilder
+  langs:
+  - csharp
+  - vb
+  name: FromEvaluationResult(RuleEvaluationResult)
+  nameWithType: ProblemDetailsBuilder.FromEvaluationResult(RuleEvaluationResult)
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.FromEvaluationResult(JD.Domain.Abstractions.RuleEvaluationResult)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: FromEvaluationResult
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 84
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Populates the problem details from a <xref href="JD.Domain.Abstractions.RuleEvaluationResult" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public ProblemDetailsBuilder FromEvaluationResult(RuleEvaluationResult result)
+    parameters:
+    - id: result
+      type: JD.Domain.Abstractions.RuleEvaluationResult
+    return:
+      type: JD.Domain.Validation.ProblemDetailsBuilder
+    content.vb: Public Function FromEvaluationResult(result As RuleEvaluationResult) As ProblemDetailsBuilder
+  overload: JD.Domain.Validation.ProblemDetailsBuilder.FromEvaluationResult*
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.FromException(JD.Domain.Abstractions.DomainValidationException)
+  commentId: M:JD.Domain.Validation.ProblemDetailsBuilder.FromException(JD.Domain.Abstractions.DomainValidationException)
+  id: FromException(JD.Domain.Abstractions.DomainValidationException)
+  parent: JD.Domain.Validation.ProblemDetailsBuilder
+  langs:
+  - csharp
+  - vb
+  name: FromException(DomainValidationException)
+  nameWithType: ProblemDetailsBuilder.FromException(DomainValidationException)
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.FromException(JD.Domain.Abstractions.DomainValidationException)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: FromException
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 115
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Populates the problem details from a <xref href="JD.Domain.Abstractions.DomainValidationException" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public ProblemDetailsBuilder FromException(DomainValidationException exception)
+    parameters:
+    - id: exception
+      type: JD.Domain.Abstractions.DomainValidationException
+    return:
+      type: JD.Domain.Validation.ProblemDetailsBuilder
+    content.vb: Public Function FromException(exception As DomainValidationException) As ProblemDetailsBuilder
+  overload: JD.Domain.Validation.ProblemDetailsBuilder.FromException*
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithErrors(System.Collections.Generic.IEnumerable{JD.Domain.Abstractions.DomainError})
+  commentId: M:JD.Domain.Validation.ProblemDetailsBuilder.WithErrors(System.Collections.Generic.IEnumerable{JD.Domain.Abstractions.DomainError})
+  id: WithErrors(System.Collections.Generic.IEnumerable{JD.Domain.Abstractions.DomainError})
+  parent: JD.Domain.Validation.ProblemDetailsBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithErrors(IEnumerable<DomainError>)
+  nameWithType: ProblemDetailsBuilder.WithErrors(IEnumerable<DomainError>)
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithErrors(System.Collections.Generic.IEnumerable<JD.Domain.Abstractions.DomainError>)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithErrors
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 141
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Adds domain errors directly.
+  example: []
+  syntax:
+    content: public ProblemDetailsBuilder WithErrors(IEnumerable<DomainError> errors)
+    parameters:
+    - id: errors
+      type: System.Collections.Generic.IEnumerable{JD.Domain.Abstractions.DomainError}
+    return:
+      type: JD.Domain.Validation.ProblemDetailsBuilder
+    content.vb: Public Function WithErrors(errors As IEnumerable(Of DomainError)) As ProblemDetailsBuilder
+  overload: JD.Domain.Validation.ProblemDetailsBuilder.WithErrors*
+  nameWithType.vb: ProblemDetailsBuilder.WithErrors(IEnumerable(Of DomainError))
+  fullName.vb: JD.Domain.Validation.ProblemDetailsBuilder.WithErrors(System.Collections.Generic.IEnumerable(Of JD.Domain.Abstractions.DomainError))
+  name.vb: WithErrors(IEnumerable(Of DomainError))
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithExtension(System.String,System.Object)
+  commentId: M:JD.Domain.Validation.ProblemDetailsBuilder.WithExtension(System.String,System.Object)
+  id: WithExtension(System.String,System.Object)
+  parent: JD.Domain.Validation.ProblemDetailsBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithExtension(string, object?)
+  nameWithType: ProblemDetailsBuilder.WithExtension(string, object?)
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithExtension(string, object?)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithExtension
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 166
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Adds an extension property to the problem details.
+  example: []
+  syntax:
+    content: public ProblemDetailsBuilder WithExtension(string key, object? value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: System.Object
+    return:
+      type: JD.Domain.Validation.ProblemDetailsBuilder
+    content.vb: Public Function WithExtension(key As String, value As Object) As ProblemDetailsBuilder
+  overload: JD.Domain.Validation.ProblemDetailsBuilder.WithExtension*
+  nameWithType.vb: ProblemDetailsBuilder.WithExtension(String, Object)
+  fullName.vb: JD.Domain.Validation.ProblemDetailsBuilder.WithExtension(String, Object)
+  name.vb: WithExtension(String, Object)
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.Build
+  commentId: M:JD.Domain.Validation.ProblemDetailsBuilder.Build
+  id: Build
+  parent: JD.Domain.Validation.ProblemDetailsBuilder
+  langs:
+  - csharp
+  - vb
+  name: Build()
+  nameWithType: ProblemDetailsBuilder.Build()
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.Build()
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Build
+    path: src/JD.Domain.Validation/ProblemDetailsBuilder.cs
+    startLine: 175
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Builds the final <xref href="JD.Domain.Validation.ValidationProblemDetails" data-throw-if-not-resolved="false"></xref> instance.
+  example: []
+  syntax:
+    content: public ValidationProblemDetails Build()
+    return:
+      type: JD.Domain.Validation.ValidationProblemDetails
+    content.vb: Public Function Build() As ValidationProblemDetails
+  overload: JD.Domain.Validation.ProblemDetailsBuilder.Build*
+references:
+- uid: JD.Domain.Validation.ValidationProblemDetails
+  commentId: T:JD.Domain.Validation.ValidationProblemDetails
+  parent: JD.Domain.Validation
+  href: JD.Domain.Validation.ValidationProblemDetails.html
+  name: ValidationProblemDetails
+  nameWithType: ValidationProblemDetails
+  fullName: JD.Domain.Validation.ValidationProblemDetails
+- uid: JD.Domain.Validation
+  commentId: N:JD.Domain.Validation
+  href: JD.html
+  name: JD.Domain.Validation
+  nameWithType: JD.Domain.Validation
+  fullName: JD.Domain.Validation
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Validation
+    name: Validation
+    href: JD.Domain.Validation.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Validation
+    name: Validation
+    href: JD.Domain.Validation.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.Validation.ProblemDetailsBuilder
+  commentId: T:JD.Domain.Validation.ProblemDetailsBuilder
+  parent: JD.Domain.Validation
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html
+  name: ProblemDetailsBuilder
+  nameWithType: ProblemDetailsBuilder
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.Create*
+  commentId: Overload:JD.Domain.Validation.ProblemDetailsBuilder.Create
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html#JD_Domain_Validation_ProblemDetailsBuilder_Create
+  name: Create
+  nameWithType: ProblemDetailsBuilder.Create
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.Create
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithTitle*
+  commentId: Overload:JD.Domain.Validation.ProblemDetailsBuilder.WithTitle
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html#JD_Domain_Validation_ProblemDetailsBuilder_WithTitle_System_String_
+  name: WithTitle
+  nameWithType: ProblemDetailsBuilder.WithTitle
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithTitle
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithStatus*
+  commentId: Overload:JD.Domain.Validation.ProblemDetailsBuilder.WithStatus
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html#JD_Domain_Validation_ProblemDetailsBuilder_WithStatus_System_Int32_
+  name: WithStatus
+  nameWithType: ProblemDetailsBuilder.WithStatus
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithStatus
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithDetail*
+  commentId: Overload:JD.Domain.Validation.ProblemDetailsBuilder.WithDetail
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html#JD_Domain_Validation_ProblemDetailsBuilder_WithDetail_System_String_
+  name: WithDetail
+  nameWithType: ProblemDetailsBuilder.WithDetail
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithDetail
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithInstance*
+  commentId: Overload:JD.Domain.Validation.ProblemDetailsBuilder.WithInstance
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html#JD_Domain_Validation_ProblemDetailsBuilder_WithInstance_System_String_
+  name: WithInstance
+  nameWithType: ProblemDetailsBuilder.WithInstance
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithInstance
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithType*
+  commentId: Overload:JD.Domain.Validation.ProblemDetailsBuilder.WithType
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html#JD_Domain_Validation_ProblemDetailsBuilder_WithType_System_String_
+  name: WithType
+  nameWithType: ProblemDetailsBuilder.WithType
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithType
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithCorrelationId*
+  commentId: Overload:JD.Domain.Validation.ProblemDetailsBuilder.WithCorrelationId
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html#JD_Domain_Validation_ProblemDetailsBuilder_WithCorrelationId_System_String_
+  name: WithCorrelationId
+  nameWithType: ProblemDetailsBuilder.WithCorrelationId
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithCorrelationId
+- uid: JD.Domain.Abstractions.RuleEvaluationResult
+  commentId: T:JD.Domain.Abstractions.RuleEvaluationResult
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.RuleEvaluationResult.html
+  name: RuleEvaluationResult
+  nameWithType: RuleEvaluationResult
+  fullName: JD.Domain.Abstractions.RuleEvaluationResult
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.FromEvaluationResult*
+  commentId: Overload:JD.Domain.Validation.ProblemDetailsBuilder.FromEvaluationResult
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html#JD_Domain_Validation_ProblemDetailsBuilder_FromEvaluationResult_JD_Domain_Abstractions_RuleEvaluationResult_
+  name: FromEvaluationResult
+  nameWithType: ProblemDetailsBuilder.FromEvaluationResult
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.FromEvaluationResult
+- uid: JD.Domain.Abstractions
+  commentId: N:JD.Domain.Abstractions
+  href: JD.html
+  name: JD.Domain.Abstractions
+  nameWithType: JD.Domain.Abstractions
+  fullName: JD.Domain.Abstractions
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+- uid: JD.Domain.Abstractions.DomainValidationException
+  commentId: T:JD.Domain.Abstractions.DomainValidationException
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.DomainValidationException.html
+  name: DomainValidationException
+  nameWithType: DomainValidationException
+  fullName: JD.Domain.Abstractions.DomainValidationException
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.FromException*
+  commentId: Overload:JD.Domain.Validation.ProblemDetailsBuilder.FromException
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html#JD_Domain_Validation_ProblemDetailsBuilder_FromException_JD_Domain_Abstractions_DomainValidationException_
+  name: FromException
+  nameWithType: ProblemDetailsBuilder.FromException
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.FromException
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithErrors*
+  commentId: Overload:JD.Domain.Validation.ProblemDetailsBuilder.WithErrors
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html#JD_Domain_Validation_ProblemDetailsBuilder_WithErrors_System_Collections_Generic_IEnumerable_JD_Domain_Abstractions_DomainError__
+  name: WithErrors
+  nameWithType: ProblemDetailsBuilder.WithErrors
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithErrors
+- uid: System.Collections.Generic.IEnumerable{JD.Domain.Abstractions.DomainError}
+  commentId: T:System.Collections.Generic.IEnumerable{JD.Domain.Abstractions.DomainError}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<DomainError>
+  nameWithType: IEnumerable<DomainError>
+  fullName: System.Collections.Generic.IEnumerable<JD.Domain.Abstractions.DomainError>
+  nameWithType.vb: IEnumerable(Of DomainError)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of JD.Domain.Abstractions.DomainError)
+  name.vb: IEnumerable(Of DomainError)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: JD.Domain.Abstractions.DomainError
+    name: DomainError
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Abstractions.DomainError
+    name: DomainError
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.WithExtension*
+  commentId: Overload:JD.Domain.Validation.ProblemDetailsBuilder.WithExtension
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html#JD_Domain_Validation_ProblemDetailsBuilder_WithExtension_System_String_System_Object_
+  name: WithExtension
+  nameWithType: ProblemDetailsBuilder.WithExtension
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.WithExtension
+- uid: JD.Domain.Validation.ProblemDetailsBuilder.Build*
+  commentId: Overload:JD.Domain.Validation.ProblemDetailsBuilder.Build
+  href: JD.Domain.Validation.ProblemDetailsBuilder.html#JD_Domain_Validation_ProblemDetailsBuilder_Build
+  name: Build
+  nameWithType: ProblemDetailsBuilder.Build
+  fullName: JD.Domain.Validation.ProblemDetailsBuilder.Build

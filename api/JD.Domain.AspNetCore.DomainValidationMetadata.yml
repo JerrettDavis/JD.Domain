@@ -1,0 +1,525 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.AspNetCore.DomainValidationMetadata
+  commentId: T:JD.Domain.AspNetCore.DomainValidationMetadata
+  id: DomainValidationMetadata
+  parent: JD.Domain.AspNetCore
+  children:
+  - JD.Domain.AspNetCore.DomainValidationMetadata.#ctor(System.Type,System.String,System.Nullable{System.Boolean})
+  - JD.Domain.AspNetCore.DomainValidationMetadata.RuleSet
+  - JD.Domain.AspNetCore.DomainValidationMetadata.StopOnFirstError
+  - JD.Domain.AspNetCore.DomainValidationMetadata.ValidationType
+  langs:
+  - csharp
+  - vb
+  name: DomainValidationMetadata
+  nameWithType: DomainValidationMetadata
+  fullName: JD.Domain.AspNetCore.DomainValidationMetadata
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.AspNetCore/DomainValidationMetadata.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: DomainValidationMetadata
+    path: src/JD.Domain.AspNetCore/DomainValidationMetadata.cs
+    startLine: 5
+  assemblies:
+  - JD.Domain.AspNetCore
+  namespace: JD.Domain.AspNetCore
+  summary: Metadata marker for endpoints that require domain validation.
+  example: []
+  syntax:
+    content: public sealed class DomainValidationMetadata
+    content.vb: Public NotInheritable Class DomainValidationMetadata
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JD.Domain.AspNetCore.DomainValidationMetadata.ValidationType
+  commentId: P:JD.Domain.AspNetCore.DomainValidationMetadata.ValidationType
+  id: ValidationType
+  parent: JD.Domain.AspNetCore.DomainValidationMetadata
+  langs:
+  - csharp
+  - vb
+  name: ValidationType
+  nameWithType: DomainValidationMetadata.ValidationType
+  fullName: JD.Domain.AspNetCore.DomainValidationMetadata.ValidationType
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.AspNetCore/DomainValidationMetadata.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: ValidationType
+    path: src/JD.Domain.AspNetCore/DomainValidationMetadata.cs
+    startLine: 10
+  assemblies:
+  - JD.Domain.AspNetCore
+  namespace: JD.Domain.AspNetCore
+  summary: Gets the type to validate.
+  example: []
+  syntax:
+    content: public Type ValidationType { get; }
+    parameters: []
+    return:
+      type: System.Type
+    content.vb: Public ReadOnly Property ValidationType As Type
+  overload: JD.Domain.AspNetCore.DomainValidationMetadata.ValidationType*
+- uid: JD.Domain.AspNetCore.DomainValidationMetadata.RuleSet
+  commentId: P:JD.Domain.AspNetCore.DomainValidationMetadata.RuleSet
+  id: RuleSet
+  parent: JD.Domain.AspNetCore.DomainValidationMetadata
+  langs:
+  - csharp
+  - vb
+  name: RuleSet
+  nameWithType: DomainValidationMetadata.RuleSet
+  fullName: JD.Domain.AspNetCore.DomainValidationMetadata.RuleSet
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.AspNetCore/DomainValidationMetadata.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: RuleSet
+    path: src/JD.Domain.AspNetCore/DomainValidationMetadata.cs
+    startLine: 15
+  assemblies:
+  - JD.Domain.AspNetCore
+  namespace: JD.Domain.AspNetCore
+  summary: Gets the rule set to evaluate. Null means use default.
+  example: []
+  syntax:
+    content: public string? RuleSet { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property RuleSet As String
+  overload: JD.Domain.AspNetCore.DomainValidationMetadata.RuleSet*
+- uid: JD.Domain.AspNetCore.DomainValidationMetadata.StopOnFirstError
+  commentId: P:JD.Domain.AspNetCore.DomainValidationMetadata.StopOnFirstError
+  id: StopOnFirstError
+  parent: JD.Domain.AspNetCore.DomainValidationMetadata
+  langs:
+  - csharp
+  - vb
+  name: StopOnFirstError
+  nameWithType: DomainValidationMetadata.StopOnFirstError
+  fullName: JD.Domain.AspNetCore.DomainValidationMetadata.StopOnFirstError
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.AspNetCore/DomainValidationMetadata.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: StopOnFirstError
+    path: src/JD.Domain.AspNetCore/DomainValidationMetadata.cs
+    startLine: 20
+  assemblies:
+  - JD.Domain.AspNetCore
+  namespace: JD.Domain.AspNetCore
+  summary: Gets whether to stop on first error. Null means use default from options.
+  example: []
+  syntax:
+    content: public bool? StopOnFirstError { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: Public ReadOnly Property StopOnFirstError As Boolean?
+  overload: JD.Domain.AspNetCore.DomainValidationMetadata.StopOnFirstError*
+- uid: JD.Domain.AspNetCore.DomainValidationMetadata.#ctor(System.Type,System.String,System.Nullable{System.Boolean})
+  commentId: M:JD.Domain.AspNetCore.DomainValidationMetadata.#ctor(System.Type,System.String,System.Nullable{System.Boolean})
+  id: '#ctor(System.Type,System.String,System.Nullable{System.Boolean})'
+  parent: JD.Domain.AspNetCore.DomainValidationMetadata
+  langs:
+  - csharp
+  - vb
+  name: DomainValidationMetadata(Type, string?, bool?)
+  nameWithType: DomainValidationMetadata.DomainValidationMetadata(Type, string?, bool?)
+  fullName: JD.Domain.AspNetCore.DomainValidationMetadata.DomainValidationMetadata(System.Type, string?, bool?)
+  type: Constructor
+  source:
+    remote:
+      path: src/JD.Domain.AspNetCore/DomainValidationMetadata.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: .ctor
+    path: src/JD.Domain.AspNetCore/DomainValidationMetadata.cs
+    startLine: 28
+  assemblies:
+  - JD.Domain.AspNetCore
+  namespace: JD.Domain.AspNetCore
+  summary: Initializes a new instance of the <xref href="JD.Domain.AspNetCore.DomainValidationMetadata" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public DomainValidationMetadata(Type validationType, string? ruleSet = null, bool? stopOnFirstError = null)
+    parameters:
+    - id: validationType
+      type: System.Type
+      description: The type to validate.
+    - id: ruleSet
+      type: System.String
+      description: Optional rule set name.
+    - id: stopOnFirstError
+      type: System.Nullable{System.Boolean}
+      description: Optional stop on first error override.
+    content.vb: Public Sub New(validationType As Type, ruleSet As String = Nothing, stopOnFirstError As Boolean? = Nothing)
+  overload: JD.Domain.AspNetCore.DomainValidationMetadata.#ctor*
+  nameWithType.vb: DomainValidationMetadata.New(Type, String, Boolean?)
+  fullName.vb: JD.Domain.AspNetCore.DomainValidationMetadata.New(System.Type, String, Boolean?)
+  name.vb: New(Type, String, Boolean?)
+references:
+- uid: JD.Domain.AspNetCore
+  commentId: N:JD.Domain.AspNetCore
+  href: JD.html
+  name: JD.Domain.AspNetCore
+  nameWithType: JD.Domain.AspNetCore
+  fullName: JD.Domain.AspNetCore
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.AspNetCore
+    name: AspNetCore
+    href: JD.Domain.AspNetCore.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.AspNetCore
+    name: AspNetCore
+    href: JD.Domain.AspNetCore.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.AspNetCore.DomainValidationMetadata.ValidationType*
+  commentId: Overload:JD.Domain.AspNetCore.DomainValidationMetadata.ValidationType
+  href: JD.Domain.AspNetCore.DomainValidationMetadata.html#JD_Domain_AspNetCore_DomainValidationMetadata_ValidationType
+  name: ValidationType
+  nameWithType: DomainValidationMetadata.ValidationType
+  fullName: JD.Domain.AspNetCore.DomainValidationMetadata.ValidationType
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: JD.Domain.AspNetCore.DomainValidationMetadata.RuleSet*
+  commentId: Overload:JD.Domain.AspNetCore.DomainValidationMetadata.RuleSet
+  href: JD.Domain.AspNetCore.DomainValidationMetadata.html#JD_Domain_AspNetCore_DomainValidationMetadata_RuleSet
+  name: RuleSet
+  nameWithType: DomainValidationMetadata.RuleSet
+  fullName: JD.Domain.AspNetCore.DomainValidationMetadata.RuleSet
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: JD.Domain.AspNetCore.DomainValidationMetadata.StopOnFirstError*
+  commentId: Overload:JD.Domain.AspNetCore.DomainValidationMetadata.StopOnFirstError
+  href: JD.Domain.AspNetCore.DomainValidationMetadata.html#JD_Domain_AspNetCore_DomainValidationMetadata_StopOnFirstError
+  name: StopOnFirstError
+  nameWithType: DomainValidationMetadata.StopOnFirstError
+  fullName: JD.Domain.AspNetCore.DomainValidationMetadata.StopOnFirstError
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool?
+  nameWithType: bool?
+  fullName: bool?
+  nameWithType.vb: Boolean?
+  fullName.vb: Boolean?
+  name.vb: Boolean?
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.AspNetCore.DomainValidationMetadata
+  commentId: T:JD.Domain.AspNetCore.DomainValidationMetadata
+  parent: JD.Domain.AspNetCore
+  href: JD.Domain.AspNetCore.DomainValidationMetadata.html
+  name: DomainValidationMetadata
+  nameWithType: DomainValidationMetadata
+  fullName: JD.Domain.AspNetCore.DomainValidationMetadata
+- uid: JD.Domain.AspNetCore.DomainValidationMetadata.#ctor*
+  commentId: Overload:JD.Domain.AspNetCore.DomainValidationMetadata.#ctor
+  href: JD.Domain.AspNetCore.DomainValidationMetadata.html#JD_Domain_AspNetCore_DomainValidationMetadata__ctor_System_Type_System_String_System_Nullable_System_Boolean__
+  name: DomainValidationMetadata
+  nameWithType: DomainValidationMetadata.DomainValidationMetadata
+  fullName: JD.Domain.AspNetCore.DomainValidationMetadata.DomainValidationMetadata
+  nameWithType.vb: DomainValidationMetadata.New
+  fullName.vb: JD.Domain.AspNetCore.DomainValidationMetadata.New
+  name.vb: New

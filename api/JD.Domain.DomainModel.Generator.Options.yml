@@ -1,0 +1,78 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.DomainModel.Generator.Options
+  commentId: N:JD.Domain.DomainModel.Generator.Options
+  id: JD.Domain.DomainModel.Generator.Options
+  children:
+  - JD.Domain.DomainModel.Generator.Options.DomainModelOptions
+  - JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+  langs:
+  - csharp
+  - vb
+  name: JD.Domain.DomainModel.Generator.Options
+  nameWithType: JD.Domain.DomainModel.Generator.Options
+  fullName: JD.Domain.DomainModel.Generator.Options
+  type: Namespace
+  assemblies:
+  - JD.Domain.DomainModel.Generator
+references:
+- uid: JD.Domain.DomainModel.Generator.Options.DomainModelOptions
+  commentId: T:JD.Domain.DomainModel.Generator.Options.DomainModelOptions
+  parent: JD.Domain.DomainModel.Generator.Options
+  href: JD.Domain.DomainModel.Generator.Options.DomainModelOptions.html
+  name: DomainModelOptions
+  nameWithType: DomainModelOptions
+  fullName: JD.Domain.DomainModel.Generator.Options.DomainModelOptions
+- uid: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+  commentId: T:JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+  parent: JD.Domain.DomainModel.Generator.Options
+  href: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.html
+  name: PropertyValidationMode
+  nameWithType: PropertyValidationMode
+  fullName: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+- uid: JD.Domain.DomainModel.Generator.Options
+  commentId: N:JD.Domain.DomainModel.Generator.Options
+  href: JD.html
+  name: JD.Domain.DomainModel.Generator.Options
+  nameWithType: JD.Domain.DomainModel.Generator.Options
+  fullName: JD.Domain.DomainModel.Generator.Options
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.DomainModel
+    name: DomainModel
+    href: JD.Domain.DomainModel.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator
+    name: Generator
+    href: JD.Domain.DomainModel.Generator.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator.Options
+    name: Options
+    href: JD.Domain.DomainModel.Generator.Options.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.DomainModel
+    name: DomainModel
+    href: JD.Domain.DomainModel.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator
+    name: Generator
+    href: JD.Domain.DomainModel.Generator.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator.Options
+    name: Options
+    href: JD.Domain.DomainModel.Generator.Options.html

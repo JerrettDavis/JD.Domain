@@ -1,0 +1,522 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Snapshot.SnapshotWriter
+  commentId: T:JD.Domain.Snapshot.SnapshotWriter
+  id: SnapshotWriter
+  parent: JD.Domain.Snapshot
+  children:
+  - JD.Domain.Snapshot.SnapshotWriter.#ctor(JD.Domain.Snapshot.SnapshotOptions)
+  - JD.Domain.Snapshot.SnapshotWriter.CreateSnapshot(JD.Domain.Abstractions.DomainManifest)
+  - JD.Domain.Snapshot.SnapshotWriter.Serialize(JD.Domain.Snapshot.DomainSnapshot)
+  - JD.Domain.Snapshot.SnapshotWriter.SerializeManifest(JD.Domain.Abstractions.DomainManifest)
+  langs:
+  - csharp
+  - vb
+  name: SnapshotWriter
+  nameWithType: SnapshotWriter
+  fullName: JD.Domain.Snapshot.SnapshotWriter
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Snapshot/SnapshotWriter.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: SnapshotWriter
+    path: src/JD.Domain.Snapshot/SnapshotWriter.cs
+    startLine: 11
+  assemblies:
+  - JD.Domain.Snapshot
+  namespace: JD.Domain.Snapshot
+  summary: Writes domain snapshots to canonical JSON format.
+  example: []
+  syntax:
+    content: public sealed class SnapshotWriter
+    content.vb: Public NotInheritable Class SnapshotWriter
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JD.Domain.Snapshot.SnapshotWriter.#ctor(JD.Domain.Snapshot.SnapshotOptions)
+  commentId: M:JD.Domain.Snapshot.SnapshotWriter.#ctor(JD.Domain.Snapshot.SnapshotOptions)
+  id: '#ctor(JD.Domain.Snapshot.SnapshotOptions)'
+  parent: JD.Domain.Snapshot.SnapshotWriter
+  langs:
+  - csharp
+  - vb
+  name: SnapshotWriter(SnapshotOptions?)
+  nameWithType: SnapshotWriter.SnapshotWriter(SnapshotOptions?)
+  fullName: JD.Domain.Snapshot.SnapshotWriter.SnapshotWriter(JD.Domain.Snapshot.SnapshotOptions?)
+  type: Constructor
+  source:
+    remote:
+      path: src/JD.Domain.Snapshot/SnapshotWriter.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: .ctor
+    path: src/JD.Domain.Snapshot/SnapshotWriter.cs
+    startLine: 20
+  assemblies:
+  - JD.Domain.Snapshot
+  namespace: JD.Domain.Snapshot
+  summary: Initializes a new instance of the <xref href="JD.Domain.Snapshot.SnapshotWriter" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public SnapshotWriter(SnapshotOptions? options = null)
+    parameters:
+    - id: options
+      type: JD.Domain.Snapshot.SnapshotOptions
+      description: The snapshot options.
+    content.vb: Public Sub New(options As SnapshotOptions = Nothing)
+  overload: JD.Domain.Snapshot.SnapshotWriter.#ctor*
+  nameWithType.vb: SnapshotWriter.New(SnapshotOptions)
+  fullName.vb: JD.Domain.Snapshot.SnapshotWriter.New(JD.Domain.Snapshot.SnapshotOptions)
+  name.vb: New(SnapshotOptions)
+- uid: JD.Domain.Snapshot.SnapshotWriter.CreateSnapshot(JD.Domain.Abstractions.DomainManifest)
+  commentId: M:JD.Domain.Snapshot.SnapshotWriter.CreateSnapshot(JD.Domain.Abstractions.DomainManifest)
+  id: CreateSnapshot(JD.Domain.Abstractions.DomainManifest)
+  parent: JD.Domain.Snapshot.SnapshotWriter
+  langs:
+  - csharp
+  - vb
+  name: CreateSnapshot(DomainManifest)
+  nameWithType: SnapshotWriter.CreateSnapshot(DomainManifest)
+  fullName: JD.Domain.Snapshot.SnapshotWriter.CreateSnapshot(JD.Domain.Abstractions.DomainManifest)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Snapshot/SnapshotWriter.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: CreateSnapshot
+    path: src/JD.Domain.Snapshot/SnapshotWriter.cs
+    startLine: 31
+  assemblies:
+  - JD.Domain.Snapshot
+  namespace: JD.Domain.Snapshot
+  summary: Creates a snapshot from a manifest.
+  example: []
+  syntax:
+    content: public DomainSnapshot CreateSnapshot(DomainManifest manifest)
+    parameters:
+    - id: manifest
+      type: JD.Domain.Abstractions.DomainManifest
+      description: The manifest to snapshot.
+    return:
+      type: JD.Domain.Snapshot.DomainSnapshot
+      description: The created snapshot with computed hash.
+    content.vb: Public Function CreateSnapshot(manifest As DomainManifest) As DomainSnapshot
+  overload: JD.Domain.Snapshot.SnapshotWriter.CreateSnapshot*
+- uid: JD.Domain.Snapshot.SnapshotWriter.Serialize(JD.Domain.Snapshot.DomainSnapshot)
+  commentId: M:JD.Domain.Snapshot.SnapshotWriter.Serialize(JD.Domain.Snapshot.DomainSnapshot)
+  id: Serialize(JD.Domain.Snapshot.DomainSnapshot)
+  parent: JD.Domain.Snapshot.SnapshotWriter
+  langs:
+  - csharp
+  - vb
+  name: Serialize(DomainSnapshot)
+  nameWithType: SnapshotWriter.Serialize(DomainSnapshot)
+  fullName: JD.Domain.Snapshot.SnapshotWriter.Serialize(JD.Domain.Snapshot.DomainSnapshot)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Snapshot/SnapshotWriter.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Serialize
+    path: src/JD.Domain.Snapshot/SnapshotWriter.cs
+    startLine: 47
+  assemblies:
+  - JD.Domain.Snapshot
+  namespace: JD.Domain.Snapshot
+  summary: Serializes a snapshot to JSON.
+  example: []
+  syntax:
+    content: public string Serialize(DomainSnapshot snapshot)
+    parameters:
+    - id: snapshot
+      type: JD.Domain.Snapshot.DomainSnapshot
+      description: The snapshot to serialize.
+    return:
+      type: System.String
+      description: The JSON string.
+    content.vb: Public Function Serialize(snapshot As DomainSnapshot) As String
+  overload: JD.Domain.Snapshot.SnapshotWriter.Serialize*
+- uid: JD.Domain.Snapshot.SnapshotWriter.SerializeManifest(JD.Domain.Abstractions.DomainManifest)
+  commentId: M:JD.Domain.Snapshot.SnapshotWriter.SerializeManifest(JD.Domain.Abstractions.DomainManifest)
+  id: SerializeManifest(JD.Domain.Abstractions.DomainManifest)
+  parent: JD.Domain.Snapshot.SnapshotWriter
+  langs:
+  - csharp
+  - vb
+  name: SerializeManifest(DomainManifest)
+  nameWithType: SnapshotWriter.SerializeManifest(DomainManifest)
+  fullName: JD.Domain.Snapshot.SnapshotWriter.SerializeManifest(JD.Domain.Abstractions.DomainManifest)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Snapshot/SnapshotWriter.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: SerializeManifest
+    path: src/JD.Domain.Snapshot/SnapshotWriter.cs
+    startLine: 60
+  assemblies:
+  - JD.Domain.Snapshot
+  namespace: JD.Domain.Snapshot
+  summary: Serializes a manifest directly to canonical JSON.
+  example: []
+  syntax:
+    content: public string SerializeManifest(DomainManifest manifest)
+    parameters:
+    - id: manifest
+      type: JD.Domain.Abstractions.DomainManifest
+      description: The manifest to serialize.
+    return:
+      type: System.String
+      description: The canonical JSON string.
+    content.vb: Public Function SerializeManifest(manifest As DomainManifest) As String
+  overload: JD.Domain.Snapshot.SnapshotWriter.SerializeManifest*
+references:
+- uid: JD.Domain.Snapshot
+  commentId: N:JD.Domain.Snapshot
+  href: JD.html
+  name: JD.Domain.Snapshot
+  nameWithType: JD.Domain.Snapshot
+  fullName: JD.Domain.Snapshot
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Snapshot
+    name: Snapshot
+    href: JD.Domain.Snapshot.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Snapshot
+    name: Snapshot
+    href: JD.Domain.Snapshot.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.Snapshot.SnapshotWriter
+  commentId: T:JD.Domain.Snapshot.SnapshotWriter
+  href: JD.Domain.Snapshot.SnapshotWriter.html
+  name: SnapshotWriter
+  nameWithType: SnapshotWriter
+  fullName: JD.Domain.Snapshot.SnapshotWriter
+- uid: JD.Domain.Snapshot.SnapshotWriter.#ctor*
+  commentId: Overload:JD.Domain.Snapshot.SnapshotWriter.#ctor
+  href: JD.Domain.Snapshot.SnapshotWriter.html#JD_Domain_Snapshot_SnapshotWriter__ctor_JD_Domain_Snapshot_SnapshotOptions_
+  name: SnapshotWriter
+  nameWithType: SnapshotWriter.SnapshotWriter
+  fullName: JD.Domain.Snapshot.SnapshotWriter.SnapshotWriter
+  nameWithType.vb: SnapshotWriter.New
+  fullName.vb: JD.Domain.Snapshot.SnapshotWriter.New
+  name.vb: New
+- uid: JD.Domain.Snapshot.SnapshotOptions
+  commentId: T:JD.Domain.Snapshot.SnapshotOptions
+  parent: JD.Domain.Snapshot
+  href: JD.Domain.Snapshot.SnapshotOptions.html
+  name: SnapshotOptions
+  nameWithType: SnapshotOptions
+  fullName: JD.Domain.Snapshot.SnapshotOptions
+- uid: JD.Domain.Snapshot.SnapshotWriter.CreateSnapshot*
+  commentId: Overload:JD.Domain.Snapshot.SnapshotWriter.CreateSnapshot
+  href: JD.Domain.Snapshot.SnapshotWriter.html#JD_Domain_Snapshot_SnapshotWriter_CreateSnapshot_JD_Domain_Abstractions_DomainManifest_
+  name: CreateSnapshot
+  nameWithType: SnapshotWriter.CreateSnapshot
+  fullName: JD.Domain.Snapshot.SnapshotWriter.CreateSnapshot
+- uid: JD.Domain.Abstractions.DomainManifest
+  commentId: T:JD.Domain.Abstractions.DomainManifest
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.DomainManifest.html
+  name: DomainManifest
+  nameWithType: DomainManifest
+  fullName: JD.Domain.Abstractions.DomainManifest
+- uid: JD.Domain.Snapshot.DomainSnapshot
+  commentId: T:JD.Domain.Snapshot.DomainSnapshot
+  parent: JD.Domain.Snapshot
+  href: JD.Domain.Snapshot.DomainSnapshot.html
+  name: DomainSnapshot
+  nameWithType: DomainSnapshot
+  fullName: JD.Domain.Snapshot.DomainSnapshot
+- uid: JD.Domain.Abstractions
+  commentId: N:JD.Domain.Abstractions
+  href: JD.html
+  name: JD.Domain.Abstractions
+  nameWithType: JD.Domain.Abstractions
+  fullName: JD.Domain.Abstractions
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+- uid: JD.Domain.Snapshot.SnapshotWriter.Serialize*
+  commentId: Overload:JD.Domain.Snapshot.SnapshotWriter.Serialize
+  href: JD.Domain.Snapshot.SnapshotWriter.html#JD_Domain_Snapshot_SnapshotWriter_Serialize_JD_Domain_Snapshot_DomainSnapshot_
+  name: Serialize
+  nameWithType: SnapshotWriter.Serialize
+  fullName: JD.Domain.Snapshot.SnapshotWriter.Serialize
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: JD.Domain.Snapshot.SnapshotWriter.SerializeManifest*
+  commentId: Overload:JD.Domain.Snapshot.SnapshotWriter.SerializeManifest
+  href: JD.Domain.Snapshot.SnapshotWriter.html#JD_Domain_Snapshot_SnapshotWriter_SerializeManifest_JD_Domain_Abstractions_DomainManifest_
+  name: SerializeManifest
+  nameWithType: SnapshotWriter.SerializeManifest
+  fullName: JD.Domain.Snapshot.SnapshotWriter.SerializeManifest

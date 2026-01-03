@@ -1,0 +1,746 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Modeling.EntityBuilder`1
+  commentId: T:JD.Domain.Modeling.EntityBuilder`1
+  id: EntityBuilder`1
+  parent: JD.Domain.Modeling
+  children:
+  - JD.Domain.Modeling.EntityBuilder`1.#ctor
+  - JD.Domain.Modeling.EntityBuilder`1.Key``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  - JD.Domain.Modeling.EntityBuilder`1.Property``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  - JD.Domain.Modeling.EntityBuilder`1.ToTable(System.String,System.String)
+  - JD.Domain.Modeling.EntityBuilder`1.WithMetadata(System.String,System.Object)
+  langs:
+  - csharp
+  - vb
+  name: EntityBuilder<T>
+  nameWithType: EntityBuilder<T>
+  fullName: JD.Domain.Modeling.EntityBuilder<T>
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/EntityBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: EntityBuilder
+    path: src/JD.Domain.Modeling/EntityBuilder.cs
+    startLine: 10
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Fluent builder for constructing entity manifests.
+  example: []
+  syntax:
+    content: 'public sealed class EntityBuilder<T> where T : class'
+    typeParameters:
+    - id: T
+      description: The entity type.
+    content.vb: Public NotInheritable Class EntityBuilder(Of T As Class)
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: EntityBuilder(Of T)
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T)
+  name.vb: EntityBuilder(Of T)
+- uid: JD.Domain.Modeling.EntityBuilder`1.#ctor
+  commentId: M:JD.Domain.Modeling.EntityBuilder`1.#ctor
+  id: '#ctor'
+  parent: JD.Domain.Modeling.EntityBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: EntityBuilder()
+  nameWithType: EntityBuilder<T>.EntityBuilder()
+  fullName: JD.Domain.Modeling.EntityBuilder<T>.EntityBuilder()
+  type: Constructor
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/EntityBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: .ctor
+    path: src/JD.Domain.Modeling/EntityBuilder.cs
+    startLine: 22
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Initializes a new instance of the <xref href="JD.Domain.Modeling.EntityBuilder%601" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public EntityBuilder()
+    content.vb: Public Sub New()
+  overload: JD.Domain.Modeling.EntityBuilder`1.#ctor*
+  nameWithType.vb: EntityBuilder(Of T).New()
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T).New()
+  name.vb: New()
+- uid: JD.Domain.Modeling.EntityBuilder`1.Key``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  commentId: M:JD.Domain.Modeling.EntityBuilder`1.Key``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  id: Key``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  parent: JD.Domain.Modeling.EntityBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: Key<TProperty>(Expression<Func<T, TProperty>>)
+  nameWithType: EntityBuilder<T>.Key<TProperty>(Expression<Func<T, TProperty>>)
+  fullName: JD.Domain.Modeling.EntityBuilder<T>.Key<TProperty>(System.Linq.Expressions.Expression<System.Func<T, TProperty>>)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/EntityBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Key
+    path: src/JD.Domain.Modeling/EntityBuilder.cs
+    startLine: 34
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Specifies the primary key property.
+  example: []
+  syntax:
+    content: public PropertyBuilder<T, TProperty> Key<TProperty>(Expression<Func<T, TProperty>> propertyExpression)
+    parameters:
+    - id: propertyExpression
+      type: System.Linq.Expressions.Expression{System.Func{{T},{TProperty}}}
+      description: The property selector expression.
+    typeParameters:
+    - id: TProperty
+      description: The property type.
+    return:
+      type: JD.Domain.Modeling.PropertyBuilder{{T},{TProperty}}
+      description: A property builder for further configuration.
+    content.vb: Public Function Key(Of TProperty)(propertyExpression As Expression(Of Func(Of T, TProperty))) As PropertyBuilder(Of T, TProperty)
+  overload: JD.Domain.Modeling.EntityBuilder`1.Key*
+  nameWithType.vb: EntityBuilder(Of T).Key(Of TProperty)(Expression(Of Func(Of T, TProperty)))
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T).Key(Of TProperty)(System.Linq.Expressions.Expression(Of System.Func(Of T, TProperty)))
+  name.vb: Key(Of TProperty)(Expression(Of Func(Of T, TProperty)))
+- uid: JD.Domain.Modeling.EntityBuilder`1.Property``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  commentId: M:JD.Domain.Modeling.EntityBuilder`1.Property``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  id: Property``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})
+  parent: JD.Domain.Modeling.EntityBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: Property<TProperty>(Expression<Func<T, TProperty>>)
+  nameWithType: EntityBuilder<T>.Property<TProperty>(Expression<Func<T, TProperty>>)
+  fullName: JD.Domain.Modeling.EntityBuilder<T>.Property<TProperty>(System.Linq.Expressions.Expression<System.Func<T, TProperty>>)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/EntityBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Property
+    path: src/JD.Domain.Modeling/EntityBuilder.cs
+    startLine: 52
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Specifies a property for configuration.
+  example: []
+  syntax:
+    content: public PropertyBuilder<T, TProperty> Property<TProperty>(Expression<Func<T, TProperty>> propertyExpression)
+    parameters:
+    - id: propertyExpression
+      type: System.Linq.Expressions.Expression{System.Func{{T},{TProperty}}}
+      description: The property selector expression.
+    typeParameters:
+    - id: TProperty
+      description: The property type.
+    return:
+      type: JD.Domain.Modeling.PropertyBuilder{{T},{TProperty}}
+      description: A property builder for further configuration.
+    content.vb: Public Function [Property](Of TProperty)(propertyExpression As Expression(Of Func(Of T, TProperty))) As PropertyBuilder(Of T, TProperty)
+  overload: JD.Domain.Modeling.EntityBuilder`1.Property*
+  nameWithType.vb: EntityBuilder(Of T).Property(Of TProperty)(Expression(Of Func(Of T, TProperty)))
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T).Property(Of TProperty)(System.Linq.Expressions.Expression(Of System.Func(Of T, TProperty)))
+  name.vb: Property(Of TProperty)(Expression(Of Func(Of T, TProperty)))
+- uid: JD.Domain.Modeling.EntityBuilder`1.ToTable(System.String,System.String)
+  commentId: M:JD.Domain.Modeling.EntityBuilder`1.ToTable(System.String,System.String)
+  id: ToTable(System.String,System.String)
+  parent: JD.Domain.Modeling.EntityBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: ToTable(string, string?)
+  nameWithType: EntityBuilder<T>.ToTable(string, string?)
+  fullName: JD.Domain.Modeling.EntityBuilder<T>.ToTable(string, string?)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/EntityBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: ToTable
+    path: src/JD.Domain.Modeling/EntityBuilder.cs
+    startLine: 75
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Specifies the table name for the entity.
+  example: []
+  syntax:
+    content: public EntityBuilder<T> ToTable(string tableName, string? schemaName = null)
+    parameters:
+    - id: tableName
+      type: System.String
+      description: The table name.
+    - id: schemaName
+      type: System.String
+      description: The optional schema name.
+    return:
+      type: JD.Domain.Modeling.EntityBuilder`1
+      description: The entity builder for chaining.
+    content.vb: Public Function ToTable(tableName As String, schemaName As String = Nothing) As EntityBuilder(Of T)
+  overload: JD.Domain.Modeling.EntityBuilder`1.ToTable*
+  nameWithType.vb: EntityBuilder(Of T).ToTable(String, String)
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T).ToTable(String, String)
+  name.vb: ToTable(String, String)
+- uid: JD.Domain.Modeling.EntityBuilder`1.WithMetadata(System.String,System.Object)
+  commentId: M:JD.Domain.Modeling.EntityBuilder`1.WithMetadata(System.String,System.Object)
+  id: WithMetadata(System.String,System.Object)
+  parent: JD.Domain.Modeling.EntityBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithMetadata(string, object?)
+  nameWithType: EntityBuilder<T>.WithMetadata(string, object?)
+  fullName: JD.Domain.Modeling.EntityBuilder<T>.WithMetadata(string, object?)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/EntityBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithMetadata
+    path: src/JD.Domain.Modeling/EntityBuilder.cs
+    startLine: 89
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Adds metadata to the entity.
+  example: []
+  syntax:
+    content: public EntityBuilder<T> WithMetadata(string key, object? value)
+    parameters:
+    - id: key
+      type: System.String
+      description: The metadata key.
+    - id: value
+      type: System.Object
+      description: The metadata value.
+    return:
+      type: JD.Domain.Modeling.EntityBuilder`1
+      description: The entity builder for chaining.
+    content.vb: Public Function WithMetadata(key As String, value As Object) As EntityBuilder(Of T)
+  overload: JD.Domain.Modeling.EntityBuilder`1.WithMetadata*
+  nameWithType.vb: EntityBuilder(Of T).WithMetadata(String, Object)
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T).WithMetadata(String, Object)
+  name.vb: WithMetadata(String, Object)
+references:
+- uid: JD.Domain.Modeling
+  commentId: N:JD.Domain.Modeling
+  href: JD.html
+  name: JD.Domain.Modeling
+  nameWithType: JD.Domain.Modeling
+  fullName: JD.Domain.Modeling
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Modeling
+    name: Modeling
+    href: JD.Domain.Modeling.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Modeling
+    name: Modeling
+    href: JD.Domain.Modeling.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.Modeling.EntityBuilder`1
+  commentId: T:JD.Domain.Modeling.EntityBuilder`1
+  parent: JD.Domain.Modeling
+  href: JD.Domain.Modeling.EntityBuilder-1.html
+  name: EntityBuilder<T>
+  nameWithType: EntityBuilder<T>
+  fullName: JD.Domain.Modeling.EntityBuilder<T>
+  nameWithType.vb: EntityBuilder(Of T)
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T)
+  name.vb: EntityBuilder(Of T)
+  spec.csharp:
+  - uid: JD.Domain.Modeling.EntityBuilder`1
+    name: EntityBuilder
+    href: JD.Domain.Modeling.EntityBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Modeling.EntityBuilder`1
+    name: EntityBuilder
+    href: JD.Domain.Modeling.EntityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.Modeling.EntityBuilder`1.#ctor*
+  commentId: Overload:JD.Domain.Modeling.EntityBuilder`1.#ctor
+  href: JD.Domain.Modeling.EntityBuilder-1.html#JD_Domain_Modeling_EntityBuilder_1__ctor
+  name: EntityBuilder
+  nameWithType: EntityBuilder<T>.EntityBuilder
+  fullName: JD.Domain.Modeling.EntityBuilder<T>.EntityBuilder
+  nameWithType.vb: EntityBuilder(Of T).New
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T).New
+  name.vb: New
+- uid: JD.Domain.Modeling.EntityBuilder`1.Key*
+  commentId: Overload:JD.Domain.Modeling.EntityBuilder`1.Key
+  href: JD.Domain.Modeling.EntityBuilder-1.html#JD_Domain_Modeling_EntityBuilder_1_Key__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  name: Key
+  nameWithType: EntityBuilder<T>.Key
+  fullName: JD.Domain.Modeling.EntityBuilder<T>.Key
+  nameWithType.vb: EntityBuilder(Of T).Key
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T).Key
+- uid: System.Linq.Expressions.Expression{System.Func{{T},{TProperty}}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{`0,``0}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<Func<T, TProperty>>
+  nameWithType: Expression<Func<T, TProperty>>
+  fullName: System.Linq.Expressions.Expression<System.Func<T, TProperty>>
+  nameWithType.vb: Expression(Of Func(Of T, TProperty))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of T, TProperty))
+  name.vb: Expression(Of Func(Of T, TProperty))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TProperty
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TProperty
+  - name: )
+  - name: )
+- uid: JD.Domain.Modeling.PropertyBuilder{{T},{TProperty}}
+  commentId: T:JD.Domain.Modeling.PropertyBuilder{`0,``0}
+  parent: JD.Domain.Modeling
+  definition: JD.Domain.Modeling.PropertyBuilder`2
+  href: JD.Domain.Modeling.PropertyBuilder-2.html
+  name: PropertyBuilder<T, TProperty>
+  nameWithType: PropertyBuilder<T, TProperty>
+  fullName: JD.Domain.Modeling.PropertyBuilder<T, TProperty>
+  nameWithType.vb: PropertyBuilder(Of T, TProperty)
+  fullName.vb: JD.Domain.Modeling.PropertyBuilder(Of T, TProperty)
+  name.vb: PropertyBuilder(Of T, TProperty)
+  spec.csharp:
+  - uid: JD.Domain.Modeling.PropertyBuilder`2
+    name: PropertyBuilder
+    href: JD.Domain.Modeling.PropertyBuilder-2.html
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TProperty
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Modeling.PropertyBuilder`2
+    name: PropertyBuilder
+    href: JD.Domain.Modeling.PropertyBuilder-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TProperty
+  - name: )
+- uid: System.Linq.Expressions.Expression`1
+  commentId: T:System.Linq.Expressions.Expression`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<TDelegate>
+  nameWithType: Expression<TDelegate>
+  fullName: System.Linq.Expressions.Expression<TDelegate>
+  nameWithType.vb: Expression(Of TDelegate)
+  fullName.vb: System.Linq.Expressions.Expression(Of TDelegate)
+  name.vb: Expression(Of TDelegate)
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - name: TDelegate
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: )
+- uid: System.Linq.Expressions
+  commentId: N:System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Linq.Expressions
+  nameWithType: System.Linq.Expressions
+  fullName: System.Linq.Expressions
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+- uid: JD.Domain.Modeling.PropertyBuilder`2
+  commentId: T:JD.Domain.Modeling.PropertyBuilder`2
+  parent: JD.Domain.Modeling
+  href: JD.Domain.Modeling.PropertyBuilder-2.html
+  name: PropertyBuilder<TEntity, TProperty>
+  nameWithType: PropertyBuilder<TEntity, TProperty>
+  fullName: JD.Domain.Modeling.PropertyBuilder<TEntity, TProperty>
+  nameWithType.vb: PropertyBuilder(Of TEntity, TProperty)
+  fullName.vb: JD.Domain.Modeling.PropertyBuilder(Of TEntity, TProperty)
+  name.vb: PropertyBuilder(Of TEntity, TProperty)
+  spec.csharp:
+  - uid: JD.Domain.Modeling.PropertyBuilder`2
+    name: PropertyBuilder
+    href: JD.Domain.Modeling.PropertyBuilder-2.html
+  - name: <
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TProperty
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Modeling.PropertyBuilder`2
+    name: PropertyBuilder
+    href: JD.Domain.Modeling.PropertyBuilder-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TProperty
+  - name: )
+- uid: JD.Domain.Modeling.EntityBuilder`1.Property*
+  commentId: Overload:JD.Domain.Modeling.EntityBuilder`1.Property
+  href: JD.Domain.Modeling.EntityBuilder-1.html#JD_Domain_Modeling_EntityBuilder_1_Property__1_System_Linq_Expressions_Expression_System_Func__0___0___
+  name: Property
+  nameWithType: EntityBuilder<T>.Property
+  fullName: JD.Domain.Modeling.EntityBuilder<T>.Property
+  nameWithType.vb: EntityBuilder(Of T).Property
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T).Property
+- uid: JD.Domain.Modeling.EntityBuilder`1.ToTable*
+  commentId: Overload:JD.Domain.Modeling.EntityBuilder`1.ToTable
+  href: JD.Domain.Modeling.EntityBuilder-1.html#JD_Domain_Modeling_EntityBuilder_1_ToTable_System_String_System_String_
+  name: ToTable
+  nameWithType: EntityBuilder<T>.ToTable
+  fullName: JD.Domain.Modeling.EntityBuilder<T>.ToTable
+  nameWithType.vb: EntityBuilder(Of T).ToTable
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T).ToTable
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: JD.Domain.Modeling.EntityBuilder`1.WithMetadata*
+  commentId: Overload:JD.Domain.Modeling.EntityBuilder`1.WithMetadata
+  href: JD.Domain.Modeling.EntityBuilder-1.html#JD_Domain_Modeling_EntityBuilder_1_WithMetadata_System_String_System_Object_
+  name: WithMetadata
+  nameWithType: EntityBuilder<T>.WithMetadata
+  fullName: JD.Domain.Modeling.EntityBuilder<T>.WithMetadata
+  nameWithType.vb: EntityBuilder(Of T).WithMetadata
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T).WithMetadata

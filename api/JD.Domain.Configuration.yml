@@ -1,0 +1,108 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Configuration
+  commentId: N:JD.Domain.Configuration
+  id: JD.Domain.Configuration
+  children:
+  - JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+  - JD.Domain.Configuration.EntityConfigurationBuilder`1
+  - JD.Domain.Configuration.IndexBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: JD.Domain.Configuration
+  nameWithType: JD.Domain.Configuration
+  fullName: JD.Domain.Configuration
+  type: Namespace
+  assemblies:
+  - JD.Domain.Configuration
+references:
+- uid: JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+  commentId: T:JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+  parent: JD.Domain.Configuration
+  href: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.html
+  name: DomainBuilderConfigurationExtensions
+  nameWithType: DomainBuilderConfigurationExtensions
+  fullName: JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+- uid: JD.Domain.Configuration.EntityConfigurationBuilder`1
+  commentId: T:JD.Domain.Configuration.EntityConfigurationBuilder`1
+  parent: JD.Domain.Configuration
+  href: JD.Domain.Configuration.EntityConfigurationBuilder-1.html
+  name: EntityConfigurationBuilder<T>
+  nameWithType: EntityConfigurationBuilder<T>
+  fullName: JD.Domain.Configuration.EntityConfigurationBuilder<T>
+  nameWithType.vb: EntityConfigurationBuilder(Of T)
+  fullName.vb: JD.Domain.Configuration.EntityConfigurationBuilder(Of T)
+  name.vb: EntityConfigurationBuilder(Of T)
+  spec.csharp:
+  - uid: JD.Domain.Configuration.EntityConfigurationBuilder`1
+    name: EntityConfigurationBuilder
+    href: JD.Domain.Configuration.EntityConfigurationBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Configuration.EntityConfigurationBuilder`1
+    name: EntityConfigurationBuilder
+    href: JD.Domain.Configuration.EntityConfigurationBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.Configuration.IndexBuilder`1
+  commentId: T:JD.Domain.Configuration.IndexBuilder`1
+  parent: JD.Domain.Configuration
+  href: JD.Domain.Configuration.IndexBuilder-1.html
+  name: IndexBuilder<T>
+  nameWithType: IndexBuilder<T>
+  fullName: JD.Domain.Configuration.IndexBuilder<T>
+  nameWithType.vb: IndexBuilder(Of T)
+  fullName.vb: JD.Domain.Configuration.IndexBuilder(Of T)
+  name.vb: IndexBuilder(Of T)
+  spec.csharp:
+  - uid: JD.Domain.Configuration.IndexBuilder`1
+    name: IndexBuilder
+    href: JD.Domain.Configuration.IndexBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Configuration.IndexBuilder`1
+    name: IndexBuilder
+    href: JD.Domain.Configuration.IndexBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.Configuration
+  commentId: N:JD.Domain.Configuration
+  href: JD.html
+  name: JD.Domain.Configuration
+  nameWithType: JD.Domain.Configuration
+  fullName: JD.Domain.Configuration
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Configuration
+    name: Configuration
+    href: JD.Domain.Configuration.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Configuration
+    name: Configuration
+    href: JD.Domain.Configuration.html

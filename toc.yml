@@ -1,0 +1,14 @@
+- name: Home
+  href: index.md
+- name: Documentation
+  href: docs/
+  homepage: docs/index.md
+- name: API Reference
+  href: api/
+  homepage: api/index.md
+- name: Changelog
+  href: docs/changelog/index.md
+- name: Roadmap
+  href: docs/changelog/roadmap.md
+- name: GitHub
+  href: https://github.com/JerrettDavis/JD.Domain

@@ -1,0 +1,363 @@
+### YamlMime:TableOfContent
+items:
+- uid: JD.Domain.Abstractions
+  name: JD.Domain.Abstractions
+  type: Namespace
+  items:
+  - uid: JD.Domain.Abstractions.ConfigurationManifest
+    name: ConfigurationManifest
+    type: Class
+  - uid: JD.Domain.Abstractions.DomainContext
+    name: DomainContext
+    type: Class
+  - uid: JD.Domain.Abstractions.DomainCreateOptions
+    name: DomainCreateOptions
+    type: Class
+  - uid: JD.Domain.Abstractions.DomainError
+    name: DomainError
+    type: Class
+  - uid: JD.Domain.Abstractions.DomainManifest
+    name: DomainManifest
+    type: Class
+  - uid: JD.Domain.Abstractions.DomainValidationException
+    name: DomainValidationException
+    type: Class
+  - uid: JD.Domain.Abstractions.EntityManifest
+    name: EntityManifest
+    type: Class
+  - uid: JD.Domain.Abstractions.EnumManifest
+    name: EnumManifest
+    type: Class
+  - uid: JD.Domain.Abstractions.IDomainEngine
+    name: IDomainEngine
+    type: Interface
+  - uid: JD.Domain.Abstractions.IDomainFactory
+    name: IDomainFactory
+    type: Interface
+  - uid: JD.Domain.Abstractions.IndexManifest
+    name: IndexManifest
+    type: Class
+  - uid: JD.Domain.Abstractions.PropertyConfigurationManifest
+    name: PropertyConfigurationManifest
+    type: Class
+  - uid: JD.Domain.Abstractions.PropertyManifest
+    name: PropertyManifest
+    type: Class
+  - uid: JD.Domain.Abstractions.RelationshipManifest
+    name: RelationshipManifest
+    type: Class
+  - uid: JD.Domain.Abstractions.Result`1
+    name: Result<T>
+    type: Class
+  - uid: JD.Domain.Abstractions.RuleEvaluationOptions
+    name: RuleEvaluationOptions
+    type: Class
+  - uid: JD.Domain.Abstractions.RuleEvaluationResult
+    name: RuleEvaluationResult
+    type: Class
+  - uid: JD.Domain.Abstractions.RuleManifest
+    name: RuleManifest
+    type: Class
+  - uid: JD.Domain.Abstractions.RuleSetManifest
+    name: RuleSetManifest
+    type: Class
+  - uid: JD.Domain.Abstractions.RuleSeverity
+    name: RuleSeverity
+    type: Enum
+  - uid: JD.Domain.Abstractions.SourceInfo
+    name: SourceInfo
+    type: Class
+  - uid: JD.Domain.Abstractions.ValueObjectManifest
+    name: ValueObjectManifest
+    type: Class
+- uid: JD.Domain.AspNetCore
+  name: JD.Domain.AspNetCore
+  type: Namespace
+  items:
+  - uid: JD.Domain.AspNetCore.DomainExceptionHandler
+    name: DomainExceptionHandler
+    type: Class
+  - uid: JD.Domain.AspNetCore.DomainValidationAttribute
+    name: DomainValidationAttribute
+    type: Class
+  - uid: JD.Domain.AspNetCore.DomainValidationEndpointFilter`1
+    name: DomainValidationEndpointFilter<T>
+    type: Class
+  - uid: JD.Domain.AspNetCore.DomainValidationMetadata
+    name: DomainValidationMetadata
+    type: Class
+  - uid: JD.Domain.AspNetCore.DomainValidationMetadataBuilder
+    name: DomainValidationMetadataBuilder
+    type: Class
+  - uid: JD.Domain.AspNetCore.DomainValidationMiddleware
+    name: DomainValidationMiddleware
+    type: Class
+  - uid: JD.Domain.AspNetCore.DomainValidationMiddlewareExtensions
+    name: DomainValidationMiddlewareExtensions
+    type: Class
+  - uid: JD.Domain.AspNetCore.DomainValidationOptions
+    name: DomainValidationOptions
+    type: Class
+  - uid: JD.Domain.AspNetCore.DomainValidationServiceExtensions
+    name: DomainValidationServiceExtensions
+    type: Class
+  - uid: JD.Domain.AspNetCore.HttpDomainContextFactory
+    name: HttpDomainContextFactory
+    type: Class
+  - uid: JD.Domain.AspNetCore.IDomainContextFactory
+    name: IDomainContextFactory
+    type: Interface
+  - uid: JD.Domain.AspNetCore.MinimalApiExtensions
+    name: MinimalApiExtensions
+    type: Class
+- uid: JD.Domain.Cli
+  name: JD.Domain.Cli
+  type: Namespace
+  items:
+  - uid: JD.Domain.Cli.Program
+    name: Program
+    type: Class
+- uid: JD.Domain.Cli.Commands
+  name: JD.Domain.Cli.Commands
+  type: Namespace
+  items:
+  - uid: JD.Domain.Cli.Commands.DiffCommand
+    name: DiffCommand
+    type: Class
+  - uid: JD.Domain.Cli.Commands.MigratePlanCommand
+    name: MigratePlanCommand
+    type: Class
+  - uid: JD.Domain.Cli.Commands.SnapshotCommand
+    name: SnapshotCommand
+    type: Class
+- uid: JD.Domain.Configuration
+  name: JD.Domain.Configuration
+  type: Namespace
+  items:
+  - uid: JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+    name: DomainBuilderConfigurationExtensions
+    type: Class
+  - uid: JD.Domain.Configuration.EntityConfigurationBuilder`1
+    name: EntityConfigurationBuilder<T>
+    type: Class
+  - uid: JD.Domain.Configuration.IndexBuilder`1
+    name: IndexBuilder<T>
+    type: Class
+- uid: JD.Domain.Diff
+  name: JD.Domain.Diff
+  type: Namespace
+  items:
+  - uid: JD.Domain.Diff.BreakingChangeClassifier
+    name: BreakingChangeClassifier
+    type: Class
+  - uid: JD.Domain.Diff.ChangeRecord
+    name: ChangeRecord
+    type: Class
+  - uid: JD.Domain.Diff.ChangeType
+    name: ChangeType
+    type: Enum
+  - uid: JD.Domain.Diff.ConfigurationChange
+    name: ConfigurationChange
+    type: Class
+  - uid: JD.Domain.Diff.DiffEngine
+    name: DiffEngine
+    type: Class
+  - uid: JD.Domain.Diff.DiffFormatter
+    name: DiffFormatter
+    type: Class
+  - uid: JD.Domain.Diff.DomainDiff
+    name: DomainDiff
+    type: Class
+  - uid: JD.Domain.Diff.EntityChange
+    name: EntityChange
+    type: Class
+  - uid: JD.Domain.Diff.EnumChange
+    name: EnumChange
+    type: Class
+  - uid: JD.Domain.Diff.MigrationPlanGenerator
+    name: MigrationPlanGenerator
+    type: Class
+  - uid: JD.Domain.Diff.PropertyChange
+    name: PropertyChange
+    type: Class
+  - uid: JD.Domain.Diff.RuleChange
+    name: RuleChange
+    type: Class
+  - uid: JD.Domain.Diff.RuleSetChange
+    name: RuleSetChange
+    type: Class
+  - uid: JD.Domain.Diff.ValueObjectChange
+    name: ValueObjectChange
+    type: Class
+- uid: JD.Domain.DomainModel.Generator
+  name: JD.Domain.DomainModel.Generator
+  type: Namespace
+  items:
+  - uid: JD.Domain.DomainModel.Generator.DomainModelGenerator
+    name: DomainModelGenerator
+    type: Class
+- uid: JD.Domain.DomainModel.Generator.Generators
+  name: JD.Domain.DomainModel.Generator.Generators
+  type: Namespace
+  items:
+  - uid: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator
+    name: DomainProxyGenerator
+    type: Class
+- uid: JD.Domain.DomainModel.Generator.Options
+  name: JD.Domain.DomainModel.Generator.Options
+  type: Namespace
+  items:
+  - uid: JD.Domain.DomainModel.Generator.Options.DomainModelOptions
+    name: DomainModelOptions
+    type: Class
+  - uid: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+    name: PropertyValidationMode
+    type: Enum
+- uid: JD.Domain.EFCore
+  name: JD.Domain.EFCore
+  type: Namespace
+  items:
+  - uid: JD.Domain.EFCore.ModelBuilderExtensions
+    name: ModelBuilderExtensions
+    type: Class
+- uid: JD.Domain.FluentValidation.Generator
+  name: JD.Domain.FluentValidation.Generator
+  type: Namespace
+  items:
+  - uid: JD.Domain.FluentValidation.Generator.FluentValidationGenerator
+    name: FluentValidationGenerator
+    type: Class
+- uid: JD.Domain.Generators.Core
+  name: JD.Domain.Generators.Core
+  type: Namespace
+  items:
+  - uid: JD.Domain.Generators.Core.BaseCodeGenerator
+    name: BaseCodeGenerator
+    type: Class
+  - uid: JD.Domain.Generators.Core.CodeBuilder
+    name: CodeBuilder
+    type: Class
+  - uid: JD.Domain.Generators.Core.GeneratedFile
+    name: GeneratedFile
+    type: Class
+  - uid: JD.Domain.Generators.Core.GeneratorContext
+    name: GeneratorContext
+    type: Class
+  - uid: JD.Domain.Generators.Core.GeneratorPipeline
+    name: GeneratorPipeline
+    type: Class
+  - uid: JD.Domain.Generators.Core.GeneratorUtilities
+    name: GeneratorUtilities
+    type: Class
+  - uid: JD.Domain.Generators.Core.ICodeGenerator
+    name: ICodeGenerator
+    type: Interface
+- uid: JD.Domain.Modeling
+  name: JD.Domain.Modeling
+  type: Namespace
+  items:
+  - uid: JD.Domain.Modeling.Domain
+    name: Domain
+    type: Class
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    type: Class
+  - uid: JD.Domain.Modeling.EntityBuilder`1
+    name: EntityBuilder<T>
+    type: Class
+  - uid: JD.Domain.Modeling.EnumBuilder`1
+    name: EnumBuilder<T>
+    type: Class
+  - uid: JD.Domain.Modeling.PropertyBuilder`2
+    name: PropertyBuilder<TEntity, TProperty>
+    type: Class
+  - uid: JD.Domain.Modeling.ValueObjectBuilder`1
+    name: ValueObjectBuilder<T>
+    type: Class
+- uid: JD.Domain.Rules
+  name: JD.Domain.Rules
+  type: Namespace
+  items:
+  - uid: JD.Domain.Rules.CompiledRuleSet`1
+    name: CompiledRuleSet<T>
+    type: Class
+  - uid: JD.Domain.Rules.CompiledRule`1
+    name: CompiledRule<T>
+    type: Class
+  - uid: JD.Domain.Rules.DomainBuilderRulesExtensions
+    name: DomainBuilderRulesExtensions
+    type: Class
+  - uid: JD.Domain.Rules.RuleBuilder`1
+    name: RuleBuilder<T>
+    type: Class
+  - uid: JD.Domain.Rules.RuleSetBuilder`1
+    name: RuleSetBuilder<T>
+    type: Class
+- uid: JD.Domain.Runtime
+  name: JD.Domain.Runtime
+  type: Namespace
+  items:
+  - uid: JD.Domain.Runtime.DomainEngine
+    name: DomainEngine
+    type: Class
+  - uid: JD.Domain.Runtime.DomainRuntime
+    name: DomainRuntime
+    type: Class
+  - uid: JD.Domain.Runtime.DomainRuntimeOptions
+    name: DomainRuntimeOptions
+    type: Class
+- uid: JD.Domain.Snapshot
+  name: JD.Domain.Snapshot
+  type: Namespace
+  items:
+  - uid: JD.Domain.Snapshot.DomainSnapshot
+    name: DomainSnapshot
+    type: Class
+  - uid: JD.Domain.Snapshot.SnapshotOptions
+    name: SnapshotOptions
+    type: Class
+  - uid: JD.Domain.Snapshot.SnapshotReader
+    name: SnapshotReader
+    type: Class
+  - uid: JD.Domain.Snapshot.SnapshotStorage
+    name: SnapshotStorage
+    type: Class
+  - uid: JD.Domain.Snapshot.SnapshotWriter
+    name: SnapshotWriter
+    type: Class
+- uid: JD.Domain.T4.Shims
+  name: JD.Domain.T4.Shims
+  type: Namespace
+  items:
+  - uid: JD.Domain.T4.Shims.T4CodeBuilder
+    name: T4CodeBuilder
+    type: Class
+  - uid: JD.Domain.T4.Shims.T4EntityGenerator
+    name: T4EntityGenerator
+    type: Class
+  - uid: JD.Domain.T4.Shims.T4ManifestLoader
+    name: T4ManifestLoader
+    type: Class
+  - uid: JD.Domain.T4.Shims.T4OutputManager
+    name: T4OutputManager
+    type: Class
+  - uid: JD.Domain.T4.Shims.T4TypeMapper
+    name: T4TypeMapper
+    type: Class
+- uid: JD.Domain.Validation
+  name: JD.Domain.Validation
+  type: Namespace
+  items:
+  - uid: JD.Domain.Validation.DomainValidationError
+    name: DomainValidationError
+    type: Class
+  - uid: JD.Domain.Validation.ProblemDetailsBuilder
+    name: ProblemDetailsBuilder
+    type: Class
+  - uid: JD.Domain.Validation.ValidationProblemDetails
+    name: ValidationProblemDetails
+    type: Class
+  - uid: JD.Domain.Validation.ValidationProblemDetailsFactory
+    name: ValidationProblemDetailsFactory
+    type: Class
+memberLayout: SamePage

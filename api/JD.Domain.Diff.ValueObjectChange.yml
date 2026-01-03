@@ -1,0 +1,500 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Diff.ValueObjectChange
+  commentId: T:JD.Domain.Diff.ValueObjectChange
+  id: ValueObjectChange
+  parent: JD.Domain.Diff
+  children:
+  - JD.Domain.Diff.ValueObjectChange.PropertyChanges
+  - JD.Domain.Diff.ValueObjectChange.ValueObjectName
+  langs:
+  - csharp
+  - vb
+  name: ValueObjectChange
+  nameWithType: ValueObjectChange
+  fullName: JD.Domain.Diff.ValueObjectChange
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Diff/ChangeModels.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: ValueObjectChange
+    path: src/JD.Domain.Diff/ChangeModels.cs
+    startLine: 111
+  assemblies:
+  - JD.Domain.Diff
+  namespace: JD.Domain.Diff
+  summary: Represents a change to a value object.
+  example: []
+  syntax:
+    content: 'public sealed class ValueObjectChange : ChangeRecord'
+    content.vb: Public NotInheritable Class ValueObjectChange Inherits ChangeRecord
+  inheritance:
+  - System.Object
+  - JD.Domain.Diff.ChangeRecord
+  inheritedMembers:
+  - JD.Domain.Diff.ChangeRecord.ChangeType
+  - JD.Domain.Diff.ChangeRecord.IsBreaking
+  - JD.Domain.Diff.ChangeRecord.Description
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JD.Domain.Diff.ValueObjectChange.ValueObjectName
+  commentId: P:JD.Domain.Diff.ValueObjectChange.ValueObjectName
+  id: ValueObjectName
+  parent: JD.Domain.Diff.ValueObjectChange
+  langs:
+  - csharp
+  - vb
+  name: ValueObjectName
+  nameWithType: ValueObjectChange.ValueObjectName
+  fullName: JD.Domain.Diff.ValueObjectChange.ValueObjectName
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Diff/ChangeModels.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: ValueObjectName
+    path: src/JD.Domain.Diff/ChangeModels.cs
+    startLine: 114
+  assemblies:
+  - JD.Domain.Diff
+  namespace: JD.Domain.Diff
+  summary: Gets the value object name.
+  example: []
+  syntax:
+    content: public required string ValueObjectName { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ValueObjectName As String
+  overload: JD.Domain.Diff.ValueObjectChange.ValueObjectName*
+- uid: JD.Domain.Diff.ValueObjectChange.PropertyChanges
+  commentId: P:JD.Domain.Diff.ValueObjectChange.PropertyChanges
+  id: PropertyChanges
+  parent: JD.Domain.Diff.ValueObjectChange
+  langs:
+  - csharp
+  - vb
+  name: PropertyChanges
+  nameWithType: ValueObjectChange.PropertyChanges
+  fullName: JD.Domain.Diff.ValueObjectChange.PropertyChanges
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Diff/ChangeModels.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: PropertyChanges
+    path: src/JD.Domain.Diff/ChangeModels.cs
+    startLine: 117
+  assemblies:
+  - JD.Domain.Diff
+  namespace: JD.Domain.Diff
+  summary: Gets the property changes within this value object.
+  example: []
+  syntax:
+    content: public IReadOnlyList<PropertyChange> PropertyChanges { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{JD.Domain.Diff.PropertyChange}
+    content.vb: Public Property PropertyChanges As IReadOnlyList(Of PropertyChange)
+  overload: JD.Domain.Diff.ValueObjectChange.PropertyChanges*
+references:
+- uid: JD.Domain.Diff
+  commentId: N:JD.Domain.Diff
+  href: JD.html
+  name: JD.Domain.Diff
+  nameWithType: JD.Domain.Diff
+  fullName: JD.Domain.Diff
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Diff
+    name: Diff
+    href: JD.Domain.Diff.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Diff
+    name: Diff
+    href: JD.Domain.Diff.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: JD.Domain.Diff.ChangeRecord
+  commentId: T:JD.Domain.Diff.ChangeRecord
+  parent: JD.Domain.Diff
+  href: JD.Domain.Diff.ChangeRecord.html
+  name: ChangeRecord
+  nameWithType: ChangeRecord
+  fullName: JD.Domain.Diff.ChangeRecord
+- uid: JD.Domain.Diff.ChangeRecord.ChangeType
+  commentId: P:JD.Domain.Diff.ChangeRecord.ChangeType
+  parent: JD.Domain.Diff.ChangeRecord
+  href: JD.Domain.Diff.ChangeRecord.html#JD_Domain_Diff_ChangeRecord_ChangeType
+  name: ChangeType
+  nameWithType: ChangeRecord.ChangeType
+  fullName: JD.Domain.Diff.ChangeRecord.ChangeType
+- uid: JD.Domain.Diff.ChangeRecord.IsBreaking
+  commentId: P:JD.Domain.Diff.ChangeRecord.IsBreaking
+  parent: JD.Domain.Diff.ChangeRecord
+  href: JD.Domain.Diff.ChangeRecord.html#JD_Domain_Diff_ChangeRecord_IsBreaking
+  name: IsBreaking
+  nameWithType: ChangeRecord.IsBreaking
+  fullName: JD.Domain.Diff.ChangeRecord.IsBreaking
+- uid: JD.Domain.Diff.ChangeRecord.Description
+  commentId: P:JD.Domain.Diff.ChangeRecord.Description
+  parent: JD.Domain.Diff.ChangeRecord
+  href: JD.Domain.Diff.ChangeRecord.html#JD_Domain_Diff_ChangeRecord_Description
+  name: Description
+  nameWithType: ChangeRecord.Description
+  fullName: JD.Domain.Diff.ChangeRecord.Description
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.Diff.ValueObjectChange.ValueObjectName*
+  commentId: Overload:JD.Domain.Diff.ValueObjectChange.ValueObjectName
+  href: JD.Domain.Diff.ValueObjectChange.html#JD_Domain_Diff_ValueObjectChange_ValueObjectName
+  name: ValueObjectName
+  nameWithType: ValueObjectChange.ValueObjectName
+  fullName: JD.Domain.Diff.ValueObjectChange.ValueObjectName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: JD.Domain.Diff.ValueObjectChange.PropertyChanges*
+  commentId: Overload:JD.Domain.Diff.ValueObjectChange.PropertyChanges
+  href: JD.Domain.Diff.ValueObjectChange.html#JD_Domain_Diff_ValueObjectChange_PropertyChanges
+  name: PropertyChanges
+  nameWithType: ValueObjectChange.PropertyChanges
+  fullName: JD.Domain.Diff.ValueObjectChange.PropertyChanges
+- uid: System.Collections.Generic.IReadOnlyList{JD.Domain.Diff.PropertyChange}
+  commentId: T:System.Collections.Generic.IReadOnlyList{JD.Domain.Diff.PropertyChange}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<PropertyChange>
+  nameWithType: IReadOnlyList<PropertyChange>
+  fullName: System.Collections.Generic.IReadOnlyList<JD.Domain.Diff.PropertyChange>
+  nameWithType.vb: IReadOnlyList(Of PropertyChange)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of JD.Domain.Diff.PropertyChange)
+  name.vb: IReadOnlyList(Of PropertyChange)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: JD.Domain.Diff.PropertyChange
+    name: PropertyChange
+    href: JD.Domain.Diff.PropertyChange.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Diff.PropertyChange
+    name: PropertyChange
+    href: JD.Domain.Diff.PropertyChange.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

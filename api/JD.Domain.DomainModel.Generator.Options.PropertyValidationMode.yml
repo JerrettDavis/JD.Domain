@@ -1,0 +1,180 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+  commentId: T:JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+  id: PropertyValidationMode
+  parent: JD.Domain.DomainModel.Generator.Options
+  children:
+  - JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.Lazy
+  - JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.OnDemand
+  - JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.OnSet
+  langs:
+  - csharp
+  - vb
+  name: PropertyValidationMode
+  nameWithType: PropertyValidationMode
+  fullName: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+  type: Enum
+  source:
+    remote:
+      path: src/JD.Domain.DomainModel.Generator/Options/PropertyValidationMode.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: PropertyValidationMode
+    path: src/JD.Domain.DomainModel.Generator/Options/PropertyValidationMode.cs
+    startLine: 5
+  assemblies:
+  - JD.Domain.DomainModel.Generator
+  namespace: JD.Domain.DomainModel.Generator.Options
+  summary: Specifies when property validation occurs in generated domain types.
+  example: []
+  syntax:
+    content: public enum PropertyValidationMode
+    content.vb: Public Enum PropertyValidationMode
+- uid: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.OnSet
+  commentId: F:JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.OnSet
+  id: OnSet
+  parent: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+  langs:
+  - csharp
+  - vb
+  name: OnSet
+  nameWithType: PropertyValidationMode.OnSet
+  fullName: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.OnSet
+  type: Field
+  source:
+    remote:
+      path: src/JD.Domain.DomainModel.Generator/Options/PropertyValidationMode.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: OnSet
+    path: src/JD.Domain.DomainModel.Generator/Options/PropertyValidationMode.cs
+    startLine: 11
+  assemblies:
+  - JD.Domain.DomainModel.Generator
+  namespace: JD.Domain.DomainModel.Generator.Options
+  summary: >-
+    Validate properties when they are set via property setters.
+
+    This provides immediate feedback but may throw exceptions.
+  example: []
+  syntax:
+    content: OnSet = 0
+    return:
+      type: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+- uid: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.OnDemand
+  commentId: F:JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.OnDemand
+  id: OnDemand
+  parent: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+  langs:
+  - csharp
+  - vb
+  name: OnDemand
+  nameWithType: PropertyValidationMode.OnDemand
+  fullName: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.OnDemand
+  type: Field
+  source:
+    remote:
+      path: src/JD.Domain.DomainModel.Generator/Options/PropertyValidationMode.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: OnDemand
+    path: src/JD.Domain.DomainModel.Generator/Options/PropertyValidationMode.cs
+    startLine: 17
+  assemblies:
+  - JD.Domain.DomainModel.Generator
+  namespace: JD.Domain.DomainModel.Generator.Options
+  summary: >-
+    Validate properties only when explicitly requested via Validate() method.
+
+    This allows batch validation but requires explicit calls.
+  example: []
+  syntax:
+    content: OnDemand = 1
+    return:
+      type: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+- uid: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.Lazy
+  commentId: F:JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.Lazy
+  id: Lazy
+  parent: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+  langs:
+  - csharp
+  - vb
+  name: Lazy
+  nameWithType: PropertyValidationMode.Lazy
+  fullName: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.Lazy
+  type: Field
+  source:
+    remote:
+      path: src/JD.Domain.DomainModel.Generator/Options/PropertyValidationMode.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Lazy
+    path: src/JD.Domain.DomainModel.Generator/Options/PropertyValidationMode.cs
+    startLine: 23
+  assemblies:
+  - JD.Domain.DomainModel.Generator
+  namespace: JD.Domain.DomainModel.Generator.Options
+  summary: >-
+    Validate properties lazily - track changes and validate when accessing
+
+    related methods or when the domain object is used.
+  example: []
+  syntax:
+    content: Lazy = 2
+    return:
+      type: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+references:
+- uid: JD.Domain.DomainModel.Generator.Options
+  commentId: N:JD.Domain.DomainModel.Generator.Options
+  href: JD.html
+  name: JD.Domain.DomainModel.Generator.Options
+  nameWithType: JD.Domain.DomainModel.Generator.Options
+  fullName: JD.Domain.DomainModel.Generator.Options
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.DomainModel
+    name: DomainModel
+    href: JD.Domain.DomainModel.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator
+    name: Generator
+    href: JD.Domain.DomainModel.Generator.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator.Options
+    name: Options
+    href: JD.Domain.DomainModel.Generator.Options.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.DomainModel
+    name: DomainModel
+    href: JD.Domain.DomainModel.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator
+    name: Generator
+    href: JD.Domain.DomainModel.Generator.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator.Options
+    name: Options
+    href: JD.Domain.DomainModel.Generator.Options.html
+- uid: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+  commentId: T:JD.Domain.DomainModel.Generator.Options.PropertyValidationMode
+  parent: JD.Domain.DomainModel.Generator.Options
+  href: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode.html
+  name: PropertyValidationMode
+  nameWithType: PropertyValidationMode
+  fullName: JD.Domain.DomainModel.Generator.Options.PropertyValidationMode

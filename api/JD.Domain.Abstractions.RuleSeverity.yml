@@ -1,0 +1,184 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Abstractions.RuleSeverity
+  commentId: T:JD.Domain.Abstractions.RuleSeverity
+  id: RuleSeverity
+  parent: JD.Domain.Abstractions
+  children:
+  - JD.Domain.Abstractions.RuleSeverity.Critical
+  - JD.Domain.Abstractions.RuleSeverity.Error
+  - JD.Domain.Abstractions.RuleSeverity.Info
+  - JD.Domain.Abstractions.RuleSeverity.Warning
+  langs:
+  - csharp
+  - vb
+  name: RuleSeverity
+  nameWithType: RuleSeverity
+  fullName: JD.Domain.Abstractions.RuleSeverity
+  type: Enum
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/RuleSeverity.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: RuleSeverity
+    path: src/JD.Domain.Abstractions/RuleSeverity.cs
+    startLine: 5
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Defines the severity level of a rule violation or validation error.
+  example: []
+  syntax:
+    content: public enum RuleSeverity
+    content.vb: Public Enum RuleSeverity
+- uid: JD.Domain.Abstractions.RuleSeverity.Info
+  commentId: F:JD.Domain.Abstractions.RuleSeverity.Info
+  id: Info
+  parent: JD.Domain.Abstractions.RuleSeverity
+  langs:
+  - csharp
+  - vb
+  name: Info
+  nameWithType: RuleSeverity.Info
+  fullName: JD.Domain.Abstractions.RuleSeverity.Info
+  type: Field
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/RuleSeverity.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Info
+    path: src/JD.Domain.Abstractions/RuleSeverity.cs
+    startLine: 10
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Informational message that doesn't indicate a problem.
+  example: []
+  syntax:
+    content: Info = 0
+    return:
+      type: JD.Domain.Abstractions.RuleSeverity
+- uid: JD.Domain.Abstractions.RuleSeverity.Warning
+  commentId: F:JD.Domain.Abstractions.RuleSeverity.Warning
+  id: Warning
+  parent: JD.Domain.Abstractions.RuleSeverity
+  langs:
+  - csharp
+  - vb
+  name: Warning
+  nameWithType: RuleSeverity.Warning
+  fullName: JD.Domain.Abstractions.RuleSeverity.Warning
+  type: Field
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/RuleSeverity.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Warning
+    path: src/JD.Domain.Abstractions/RuleSeverity.cs
+    startLine: 15
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Warning that should be reviewed but doesn't prevent operation.
+  example: []
+  syntax:
+    content: Warning = 1
+    return:
+      type: JD.Domain.Abstractions.RuleSeverity
+- uid: JD.Domain.Abstractions.RuleSeverity.Error
+  commentId: F:JD.Domain.Abstractions.RuleSeverity.Error
+  id: Error
+  parent: JD.Domain.Abstractions.RuleSeverity
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: RuleSeverity.Error
+  fullName: JD.Domain.Abstractions.RuleSeverity.Error
+  type: Field
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/RuleSeverity.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Error
+    path: src/JD.Domain.Abstractions/RuleSeverity.cs
+    startLine: 20
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Error that indicates a rule violation but may be recoverable.
+  example: []
+  syntax:
+    content: Error = 2
+    return:
+      type: JD.Domain.Abstractions.RuleSeverity
+- uid: JD.Domain.Abstractions.RuleSeverity.Critical
+  commentId: F:JD.Domain.Abstractions.RuleSeverity.Critical
+  id: Critical
+  parent: JD.Domain.Abstractions.RuleSeverity
+  langs:
+  - csharp
+  - vb
+  name: Critical
+  nameWithType: RuleSeverity.Critical
+  fullName: JD.Domain.Abstractions.RuleSeverity.Critical
+  type: Field
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/RuleSeverity.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Critical
+    path: src/JD.Domain.Abstractions/RuleSeverity.cs
+    startLine: 25
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Critical error that prevents operation and must be addressed.
+  example: []
+  syntax:
+    content: Critical = 3
+    return:
+      type: JD.Domain.Abstractions.RuleSeverity
+references:
+- uid: JD.Domain.Abstractions
+  commentId: N:JD.Domain.Abstractions
+  href: JD.html
+  name: JD.Domain.Abstractions
+  nameWithType: JD.Domain.Abstractions
+  fullName: JD.Domain.Abstractions
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+- uid: JD.Domain.Abstractions.RuleSeverity
+  commentId: T:JD.Domain.Abstractions.RuleSeverity
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.RuleSeverity.html
+  name: RuleSeverity
+  nameWithType: RuleSeverity
+  fullName: JD.Domain.Abstractions.RuleSeverity

@@ -1,0 +1,174 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Modeling
+  commentId: N:JD.Domain.Modeling
+  id: JD.Domain.Modeling
+  children:
+  - JD.Domain.Modeling.Domain
+  - JD.Domain.Modeling.DomainBuilder
+  - JD.Domain.Modeling.EntityBuilder`1
+  - JD.Domain.Modeling.EnumBuilder`1
+  - JD.Domain.Modeling.PropertyBuilder`2
+  - JD.Domain.Modeling.ValueObjectBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: JD.Domain.Modeling
+  nameWithType: JD.Domain.Modeling
+  fullName: JD.Domain.Modeling
+  type: Namespace
+  assemblies:
+  - JD.Domain.Modeling
+references:
+- uid: JD.Domain.Modeling.Domain
+  commentId: T:JD.Domain.Modeling.Domain
+  href: JD.Domain.Modeling.Domain.html
+  name: Domain
+  nameWithType: Domain
+  fullName: JD.Domain.Modeling.Domain
+- uid: JD.Domain.Modeling.DomainBuilder
+  commentId: T:JD.Domain.Modeling.DomainBuilder
+  parent: JD.Domain.Modeling
+  href: JD.Domain.Modeling.DomainBuilder.html
+  name: DomainBuilder
+  nameWithType: DomainBuilder
+  fullName: JD.Domain.Modeling.DomainBuilder
+- uid: JD.Domain.Modeling.EntityBuilder`1
+  commentId: T:JD.Domain.Modeling.EntityBuilder`1
+  parent: JD.Domain.Modeling
+  href: JD.Domain.Modeling.EntityBuilder-1.html
+  name: EntityBuilder<T>
+  nameWithType: EntityBuilder<T>
+  fullName: JD.Domain.Modeling.EntityBuilder<T>
+  nameWithType.vb: EntityBuilder(Of T)
+  fullName.vb: JD.Domain.Modeling.EntityBuilder(Of T)
+  name.vb: EntityBuilder(Of T)
+  spec.csharp:
+  - uid: JD.Domain.Modeling.EntityBuilder`1
+    name: EntityBuilder
+    href: JD.Domain.Modeling.EntityBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Modeling.EntityBuilder`1
+    name: EntityBuilder
+    href: JD.Domain.Modeling.EntityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.Modeling.EnumBuilder`1
+  commentId: T:JD.Domain.Modeling.EnumBuilder`1
+  href: JD.Domain.Modeling.EnumBuilder-1.html
+  name: EnumBuilder<T>
+  nameWithType: EnumBuilder<T>
+  fullName: JD.Domain.Modeling.EnumBuilder<T>
+  nameWithType.vb: EnumBuilder(Of T)
+  fullName.vb: JD.Domain.Modeling.EnumBuilder(Of T)
+  name.vb: EnumBuilder(Of T)
+  spec.csharp:
+  - uid: JD.Domain.Modeling.EnumBuilder`1
+    name: EnumBuilder
+    href: JD.Domain.Modeling.EnumBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Modeling.EnumBuilder`1
+    name: EnumBuilder
+    href: JD.Domain.Modeling.EnumBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.Modeling.PropertyBuilder`2
+  commentId: T:JD.Domain.Modeling.PropertyBuilder`2
+  parent: JD.Domain.Modeling
+  href: JD.Domain.Modeling.PropertyBuilder-2.html
+  name: PropertyBuilder<TEntity, TProperty>
+  nameWithType: PropertyBuilder<TEntity, TProperty>
+  fullName: JD.Domain.Modeling.PropertyBuilder<TEntity, TProperty>
+  nameWithType.vb: PropertyBuilder(Of TEntity, TProperty)
+  fullName.vb: JD.Domain.Modeling.PropertyBuilder(Of TEntity, TProperty)
+  name.vb: PropertyBuilder(Of TEntity, TProperty)
+  spec.csharp:
+  - uid: JD.Domain.Modeling.PropertyBuilder`2
+    name: PropertyBuilder
+    href: JD.Domain.Modeling.PropertyBuilder-2.html
+  - name: <
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TProperty
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Modeling.PropertyBuilder`2
+    name: PropertyBuilder
+    href: JD.Domain.Modeling.PropertyBuilder-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - name: TProperty
+  - name: )
+- uid: JD.Domain.Modeling.ValueObjectBuilder`1
+  commentId: T:JD.Domain.Modeling.ValueObjectBuilder`1
+  parent: JD.Domain.Modeling
+  href: JD.Domain.Modeling.ValueObjectBuilder-1.html
+  name: ValueObjectBuilder<T>
+  nameWithType: ValueObjectBuilder<T>
+  fullName: JD.Domain.Modeling.ValueObjectBuilder<T>
+  nameWithType.vb: ValueObjectBuilder(Of T)
+  fullName.vb: JD.Domain.Modeling.ValueObjectBuilder(Of T)
+  name.vb: ValueObjectBuilder(Of T)
+  spec.csharp:
+  - uid: JD.Domain.Modeling.ValueObjectBuilder`1
+    name: ValueObjectBuilder
+    href: JD.Domain.Modeling.ValueObjectBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Modeling.ValueObjectBuilder`1
+    name: ValueObjectBuilder
+    href: JD.Domain.Modeling.ValueObjectBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.Modeling
+  commentId: N:JD.Domain.Modeling
+  href: JD.html
+  name: JD.Domain.Modeling
+  nameWithType: JD.Domain.Modeling
+  fullName: JD.Domain.Modeling
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Modeling
+    name: Modeling
+    href: JD.Domain.Modeling.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Modeling
+    name: Modeling
+    href: JD.Domain.Modeling.html

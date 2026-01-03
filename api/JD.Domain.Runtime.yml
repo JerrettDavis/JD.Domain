@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Runtime
+  commentId: N:JD.Domain.Runtime
+  id: JD.Domain.Runtime
+  children:
+  - JD.Domain.Runtime.DomainEngine
+  - JD.Domain.Runtime.DomainRuntime
+  - JD.Domain.Runtime.DomainRuntimeOptions
+  langs:
+  - csharp
+  - vb
+  name: JD.Domain.Runtime
+  nameWithType: JD.Domain.Runtime
+  fullName: JD.Domain.Runtime
+  type: Namespace
+  assemblies:
+  - JD.Domain.Runtime
+references:
+- uid: JD.Domain.Runtime.DomainEngine
+  commentId: T:JD.Domain.Runtime.DomainEngine
+  href: JD.Domain.Runtime.DomainEngine.html
+  name: DomainEngine
+  nameWithType: DomainEngine
+  fullName: JD.Domain.Runtime.DomainEngine
+- uid: JD.Domain.Runtime.DomainRuntime
+  commentId: T:JD.Domain.Runtime.DomainRuntime
+  href: JD.Domain.Runtime.DomainRuntime.html
+  name: DomainRuntime
+  nameWithType: DomainRuntime
+  fullName: JD.Domain.Runtime.DomainRuntime
+- uid: JD.Domain.Runtime.DomainRuntimeOptions
+  commentId: T:JD.Domain.Runtime.DomainRuntimeOptions
+  parent: JD.Domain.Runtime
+  href: JD.Domain.Runtime.DomainRuntimeOptions.html
+  name: DomainRuntimeOptions
+  nameWithType: DomainRuntimeOptions
+  fullName: JD.Domain.Runtime.DomainRuntimeOptions
+- uid: JD.Domain.Runtime
+  commentId: N:JD.Domain.Runtime
+  href: JD.html
+  name: JD.Domain.Runtime
+  nameWithType: JD.Domain.Runtime
+  fullName: JD.Domain.Runtime
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Runtime
+    name: Runtime
+    href: JD.Domain.Runtime.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Runtime
+    name: Runtime
+    href: JD.Domain.Runtime.html

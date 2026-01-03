@@ -1,0 +1,419 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Diff.DiffEngine
+  commentId: T:JD.Domain.Diff.DiffEngine
+  id: DiffEngine
+  parent: JD.Domain.Diff
+  children:
+  - JD.Domain.Diff.DiffEngine.#ctor
+  - JD.Domain.Diff.DiffEngine.Compare(JD.Domain.Snapshot.DomainSnapshot,JD.Domain.Snapshot.DomainSnapshot)
+  langs:
+  - csharp
+  - vb
+  name: DiffEngine
+  nameWithType: DiffEngine
+  fullName: JD.Domain.Diff.DiffEngine
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Diff/DiffEngine.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: DiffEngine
+    path: src/JD.Domain.Diff/DiffEngine.cs
+    startLine: 8
+  assemblies:
+  - JD.Domain.Diff
+  namespace: JD.Domain.Diff
+  summary: Engine for comparing domain snapshots and detecting changes.
+  example: []
+  syntax:
+    content: public sealed class DiffEngine
+    content.vb: Public NotInheritable Class DiffEngine
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JD.Domain.Diff.DiffEngine.#ctor
+  commentId: M:JD.Domain.Diff.DiffEngine.#ctor
+  id: '#ctor'
+  parent: JD.Domain.Diff.DiffEngine
+  langs:
+  - csharp
+  - vb
+  name: DiffEngine()
+  nameWithType: DiffEngine.DiffEngine()
+  fullName: JD.Domain.Diff.DiffEngine.DiffEngine()
+  type: Constructor
+  source:
+    remote:
+      path: src/JD.Domain.Diff/DiffEngine.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: .ctor
+    path: src/JD.Domain.Diff/DiffEngine.cs
+    startLine: 15
+  assemblies:
+  - JD.Domain.Diff
+  namespace: JD.Domain.Diff
+  summary: Initializes a new instance of the <xref href="JD.Domain.Diff.DiffEngine" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public DiffEngine()
+    content.vb: Public Sub New()
+  overload: JD.Domain.Diff.DiffEngine.#ctor*
+  nameWithType.vb: DiffEngine.New()
+  fullName.vb: JD.Domain.Diff.DiffEngine.New()
+  name.vb: New()
+- uid: JD.Domain.Diff.DiffEngine.Compare(JD.Domain.Snapshot.DomainSnapshot,JD.Domain.Snapshot.DomainSnapshot)
+  commentId: M:JD.Domain.Diff.DiffEngine.Compare(JD.Domain.Snapshot.DomainSnapshot,JD.Domain.Snapshot.DomainSnapshot)
+  id: Compare(JD.Domain.Snapshot.DomainSnapshot,JD.Domain.Snapshot.DomainSnapshot)
+  parent: JD.Domain.Diff.DiffEngine
+  langs:
+  - csharp
+  - vb
+  name: Compare(DomainSnapshot, DomainSnapshot)
+  nameWithType: DiffEngine.Compare(DomainSnapshot, DomainSnapshot)
+  fullName: JD.Domain.Diff.DiffEngine.Compare(JD.Domain.Snapshot.DomainSnapshot, JD.Domain.Snapshot.DomainSnapshot)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Diff/DiffEngine.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Compare
+    path: src/JD.Domain.Diff/DiffEngine.cs
+    startLine: 26
+  assemblies:
+  - JD.Domain.Diff
+  namespace: JD.Domain.Diff
+  summary: Compares two snapshots and returns the differences.
+  example: []
+  syntax:
+    content: public DomainDiff Compare(DomainSnapshot before, DomainSnapshot after)
+    parameters:
+    - id: before
+      type: JD.Domain.Snapshot.DomainSnapshot
+      description: The snapshot before changes.
+    - id: after
+      type: JD.Domain.Snapshot.DomainSnapshot
+      description: The snapshot after changes.
+    return:
+      type: JD.Domain.Diff.DomainDiff
+      description: The diff result.
+    content.vb: Public Function Compare(before As DomainSnapshot, after As DomainSnapshot) As DomainDiff
+  overload: JD.Domain.Diff.DiffEngine.Compare*
+references:
+- uid: JD.Domain.Diff
+  commentId: N:JD.Domain.Diff
+  href: JD.html
+  name: JD.Domain.Diff
+  nameWithType: JD.Domain.Diff
+  fullName: JD.Domain.Diff
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Diff
+    name: Diff
+    href: JD.Domain.Diff.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Diff
+    name: Diff
+    href: JD.Domain.Diff.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.Diff.DiffEngine
+  commentId: T:JD.Domain.Diff.DiffEngine
+  href: JD.Domain.Diff.DiffEngine.html
+  name: DiffEngine
+  nameWithType: DiffEngine
+  fullName: JD.Domain.Diff.DiffEngine
+- uid: JD.Domain.Diff.DiffEngine.#ctor*
+  commentId: Overload:JD.Domain.Diff.DiffEngine.#ctor
+  href: JD.Domain.Diff.DiffEngine.html#JD_Domain_Diff_DiffEngine__ctor
+  name: DiffEngine
+  nameWithType: DiffEngine.DiffEngine
+  fullName: JD.Domain.Diff.DiffEngine.DiffEngine
+  nameWithType.vb: DiffEngine.New
+  fullName.vb: JD.Domain.Diff.DiffEngine.New
+  name.vb: New
+- uid: JD.Domain.Diff.DiffEngine.Compare*
+  commentId: Overload:JD.Domain.Diff.DiffEngine.Compare
+  href: JD.Domain.Diff.DiffEngine.html#JD_Domain_Diff_DiffEngine_Compare_JD_Domain_Snapshot_DomainSnapshot_JD_Domain_Snapshot_DomainSnapshot_
+  name: Compare
+  nameWithType: DiffEngine.Compare
+  fullName: JD.Domain.Diff.DiffEngine.Compare
+- uid: JD.Domain.Snapshot.DomainSnapshot
+  commentId: T:JD.Domain.Snapshot.DomainSnapshot
+  parent: JD.Domain.Snapshot
+  href: JD.Domain.Snapshot.DomainSnapshot.html
+  name: DomainSnapshot
+  nameWithType: DomainSnapshot
+  fullName: JD.Domain.Snapshot.DomainSnapshot
+- uid: JD.Domain.Diff.DomainDiff
+  commentId: T:JD.Domain.Diff.DomainDiff
+  parent: JD.Domain.Diff
+  href: JD.Domain.Diff.DomainDiff.html
+  name: DomainDiff
+  nameWithType: DomainDiff
+  fullName: JD.Domain.Diff.DomainDiff
+- uid: JD.Domain.Snapshot
+  commentId: N:JD.Domain.Snapshot
+  href: JD.html
+  name: JD.Domain.Snapshot
+  nameWithType: JD.Domain.Snapshot
+  fullName: JD.Domain.Snapshot
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Snapshot
+    name: Snapshot
+    href: JD.Domain.Snapshot.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Snapshot
+    name: Snapshot
+    href: JD.Domain.Snapshot.html

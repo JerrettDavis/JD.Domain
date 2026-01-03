@@ -1,0 +1,153 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.AspNetCore
+  commentId: N:JD.Domain.AspNetCore
+  id: JD.Domain.AspNetCore
+  children:
+  - JD.Domain.AspNetCore.DomainExceptionHandler
+  - JD.Domain.AspNetCore.DomainValidationAttribute
+  - JD.Domain.AspNetCore.DomainValidationEndpointFilter`1
+  - JD.Domain.AspNetCore.DomainValidationMetadata
+  - JD.Domain.AspNetCore.DomainValidationMetadataBuilder
+  - JD.Domain.AspNetCore.DomainValidationMiddleware
+  - JD.Domain.AspNetCore.DomainValidationMiddlewareExtensions
+  - JD.Domain.AspNetCore.DomainValidationOptions
+  - JD.Domain.AspNetCore.DomainValidationServiceExtensions
+  - JD.Domain.AspNetCore.HttpDomainContextFactory
+  - JD.Domain.AspNetCore.IDomainContextFactory
+  - JD.Domain.AspNetCore.MinimalApiExtensions
+  langs:
+  - csharp
+  - vb
+  name: JD.Domain.AspNetCore
+  nameWithType: JD.Domain.AspNetCore
+  fullName: JD.Domain.AspNetCore
+  type: Namespace
+  assemblies:
+  - JD.Domain.AspNetCore
+references:
+- uid: JD.Domain.AspNetCore.DomainExceptionHandler
+  commentId: T:JD.Domain.AspNetCore.DomainExceptionHandler
+  href: JD.Domain.AspNetCore.DomainExceptionHandler.html
+  name: DomainExceptionHandler
+  nameWithType: DomainExceptionHandler
+  fullName: JD.Domain.AspNetCore.DomainExceptionHandler
+- uid: JD.Domain.AspNetCore.DomainValidationAttribute
+  commentId: T:JD.Domain.AspNetCore.DomainValidationAttribute
+  href: JD.Domain.AspNetCore.DomainValidationAttribute.html
+  name: DomainValidationAttribute
+  nameWithType: DomainValidationAttribute
+  fullName: JD.Domain.AspNetCore.DomainValidationAttribute
+- uid: JD.Domain.AspNetCore.DomainValidationEndpointFilter`1
+  commentId: T:JD.Domain.AspNetCore.DomainValidationEndpointFilter`1
+  href: JD.Domain.AspNetCore.DomainValidationEndpointFilter-1.html
+  name: DomainValidationEndpointFilter<T>
+  nameWithType: DomainValidationEndpointFilter<T>
+  fullName: JD.Domain.AspNetCore.DomainValidationEndpointFilter<T>
+  nameWithType.vb: DomainValidationEndpointFilter(Of T)
+  fullName.vb: JD.Domain.AspNetCore.DomainValidationEndpointFilter(Of T)
+  name.vb: DomainValidationEndpointFilter(Of T)
+  spec.csharp:
+  - uid: JD.Domain.AspNetCore.DomainValidationEndpointFilter`1
+    name: DomainValidationEndpointFilter
+    href: JD.Domain.AspNetCore.DomainValidationEndpointFilter-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.AspNetCore.DomainValidationEndpointFilter`1
+    name: DomainValidationEndpointFilter
+    href: JD.Domain.AspNetCore.DomainValidationEndpointFilter-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.AspNetCore.DomainValidationMetadata
+  commentId: T:JD.Domain.AspNetCore.DomainValidationMetadata
+  parent: JD.Domain.AspNetCore
+  href: JD.Domain.AspNetCore.DomainValidationMetadata.html
+  name: DomainValidationMetadata
+  nameWithType: DomainValidationMetadata
+  fullName: JD.Domain.AspNetCore.DomainValidationMetadata
+- uid: JD.Domain.AspNetCore.DomainValidationMetadataBuilder
+  commentId: T:JD.Domain.AspNetCore.DomainValidationMetadataBuilder
+  parent: JD.Domain.AspNetCore
+  href: JD.Domain.AspNetCore.DomainValidationMetadataBuilder.html
+  name: DomainValidationMetadataBuilder
+  nameWithType: DomainValidationMetadataBuilder
+  fullName: JD.Domain.AspNetCore.DomainValidationMetadataBuilder
+- uid: JD.Domain.AspNetCore.DomainValidationMiddleware
+  commentId: T:JD.Domain.AspNetCore.DomainValidationMiddleware
+  href: JD.Domain.AspNetCore.DomainValidationMiddleware.html
+  name: DomainValidationMiddleware
+  nameWithType: DomainValidationMiddleware
+  fullName: JD.Domain.AspNetCore.DomainValidationMiddleware
+- uid: JD.Domain.AspNetCore.DomainValidationMiddlewareExtensions
+  commentId: T:JD.Domain.AspNetCore.DomainValidationMiddlewareExtensions
+  href: JD.Domain.AspNetCore.DomainValidationMiddlewareExtensions.html
+  name: DomainValidationMiddlewareExtensions
+  nameWithType: DomainValidationMiddlewareExtensions
+  fullName: JD.Domain.AspNetCore.DomainValidationMiddlewareExtensions
+- uid: JD.Domain.AspNetCore.DomainValidationOptions
+  commentId: T:JD.Domain.AspNetCore.DomainValidationOptions
+  parent: JD.Domain.AspNetCore
+  href: JD.Domain.AspNetCore.DomainValidationOptions.html
+  name: DomainValidationOptions
+  nameWithType: DomainValidationOptions
+  fullName: JD.Domain.AspNetCore.DomainValidationOptions
+- uid: JD.Domain.AspNetCore.DomainValidationServiceExtensions
+  commentId: T:JD.Domain.AspNetCore.DomainValidationServiceExtensions
+  href: JD.Domain.AspNetCore.DomainValidationServiceExtensions.html
+  name: DomainValidationServiceExtensions
+  nameWithType: DomainValidationServiceExtensions
+  fullName: JD.Domain.AspNetCore.DomainValidationServiceExtensions
+- uid: JD.Domain.AspNetCore.HttpDomainContextFactory
+  commentId: T:JD.Domain.AspNetCore.HttpDomainContextFactory
+  href: JD.Domain.AspNetCore.HttpDomainContextFactory.html
+  name: HttpDomainContextFactory
+  nameWithType: HttpDomainContextFactory
+  fullName: JD.Domain.AspNetCore.HttpDomainContextFactory
+- uid: JD.Domain.AspNetCore.IDomainContextFactory
+  commentId: T:JD.Domain.AspNetCore.IDomainContextFactory
+  parent: JD.Domain.AspNetCore
+  href: JD.Domain.AspNetCore.IDomainContextFactory.html
+  name: IDomainContextFactory
+  nameWithType: IDomainContextFactory
+  fullName: JD.Domain.AspNetCore.IDomainContextFactory
+- uid: JD.Domain.AspNetCore.MinimalApiExtensions
+  commentId: T:JD.Domain.AspNetCore.MinimalApiExtensions
+  href: JD.Domain.AspNetCore.MinimalApiExtensions.html
+  name: MinimalApiExtensions
+  nameWithType: MinimalApiExtensions
+  fullName: JD.Domain.AspNetCore.MinimalApiExtensions
+- uid: JD.Domain.AspNetCore
+  commentId: N:JD.Domain.AspNetCore
+  href: JD.html
+  name: JD.Domain.AspNetCore
+  nameWithType: JD.Domain.AspNetCore
+  fullName: JD.Domain.AspNetCore
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.AspNetCore
+    name: AspNetCore
+    href: JD.Domain.AspNetCore.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.AspNetCore
+    name: AspNetCore
+    href: JD.Domain.AspNetCore.html

@@ -1,0 +1,80 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "src/JD.Domain.Abstractions/**.csproj",
+            "src/JD.Domain.Modeling/**.csproj",
+            "src/JD.Domain.Configuration/**.csproj",
+            "src/JD.Domain.Rules/**.csproj",
+            "src/JD.Domain.Runtime/**.csproj",
+            "src/JD.Domain.Validation/**.csproj",
+            "src/JD.Domain.AspNetCore/**.csproj",
+            "src/JD.Domain.EFCore/**.csproj",
+            "src/JD.Domain.Generators.Core/**.csproj",
+            "src/JD.Domain.DomainModel.Generator/**.csproj",
+            "src/JD.Domain.FluentValidation.Generator/**.csproj",
+            "src/JD.Domain.Snapshot/**.csproj",
+            "src/JD.Domain.Diff/**.csproj",
+            "src/JD.Domain.Cli/**.csproj",
+            "src/JD.Domain.T4.Shims/**.csproj"
+          ],
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**"
+          ]
+        }
+      ],
+      "dest": "api",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "api/**.yml",
+          "api/index.md"
+        ]
+      },
+      {
+        "files": [
+          "docs/**.md",
+          "docs/**/toc.yml",
+          "toc.yml",
+          "index.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "docs/images/**"
+        ]
+      }
+    ],
+    "output": "_site",
+    "template": [
+      "default",
+      "modern"
+    ],
+    "globalMetadata": {
+      "_appTitle": "JD.Domain Suite",
+      "_appName": "JD.Domain",
+      "_appFooter": "© 2025 Jerrett Davis. Licensed under the MIT License.",
+      "_enableSearch": true,
+      "_enableNewTab": true,
+      "_disableContribution": false,
+      "_gitContribute": {
+        "repo": "https://github.com/JerrettDavis/JD.Domain",
+        "branch": "main"
+      },
+      "_gitUrlPattern": "github"
+    },
+    "xref": [
+      "https://xref.docs.microsoft.com/query?uid={uid}"
+    ]
+  }
+}

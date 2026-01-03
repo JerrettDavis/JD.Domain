@@ -1,0 +1,83 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Snapshot
+  commentId: N:JD.Domain.Snapshot
+  id: JD.Domain.Snapshot
+  children:
+  - JD.Domain.Snapshot.DomainSnapshot
+  - JD.Domain.Snapshot.SnapshotOptions
+  - JD.Domain.Snapshot.SnapshotReader
+  - JD.Domain.Snapshot.SnapshotStorage
+  - JD.Domain.Snapshot.SnapshotWriter
+  langs:
+  - csharp
+  - vb
+  name: JD.Domain.Snapshot
+  nameWithType: JD.Domain.Snapshot
+  fullName: JD.Domain.Snapshot
+  type: Namespace
+  assemblies:
+  - JD.Domain.Snapshot
+references:
+- uid: JD.Domain.Snapshot.DomainSnapshot
+  commentId: T:JD.Domain.Snapshot.DomainSnapshot
+  parent: JD.Domain.Snapshot
+  href: JD.Domain.Snapshot.DomainSnapshot.html
+  name: DomainSnapshot
+  nameWithType: DomainSnapshot
+  fullName: JD.Domain.Snapshot.DomainSnapshot
+- uid: JD.Domain.Snapshot.SnapshotOptions
+  commentId: T:JD.Domain.Snapshot.SnapshotOptions
+  parent: JD.Domain.Snapshot
+  href: JD.Domain.Snapshot.SnapshotOptions.html
+  name: SnapshotOptions
+  nameWithType: SnapshotOptions
+  fullName: JD.Domain.Snapshot.SnapshotOptions
+- uid: JD.Domain.Snapshot.SnapshotReader
+  commentId: T:JD.Domain.Snapshot.SnapshotReader
+  href: JD.Domain.Snapshot.SnapshotReader.html
+  name: SnapshotReader
+  nameWithType: SnapshotReader
+  fullName: JD.Domain.Snapshot.SnapshotReader
+- uid: JD.Domain.Snapshot.SnapshotStorage
+  commentId: T:JD.Domain.Snapshot.SnapshotStorage
+  href: JD.Domain.Snapshot.SnapshotStorage.html
+  name: SnapshotStorage
+  nameWithType: SnapshotStorage
+  fullName: JD.Domain.Snapshot.SnapshotStorage
+- uid: JD.Domain.Snapshot.SnapshotWriter
+  commentId: T:JD.Domain.Snapshot.SnapshotWriter
+  href: JD.Domain.Snapshot.SnapshotWriter.html
+  name: SnapshotWriter
+  nameWithType: SnapshotWriter
+  fullName: JD.Domain.Snapshot.SnapshotWriter
+- uid: JD.Domain.Snapshot
+  commentId: N:JD.Domain.Snapshot
+  href: JD.html
+  name: JD.Domain.Snapshot
+  nameWithType: JD.Domain.Snapshot
+  fullName: JD.Domain.Snapshot
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Snapshot
+    name: Snapshot
+    href: JD.Domain.Snapshot.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Snapshot
+    name: Snapshot
+    href: JD.Domain.Snapshot.html

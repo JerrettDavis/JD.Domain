@@ -1,0 +1,822 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Validation.ValidationProblemDetails
+  commentId: T:JD.Domain.Validation.ValidationProblemDetails
+  id: ValidationProblemDetails
+  parent: JD.Domain.Validation
+  children:
+  - JD.Domain.Validation.ValidationProblemDetails.CorrelationId
+  - JD.Domain.Validation.ValidationProblemDetails.DomainErrors
+  - JD.Domain.Validation.ValidationProblemDetails.Errors
+  - JD.Domain.Validation.ValidationProblemDetails.RuleSetsEvaluated
+  - JD.Domain.Validation.ValidationProblemDetails.TypePrefix
+  langs:
+  - csharp
+  - vb
+  name: ValidationProblemDetails
+  nameWithType: ValidationProblemDetails
+  fullName: JD.Domain.Validation.ValidationProblemDetails
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ValidationProblemDetails.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: ValidationProblemDetails
+    path: src/JD.Domain.Validation/ValidationProblemDetails.cs
+    startLine: 7
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Extended ProblemDetails with domain-specific validation error information.
+  example: []
+  syntax:
+    content: 'public class ValidationProblemDetails : ProblemDetails'
+    content.vb: Public Class ValidationProblemDetails Inherits ProblemDetails
+  inheritance:
+  - System.Object
+  - Microsoft.AspNetCore.Mvc.ProblemDetails
+  inheritedMembers:
+  - Microsoft.AspNetCore.Mvc.ProblemDetails.Type
+  - Microsoft.AspNetCore.Mvc.ProblemDetails.Title
+  - Microsoft.AspNetCore.Mvc.ProblemDetails.Status
+  - Microsoft.AspNetCore.Mvc.ProblemDetails.Detail
+  - Microsoft.AspNetCore.Mvc.ProblemDetails.Instance
+  - Microsoft.AspNetCore.Mvc.ProblemDetails.Extensions
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JD.Domain.Validation.ValidationProblemDetails.TypePrefix
+  commentId: F:JD.Domain.Validation.ValidationProblemDetails.TypePrefix
+  id: TypePrefix
+  parent: JD.Domain.Validation.ValidationProblemDetails
+  langs:
+  - csharp
+  - vb
+  name: TypePrefix
+  nameWithType: ValidationProblemDetails.TypePrefix
+  fullName: JD.Domain.Validation.ValidationProblemDetails.TypePrefix
+  type: Field
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ValidationProblemDetails.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: TypePrefix
+    path: src/JD.Domain.Validation/ValidationProblemDetails.cs
+    startLine: 12
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Domain-specific error type URI prefix.
+  example: []
+  syntax:
+    content: public const string TypePrefix = "https://jd.domain/validation-errors/"
+    return:
+      type: System.String
+    content.vb: Public Const TypePrefix As String = "https://jd.domain/validation-errors/"
+- uid: JD.Domain.Validation.ValidationProblemDetails.Errors
+  commentId: P:JD.Domain.Validation.ValidationProblemDetails.Errors
+  id: Errors
+  parent: JD.Domain.Validation.ValidationProblemDetails
+  langs:
+  - csharp
+  - vb
+  name: Errors
+  nameWithType: ValidationProblemDetails.Errors
+  fullName: JD.Domain.Validation.ValidationProblemDetails.Errors
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ValidationProblemDetails.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Errors
+    path: src/JD.Domain.Validation/ValidationProblemDetails.cs
+    startLine: 18
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: >-
+    Gets or sets the collection of validation errors grouped by target property.
+
+    Compatible with ASP.NET Core's ModelState error format.
+  example: []
+  syntax:
+    content: public IDictionary<string, string[]> Errors { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IDictionary{System.String,System.String[]}
+    content.vb: Public Property Errors As IDictionary(Of String, String())
+  overload: JD.Domain.Validation.ValidationProblemDetails.Errors*
+- uid: JD.Domain.Validation.ValidationProblemDetails.DomainErrors
+  commentId: P:JD.Domain.Validation.ValidationProblemDetails.DomainErrors
+  id: DomainErrors
+  parent: JD.Domain.Validation.ValidationProblemDetails
+  langs:
+  - csharp
+  - vb
+  name: DomainErrors
+  nameWithType: ValidationProblemDetails.DomainErrors
+  fullName: JD.Domain.Validation.ValidationProblemDetails.DomainErrors
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ValidationProblemDetails.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: DomainErrors
+    path: src/JD.Domain.Validation/ValidationProblemDetails.cs
+    startLine: 24
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Gets or sets the collection of domain errors with full metadata.
+  example: []
+  syntax:
+    content: public IReadOnlyList<DomainValidationError> DomainErrors { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{JD.Domain.Validation.DomainValidationError}
+    content.vb: Public Property DomainErrors As IReadOnlyList(Of DomainValidationError)
+  overload: JD.Domain.Validation.ValidationProblemDetails.DomainErrors*
+- uid: JD.Domain.Validation.ValidationProblemDetails.CorrelationId
+  commentId: P:JD.Domain.Validation.ValidationProblemDetails.CorrelationId
+  id: CorrelationId
+  parent: JD.Domain.Validation.ValidationProblemDetails
+  langs:
+  - csharp
+  - vb
+  name: CorrelationId
+  nameWithType: ValidationProblemDetails.CorrelationId
+  fullName: JD.Domain.Validation.ValidationProblemDetails.CorrelationId
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ValidationProblemDetails.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: CorrelationId
+    path: src/JD.Domain.Validation/ValidationProblemDetails.cs
+    startLine: 29
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Gets or sets the correlation ID for request tracking.
+  example: []
+  syntax:
+    content: public string? CorrelationId { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property CorrelationId As String
+  overload: JD.Domain.Validation.ValidationProblemDetails.CorrelationId*
+- uid: JD.Domain.Validation.ValidationProblemDetails.RuleSetsEvaluated
+  commentId: P:JD.Domain.Validation.ValidationProblemDetails.RuleSetsEvaluated
+  id: RuleSetsEvaluated
+  parent: JD.Domain.Validation.ValidationProblemDetails
+  langs:
+  - csharp
+  - vb
+  name: RuleSetsEvaluated
+  nameWithType: ValidationProblemDetails.RuleSetsEvaluated
+  fullName: JD.Domain.Validation.ValidationProblemDetails.RuleSetsEvaluated
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Validation/ValidationProblemDetails.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: RuleSetsEvaluated
+    path: src/JD.Domain.Validation/ValidationProblemDetails.cs
+    startLine: 34
+  assemblies:
+  - JD.Domain.Validation
+  namespace: JD.Domain.Validation
+  summary: Gets or sets the rule sets that were evaluated.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> RuleSetsEvaluated { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Property RuleSetsEvaluated As IReadOnlyList(Of String)
+  overload: JD.Domain.Validation.ValidationProblemDetails.RuleSetsEvaluated*
+references:
+- uid: JD.Domain.Validation
+  commentId: N:JD.Domain.Validation
+  href: JD.html
+  name: JD.Domain.Validation
+  nameWithType: JD.Domain.Validation
+  fullName: JD.Domain.Validation
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Validation
+    name: Validation
+    href: JD.Domain.Validation.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Validation
+    name: Validation
+    href: JD.Domain.Validation.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Microsoft.AspNetCore.Mvc.ProblemDetails
+  commentId: T:Microsoft.AspNetCore.Mvc.ProblemDetails
+  parent: Microsoft.AspNetCore.Mvc
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.problemdetails
+  name: ProblemDetails
+  nameWithType: ProblemDetails
+  fullName: Microsoft.AspNetCore.Mvc.ProblemDetails
+- uid: Microsoft.AspNetCore.Mvc.ProblemDetails.Type
+  commentId: P:Microsoft.AspNetCore.Mvc.ProblemDetails.Type
+  parent: Microsoft.AspNetCore.Mvc.ProblemDetails
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.problemdetails.type
+  name: Type
+  nameWithType: ProblemDetails.Type
+  fullName: Microsoft.AspNetCore.Mvc.ProblemDetails.Type
+- uid: Microsoft.AspNetCore.Mvc.ProblemDetails.Title
+  commentId: P:Microsoft.AspNetCore.Mvc.ProblemDetails.Title
+  parent: Microsoft.AspNetCore.Mvc.ProblemDetails
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.problemdetails.title
+  name: Title
+  nameWithType: ProblemDetails.Title
+  fullName: Microsoft.AspNetCore.Mvc.ProblemDetails.Title
+- uid: Microsoft.AspNetCore.Mvc.ProblemDetails.Status
+  commentId: P:Microsoft.AspNetCore.Mvc.ProblemDetails.Status
+  parent: Microsoft.AspNetCore.Mvc.ProblemDetails
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.problemdetails.status
+  name: Status
+  nameWithType: ProblemDetails.Status
+  fullName: Microsoft.AspNetCore.Mvc.ProblemDetails.Status
+- uid: Microsoft.AspNetCore.Mvc.ProblemDetails.Detail
+  commentId: P:Microsoft.AspNetCore.Mvc.ProblemDetails.Detail
+  parent: Microsoft.AspNetCore.Mvc.ProblemDetails
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.problemdetails.detail
+  name: Detail
+  nameWithType: ProblemDetails.Detail
+  fullName: Microsoft.AspNetCore.Mvc.ProblemDetails.Detail
+- uid: Microsoft.AspNetCore.Mvc.ProblemDetails.Instance
+  commentId: P:Microsoft.AspNetCore.Mvc.ProblemDetails.Instance
+  parent: Microsoft.AspNetCore.Mvc.ProblemDetails
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.problemdetails.instance
+  name: Instance
+  nameWithType: ProblemDetails.Instance
+  fullName: Microsoft.AspNetCore.Mvc.ProblemDetails.Instance
+- uid: Microsoft.AspNetCore.Mvc.ProblemDetails.Extensions
+  commentId: P:Microsoft.AspNetCore.Mvc.ProblemDetails.Extensions
+  parent: Microsoft.AspNetCore.Mvc.ProblemDetails
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.problemdetails.extensions
+  name: Extensions
+  nameWithType: ProblemDetails.Extensions
+  fullName: Microsoft.AspNetCore.Mvc.ProblemDetails.Extensions
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.AspNetCore.Mvc
+  commentId: N:Microsoft.AspNetCore.Mvc
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.AspNetCore.Mvc
+  nameWithType: Microsoft.AspNetCore.Mvc
+  fullName: Microsoft.AspNetCore.Mvc
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Mvc
+    name: Mvc
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.AspNetCore
+    name: AspNetCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore
+  - name: .
+  - uid: Microsoft.AspNetCore.Mvc
+    name: Mvc
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: JD.Domain.Validation.ValidationProblemDetails.Errors*
+  commentId: Overload:JD.Domain.Validation.ValidationProblemDetails.Errors
+  href: JD.Domain.Validation.ValidationProblemDetails.html#JD_Domain_Validation_ValidationProblemDetails_Errors
+  name: Errors
+  nameWithType: ValidationProblemDetails.Errors
+  fullName: JD.Domain.Validation.ValidationProblemDetails.Errors
+- uid: System.Collections.Generic.IDictionary{System.String,System.String[]}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,System.String[]}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<string, string[]>
+  nameWithType: IDictionary<string, string[]>
+  fullName: System.Collections.Generic.IDictionary<string, string[]>
+  nameWithType.vb: IDictionary(Of String, String())
+  fullName.vb: System.Collections.Generic.IDictionary(Of String, String())
+  name.vb: IDictionary(Of String, String())
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: JD.Domain.Validation.ValidationProblemDetails.DomainErrors*
+  commentId: Overload:JD.Domain.Validation.ValidationProblemDetails.DomainErrors
+  href: JD.Domain.Validation.ValidationProblemDetails.html#JD_Domain_Validation_ValidationProblemDetails_DomainErrors
+  name: DomainErrors
+  nameWithType: ValidationProblemDetails.DomainErrors
+  fullName: JD.Domain.Validation.ValidationProblemDetails.DomainErrors
+- uid: System.Collections.Generic.IReadOnlyList{JD.Domain.Validation.DomainValidationError}
+  commentId: T:System.Collections.Generic.IReadOnlyList{JD.Domain.Validation.DomainValidationError}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<DomainValidationError>
+  nameWithType: IReadOnlyList<DomainValidationError>
+  fullName: System.Collections.Generic.IReadOnlyList<JD.Domain.Validation.DomainValidationError>
+  nameWithType.vb: IReadOnlyList(Of DomainValidationError)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of JD.Domain.Validation.DomainValidationError)
+  name.vb: IReadOnlyList(Of DomainValidationError)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: JD.Domain.Validation.DomainValidationError
+    name: DomainValidationError
+    href: JD.Domain.Validation.DomainValidationError.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Validation.DomainValidationError
+    name: DomainValidationError
+    href: JD.Domain.Validation.DomainValidationError.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.Validation.ValidationProblemDetails.CorrelationId*
+  commentId: Overload:JD.Domain.Validation.ValidationProblemDetails.CorrelationId
+  href: JD.Domain.Validation.ValidationProblemDetails.html#JD_Domain_Validation_ValidationProblemDetails_CorrelationId
+  name: CorrelationId
+  nameWithType: ValidationProblemDetails.CorrelationId
+  fullName: JD.Domain.Validation.ValidationProblemDetails.CorrelationId
+- uid: JD.Domain.Validation.ValidationProblemDetails.RuleSetsEvaluated*
+  commentId: Overload:JD.Domain.Validation.ValidationProblemDetails.RuleSetsEvaluated
+  href: JD.Domain.Validation.ValidationProblemDetails.html#JD_Domain_Validation_ValidationProblemDetails_RuleSetsEvaluated
+  name: RuleSetsEvaluated
+  nameWithType: ValidationProblemDetails.RuleSetsEvaluated
+  fullName: JD.Domain.Validation.ValidationProblemDetails.RuleSetsEvaluated
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )

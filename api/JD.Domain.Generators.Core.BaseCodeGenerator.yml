@@ -1,0 +1,791 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Generators.Core.BaseCodeGenerator
+  commentId: T:JD.Domain.Generators.Core.BaseCodeGenerator
+  id: BaseCodeGenerator
+  parent: JD.Domain.Generators.Core
+  children:
+  - JD.Domain.Generators.Core.BaseCodeGenerator.CanGenerate(JD.Domain.Generators.Core.GeneratorContext)
+  - JD.Domain.Generators.Core.BaseCodeGenerator.CreateCodeBuilder(System.String)
+  - JD.Domain.Generators.Core.BaseCodeGenerator.CreateGeneratedFile(System.String,System.String)
+  - JD.Domain.Generators.Core.BaseCodeGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext,System.Threading.CancellationToken)
+  - JD.Domain.Generators.Core.BaseCodeGenerator.Name
+  langs:
+  - csharp
+  - vb
+  name: BaseCodeGenerator
+  nameWithType: BaseCodeGenerator
+  fullName: JD.Domain.Generators.Core.BaseCodeGenerator
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Generators.Core/BaseCodeGenerator.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: BaseCodeGenerator
+    path: src/JD.Domain.Generators.Core/BaseCodeGenerator.cs
+    startLine: 5
+  assemblies:
+  - JD.Domain.Generators.Core
+  namespace: JD.Domain.Generators.Core
+  summary: Base class for code generators providing common functionality.
+  example: []
+  syntax:
+    content: 'public abstract class BaseCodeGenerator : ICodeGenerator'
+    content.vb: Public MustInherit Class BaseCodeGenerator Implements ICodeGenerator
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - JD.Domain.DomainModel.Generator.DomainModelGenerator
+  - JD.Domain.FluentValidation.Generator.FluentValidationGenerator
+  implements:
+  - JD.Domain.Generators.Core.ICodeGenerator
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JD.Domain.Generators.Core.BaseCodeGenerator.Name
+  commentId: P:JD.Domain.Generators.Core.BaseCodeGenerator.Name
+  id: Name
+  parent: JD.Domain.Generators.Core.BaseCodeGenerator
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: BaseCodeGenerator.Name
+  fullName: JD.Domain.Generators.Core.BaseCodeGenerator.Name
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Generators.Core/BaseCodeGenerator.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Name
+    path: src/JD.Domain.Generators.Core/BaseCodeGenerator.cs
+    startLine: 10
+  assemblies:
+  - JD.Domain.Generators.Core
+  namespace: JD.Domain.Generators.Core
+  summary: Gets the name of this generator.
+  example: []
+  syntax:
+    content: public abstract string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public MustOverride ReadOnly Property Name As String
+  overload: JD.Domain.Generators.Core.BaseCodeGenerator.Name*
+  implements:
+  - JD.Domain.Generators.Core.ICodeGenerator.Name
+- uid: JD.Domain.Generators.Core.BaseCodeGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext,System.Threading.CancellationToken)
+  commentId: M:JD.Domain.Generators.Core.BaseCodeGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext,System.Threading.CancellationToken)
+  id: Generate(JD.Domain.Generators.Core.GeneratorContext,System.Threading.CancellationToken)
+  parent: JD.Domain.Generators.Core.BaseCodeGenerator
+  langs:
+  - csharp
+  - vb
+  name: Generate(GeneratorContext, CancellationToken)
+  nameWithType: BaseCodeGenerator.Generate(GeneratorContext, CancellationToken)
+  fullName: JD.Domain.Generators.Core.BaseCodeGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Generators.Core/BaseCodeGenerator.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Generate
+    path: src/JD.Domain.Generators.Core/BaseCodeGenerator.cs
+    startLine: 15
+  assemblies:
+  - JD.Domain.Generators.Core
+  namespace: JD.Domain.Generators.Core
+  summary: Generates code files from the given context.
+  example: []
+  syntax:
+    content: public abstract IEnumerable<GeneratedFile> Generate(GeneratorContext context, CancellationToken cancellationToken = default)
+    parameters:
+    - id: context
+      type: JD.Domain.Generators.Core.GeneratorContext
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Collections.Generic.IEnumerable{JD.Domain.Generators.Core.GeneratedFile}
+    content.vb: Public MustOverride Function Generate(context As GeneratorContext, cancellationToken As CancellationToken = Nothing) As IEnumerable(Of GeneratedFile)
+  overload: JD.Domain.Generators.Core.BaseCodeGenerator.Generate*
+  implements:
+  - JD.Domain.Generators.Core.ICodeGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext,System.Threading.CancellationToken)
+- uid: JD.Domain.Generators.Core.BaseCodeGenerator.CanGenerate(JD.Domain.Generators.Core.GeneratorContext)
+  commentId: M:JD.Domain.Generators.Core.BaseCodeGenerator.CanGenerate(JD.Domain.Generators.Core.GeneratorContext)
+  id: CanGenerate(JD.Domain.Generators.Core.GeneratorContext)
+  parent: JD.Domain.Generators.Core.BaseCodeGenerator
+  langs:
+  - csharp
+  - vb
+  name: CanGenerate(GeneratorContext)
+  nameWithType: BaseCodeGenerator.CanGenerate(GeneratorContext)
+  fullName: JD.Domain.Generators.Core.BaseCodeGenerator.CanGenerate(JD.Domain.Generators.Core.GeneratorContext)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Generators.Core/BaseCodeGenerator.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: CanGenerate
+    path: src/JD.Domain.Generators.Core/BaseCodeGenerator.cs
+    startLine: 21
+  assemblies:
+  - JD.Domain.Generators.Core
+  namespace: JD.Domain.Generators.Core
+  summary: >-
+    Determines if this generator can process the given manifest.
+
+    Default implementation returns true if manifest is not null.
+  example: []
+  syntax:
+    content: public virtual bool CanGenerate(GeneratorContext context)
+    parameters:
+    - id: context
+      type: JD.Domain.Generators.Core.GeneratorContext
+    return:
+      type: System.Boolean
+    content.vb: Public Overridable Function CanGenerate(context As GeneratorContext) As Boolean
+  overload: JD.Domain.Generators.Core.BaseCodeGenerator.CanGenerate*
+  implements:
+  - JD.Domain.Generators.Core.ICodeGenerator.CanGenerate(JD.Domain.Generators.Core.GeneratorContext)
+- uid: JD.Domain.Generators.Core.BaseCodeGenerator.CreateGeneratedFile(System.String,System.String)
+  commentId: M:JD.Domain.Generators.Core.BaseCodeGenerator.CreateGeneratedFile(System.String,System.String)
+  id: CreateGeneratedFile(System.String,System.String)
+  parent: JD.Domain.Generators.Core.BaseCodeGenerator
+  langs:
+  - csharp
+  - vb
+  name: CreateGeneratedFile(string, string)
+  nameWithType: BaseCodeGenerator.CreateGeneratedFile(string, string)
+  fullName: JD.Domain.Generators.Core.BaseCodeGenerator.CreateGeneratedFile(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Generators.Core/BaseCodeGenerator.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: CreateGeneratedFile
+    path: src/JD.Domain.Generators.Core/BaseCodeGenerator.cs
+    startLine: 29
+  assemblies:
+  - JD.Domain.Generators.Core
+  namespace: JD.Domain.Generators.Core
+  summary: Creates a generated file with computed hash.
+  example: []
+  syntax:
+    content: protected GeneratedFile CreateGeneratedFile(string fileName, string content)
+    parameters:
+    - id: fileName
+      type: System.String
+    - id: content
+      type: System.String
+    return:
+      type: JD.Domain.Generators.Core.GeneratedFile
+    content.vb: Protected Function CreateGeneratedFile(fileName As String, content As String) As GeneratedFile
+  overload: JD.Domain.Generators.Core.BaseCodeGenerator.CreateGeneratedFile*
+  nameWithType.vb: BaseCodeGenerator.CreateGeneratedFile(String, String)
+  fullName.vb: JD.Domain.Generators.Core.BaseCodeGenerator.CreateGeneratedFile(String, String)
+  name.vb: CreateGeneratedFile(String, String)
+- uid: JD.Domain.Generators.Core.BaseCodeGenerator.CreateCodeBuilder(System.String)
+  commentId: M:JD.Domain.Generators.Core.BaseCodeGenerator.CreateCodeBuilder(System.String)
+  id: CreateCodeBuilder(System.String)
+  parent: JD.Domain.Generators.Core.BaseCodeGenerator
+  langs:
+  - csharp
+  - vb
+  name: CreateCodeBuilder(string?)
+  nameWithType: BaseCodeGenerator.CreateCodeBuilder(string?)
+  fullName: JD.Domain.Generators.Core.BaseCodeGenerator.CreateCodeBuilder(string?)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Generators.Core/BaseCodeGenerator.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: CreateCodeBuilder
+    path: src/JD.Domain.Generators.Core/BaseCodeGenerator.cs
+    startLine: 45
+  assemblies:
+  - JD.Domain.Generators.Core
+  namespace: JD.Domain.Generators.Core
+  summary: Creates a code builder with standard auto-generated header.
+  example: []
+  syntax:
+    content: protected CodeBuilder CreateCodeBuilder(string? version = null)
+    parameters:
+    - id: version
+      type: System.String
+    return:
+      type: JD.Domain.Generators.Core.CodeBuilder
+    content.vb: Protected Function CreateCodeBuilder(version As String = Nothing) As CodeBuilder
+  overload: JD.Domain.Generators.Core.BaseCodeGenerator.CreateCodeBuilder*
+  nameWithType.vb: BaseCodeGenerator.CreateCodeBuilder(String)
+  fullName.vb: JD.Domain.Generators.Core.BaseCodeGenerator.CreateCodeBuilder(String)
+  name.vb: CreateCodeBuilder(String)
+references:
+- uid: JD.Domain.Generators.Core
+  commentId: N:JD.Domain.Generators.Core
+  href: JD.html
+  name: JD.Domain.Generators.Core
+  nameWithType: JD.Domain.Generators.Core
+  fullName: JD.Domain.Generators.Core
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Generators
+    name: Generators
+    href: JD.Domain.Generators.html
+  - name: .
+  - uid: JD.Domain.Generators.Core
+    name: Core
+    href: JD.Domain.Generators.Core.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Generators
+    name: Generators
+    href: JD.Domain.Generators.html
+  - name: .
+  - uid: JD.Domain.Generators.Core
+    name: Core
+    href: JD.Domain.Generators.Core.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: JD.Domain.Generators.Core.ICodeGenerator
+  commentId: T:JD.Domain.Generators.Core.ICodeGenerator
+  parent: JD.Domain.Generators.Core
+  href: JD.Domain.Generators.Core.ICodeGenerator.html
+  name: ICodeGenerator
+  nameWithType: ICodeGenerator
+  fullName: JD.Domain.Generators.Core.ICodeGenerator
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.Generators.Core.BaseCodeGenerator.Name*
+  commentId: Overload:JD.Domain.Generators.Core.BaseCodeGenerator.Name
+  href: JD.Domain.Generators.Core.BaseCodeGenerator.html#JD_Domain_Generators_Core_BaseCodeGenerator_Name
+  name: Name
+  nameWithType: BaseCodeGenerator.Name
+  fullName: JD.Domain.Generators.Core.BaseCodeGenerator.Name
+- uid: JD.Domain.Generators.Core.ICodeGenerator.Name
+  commentId: P:JD.Domain.Generators.Core.ICodeGenerator.Name
+  parent: JD.Domain.Generators.Core.ICodeGenerator
+  href: JD.Domain.Generators.Core.ICodeGenerator.html#JD_Domain_Generators_Core_ICodeGenerator_Name
+  name: Name
+  nameWithType: ICodeGenerator.Name
+  fullName: JD.Domain.Generators.Core.ICodeGenerator.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: JD.Domain.Generators.Core.BaseCodeGenerator.Generate*
+  commentId: Overload:JD.Domain.Generators.Core.BaseCodeGenerator.Generate
+  href: JD.Domain.Generators.Core.BaseCodeGenerator.html#JD_Domain_Generators_Core_BaseCodeGenerator_Generate_JD_Domain_Generators_Core_GeneratorContext_System_Threading_CancellationToken_
+  name: Generate
+  nameWithType: BaseCodeGenerator.Generate
+  fullName: JD.Domain.Generators.Core.BaseCodeGenerator.Generate
+- uid: JD.Domain.Generators.Core.ICodeGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext,System.Threading.CancellationToken)
+  commentId: M:JD.Domain.Generators.Core.ICodeGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext,System.Threading.CancellationToken)
+  parent: JD.Domain.Generators.Core.ICodeGenerator
+  isExternal: true
+  href: JD.Domain.Generators.Core.ICodeGenerator.html#JD_Domain_Generators_Core_ICodeGenerator_Generate_JD_Domain_Generators_Core_GeneratorContext_System_Threading_CancellationToken_
+  name: Generate(GeneratorContext, CancellationToken)
+  nameWithType: ICodeGenerator.Generate(GeneratorContext, CancellationToken)
+  fullName: JD.Domain.Generators.Core.ICodeGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: JD.Domain.Generators.Core.ICodeGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext,System.Threading.CancellationToken)
+    name: Generate
+    href: JD.Domain.Generators.Core.ICodeGenerator.html#JD_Domain_Generators_Core_ICodeGenerator_Generate_JD_Domain_Generators_Core_GeneratorContext_System_Threading_CancellationToken_
+  - name: (
+  - uid: JD.Domain.Generators.Core.GeneratorContext
+    name: GeneratorContext
+    href: JD.Domain.Generators.Core.GeneratorContext.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Generators.Core.ICodeGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext,System.Threading.CancellationToken)
+    name: Generate
+    href: JD.Domain.Generators.Core.ICodeGenerator.html#JD_Domain_Generators_Core_ICodeGenerator_Generate_JD_Domain_Generators_Core_GeneratorContext_System_Threading_CancellationToken_
+  - name: (
+  - uid: JD.Domain.Generators.Core.GeneratorContext
+    name: GeneratorContext
+    href: JD.Domain.Generators.Core.GeneratorContext.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: JD.Domain.Generators.Core.GeneratorContext
+  commentId: T:JD.Domain.Generators.Core.GeneratorContext
+  parent: JD.Domain.Generators.Core
+  href: JD.Domain.Generators.Core.GeneratorContext.html
+  name: GeneratorContext
+  nameWithType: GeneratorContext
+  fullName: JD.Domain.Generators.Core.GeneratorContext
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Collections.Generic.IEnumerable{JD.Domain.Generators.Core.GeneratedFile}
+  commentId: T:System.Collections.Generic.IEnumerable{JD.Domain.Generators.Core.GeneratedFile}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<GeneratedFile>
+  nameWithType: IEnumerable<GeneratedFile>
+  fullName: System.Collections.Generic.IEnumerable<JD.Domain.Generators.Core.GeneratedFile>
+  nameWithType.vb: IEnumerable(Of GeneratedFile)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of JD.Domain.Generators.Core.GeneratedFile)
+  name.vb: IEnumerable(Of GeneratedFile)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: JD.Domain.Generators.Core.GeneratedFile
+    name: GeneratedFile
+    href: JD.Domain.Generators.Core.GeneratedFile.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Generators.Core.GeneratedFile
+    name: GeneratedFile
+    href: JD.Domain.Generators.Core.GeneratedFile.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: JD.Domain.Generators.Core.BaseCodeGenerator.CanGenerate*
+  commentId: Overload:JD.Domain.Generators.Core.BaseCodeGenerator.CanGenerate
+  href: JD.Domain.Generators.Core.BaseCodeGenerator.html#JD_Domain_Generators_Core_BaseCodeGenerator_CanGenerate_JD_Domain_Generators_Core_GeneratorContext_
+  name: CanGenerate
+  nameWithType: BaseCodeGenerator.CanGenerate
+  fullName: JD.Domain.Generators.Core.BaseCodeGenerator.CanGenerate
+- uid: JD.Domain.Generators.Core.ICodeGenerator.CanGenerate(JD.Domain.Generators.Core.GeneratorContext)
+  commentId: M:JD.Domain.Generators.Core.ICodeGenerator.CanGenerate(JD.Domain.Generators.Core.GeneratorContext)
+  parent: JD.Domain.Generators.Core.ICodeGenerator
+  href: JD.Domain.Generators.Core.ICodeGenerator.html#JD_Domain_Generators_Core_ICodeGenerator_CanGenerate_JD_Domain_Generators_Core_GeneratorContext_
+  name: CanGenerate(GeneratorContext)
+  nameWithType: ICodeGenerator.CanGenerate(GeneratorContext)
+  fullName: JD.Domain.Generators.Core.ICodeGenerator.CanGenerate(JD.Domain.Generators.Core.GeneratorContext)
+  spec.csharp:
+  - uid: JD.Domain.Generators.Core.ICodeGenerator.CanGenerate(JD.Domain.Generators.Core.GeneratorContext)
+    name: CanGenerate
+    href: JD.Domain.Generators.Core.ICodeGenerator.html#JD_Domain_Generators_Core_ICodeGenerator_CanGenerate_JD_Domain_Generators_Core_GeneratorContext_
+  - name: (
+  - uid: JD.Domain.Generators.Core.GeneratorContext
+    name: GeneratorContext
+    href: JD.Domain.Generators.Core.GeneratorContext.html
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Generators.Core.ICodeGenerator.CanGenerate(JD.Domain.Generators.Core.GeneratorContext)
+    name: CanGenerate
+    href: JD.Domain.Generators.Core.ICodeGenerator.html#JD_Domain_Generators_Core_ICodeGenerator_CanGenerate_JD_Domain_Generators_Core_GeneratorContext_
+  - name: (
+  - uid: JD.Domain.Generators.Core.GeneratorContext
+    name: GeneratorContext
+    href: JD.Domain.Generators.Core.GeneratorContext.html
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: JD.Domain.Generators.Core.BaseCodeGenerator.CreateGeneratedFile*
+  commentId: Overload:JD.Domain.Generators.Core.BaseCodeGenerator.CreateGeneratedFile
+  href: JD.Domain.Generators.Core.BaseCodeGenerator.html#JD_Domain_Generators_Core_BaseCodeGenerator_CreateGeneratedFile_System_String_System_String_
+  name: CreateGeneratedFile
+  nameWithType: BaseCodeGenerator.CreateGeneratedFile
+  fullName: JD.Domain.Generators.Core.BaseCodeGenerator.CreateGeneratedFile
+- uid: JD.Domain.Generators.Core.GeneratedFile
+  commentId: T:JD.Domain.Generators.Core.GeneratedFile
+  parent: JD.Domain.Generators.Core
+  href: JD.Domain.Generators.Core.GeneratedFile.html
+  name: GeneratedFile
+  nameWithType: GeneratedFile
+  fullName: JD.Domain.Generators.Core.GeneratedFile
+- uid: JD.Domain.Generators.Core.BaseCodeGenerator.CreateCodeBuilder*
+  commentId: Overload:JD.Domain.Generators.Core.BaseCodeGenerator.CreateCodeBuilder
+  href: JD.Domain.Generators.Core.BaseCodeGenerator.html#JD_Domain_Generators_Core_BaseCodeGenerator_CreateCodeBuilder_System_String_
+  name: CreateCodeBuilder
+  nameWithType: BaseCodeGenerator.CreateCodeBuilder
+  fullName: JD.Domain.Generators.Core.BaseCodeGenerator.CreateCodeBuilder
+- uid: JD.Domain.Generators.Core.CodeBuilder
+  commentId: T:JD.Domain.Generators.Core.CodeBuilder
+  parent: JD.Domain.Generators.Core
+  href: JD.Domain.Generators.Core.CodeBuilder.html
+  name: CodeBuilder
+  nameWithType: CodeBuilder
+  fullName: JD.Domain.Generators.Core.CodeBuilder

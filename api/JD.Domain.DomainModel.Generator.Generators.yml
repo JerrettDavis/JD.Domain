@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.DomainModel.Generator.Generators
+  commentId: N:JD.Domain.DomainModel.Generator.Generators
+  id: JD.Domain.DomainModel.Generator.Generators
+  children:
+  - JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator
+  langs:
+  - csharp
+  - vb
+  name: JD.Domain.DomainModel.Generator.Generators
+  nameWithType: JD.Domain.DomainModel.Generator.Generators
+  fullName: JD.Domain.DomainModel.Generator.Generators
+  type: Namespace
+  assemblies:
+  - JD.Domain.DomainModel.Generator
+references:
+- uid: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator
+  commentId: T:JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator
+  href: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator.html
+  name: DomainProxyGenerator
+  nameWithType: DomainProxyGenerator
+  fullName: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator

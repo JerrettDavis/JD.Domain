@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Cli.Commands
+  commentId: N:JD.Domain.Cli.Commands
+  id: JD.Domain.Cli.Commands
+  children:
+  - JD.Domain.Cli.Commands.DiffCommand
+  - JD.Domain.Cli.Commands.MigratePlanCommand
+  - JD.Domain.Cli.Commands.SnapshotCommand
+  langs:
+  - csharp
+  - vb
+  name: JD.Domain.Cli.Commands
+  nameWithType: JD.Domain.Cli.Commands
+  fullName: JD.Domain.Cli.Commands
+  type: Namespace
+  assemblies:
+  - jd-domain
+references:
+- uid: JD.Domain.Cli.Commands.DiffCommand
+  commentId: T:JD.Domain.Cli.Commands.DiffCommand
+  href: JD.Domain.Cli.Commands.DiffCommand.html
+  name: DiffCommand
+  nameWithType: DiffCommand
+  fullName: JD.Domain.Cli.Commands.DiffCommand
+- uid: JD.Domain.Cli.Commands.MigratePlanCommand
+  commentId: T:JD.Domain.Cli.Commands.MigratePlanCommand
+  href: JD.Domain.Cli.Commands.MigratePlanCommand.html
+  name: MigratePlanCommand
+  nameWithType: MigratePlanCommand
+  fullName: JD.Domain.Cli.Commands.MigratePlanCommand
+- uid: JD.Domain.Cli.Commands.SnapshotCommand
+  commentId: T:JD.Domain.Cli.Commands.SnapshotCommand
+  href: JD.Domain.Cli.Commands.SnapshotCommand.html
+  name: SnapshotCommand
+  nameWithType: SnapshotCommand
+  fullName: JD.Domain.Cli.Commands.SnapshotCommand

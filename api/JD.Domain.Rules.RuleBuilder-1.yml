@@ -1,0 +1,916 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Rules.RuleBuilder`1
+  commentId: T:JD.Domain.Rules.RuleBuilder`1
+  id: RuleBuilder`1
+  parent: JD.Domain.Rules
+  children:
+  - JD.Domain.Rules.RuleBuilder`1.Build
+  - JD.Domain.Rules.RuleBuilder`1.BuildCompiled
+  - JD.Domain.Rules.RuleBuilder`1.Invariant(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  - JD.Domain.Rules.RuleBuilder`1.Validator(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  - JD.Domain.Rules.RuleBuilder`1.WithMessage(System.String)
+  - JD.Domain.Rules.RuleBuilder`1.WithMetadata(System.String,System.Object)
+  - JD.Domain.Rules.RuleBuilder`1.WithSeverity(JD.Domain.Abstractions.RuleSeverity)
+  - JD.Domain.Rules.RuleBuilder`1.WithTag(System.String)
+  langs:
+  - csharp
+  - vb
+  name: RuleBuilder<T>
+  nameWithType: RuleBuilder<T>
+  fullName: JD.Domain.Rules.RuleBuilder<T>
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Rules/RuleBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: RuleBuilder
+    path: src/JD.Domain.Rules/RuleBuilder.cs
+    startLine: 9
+  assemblies:
+  - JD.Domain.Rules
+  namespace: JD.Domain.Rules
+  summary: Fluent builder for configuring individual rules.
+  example: []
+  syntax:
+    content: 'public sealed class RuleBuilder<T> where T : class'
+    typeParameters:
+    - id: T
+      description: The entity type.
+    content.vb: Public NotInheritable Class RuleBuilder(Of T As Class)
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: RuleBuilder(Of T)
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T)
+  name.vb: RuleBuilder(Of T)
+- uid: JD.Domain.Rules.RuleBuilder`1.WithMessage(System.String)
+  commentId: M:JD.Domain.Rules.RuleBuilder`1.WithMessage(System.String)
+  id: WithMessage(System.String)
+  parent: JD.Domain.Rules.RuleBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithMessage(string)
+  nameWithType: RuleBuilder<T>.WithMessage(string)
+  fullName: JD.Domain.Rules.RuleBuilder<T>.WithMessage(string)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Rules/RuleBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithMessage
+    path: src/JD.Domain.Rules/RuleBuilder.cs
+    startLine: 30
+  assemblies:
+  - JD.Domain.Rules
+  namespace: JD.Domain.Rules
+  summary: Sets the error message for rule violations.
+  example: []
+  syntax:
+    content: public RuleBuilder<T> WithMessage(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message.
+    return:
+      type: JD.Domain.Rules.RuleBuilder`1
+      description: The rule builder for chaining.
+    content.vb: Public Function WithMessage(message As String) As RuleBuilder(Of T)
+  overload: JD.Domain.Rules.RuleBuilder`1.WithMessage*
+  nameWithType.vb: RuleBuilder(Of T).WithMessage(String)
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).WithMessage(String)
+  name.vb: WithMessage(String)
+- uid: JD.Domain.Rules.RuleBuilder`1.WithSeverity(JD.Domain.Abstractions.RuleSeverity)
+  commentId: M:JD.Domain.Rules.RuleBuilder`1.WithSeverity(JD.Domain.Abstractions.RuleSeverity)
+  id: WithSeverity(JD.Domain.Abstractions.RuleSeverity)
+  parent: JD.Domain.Rules.RuleBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithSeverity(RuleSeverity)
+  nameWithType: RuleBuilder<T>.WithSeverity(RuleSeverity)
+  fullName: JD.Domain.Rules.RuleBuilder<T>.WithSeverity(JD.Domain.Abstractions.RuleSeverity)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Rules/RuleBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithSeverity
+    path: src/JD.Domain.Rules/RuleBuilder.cs
+    startLine: 55
+  assemblies:
+  - JD.Domain.Rules
+  namespace: JD.Domain.Rules
+  summary: Sets the severity of rule violations.
+  example: []
+  syntax:
+    content: public RuleBuilder<T> WithSeverity(RuleSeverity severity)
+    parameters:
+    - id: severity
+      type: JD.Domain.Abstractions.RuleSeverity
+      description: The severity level.
+    return:
+      type: JD.Domain.Rules.RuleBuilder`1
+      description: The rule builder for chaining.
+    content.vb: Public Function WithSeverity(severity As RuleSeverity) As RuleBuilder(Of T)
+  overload: JD.Domain.Rules.RuleBuilder`1.WithSeverity*
+  nameWithType.vb: RuleBuilder(Of T).WithSeverity(RuleSeverity)
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).WithSeverity(JD.Domain.Abstractions.RuleSeverity)
+- uid: JD.Domain.Rules.RuleBuilder`1.WithTag(System.String)
+  commentId: M:JD.Domain.Rules.RuleBuilder`1.WithTag(System.String)
+  id: WithTag(System.String)
+  parent: JD.Domain.Rules.RuleBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithTag(string)
+  nameWithType: RuleBuilder<T>.WithTag(string)
+  fullName: JD.Domain.Rules.RuleBuilder<T>.WithTag(string)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Rules/RuleBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithTag
+    path: src/JD.Domain.Rules/RuleBuilder.cs
+    startLine: 78
+  assemblies:
+  - JD.Domain.Rules
+  namespace: JD.Domain.Rules
+  summary: Adds a tag to the rule for categorization.
+  example: []
+  syntax:
+    content: public RuleBuilder<T> WithTag(string tag)
+    parameters:
+    - id: tag
+      type: System.String
+      description: The tag to add.
+    return:
+      type: JD.Domain.Rules.RuleBuilder`1
+      description: The rule builder for chaining.
+    content.vb: Public Function WithTag(tag As String) As RuleBuilder(Of T)
+  overload: JD.Domain.Rules.RuleBuilder`1.WithTag*
+  nameWithType.vb: RuleBuilder(Of T).WithTag(String)
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).WithTag(String)
+  name.vb: WithTag(String)
+- uid: JD.Domain.Rules.RuleBuilder`1.WithMetadata(System.String,System.Object)
+  commentId: M:JD.Domain.Rules.RuleBuilder`1.WithMetadata(System.String,System.Object)
+  id: WithMetadata(System.String,System.Object)
+  parent: JD.Domain.Rules.RuleBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: WithMetadata(string, object?)
+  nameWithType: RuleBuilder<T>.WithMetadata(string, object?)
+  fullName: JD.Domain.Rules.RuleBuilder<T>.WithMetadata(string, object?)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Rules/RuleBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithMetadata
+    path: src/JD.Domain.Rules/RuleBuilder.cs
+    startLine: 105
+  assemblies:
+  - JD.Domain.Rules
+  namespace: JD.Domain.Rules
+  summary: Adds metadata to the rule.
+  example: []
+  syntax:
+    content: public RuleBuilder<T> WithMetadata(string key, object? value)
+    parameters:
+    - id: key
+      type: System.String
+      description: The metadata key.
+    - id: value
+      type: System.Object
+      description: The metadata value.
+    return:
+      type: JD.Domain.Rules.RuleBuilder`1
+      description: The rule builder for chaining.
+    content.vb: Public Function WithMetadata(key As String, value As Object) As RuleBuilder(Of T)
+  overload: JD.Domain.Rules.RuleBuilder`1.WithMetadata*
+  nameWithType.vb: RuleBuilder(Of T).WithMetadata(String, Object)
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).WithMetadata(String, Object)
+  name.vb: WithMetadata(String, Object)
+- uid: JD.Domain.Rules.RuleBuilder`1.Invariant(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  commentId: M:JD.Domain.Rules.RuleBuilder`1.Invariant(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  id: Invariant(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  parent: JD.Domain.Rules.RuleBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: Invariant(string, Expression<Func<T, bool>>)
+  nameWithType: RuleBuilder<T>.Invariant(string, Expression<Func<T, bool>>)
+  fullName: JD.Domain.Rules.RuleBuilder<T>.Invariant(string, System.Linq.Expressions.Expression<System.Func<T, bool>>)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Rules/RuleBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Invariant
+    path: src/JD.Domain.Rules/RuleBuilder.cs
+    startLine: 136
+  assemblies:
+  - JD.Domain.Rules
+  namespace: JD.Domain.Rules
+  summary: Adds another invariant rule to the rule set.
+  example: []
+  syntax:
+    content: public RuleBuilder<T> Invariant(string id, Expression<Func<T, bool>> predicate)
+    parameters:
+    - id: id
+      type: System.String
+      description: The unique identifier for the rule.
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+      description: The rule predicate expression.
+    return:
+      type: JD.Domain.Rules.RuleBuilder`1
+      description: A rule builder for further configuration.
+    content.vb: Public Function Invariant(id As String, predicate As Expression(Of Func(Of T, Boolean))) As RuleBuilder(Of T)
+  overload: JD.Domain.Rules.RuleBuilder`1.Invariant*
+  nameWithType.vb: RuleBuilder(Of T).Invariant(String, Expression(Of Func(Of T, Boolean)))
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).Invariant(String, System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)))
+  name.vb: Invariant(String, Expression(Of Func(Of T, Boolean)))
+- uid: JD.Domain.Rules.RuleBuilder`1.Validator(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  commentId: M:JD.Domain.Rules.RuleBuilder`1.Validator(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  id: Validator(System.String,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
+  parent: JD.Domain.Rules.RuleBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: Validator(string, Expression<Func<T, bool>>)
+  nameWithType: RuleBuilder<T>.Validator(string, Expression<Func<T, bool>>)
+  fullName: JD.Domain.Rules.RuleBuilder<T>.Validator(string, System.Linq.Expressions.Expression<System.Func<T, bool>>)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Rules/RuleBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Validator
+    path: src/JD.Domain.Rules/RuleBuilder.cs
+    startLine: 147
+  assemblies:
+  - JD.Domain.Rules
+  namespace: JD.Domain.Rules
+  summary: Adds a validator rule to the rule set.
+  example: []
+  syntax:
+    content: public RuleBuilder<T> Validator(string id, Expression<Func<T, bool>> predicate)
+    parameters:
+    - id: id
+      type: System.String
+      description: The unique identifier for the rule.
+    - id: predicate
+      type: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+      description: The rule predicate expression.
+    return:
+      type: JD.Domain.Rules.RuleBuilder`1
+      description: A rule builder for further configuration.
+    content.vb: Public Function Validator(id As String, predicate As Expression(Of Func(Of T, Boolean))) As RuleBuilder(Of T)
+  overload: JD.Domain.Rules.RuleBuilder`1.Validator*
+  nameWithType.vb: RuleBuilder(Of T).Validator(String, Expression(Of Func(Of T, Boolean)))
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).Validator(String, System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean)))
+  name.vb: Validator(String, Expression(Of Func(Of T, Boolean)))
+- uid: JD.Domain.Rules.RuleBuilder`1.Build
+  commentId: M:JD.Domain.Rules.RuleBuilder`1.Build
+  id: Build
+  parent: JD.Domain.Rules.RuleBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: Build()
+  nameWithType: RuleBuilder<T>.Build()
+  fullName: JD.Domain.Rules.RuleBuilder<T>.Build()
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Rules/RuleBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Build
+    path: src/JD.Domain.Rules/RuleBuilder.cs
+    startLine: 156
+  assemblies:
+  - JD.Domain.Rules
+  namespace: JD.Domain.Rules
+  summary: Builds the rule set manifest.
+  example: []
+  syntax:
+    content: public RuleSetManifest Build()
+    return:
+      type: JD.Domain.Abstractions.RuleSetManifest
+      description: The constructed rule set manifest.
+    content.vb: Public Function Build() As RuleSetManifest
+  overload: JD.Domain.Rules.RuleBuilder`1.Build*
+  nameWithType.vb: RuleBuilder(Of T).Build()
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).Build()
+- uid: JD.Domain.Rules.RuleBuilder`1.BuildCompiled
+  commentId: M:JD.Domain.Rules.RuleBuilder`1.BuildCompiled
+  id: BuildCompiled
+  parent: JD.Domain.Rules.RuleBuilder`1
+  langs:
+  - csharp
+  - vb
+  name: BuildCompiled()
+  nameWithType: RuleBuilder<T>.BuildCompiled()
+  fullName: JD.Domain.Rules.RuleBuilder<T>.BuildCompiled()
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Rules/RuleBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: BuildCompiled
+    path: src/JD.Domain.Rules/RuleBuilder.cs
+    startLine: 165
+  assemblies:
+  - JD.Domain.Rules
+  namespace: JD.Domain.Rules
+  summary: Builds a compiled rule set that can be evaluated at runtime.
+  example: []
+  syntax:
+    content: public CompiledRuleSet<T> BuildCompiled()
+    return:
+      type: JD.Domain.Rules.CompiledRuleSet{{T}}
+      description: The compiled rule set.
+    content.vb: Public Function BuildCompiled() As CompiledRuleSet(Of T)
+  overload: JD.Domain.Rules.RuleBuilder`1.BuildCompiled*
+  nameWithType.vb: RuleBuilder(Of T).BuildCompiled()
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).BuildCompiled()
+references:
+- uid: JD.Domain.Rules
+  commentId: N:JD.Domain.Rules
+  href: JD.html
+  name: JD.Domain.Rules
+  nameWithType: JD.Domain.Rules
+  fullName: JD.Domain.Rules
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Rules
+    name: Rules
+    href: JD.Domain.Rules.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Rules
+    name: Rules
+    href: JD.Domain.Rules.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.Rules.RuleBuilder`1.WithMessage*
+  commentId: Overload:JD.Domain.Rules.RuleBuilder`1.WithMessage
+  href: JD.Domain.Rules.RuleBuilder-1.html#JD_Domain_Rules_RuleBuilder_1_WithMessage_System_String_
+  name: WithMessage
+  nameWithType: RuleBuilder<T>.WithMessage
+  fullName: JD.Domain.Rules.RuleBuilder<T>.WithMessage
+  nameWithType.vb: RuleBuilder(Of T).WithMessage
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).WithMessage
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: JD.Domain.Rules.RuleBuilder`1
+  commentId: T:JD.Domain.Rules.RuleBuilder`1
+  parent: JD.Domain.Rules
+  href: JD.Domain.Rules.RuleBuilder-1.html
+  name: RuleBuilder<T>
+  nameWithType: RuleBuilder<T>
+  fullName: JD.Domain.Rules.RuleBuilder<T>
+  nameWithType.vb: RuleBuilder(Of T)
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T)
+  name.vb: RuleBuilder(Of T)
+  spec.csharp:
+  - uid: JD.Domain.Rules.RuleBuilder`1
+    name: RuleBuilder
+    href: JD.Domain.Rules.RuleBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Rules.RuleBuilder`1
+    name: RuleBuilder
+    href: JD.Domain.Rules.RuleBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.Rules.RuleBuilder`1.WithSeverity*
+  commentId: Overload:JD.Domain.Rules.RuleBuilder`1.WithSeverity
+  href: JD.Domain.Rules.RuleBuilder-1.html#JD_Domain_Rules_RuleBuilder_1_WithSeverity_JD_Domain_Abstractions_RuleSeverity_
+  name: WithSeverity
+  nameWithType: RuleBuilder<T>.WithSeverity
+  fullName: JD.Domain.Rules.RuleBuilder<T>.WithSeverity
+  nameWithType.vb: RuleBuilder(Of T).WithSeverity
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).WithSeverity
+- uid: JD.Domain.Abstractions.RuleSeverity
+  commentId: T:JD.Domain.Abstractions.RuleSeverity
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.RuleSeverity.html
+  name: RuleSeverity
+  nameWithType: RuleSeverity
+  fullName: JD.Domain.Abstractions.RuleSeverity
+- uid: JD.Domain.Abstractions
+  commentId: N:JD.Domain.Abstractions
+  href: JD.html
+  name: JD.Domain.Abstractions
+  nameWithType: JD.Domain.Abstractions
+  fullName: JD.Domain.Abstractions
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+- uid: JD.Domain.Rules.RuleBuilder`1.WithTag*
+  commentId: Overload:JD.Domain.Rules.RuleBuilder`1.WithTag
+  href: JD.Domain.Rules.RuleBuilder-1.html#JD_Domain_Rules_RuleBuilder_1_WithTag_System_String_
+  name: WithTag
+  nameWithType: RuleBuilder<T>.WithTag
+  fullName: JD.Domain.Rules.RuleBuilder<T>.WithTag
+  nameWithType.vb: RuleBuilder(Of T).WithTag
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).WithTag
+- uid: JD.Domain.Rules.RuleBuilder`1.WithMetadata*
+  commentId: Overload:JD.Domain.Rules.RuleBuilder`1.WithMetadata
+  href: JD.Domain.Rules.RuleBuilder-1.html#JD_Domain_Rules_RuleBuilder_1_WithMetadata_System_String_System_Object_
+  name: WithMetadata
+  nameWithType: RuleBuilder<T>.WithMetadata
+  fullName: JD.Domain.Rules.RuleBuilder<T>.WithMetadata
+  nameWithType.vb: RuleBuilder(Of T).WithMetadata
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).WithMetadata
+- uid: JD.Domain.Rules.RuleBuilder`1.Invariant*
+  commentId: Overload:JD.Domain.Rules.RuleBuilder`1.Invariant
+  href: JD.Domain.Rules.RuleBuilder-1.html#JD_Domain_Rules_RuleBuilder_1_Invariant_System_String_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  name: Invariant
+  nameWithType: RuleBuilder<T>.Invariant
+  fullName: JD.Domain.Rules.RuleBuilder<T>.Invariant
+  nameWithType.vb: RuleBuilder(Of T).Invariant
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).Invariant
+- uid: System.Linq.Expressions.Expression{System.Func{{T},System.Boolean}}
+  commentId: T:System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}}
+  parent: System.Linq.Expressions
+  definition: System.Linq.Expressions.Expression`1
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<Func<T, bool>>
+  nameWithType: Expression<Func<T, bool>>
+  fullName: System.Linq.Expressions.Expression<System.Func<T, bool>>
+  nameWithType.vb: Expression(Of Func(Of T, Boolean))
+  fullName.vb: System.Linq.Expressions.Expression(Of System.Func(Of T, Boolean))
+  name.vb: Expression(Of Func(Of T, Boolean))
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: System.Linq.Expressions.Expression`1
+  commentId: T:System.Linq.Expressions.Expression`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  name: Expression<TDelegate>
+  nameWithType: Expression<TDelegate>
+  fullName: System.Linq.Expressions.Expression<TDelegate>
+  nameWithType.vb: Expression(Of TDelegate)
+  fullName.vb: System.Linq.Expressions.Expression(Of TDelegate)
+  name.vb: Expression(Of TDelegate)
+  spec.csharp:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - name: TDelegate
+  - name: '>'
+  spec.vb:
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TDelegate
+  - name: )
+- uid: System.Linq.Expressions
+  commentId: N:System.Linq.Expressions
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Linq.Expressions
+  nameWithType: System.Linq.Expressions
+  fullName: System.Linq.Expressions
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Linq
+    name: Linq
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq
+  - name: .
+  - uid: System.Linq.Expressions
+    name: Expressions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions
+- uid: JD.Domain.Rules.RuleBuilder`1.Validator*
+  commentId: Overload:JD.Domain.Rules.RuleBuilder`1.Validator
+  href: JD.Domain.Rules.RuleBuilder-1.html#JD_Domain_Rules_RuleBuilder_1_Validator_System_String_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___
+  name: Validator
+  nameWithType: RuleBuilder<T>.Validator
+  fullName: JD.Domain.Rules.RuleBuilder<T>.Validator
+  nameWithType.vb: RuleBuilder(Of T).Validator
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).Validator
+- uid: JD.Domain.Rules.RuleBuilder`1.Build*
+  commentId: Overload:JD.Domain.Rules.RuleBuilder`1.Build
+  href: JD.Domain.Rules.RuleBuilder-1.html#JD_Domain_Rules_RuleBuilder_1_Build
+  name: Build
+  nameWithType: RuleBuilder<T>.Build
+  fullName: JD.Domain.Rules.RuleBuilder<T>.Build
+  nameWithType.vb: RuleBuilder(Of T).Build
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).Build
+- uid: JD.Domain.Abstractions.RuleSetManifest
+  commentId: T:JD.Domain.Abstractions.RuleSetManifest
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.RuleSetManifest.html
+  name: RuleSetManifest
+  nameWithType: RuleSetManifest
+  fullName: JD.Domain.Abstractions.RuleSetManifest
+- uid: JD.Domain.Rules.RuleBuilder`1.BuildCompiled*
+  commentId: Overload:JD.Domain.Rules.RuleBuilder`1.BuildCompiled
+  href: JD.Domain.Rules.RuleBuilder-1.html#JD_Domain_Rules_RuleBuilder_1_BuildCompiled
+  name: BuildCompiled
+  nameWithType: RuleBuilder<T>.BuildCompiled
+  fullName: JD.Domain.Rules.RuleBuilder<T>.BuildCompiled
+  nameWithType.vb: RuleBuilder(Of T).BuildCompiled
+  fullName.vb: JD.Domain.Rules.RuleBuilder(Of T).BuildCompiled
+- uid: JD.Domain.Rules.CompiledRuleSet{{T}}
+  commentId: T:JD.Domain.Rules.CompiledRuleSet{`0}
+  parent: JD.Domain.Rules
+  definition: JD.Domain.Rules.CompiledRuleSet`1
+  href: JD.Domain.Rules.CompiledRuleSet-1.html
+  name: CompiledRuleSet<T>
+  nameWithType: CompiledRuleSet<T>
+  fullName: JD.Domain.Rules.CompiledRuleSet<T>
+  nameWithType.vb: CompiledRuleSet(Of T)
+  fullName.vb: JD.Domain.Rules.CompiledRuleSet(Of T)
+  name.vb: CompiledRuleSet(Of T)
+  spec.csharp:
+  - uid: JD.Domain.Rules.CompiledRuleSet`1
+    name: CompiledRuleSet
+    href: JD.Domain.Rules.CompiledRuleSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Rules.CompiledRuleSet`1
+    name: CompiledRuleSet
+    href: JD.Domain.Rules.CompiledRuleSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.Rules.CompiledRuleSet`1
+  commentId: T:JD.Domain.Rules.CompiledRuleSet`1
+  href: JD.Domain.Rules.CompiledRuleSet-1.html
+  name: CompiledRuleSet<T>
+  nameWithType: CompiledRuleSet<T>
+  fullName: JD.Domain.Rules.CompiledRuleSet<T>
+  nameWithType.vb: CompiledRuleSet(Of T)
+  fullName.vb: JD.Domain.Rules.CompiledRuleSet(Of T)
+  name.vb: CompiledRuleSet(Of T)
+  spec.csharp:
+  - uid: JD.Domain.Rules.CompiledRuleSet`1
+    name: CompiledRuleSet
+    href: JD.Domain.Rules.CompiledRuleSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Rules.CompiledRuleSet`1
+    name: CompiledRuleSet
+    href: JD.Domain.Rules.CompiledRuleSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

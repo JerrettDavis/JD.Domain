@@ -1,0 +1,90 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.T4.Shims
+  commentId: N:JD.Domain.T4.Shims
+  id: JD.Domain.T4.Shims
+  children:
+  - JD.Domain.T4.Shims.T4CodeBuilder
+  - JD.Domain.T4.Shims.T4EntityGenerator
+  - JD.Domain.T4.Shims.T4ManifestLoader
+  - JD.Domain.T4.Shims.T4OutputManager
+  - JD.Domain.T4.Shims.T4TypeMapper
+  langs:
+  - csharp
+  - vb
+  name: JD.Domain.T4.Shims
+  nameWithType: JD.Domain.T4.Shims
+  fullName: JD.Domain.T4.Shims
+  type: Namespace
+  assemblies:
+  - JD.Domain.T4.Shims
+references:
+- uid: JD.Domain.T4.Shims.T4CodeBuilder
+  commentId: T:JD.Domain.T4.Shims.T4CodeBuilder
+  parent: JD.Domain.T4.Shims
+  href: JD.Domain.T4.Shims.T4CodeBuilder.html
+  name: T4CodeBuilder
+  nameWithType: T4CodeBuilder
+  fullName: JD.Domain.T4.Shims.T4CodeBuilder
+- uid: JD.Domain.T4.Shims.T4EntityGenerator
+  commentId: T:JD.Domain.T4.Shims.T4EntityGenerator
+  href: JD.Domain.T4.Shims.T4EntityGenerator.html
+  name: T4EntityGenerator
+  nameWithType: T4EntityGenerator
+  fullName: JD.Domain.T4.Shims.T4EntityGenerator
+- uid: JD.Domain.T4.Shims.T4ManifestLoader
+  commentId: T:JD.Domain.T4.Shims.T4ManifestLoader
+  href: JD.Domain.T4.Shims.T4ManifestLoader.html
+  name: T4ManifestLoader
+  nameWithType: T4ManifestLoader
+  fullName: JD.Domain.T4.Shims.T4ManifestLoader
+- uid: JD.Domain.T4.Shims.T4OutputManager
+  commentId: T:JD.Domain.T4.Shims.T4OutputManager
+  href: JD.Domain.T4.Shims.T4OutputManager.html
+  name: T4OutputManager
+  nameWithType: T4OutputManager
+  fullName: JD.Domain.T4.Shims.T4OutputManager
+- uid: JD.Domain.T4.Shims.T4TypeMapper
+  commentId: T:JD.Domain.T4.Shims.T4TypeMapper
+  href: JD.Domain.T4.Shims.T4TypeMapper.html
+  name: T4TypeMapper
+  nameWithType: T4TypeMapper
+  fullName: JD.Domain.T4.Shims.T4TypeMapper
+- uid: JD.Domain.T4.Shims
+  commentId: N:JD.Domain.T4.Shims
+  href: JD.html
+  name: JD.Domain.T4.Shims
+  nameWithType: JD.Domain.T4.Shims
+  fullName: JD.Domain.T4.Shims
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.T4
+    name: T4
+    href: JD.Domain.T4.html
+  - name: .
+  - uid: JD.Domain.T4.Shims
+    name: Shims
+    href: JD.Domain.T4.Shims.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.T4
+    name: T4
+    href: JD.Domain.T4.html
+  - name: .
+  - uid: JD.Domain.T4.Shims
+    name: Shims
+    href: JD.Domain.T4.Shims.html

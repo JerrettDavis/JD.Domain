@@ -1,0 +1,700 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Abstractions.DomainContext
+  commentId: T:JD.Domain.Abstractions.DomainContext
+  id: DomainContext
+  parent: JD.Domain.Abstractions
+  children:
+  - JD.Domain.Abstractions.DomainContext.Actor
+  - JD.Domain.Abstractions.DomainContext.CorrelationId
+  - JD.Domain.Abstractions.DomainContext.Empty
+  - JD.Domain.Abstractions.DomainContext.Environment
+  - JD.Domain.Abstractions.DomainContext.Properties
+  - JD.Domain.Abstractions.DomainContext.Timestamp
+  - JD.Domain.Abstractions.DomainContext.WithCorrelationId(System.String)
+  langs:
+  - csharp
+  - vb
+  name: DomainContext
+  nameWithType: DomainContext
+  fullName: JD.Domain.Abstractions.DomainContext
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/DomainContext.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: DomainContext
+    path: src/JD.Domain.Abstractions/DomainContext.cs
+    startLine: 5
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Provides context information for rule evaluation and domain operations.
+  example: []
+  syntax:
+    content: public sealed class DomainContext
+    content.vb: Public NotInheritable Class DomainContext
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JD.Domain.Abstractions.DomainContext.CorrelationId
+  commentId: P:JD.Domain.Abstractions.DomainContext.CorrelationId
+  id: CorrelationId
+  parent: JD.Domain.Abstractions.DomainContext
+  langs:
+  - csharp
+  - vb
+  name: CorrelationId
+  nameWithType: DomainContext.CorrelationId
+  fullName: JD.Domain.Abstractions.DomainContext.CorrelationId
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/DomainContext.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: CorrelationId
+    path: src/JD.Domain.Abstractions/DomainContext.cs
+    startLine: 10
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets the correlation ID for tracking related operations.
+  example: []
+  syntax:
+    content: public string? CorrelationId { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property CorrelationId As String
+  overload: JD.Domain.Abstractions.DomainContext.CorrelationId*
+- uid: JD.Domain.Abstractions.DomainContext.Actor
+  commentId: P:JD.Domain.Abstractions.DomainContext.Actor
+  id: Actor
+  parent: JD.Domain.Abstractions.DomainContext
+  langs:
+  - csharp
+  - vb
+  name: Actor
+  nameWithType: DomainContext.Actor
+  fullName: JD.Domain.Abstractions.DomainContext.Actor
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/DomainContext.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Actor
+    path: src/JD.Domain.Abstractions/DomainContext.cs
+    startLine: 15
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets the user or actor identifier.
+  example: []
+  syntax:
+    content: public string? Actor { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Actor As String
+  overload: JD.Domain.Abstractions.DomainContext.Actor*
+- uid: JD.Domain.Abstractions.DomainContext.Timestamp
+  commentId: P:JD.Domain.Abstractions.DomainContext.Timestamp
+  id: Timestamp
+  parent: JD.Domain.Abstractions.DomainContext
+  langs:
+  - csharp
+  - vb
+  name: Timestamp
+  nameWithType: DomainContext.Timestamp
+  fullName: JD.Domain.Abstractions.DomainContext.Timestamp
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/DomainContext.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Timestamp
+    path: src/JD.Domain.Abstractions/DomainContext.cs
+    startLine: 20
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets the timestamp of the operation.
+  example: []
+  syntax:
+    content: public DateTimeOffset Timestamp { get; init; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: Public Property Timestamp As DateTimeOffset
+  overload: JD.Domain.Abstractions.DomainContext.Timestamp*
+- uid: JD.Domain.Abstractions.DomainContext.Environment
+  commentId: P:JD.Domain.Abstractions.DomainContext.Environment
+  id: Environment
+  parent: JD.Domain.Abstractions.DomainContext
+  langs:
+  - csharp
+  - vb
+  name: Environment
+  nameWithType: DomainContext.Environment
+  fullName: JD.Domain.Abstractions.DomainContext.Environment
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/DomainContext.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Environment
+    path: src/JD.Domain.Abstractions/DomainContext.cs
+    startLine: 25
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets the environment name (e.g., "Development", "Production").
+  example: []
+  syntax:
+    content: public string? Environment { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Environment As String
+  overload: JD.Domain.Abstractions.DomainContext.Environment*
+- uid: JD.Domain.Abstractions.DomainContext.Properties
+  commentId: P:JD.Domain.Abstractions.DomainContext.Properties
+  id: Properties
+  parent: JD.Domain.Abstractions.DomainContext
+  langs:
+  - csharp
+  - vb
+  name: Properties
+  nameWithType: DomainContext.Properties
+  fullName: JD.Domain.Abstractions.DomainContext.Properties
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/DomainContext.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Properties
+    path: src/JD.Domain.Abstractions/DomainContext.cs
+    startLine: 30
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets additional context properties.
+  example: []
+  syntax:
+    content: public IReadOnlyDictionary<string, object?> Properties { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+    content.vb: Public Property Properties As IReadOnlyDictionary(Of String, Object)
+  overload: JD.Domain.Abstractions.DomainContext.Properties*
+- uid: JD.Domain.Abstractions.DomainContext.Empty
+  commentId: M:JD.Domain.Abstractions.DomainContext.Empty
+  id: Empty
+  parent: JD.Domain.Abstractions.DomainContext
+  langs:
+  - csharp
+  - vb
+  name: Empty()
+  nameWithType: DomainContext.Empty()
+  fullName: JD.Domain.Abstractions.DomainContext.Empty()
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/DomainContext.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Empty
+    path: src/JD.Domain.Abstractions/DomainContext.cs
+    startLine: 37
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Creates an empty domain context.
+  example: []
+  syntax:
+    content: public static DomainContext Empty()
+    return:
+      type: JD.Domain.Abstractions.DomainContext
+      description: A new empty domain context.
+    content.vb: Public Shared Function Empty() As DomainContext
+  overload: JD.Domain.Abstractions.DomainContext.Empty*
+- uid: JD.Domain.Abstractions.DomainContext.WithCorrelationId(System.String)
+  commentId: M:JD.Domain.Abstractions.DomainContext.WithCorrelationId(System.String)
+  id: WithCorrelationId(System.String)
+  parent: JD.Domain.Abstractions.DomainContext
+  langs:
+  - csharp
+  - vb
+  name: WithCorrelationId(string)
+  nameWithType: DomainContext.WithCorrelationId(string)
+  fullName: JD.Domain.Abstractions.DomainContext.WithCorrelationId(string)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/DomainContext.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithCorrelationId
+    path: src/JD.Domain.Abstractions/DomainContext.cs
+    startLine: 44
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Creates a domain context with the specified correlation ID.
+  example: []
+  syntax:
+    content: public static DomainContext WithCorrelationId(string correlationId)
+    parameters:
+    - id: correlationId
+      type: System.String
+      description: The correlation ID.
+    return:
+      type: JD.Domain.Abstractions.DomainContext
+      description: A new domain context.
+    content.vb: Public Shared Function WithCorrelationId(correlationId As String) As DomainContext
+  overload: JD.Domain.Abstractions.DomainContext.WithCorrelationId*
+  nameWithType.vb: DomainContext.WithCorrelationId(String)
+  fullName.vb: JD.Domain.Abstractions.DomainContext.WithCorrelationId(String)
+  name.vb: WithCorrelationId(String)
+references:
+- uid: JD.Domain.Abstractions
+  commentId: N:JD.Domain.Abstractions
+  href: JD.html
+  name: JD.Domain.Abstractions
+  nameWithType: JD.Domain.Abstractions
+  fullName: JD.Domain.Abstractions
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.Abstractions.DomainContext.CorrelationId*
+  commentId: Overload:JD.Domain.Abstractions.DomainContext.CorrelationId
+  href: JD.Domain.Abstractions.DomainContext.html#JD_Domain_Abstractions_DomainContext_CorrelationId
+  name: CorrelationId
+  nameWithType: DomainContext.CorrelationId
+  fullName: JD.Domain.Abstractions.DomainContext.CorrelationId
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: JD.Domain.Abstractions.DomainContext.Actor*
+  commentId: Overload:JD.Domain.Abstractions.DomainContext.Actor
+  href: JD.Domain.Abstractions.DomainContext.html#JD_Domain_Abstractions_DomainContext_Actor
+  name: Actor
+  nameWithType: DomainContext.Actor
+  fullName: JD.Domain.Abstractions.DomainContext.Actor
+- uid: JD.Domain.Abstractions.DomainContext.Timestamp*
+  commentId: Overload:JD.Domain.Abstractions.DomainContext.Timestamp
+  href: JD.Domain.Abstractions.DomainContext.html#JD_Domain_Abstractions_DomainContext_Timestamp
+  name: Timestamp
+  nameWithType: DomainContext.Timestamp
+  fullName: JD.Domain.Abstractions.DomainContext.Timestamp
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: JD.Domain.Abstractions.DomainContext.Environment*
+  commentId: Overload:JD.Domain.Abstractions.DomainContext.Environment
+  href: JD.Domain.Abstractions.DomainContext.html#JD_Domain_Abstractions_DomainContext_Environment
+  name: Environment
+  nameWithType: DomainContext.Environment
+  fullName: JD.Domain.Abstractions.DomainContext.Environment
+- uid: JD.Domain.Abstractions.DomainContext.Properties*
+  commentId: Overload:JD.Domain.Abstractions.DomainContext.Properties
+  href: JD.Domain.Abstractions.DomainContext.html#JD_Domain_Abstractions_DomainContext_Properties
+  name: Properties
+  nameWithType: DomainContext.Properties
+  fullName: JD.Domain.Abstractions.DomainContext.Properties
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, object>
+  nameWithType: IReadOnlyDictionary<string, object>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, object>
+  nameWithType.vb: IReadOnlyDictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Object)
+  name.vb: IReadOnlyDictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: JD.Domain.Abstractions.DomainContext.Empty*
+  commentId: Overload:JD.Domain.Abstractions.DomainContext.Empty
+  href: JD.Domain.Abstractions.DomainContext.html#JD_Domain_Abstractions_DomainContext_Empty
+  name: Empty
+  nameWithType: DomainContext.Empty
+  fullName: JD.Domain.Abstractions.DomainContext.Empty
+- uid: JD.Domain.Abstractions.DomainContext
+  commentId: T:JD.Domain.Abstractions.DomainContext
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.DomainContext.html
+  name: DomainContext
+  nameWithType: DomainContext
+  fullName: JD.Domain.Abstractions.DomainContext
+- uid: JD.Domain.Abstractions.DomainContext.WithCorrelationId*
+  commentId: Overload:JD.Domain.Abstractions.DomainContext.WithCorrelationId
+  href: JD.Domain.Abstractions.DomainContext.html#JD_Domain_Abstractions_DomainContext_WithCorrelationId_System_String_
+  name: WithCorrelationId
+  nameWithType: DomainContext.WithCorrelationId
+  fullName: JD.Domain.Abstractions.DomainContext.WithCorrelationId

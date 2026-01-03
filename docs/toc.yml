@@ -1,0 +1,46 @@
+- name: Overview
+  href: index.md
+- name: Getting Started
+  href: getting-started/
+  items:
+    - name: Overview
+      href: getting-started/index.md
+- name: Tutorials
+  href: tutorials/
+  items:
+    - name: Overview
+      href: tutorials/index.md
+- name: How-To Guides
+  href: how-to/
+  items:
+    - name: Overview
+      href: how-to/index.md
+- name: Concepts
+  href: concepts/
+  items:
+    - name: Overview
+      href: concepts/index.md
+- name: Reference
+  href: reference/
+  items:
+    - name: Overview
+      href: reference/index.md
+- name: Migration Guides
+  href: migration/
+  items:
+    - name: Overview
+      href: migration/index.md
+- name: Advanced Topics
+  href: advanced/
+  items:
+    - name: Overview
+      href: advanced/index.md
+- name: Contributing
+  href: contributing/
+  items:
+    - name: Overview
+      href: contributing/index.md
+- name: Changelog
+  href: changelog/index.md
+- name: Roadmap
+  href: changelog/roadmap.md

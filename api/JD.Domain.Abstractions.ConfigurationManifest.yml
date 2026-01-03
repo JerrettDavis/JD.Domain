@@ -1,0 +1,928 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Abstractions.ConfigurationManifest
+  commentId: T:JD.Domain.Abstractions.ConfigurationManifest
+  id: ConfigurationManifest
+  parent: JD.Domain.Abstractions
+  children:
+  - JD.Domain.Abstractions.ConfigurationManifest.EntityName
+  - JD.Domain.Abstractions.ConfigurationManifest.EntityTypeName
+  - JD.Domain.Abstractions.ConfigurationManifest.Indexes
+  - JD.Domain.Abstractions.ConfigurationManifest.KeyProperties
+  - JD.Domain.Abstractions.ConfigurationManifest.Metadata
+  - JD.Domain.Abstractions.ConfigurationManifest.PropertyConfigurations
+  - JD.Domain.Abstractions.ConfigurationManifest.Relationships
+  - JD.Domain.Abstractions.ConfigurationManifest.SchemaName
+  - JD.Domain.Abstractions.ConfigurationManifest.TableName
+  langs:
+  - csharp
+  - vb
+  name: ConfigurationManifest
+  nameWithType: ConfigurationManifest
+  fullName: JD.Domain.Abstractions.ConfigurationManifest
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: ConfigurationManifest
+    path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+    startLine: 5
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Represents metadata about entity configuration (EF Core or other persistence mappings).
+  example: []
+  syntax:
+    content: public sealed class ConfigurationManifest
+    content.vb: Public NotInheritable Class ConfigurationManifest
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JD.Domain.Abstractions.ConfigurationManifest.EntityName
+  commentId: P:JD.Domain.Abstractions.ConfigurationManifest.EntityName
+  id: EntityName
+  parent: JD.Domain.Abstractions.ConfigurationManifest
+  langs:
+  - csharp
+  - vb
+  name: EntityName
+  nameWithType: ConfigurationManifest.EntityName
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.EntityName
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: EntityName
+    path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+    startLine: 10
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets the name of the entity this configuration applies to.
+  example: []
+  syntax:
+    content: public required string EntityName { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property EntityName As String
+  overload: JD.Domain.Abstractions.ConfigurationManifest.EntityName*
+- uid: JD.Domain.Abstractions.ConfigurationManifest.EntityTypeName
+  commentId: P:JD.Domain.Abstractions.ConfigurationManifest.EntityTypeName
+  id: EntityTypeName
+  parent: JD.Domain.Abstractions.ConfigurationManifest
+  langs:
+  - csharp
+  - vb
+  name: EntityTypeName
+  nameWithType: ConfigurationManifest.EntityTypeName
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.EntityTypeName
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: EntityTypeName
+    path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+    startLine: 15
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets the type name of the entity this configuration applies to.
+  example: []
+  syntax:
+    content: public required string EntityTypeName { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property EntityTypeName As String
+  overload: JD.Domain.Abstractions.ConfigurationManifest.EntityTypeName*
+- uid: JD.Domain.Abstractions.ConfigurationManifest.TableName
+  commentId: P:JD.Domain.Abstractions.ConfigurationManifest.TableName
+  id: TableName
+  parent: JD.Domain.Abstractions.ConfigurationManifest
+  langs:
+  - csharp
+  - vb
+  name: TableName
+  nameWithType: ConfigurationManifest.TableName
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.TableName
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: TableName
+    path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+    startLine: 20
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets the table name, if applicable.
+  example: []
+  syntax:
+    content: public string? TableName { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TableName As String
+  overload: JD.Domain.Abstractions.ConfigurationManifest.TableName*
+- uid: JD.Domain.Abstractions.ConfigurationManifest.SchemaName
+  commentId: P:JD.Domain.Abstractions.ConfigurationManifest.SchemaName
+  id: SchemaName
+  parent: JD.Domain.Abstractions.ConfigurationManifest
+  langs:
+  - csharp
+  - vb
+  name: SchemaName
+  nameWithType: ConfigurationManifest.SchemaName
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.SchemaName
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: SchemaName
+    path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+    startLine: 25
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets the schema name, if applicable.
+  example: []
+  syntax:
+    content: public string? SchemaName { get; init; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SchemaName As String
+  overload: JD.Domain.Abstractions.ConfigurationManifest.SchemaName*
+- uid: JD.Domain.Abstractions.ConfigurationManifest.KeyProperties
+  commentId: P:JD.Domain.Abstractions.ConfigurationManifest.KeyProperties
+  id: KeyProperties
+  parent: JD.Domain.Abstractions.ConfigurationManifest
+  langs:
+  - csharp
+  - vb
+  name: KeyProperties
+  nameWithType: ConfigurationManifest.KeyProperties
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.KeyProperties
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: KeyProperties
+    path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+    startLine: 30
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets the key configuration.
+  example: []
+  syntax:
+    content: public IReadOnlyList<string> KeyProperties { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: Public Property KeyProperties As IReadOnlyList(Of String)
+  overload: JD.Domain.Abstractions.ConfigurationManifest.KeyProperties*
+- uid: JD.Domain.Abstractions.ConfigurationManifest.PropertyConfigurations
+  commentId: P:JD.Domain.Abstractions.ConfigurationManifest.PropertyConfigurations
+  id: PropertyConfigurations
+  parent: JD.Domain.Abstractions.ConfigurationManifest
+  langs:
+  - csharp
+  - vb
+  name: PropertyConfigurations
+  nameWithType: ConfigurationManifest.PropertyConfigurations
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.PropertyConfigurations
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: PropertyConfigurations
+    path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+    startLine: 36
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets the property configurations.
+  example: []
+  syntax:
+    content: public IReadOnlyDictionary<string, PropertyConfigurationManifest> PropertyConfigurations { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,JD.Domain.Abstractions.PropertyConfigurationManifest}
+    content.vb: Public Property PropertyConfigurations As IReadOnlyDictionary(Of String, PropertyConfigurationManifest)
+  overload: JD.Domain.Abstractions.ConfigurationManifest.PropertyConfigurations*
+- uid: JD.Domain.Abstractions.ConfigurationManifest.Indexes
+  commentId: P:JD.Domain.Abstractions.ConfigurationManifest.Indexes
+  id: Indexes
+  parent: JD.Domain.Abstractions.ConfigurationManifest
+  langs:
+  - csharp
+  - vb
+  name: Indexes
+  nameWithType: ConfigurationManifest.Indexes
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.Indexes
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Indexes
+    path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+    startLine: 42
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets the index configurations.
+  example: []
+  syntax:
+    content: public IReadOnlyList<IndexManifest> Indexes { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.IndexManifest}
+    content.vb: Public Property Indexes As IReadOnlyList(Of IndexManifest)
+  overload: JD.Domain.Abstractions.ConfigurationManifest.Indexes*
+- uid: JD.Domain.Abstractions.ConfigurationManifest.Relationships
+  commentId: P:JD.Domain.Abstractions.ConfigurationManifest.Relationships
+  id: Relationships
+  parent: JD.Domain.Abstractions.ConfigurationManifest
+  langs:
+  - csharp
+  - vb
+  name: Relationships
+  nameWithType: ConfigurationManifest.Relationships
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.Relationships
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Relationships
+    path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+    startLine: 48
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets the relationship configurations.
+  example: []
+  syntax:
+    content: public IReadOnlyList<RelationshipManifest> Relationships { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.RelationshipManifest}
+    content.vb: Public Property Relationships As IReadOnlyList(Of RelationshipManifest)
+  overload: JD.Domain.Abstractions.ConfigurationManifest.Relationships*
+- uid: JD.Domain.Abstractions.ConfigurationManifest.Metadata
+  commentId: P:JD.Domain.Abstractions.ConfigurationManifest.Metadata
+  id: Metadata
+  parent: JD.Domain.Abstractions.ConfigurationManifest
+  langs:
+  - csharp
+  - vb
+  name: Metadata
+  nameWithType: ConfigurationManifest.Metadata
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.Metadata
+  type: Property
+  source:
+    remote:
+      path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Metadata
+    path: src/JD.Domain.Abstractions/ConfigurationManifest.cs
+    startLine: 54
+  assemblies:
+  - JD.Domain.Abstractions
+  namespace: JD.Domain.Abstractions
+  summary: Gets additional configuration metadata.
+  example: []
+  syntax:
+    content: public IReadOnlyDictionary<string, object?> Metadata { get; init; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+    content.vb: Public Property Metadata As IReadOnlyDictionary(Of String, Object)
+  overload: JD.Domain.Abstractions.ConfigurationManifest.Metadata*
+references:
+- uid: JD.Domain.Abstractions
+  commentId: N:JD.Domain.Abstractions
+  href: JD.html
+  name: JD.Domain.Abstractions
+  nameWithType: JD.Domain.Abstractions
+  fullName: JD.Domain.Abstractions
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.Abstractions.ConfigurationManifest.EntityName*
+  commentId: Overload:JD.Domain.Abstractions.ConfigurationManifest.EntityName
+  href: JD.Domain.Abstractions.ConfigurationManifest.html#JD_Domain_Abstractions_ConfigurationManifest_EntityName
+  name: EntityName
+  nameWithType: ConfigurationManifest.EntityName
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.EntityName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: JD.Domain.Abstractions.ConfigurationManifest.EntityTypeName*
+  commentId: Overload:JD.Domain.Abstractions.ConfigurationManifest.EntityTypeName
+  href: JD.Domain.Abstractions.ConfigurationManifest.html#JD_Domain_Abstractions_ConfigurationManifest_EntityTypeName
+  name: EntityTypeName
+  nameWithType: ConfigurationManifest.EntityTypeName
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.EntityTypeName
+- uid: JD.Domain.Abstractions.ConfigurationManifest.TableName*
+  commentId: Overload:JD.Domain.Abstractions.ConfigurationManifest.TableName
+  href: JD.Domain.Abstractions.ConfigurationManifest.html#JD_Domain_Abstractions_ConfigurationManifest_TableName
+  name: TableName
+  nameWithType: ConfigurationManifest.TableName
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.TableName
+- uid: JD.Domain.Abstractions.ConfigurationManifest.SchemaName*
+  commentId: Overload:JD.Domain.Abstractions.ConfigurationManifest.SchemaName
+  href: JD.Domain.Abstractions.ConfigurationManifest.html#JD_Domain_Abstractions_ConfigurationManifest_SchemaName
+  name: SchemaName
+  nameWithType: ConfigurationManifest.SchemaName
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.SchemaName
+- uid: JD.Domain.Abstractions.ConfigurationManifest.KeyProperties*
+  commentId: Overload:JD.Domain.Abstractions.ConfigurationManifest.KeyProperties
+  href: JD.Domain.Abstractions.ConfigurationManifest.html#JD_Domain_Abstractions_ConfigurationManifest_KeyProperties
+  name: KeyProperties
+  nameWithType: ConfigurationManifest.KeyProperties
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.KeyProperties
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: JD.Domain.Abstractions.ConfigurationManifest.PropertyConfigurations*
+  commentId: Overload:JD.Domain.Abstractions.ConfigurationManifest.PropertyConfigurations
+  href: JD.Domain.Abstractions.ConfigurationManifest.html#JD_Domain_Abstractions_ConfigurationManifest_PropertyConfigurations
+  name: PropertyConfigurations
+  nameWithType: ConfigurationManifest.PropertyConfigurations
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.PropertyConfigurations
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,JD.Domain.Abstractions.PropertyConfigurationManifest}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,JD.Domain.Abstractions.PropertyConfigurationManifest}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, PropertyConfigurationManifest>
+  nameWithType: IReadOnlyDictionary<string, PropertyConfigurationManifest>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, JD.Domain.Abstractions.PropertyConfigurationManifest>
+  nameWithType.vb: IReadOnlyDictionary(Of String, PropertyConfigurationManifest)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, JD.Domain.Abstractions.PropertyConfigurationManifest)
+  name.vb: IReadOnlyDictionary(Of String, PropertyConfigurationManifest)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.PropertyConfigurationManifest
+    name: PropertyConfigurationManifest
+    href: JD.Domain.Abstractions.PropertyConfigurationManifest.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.PropertyConfigurationManifest
+    name: PropertyConfigurationManifest
+    href: JD.Domain.Abstractions.PropertyConfigurationManifest.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: JD.Domain.Abstractions.ConfigurationManifest.Indexes*
+  commentId: Overload:JD.Domain.Abstractions.ConfigurationManifest.Indexes
+  href: JD.Domain.Abstractions.ConfigurationManifest.html#JD_Domain_Abstractions_ConfigurationManifest_Indexes
+  name: Indexes
+  nameWithType: ConfigurationManifest.Indexes
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.Indexes
+- uid: System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.IndexManifest}
+  commentId: T:System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.IndexManifest}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<IndexManifest>
+  nameWithType: IReadOnlyList<IndexManifest>
+  fullName: System.Collections.Generic.IReadOnlyList<JD.Domain.Abstractions.IndexManifest>
+  nameWithType.vb: IReadOnlyList(Of IndexManifest)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of JD.Domain.Abstractions.IndexManifest)
+  name.vb: IReadOnlyList(Of IndexManifest)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: JD.Domain.Abstractions.IndexManifest
+    name: IndexManifest
+    href: JD.Domain.Abstractions.IndexManifest.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Abstractions.IndexManifest
+    name: IndexManifest
+    href: JD.Domain.Abstractions.IndexManifest.html
+  - name: )
+- uid: JD.Domain.Abstractions.ConfigurationManifest.Relationships*
+  commentId: Overload:JD.Domain.Abstractions.ConfigurationManifest.Relationships
+  href: JD.Domain.Abstractions.ConfigurationManifest.html#JD_Domain_Abstractions_ConfigurationManifest_Relationships
+  name: Relationships
+  nameWithType: ConfigurationManifest.Relationships
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.Relationships
+- uid: System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.RelationshipManifest}
+  commentId: T:System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.RelationshipManifest}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<RelationshipManifest>
+  nameWithType: IReadOnlyList<RelationshipManifest>
+  fullName: System.Collections.Generic.IReadOnlyList<JD.Domain.Abstractions.RelationshipManifest>
+  nameWithType.vb: IReadOnlyList(Of RelationshipManifest)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of JD.Domain.Abstractions.RelationshipManifest)
+  name.vb: IReadOnlyList(Of RelationshipManifest)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: JD.Domain.Abstractions.RelationshipManifest
+    name: RelationshipManifest
+    href: JD.Domain.Abstractions.RelationshipManifest.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Abstractions.RelationshipManifest
+    name: RelationshipManifest
+    href: JD.Domain.Abstractions.RelationshipManifest.html
+  - name: )
+- uid: JD.Domain.Abstractions.ConfigurationManifest.Metadata*
+  commentId: Overload:JD.Domain.Abstractions.ConfigurationManifest.Metadata
+  href: JD.Domain.Abstractions.ConfigurationManifest.html#JD_Domain_Abstractions_ConfigurationManifest_Metadata
+  name: Metadata
+  nameWithType: ConfigurationManifest.Metadata
+  fullName: JD.Domain.Abstractions.ConfigurationManifest.Metadata
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, object>
+  nameWithType: IReadOnlyDictionary<string, object>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, object>
+  nameWithType.vb: IReadOnlyDictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Object)
+  name.vb: IReadOnlyDictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )

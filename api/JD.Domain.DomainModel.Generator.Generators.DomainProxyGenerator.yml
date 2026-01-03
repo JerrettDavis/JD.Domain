@@ -1,0 +1,591 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator
+  commentId: T:JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator
+  id: DomainProxyGenerator
+  parent: JD.Domain.DomainModel.Generator.Generators
+  children:
+  - JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext,JD.Domain.Abstractions.EntityManifest,System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.RuleSetManifest},JD.Domain.DomainModel.Generator.Options.DomainModelOptions)
+  langs:
+  - csharp
+  - vb
+  name: DomainProxyGenerator
+  nameWithType: DomainProxyGenerator
+  fullName: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.DomainModel.Generator/Generators/DomainProxyGenerator.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: DomainProxyGenerator
+    path: src/JD.Domain.DomainModel.Generator/Generators/DomainProxyGenerator.cs
+    startLine: 14
+  assemblies:
+  - JD.Domain.DomainModel.Generator
+  namespace: JD.Domain.DomainModel.Generator.Generators
+  summary: >-
+    Generates domain proxy wrapper types that wrap EF entities
+
+    and enforce rules in property accessors.
+  example: []
+  syntax:
+    content: public sealed class DomainProxyGenerator
+    content.vb: Public NotInheritable Class DomainProxyGenerator
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext,JD.Domain.Abstractions.EntityManifest,System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.RuleSetManifest},JD.Domain.DomainModel.Generator.Options.DomainModelOptions)
+  commentId: M:JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext,JD.Domain.Abstractions.EntityManifest,System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.RuleSetManifest},JD.Domain.DomainModel.Generator.Options.DomainModelOptions)
+  id: Generate(JD.Domain.Generators.Core.GeneratorContext,JD.Domain.Abstractions.EntityManifest,System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.RuleSetManifest},JD.Domain.DomainModel.Generator.Options.DomainModelOptions)
+  parent: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator
+  langs:
+  - csharp
+  - vb
+  name: Generate(GeneratorContext, EntityManifest, IReadOnlyList<RuleSetManifest>, DomainModelOptions)
+  nameWithType: DomainProxyGenerator.Generate(GeneratorContext, EntityManifest, IReadOnlyList<RuleSetManifest>, DomainModelOptions)
+  fullName: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext, JD.Domain.Abstractions.EntityManifest, System.Collections.Generic.IReadOnlyList<JD.Domain.Abstractions.RuleSetManifest>, JD.Domain.DomainModel.Generator.Options.DomainModelOptions)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.DomainModel.Generator/Generators/DomainProxyGenerator.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Generate
+    path: src/JD.Domain.DomainModel.Generator/Generators/DomainProxyGenerator.cs
+    startLine: 19
+  assemblies:
+  - JD.Domain.DomainModel.Generator
+  namespace: JD.Domain.DomainModel.Generator.Generators
+  summary: Generates a domain proxy type for the given entity.
+  example: []
+  syntax:
+    content: public GeneratedFile Generate(GeneratorContext context, EntityManifest entity, IReadOnlyList<RuleSetManifest> ruleSets, DomainModelOptions options)
+    parameters:
+    - id: context
+      type: JD.Domain.Generators.Core.GeneratorContext
+    - id: entity
+      type: JD.Domain.Abstractions.EntityManifest
+    - id: ruleSets
+      type: System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.RuleSetManifest}
+    - id: options
+      type: JD.Domain.DomainModel.Generator.Options.DomainModelOptions
+    return:
+      type: JD.Domain.Generators.Core.GeneratedFile
+    content.vb: Public Function Generate(context As GeneratorContext, entity As EntityManifest, ruleSets As IReadOnlyList(Of RuleSetManifest), options As DomainModelOptions) As GeneratedFile
+  overload: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator.Generate*
+  nameWithType.vb: DomainProxyGenerator.Generate(GeneratorContext, EntityManifest, IReadOnlyList(Of RuleSetManifest), DomainModelOptions)
+  fullName.vb: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator.Generate(JD.Domain.Generators.Core.GeneratorContext, JD.Domain.Abstractions.EntityManifest, System.Collections.Generic.IReadOnlyList(Of JD.Domain.Abstractions.RuleSetManifest), JD.Domain.DomainModel.Generator.Options.DomainModelOptions)
+  name.vb: Generate(GeneratorContext, EntityManifest, IReadOnlyList(Of RuleSetManifest), DomainModelOptions)
+references:
+- uid: JD.Domain.DomainModel.Generator.Generators
+  commentId: N:JD.Domain.DomainModel.Generator.Generators
+  href: JD.html
+  name: JD.Domain.DomainModel.Generator.Generators
+  nameWithType: JD.Domain.DomainModel.Generator.Generators
+  fullName: JD.Domain.DomainModel.Generator.Generators
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.DomainModel
+    name: DomainModel
+    href: JD.Domain.DomainModel.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator
+    name: Generator
+    href: JD.Domain.DomainModel.Generator.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator.Generators
+    name: Generators
+    href: JD.Domain.DomainModel.Generator.Generators.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.DomainModel
+    name: DomainModel
+    href: JD.Domain.DomainModel.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator
+    name: Generator
+    href: JD.Domain.DomainModel.Generator.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator.Generators
+    name: Generators
+    href: JD.Domain.DomainModel.Generator.Generators.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator.Generate*
+  commentId: Overload:JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator.Generate
+  href: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator.html#JD_Domain_DomainModel_Generator_Generators_DomainProxyGenerator_Generate_JD_Domain_Generators_Core_GeneratorContext_JD_Domain_Abstractions_EntityManifest_System_Collections_Generic_IReadOnlyList_JD_Domain_Abstractions_RuleSetManifest__JD_Domain_DomainModel_Generator_Options_DomainModelOptions_
+  name: Generate
+  nameWithType: DomainProxyGenerator.Generate
+  fullName: JD.Domain.DomainModel.Generator.Generators.DomainProxyGenerator.Generate
+- uid: JD.Domain.Generators.Core.GeneratorContext
+  commentId: T:JD.Domain.Generators.Core.GeneratorContext
+  parent: JD.Domain.Generators.Core
+  href: JD.Domain.Generators.Core.GeneratorContext.html
+  name: GeneratorContext
+  nameWithType: GeneratorContext
+  fullName: JD.Domain.Generators.Core.GeneratorContext
+- uid: JD.Domain.Abstractions.EntityManifest
+  commentId: T:JD.Domain.Abstractions.EntityManifest
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.EntityManifest.html
+  name: EntityManifest
+  nameWithType: EntityManifest
+  fullName: JD.Domain.Abstractions.EntityManifest
+- uid: System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.RuleSetManifest}
+  commentId: T:System.Collections.Generic.IReadOnlyList{JD.Domain.Abstractions.RuleSetManifest}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<RuleSetManifest>
+  nameWithType: IReadOnlyList<RuleSetManifest>
+  fullName: System.Collections.Generic.IReadOnlyList<JD.Domain.Abstractions.RuleSetManifest>
+  nameWithType.vb: IReadOnlyList(Of RuleSetManifest)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of JD.Domain.Abstractions.RuleSetManifest)
+  name.vb: IReadOnlyList(Of RuleSetManifest)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: JD.Domain.Abstractions.RuleSetManifest
+    name: RuleSetManifest
+    href: JD.Domain.Abstractions.RuleSetManifest.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleSetManifest
+    name: RuleSetManifest
+    href: JD.Domain.Abstractions.RuleSetManifest.html
+  - name: )
+- uid: JD.Domain.DomainModel.Generator.Options.DomainModelOptions
+  commentId: T:JD.Domain.DomainModel.Generator.Options.DomainModelOptions
+  parent: JD.Domain.DomainModel.Generator.Options
+  href: JD.Domain.DomainModel.Generator.Options.DomainModelOptions.html
+  name: DomainModelOptions
+  nameWithType: DomainModelOptions
+  fullName: JD.Domain.DomainModel.Generator.Options.DomainModelOptions
+- uid: JD.Domain.Generators.Core.GeneratedFile
+  commentId: T:JD.Domain.Generators.Core.GeneratedFile
+  parent: JD.Domain.Generators.Core
+  href: JD.Domain.Generators.Core.GeneratedFile.html
+  name: GeneratedFile
+  nameWithType: GeneratedFile
+  fullName: JD.Domain.Generators.Core.GeneratedFile
+- uid: JD.Domain.Generators.Core
+  commentId: N:JD.Domain.Generators.Core
+  href: JD.html
+  name: JD.Domain.Generators.Core
+  nameWithType: JD.Domain.Generators.Core
+  fullName: JD.Domain.Generators.Core
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Generators
+    name: Generators
+    href: JD.Domain.Generators.html
+  - name: .
+  - uid: JD.Domain.Generators.Core
+    name: Core
+    href: JD.Domain.Generators.Core.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Generators
+    name: Generators
+    href: JD.Domain.Generators.html
+  - name: .
+  - uid: JD.Domain.Generators.Core
+    name: Core
+    href: JD.Domain.Generators.Core.html
+- uid: JD.Domain.Abstractions
+  commentId: N:JD.Domain.Abstractions
+  href: JD.html
+  name: JD.Domain.Abstractions
+  nameWithType: JD.Domain.Abstractions
+  fullName: JD.Domain.Abstractions
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: JD.Domain.DomainModel.Generator.Options
+  commentId: N:JD.Domain.DomainModel.Generator.Options
+  href: JD.html
+  name: JD.Domain.DomainModel.Generator.Options
+  nameWithType: JD.Domain.DomainModel.Generator.Options
+  fullName: JD.Domain.DomainModel.Generator.Options
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.DomainModel
+    name: DomainModel
+    href: JD.Domain.DomainModel.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator
+    name: Generator
+    href: JD.Domain.DomainModel.Generator.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator.Options
+    name: Options
+    href: JD.Domain.DomainModel.Generator.Options.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.DomainModel
+    name: DomainModel
+    href: JD.Domain.DomainModel.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator
+    name: Generator
+    href: JD.Domain.DomainModel.Generator.html
+  - name: .
+  - uid: JD.Domain.DomainModel.Generator.Options
+    name: Options
+    href: JD.Domain.DomainModel.Generator.Options.html

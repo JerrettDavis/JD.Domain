@@ -1,0 +1,1110 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Runtime.DomainEngine
+  commentId: T:JD.Domain.Runtime.DomainEngine
+  id: DomainEngine
+  parent: JD.Domain.Runtime
+  children:
+  - JD.Domain.Runtime.DomainEngine.#ctor(JD.Domain.Abstractions.DomainManifest)
+  - JD.Domain.Runtime.DomainEngine.EvaluateAsync``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+  - JD.Domain.Runtime.DomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions)
+  - JD.Domain.Runtime.DomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleSetManifest)
+  - JD.Domain.Runtime.DomainEngine.Evaluate``1(``0,JD.Domain.Rules.CompiledRuleSet{``0},JD.Domain.Abstractions.RuleEvaluationOptions)
+  langs:
+  - csharp
+  - vb
+  name: DomainEngine
+  nameWithType: DomainEngine
+  fullName: JD.Domain.Runtime.DomainEngine
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Runtime/DomainEngine.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: DomainEngine
+    path: src/JD.Domain.Runtime/DomainEngine.cs
+    startLine: 8
+  assemblies:
+  - JD.Domain.Runtime
+  namespace: JD.Domain.Runtime
+  summary: Default implementation of the domain engine for rule evaluation.
+  example: []
+  syntax:
+    content: 'public sealed class DomainEngine : IDomainEngine'
+    content.vb: Public NotInheritable Class DomainEngine Implements IDomainEngine
+  inheritance:
+  - System.Object
+  implements:
+  - JD.Domain.Abstractions.IDomainEngine
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JD.Domain.Runtime.DomainEngine.#ctor(JD.Domain.Abstractions.DomainManifest)
+  commentId: M:JD.Domain.Runtime.DomainEngine.#ctor(JD.Domain.Abstractions.DomainManifest)
+  id: '#ctor(JD.Domain.Abstractions.DomainManifest)'
+  parent: JD.Domain.Runtime.DomainEngine
+  langs:
+  - csharp
+  - vb
+  name: DomainEngine(DomainManifest)
+  nameWithType: DomainEngine.DomainEngine(DomainManifest)
+  fullName: JD.Domain.Runtime.DomainEngine.DomainEngine(JD.Domain.Abstractions.DomainManifest)
+  type: Constructor
+  source:
+    remote:
+      path: src/JD.Domain.Runtime/DomainEngine.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: .ctor
+    path: src/JD.Domain.Runtime/DomainEngine.cs
+    startLine: 16
+  assemblies:
+  - JD.Domain.Runtime
+  namespace: JD.Domain.Runtime
+  summary: Initializes a new instance of the <xref href="JD.Domain.Runtime.DomainEngine" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public DomainEngine(DomainManifest manifest)
+    parameters:
+    - id: manifest
+      type: JD.Domain.Abstractions.DomainManifest
+      description: The domain manifest containing rules to evaluate.
+    content.vb: Public Sub New(manifest As DomainManifest)
+  overload: JD.Domain.Runtime.DomainEngine.#ctor*
+  nameWithType.vb: DomainEngine.New(DomainManifest)
+  fullName.vb: JD.Domain.Runtime.DomainEngine.New(JD.Domain.Abstractions.DomainManifest)
+  name.vb: New(DomainManifest)
+- uid: JD.Domain.Runtime.DomainEngine.EvaluateAsync``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+  commentId: M:JD.Domain.Runtime.DomainEngine.EvaluateAsync``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+  id: EvaluateAsync``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+  parent: JD.Domain.Runtime.DomainEngine
+  langs:
+  - csharp
+  - vb
+  name: EvaluateAsync<T>(T, RuleEvaluationOptions?, CancellationToken)
+  nameWithType: DomainEngine.EvaluateAsync<T>(T, RuleEvaluationOptions?, CancellationToken)
+  fullName: JD.Domain.Runtime.DomainEngine.EvaluateAsync<T>(T, JD.Domain.Abstractions.RuleEvaluationOptions?, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Runtime/DomainEngine.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: EvaluateAsync
+    path: src/JD.Domain.Runtime/DomainEngine.cs
+    startLine: 23
+  assemblies:
+  - JD.Domain.Runtime
+  namespace: JD.Domain.Runtime
+  summary: Evaluates domain rules against the specified instance asynchronously.
+  example: []
+  syntax:
+    content: 'public ValueTask<RuleEvaluationResult> EvaluateAsync<T>(T instance, RuleEvaluationOptions? options = null, CancellationToken cancellationToken = default) where T : class'
+    parameters:
+    - id: instance
+      type: '{T}'
+      description: The instance to evaluate.
+    - id: options
+      type: JD.Domain.Abstractions.RuleEvaluationOptions
+      description: The evaluation options.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: The cancellation token.
+    typeParameters:
+    - id: T
+      description: The type of the instance to evaluate.
+    return:
+      type: System.Threading.Tasks.ValueTask{JD.Domain.Abstractions.RuleEvaluationResult}
+      description: The evaluation result.
+    content.vb: Public Function EvaluateAsync(Of T As Class)(instance As T, options As RuleEvaluationOptions = Nothing, cancellationToken As CancellationToken = Nothing) As ValueTask(Of RuleEvaluationResult)
+  overload: JD.Domain.Runtime.DomainEngine.EvaluateAsync*
+  implements:
+  - JD.Domain.Abstractions.IDomainEngine.EvaluateAsync``1({T},JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+  nameWithType.vb: DomainEngine.EvaluateAsync(Of T)(T, RuleEvaluationOptions, CancellationToken)
+  fullName.vb: JD.Domain.Runtime.DomainEngine.EvaluateAsync(Of T)(T, JD.Domain.Abstractions.RuleEvaluationOptions, System.Threading.CancellationToken)
+  name.vb: EvaluateAsync(Of T)(T, RuleEvaluationOptions, CancellationToken)
+- uid: JD.Domain.Runtime.DomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions)
+  commentId: M:JD.Domain.Runtime.DomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions)
+  id: Evaluate``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions)
+  parent: JD.Domain.Runtime.DomainEngine
+  langs:
+  - csharp
+  - vb
+  name: Evaluate<T>(T, RuleEvaluationOptions?)
+  nameWithType: DomainEngine.Evaluate<T>(T, RuleEvaluationOptions?)
+  fullName: JD.Domain.Runtime.DomainEngine.Evaluate<T>(T, JD.Domain.Abstractions.RuleEvaluationOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Runtime/DomainEngine.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Evaluate
+    path: src/JD.Domain.Runtime/DomainEngine.cs
+    startLine: 35
+  assemblies:
+  - JD.Domain.Runtime
+  namespace: JD.Domain.Runtime
+  summary: Evaluates domain rules against the specified instance synchronously.
+  example: []
+  syntax:
+    content: 'public RuleEvaluationResult Evaluate<T>(T instance, RuleEvaluationOptions? options = null) where T : class'
+    parameters:
+    - id: instance
+      type: '{T}'
+      description: The instance to evaluate.
+    - id: options
+      type: JD.Domain.Abstractions.RuleEvaluationOptions
+      description: The evaluation options.
+    typeParameters:
+    - id: T
+      description: The type of the instance to evaluate.
+    return:
+      type: JD.Domain.Abstractions.RuleEvaluationResult
+      description: The evaluation result.
+    content.vb: Public Function Evaluate(Of T As Class)(instance As T, options As RuleEvaluationOptions = Nothing) As RuleEvaluationResult
+  overload: JD.Domain.Runtime.DomainEngine.Evaluate*
+  implements:
+  - JD.Domain.Abstractions.IDomainEngine.Evaluate``1({T},JD.Domain.Abstractions.RuleEvaluationOptions)
+  nameWithType.vb: DomainEngine.Evaluate(Of T)(T, RuleEvaluationOptions)
+  fullName.vb: JD.Domain.Runtime.DomainEngine.Evaluate(Of T)(T, JD.Domain.Abstractions.RuleEvaluationOptions)
+  name.vb: Evaluate(Of T)(T, RuleEvaluationOptions)
+- uid: JD.Domain.Runtime.DomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleSetManifest)
+  commentId: M:JD.Domain.Runtime.DomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleSetManifest)
+  id: Evaluate``1(``0,JD.Domain.Abstractions.RuleSetManifest)
+  parent: JD.Domain.Runtime.DomainEngine
+  langs:
+  - csharp
+  - vb
+  name: Evaluate<T>(T, RuleSetManifest)
+  nameWithType: DomainEngine.Evaluate<T>(T, RuleSetManifest)
+  fullName: JD.Domain.Runtime.DomainEngine.Evaluate<T>(T, JD.Domain.Abstractions.RuleSetManifest)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Runtime/DomainEngine.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Evaluate
+    path: src/JD.Domain.Runtime/DomainEngine.cs
+    startLine: 121
+  assemblies:
+  - JD.Domain.Runtime
+  namespace: JD.Domain.Runtime
+  summary: Evaluates the specified rule set against the instance.
+  example: []
+  syntax:
+    content: 'public RuleEvaluationResult Evaluate<T>(T instance, RuleSetManifest ruleSet) where T : class'
+    parameters:
+    - id: instance
+      type: '{T}'
+      description: The instance to evaluate.
+    - id: ruleSet
+      type: JD.Domain.Abstractions.RuleSetManifest
+      description: The rule set to evaluate.
+    typeParameters:
+    - id: T
+      description: The type of the instance to evaluate.
+    return:
+      type: JD.Domain.Abstractions.RuleEvaluationResult
+      description: The evaluation result.
+    content.vb: Public Function Evaluate(Of T As Class)(instance As T, ruleSet As RuleSetManifest) As RuleEvaluationResult
+  overload: JD.Domain.Runtime.DomainEngine.Evaluate*
+  implements:
+  - JD.Domain.Abstractions.IDomainEngine.Evaluate``1({T},JD.Domain.Abstractions.RuleSetManifest)
+  nameWithType.vb: DomainEngine.Evaluate(Of T)(T, RuleSetManifest)
+  fullName.vb: JD.Domain.Runtime.DomainEngine.Evaluate(Of T)(T, JD.Domain.Abstractions.RuleSetManifest)
+  name.vb: Evaluate(Of T)(T, RuleSetManifest)
+- uid: JD.Domain.Runtime.DomainEngine.Evaluate``1(``0,JD.Domain.Rules.CompiledRuleSet{``0},JD.Domain.Abstractions.RuleEvaluationOptions)
+  commentId: M:JD.Domain.Runtime.DomainEngine.Evaluate``1(``0,JD.Domain.Rules.CompiledRuleSet{``0},JD.Domain.Abstractions.RuleEvaluationOptions)
+  id: Evaluate``1(``0,JD.Domain.Rules.CompiledRuleSet{``0},JD.Domain.Abstractions.RuleEvaluationOptions)
+  parent: JD.Domain.Runtime.DomainEngine
+  langs:
+  - csharp
+  - vb
+  name: Evaluate<T>(T, CompiledRuleSet<T>, RuleEvaluationOptions?)
+  nameWithType: DomainEngine.Evaluate<T>(T, CompiledRuleSet<T>, RuleEvaluationOptions?)
+  fullName: JD.Domain.Runtime.DomainEngine.Evaluate<T>(T, JD.Domain.Rules.CompiledRuleSet<T>, JD.Domain.Abstractions.RuleEvaluationOptions?)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Runtime/DomainEngine.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Evaluate
+    path: src/JD.Domain.Runtime/DomainEngine.cs
+    startLine: 151
+  assemblies:
+  - JD.Domain.Runtime
+  namespace: JD.Domain.Runtime
+  summary: >-
+    Evaluates a compiled rule set against the specified instance.
+
+    This method actually executes the rule predicates.
+  example: []
+  syntax:
+    content: 'public RuleEvaluationResult Evaluate<T>(T instance, CompiledRuleSet<T> ruleSet, RuleEvaluationOptions? options = null) where T : class'
+    parameters:
+    - id: instance
+      type: '{T}'
+      description: The instance to evaluate.
+    - id: ruleSet
+      type: JD.Domain.Rules.CompiledRuleSet{{T}}
+      description: The compiled rule set to evaluate.
+    - id: options
+      type: JD.Domain.Abstractions.RuleEvaluationOptions
+      description: The evaluation options.
+    typeParameters:
+    - id: T
+      description: The type of the instance to evaluate.
+    return:
+      type: JD.Domain.Abstractions.RuleEvaluationResult
+      description: The evaluation result.
+    content.vb: Public Function Evaluate(Of T As Class)(instance As T, ruleSet As CompiledRuleSet(Of T), options As RuleEvaluationOptions = Nothing) As RuleEvaluationResult
+  overload: JD.Domain.Runtime.DomainEngine.Evaluate*
+  nameWithType.vb: DomainEngine.Evaluate(Of T)(T, CompiledRuleSet(Of T), RuleEvaluationOptions)
+  fullName.vb: JD.Domain.Runtime.DomainEngine.Evaluate(Of T)(T, JD.Domain.Rules.CompiledRuleSet(Of T), JD.Domain.Abstractions.RuleEvaluationOptions)
+  name.vb: Evaluate(Of T)(T, CompiledRuleSet(Of T), RuleEvaluationOptions)
+references:
+- uid: JD.Domain.Runtime
+  commentId: N:JD.Domain.Runtime
+  href: JD.html
+  name: JD.Domain.Runtime
+  nameWithType: JD.Domain.Runtime
+  fullName: JD.Domain.Runtime
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Runtime
+    name: Runtime
+    href: JD.Domain.Runtime.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Runtime
+    name: Runtime
+    href: JD.Domain.Runtime.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: JD.Domain.Abstractions.IDomainEngine
+  commentId: T:JD.Domain.Abstractions.IDomainEngine
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.IDomainEngine.html
+  name: IDomainEngine
+  nameWithType: IDomainEngine
+  fullName: JD.Domain.Abstractions.IDomainEngine
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.Abstractions
+  commentId: N:JD.Domain.Abstractions
+  href: JD.html
+  name: JD.Domain.Abstractions
+  nameWithType: JD.Domain.Abstractions
+  fullName: JD.Domain.Abstractions
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+- uid: JD.Domain.Runtime.DomainEngine
+  commentId: T:JD.Domain.Runtime.DomainEngine
+  href: JD.Domain.Runtime.DomainEngine.html
+  name: DomainEngine
+  nameWithType: DomainEngine
+  fullName: JD.Domain.Runtime.DomainEngine
+- uid: JD.Domain.Runtime.DomainEngine.#ctor*
+  commentId: Overload:JD.Domain.Runtime.DomainEngine.#ctor
+  href: JD.Domain.Runtime.DomainEngine.html#JD_Domain_Runtime_DomainEngine__ctor_JD_Domain_Abstractions_DomainManifest_
+  name: DomainEngine
+  nameWithType: DomainEngine.DomainEngine
+  fullName: JD.Domain.Runtime.DomainEngine.DomainEngine
+  nameWithType.vb: DomainEngine.New
+  fullName.vb: JD.Domain.Runtime.DomainEngine.New
+  name.vb: New
+- uid: JD.Domain.Abstractions.DomainManifest
+  commentId: T:JD.Domain.Abstractions.DomainManifest
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.DomainManifest.html
+  name: DomainManifest
+  nameWithType: DomainManifest
+  fullName: JD.Domain.Abstractions.DomainManifest
+- uid: JD.Domain.Runtime.DomainEngine.EvaluateAsync*
+  commentId: Overload:JD.Domain.Runtime.DomainEngine.EvaluateAsync
+  href: JD.Domain.Runtime.DomainEngine.html#JD_Domain_Runtime_DomainEngine_EvaluateAsync__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_System_Threading_CancellationToken_
+  name: EvaluateAsync
+  nameWithType: DomainEngine.EvaluateAsync
+  fullName: JD.Domain.Runtime.DomainEngine.EvaluateAsync
+- uid: JD.Domain.Abstractions.IDomainEngine.EvaluateAsync``1({T},JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+  commentId: M:JD.Domain.Abstractions.IDomainEngine.EvaluateAsync``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+  parent: JD.Domain.Abstractions.IDomainEngine
+  definition: JD.Domain.Abstractions.IDomainEngine.EvaluateAsync``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+  href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_EvaluateAsync__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_System_Threading_CancellationToken_
+  name: EvaluateAsync<T>(T, RuleEvaluationOptions, CancellationToken)
+  nameWithType: IDomainEngine.EvaluateAsync<T>(T, RuleEvaluationOptions, CancellationToken)
+  fullName: JD.Domain.Abstractions.IDomainEngine.EvaluateAsync<T>(T, JD.Domain.Abstractions.RuleEvaluationOptions, System.Threading.CancellationToken)
+  nameWithType.vb: IDomainEngine.EvaluateAsync(Of T)(T, RuleEvaluationOptions, CancellationToken)
+  fullName.vb: JD.Domain.Abstractions.IDomainEngine.EvaluateAsync(Of T)(T, JD.Domain.Abstractions.RuleEvaluationOptions, System.Threading.CancellationToken)
+  name.vb: EvaluateAsync(Of T)(T, RuleEvaluationOptions, CancellationToken)
+  spec.csharp:
+  - uid: JD.Domain.Abstractions.IDomainEngine.EvaluateAsync``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+    name: EvaluateAsync
+    href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_EvaluateAsync__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_System_Threading_CancellationToken_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleEvaluationOptions
+    name: RuleEvaluationOptions
+    href: JD.Domain.Abstractions.RuleEvaluationOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Abstractions.IDomainEngine.EvaluateAsync``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+    name: EvaluateAsync
+    href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_EvaluateAsync__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleEvaluationOptions
+    name: RuleEvaluationOptions
+    href: JD.Domain.Abstractions.RuleEvaluationOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: JD.Domain.Abstractions.RuleEvaluationOptions
+  commentId: T:JD.Domain.Abstractions.RuleEvaluationOptions
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.RuleEvaluationOptions.html
+  name: RuleEvaluationOptions
+  nameWithType: RuleEvaluationOptions
+  fullName: JD.Domain.Abstractions.RuleEvaluationOptions
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.ValueTask{JD.Domain.Abstractions.RuleEvaluationResult}
+  commentId: T:System.Threading.Tasks.ValueTask{JD.Domain.Abstractions.RuleEvaluationResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.ValueTask`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  name: ValueTask<RuleEvaluationResult>
+  nameWithType: ValueTask<RuleEvaluationResult>
+  fullName: System.Threading.Tasks.ValueTask<JD.Domain.Abstractions.RuleEvaluationResult>
+  nameWithType.vb: ValueTask(Of RuleEvaluationResult)
+  fullName.vb: System.Threading.Tasks.ValueTask(Of JD.Domain.Abstractions.RuleEvaluationResult)
+  name.vb: ValueTask(Of RuleEvaluationResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: <
+  - uid: JD.Domain.Abstractions.RuleEvaluationResult
+    name: RuleEvaluationResult
+    href: JD.Domain.Abstractions.RuleEvaluationResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleEvaluationResult
+    name: RuleEvaluationResult
+    href: JD.Domain.Abstractions.RuleEvaluationResult.html
+  - name: )
+- uid: JD.Domain.Abstractions.IDomainEngine.EvaluateAsync``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+  commentId: M:JD.Domain.Abstractions.IDomainEngine.EvaluateAsync``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+  isExternal: true
+  href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_EvaluateAsync__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_System_Threading_CancellationToken_
+  name: EvaluateAsync<T>(T, RuleEvaluationOptions, CancellationToken)
+  nameWithType: IDomainEngine.EvaluateAsync<T>(T, RuleEvaluationOptions, CancellationToken)
+  fullName: JD.Domain.Abstractions.IDomainEngine.EvaluateAsync<T>(T, JD.Domain.Abstractions.RuleEvaluationOptions, System.Threading.CancellationToken)
+  nameWithType.vb: IDomainEngine.EvaluateAsync(Of T)(T, RuleEvaluationOptions, CancellationToken)
+  fullName.vb: JD.Domain.Abstractions.IDomainEngine.EvaluateAsync(Of T)(T, JD.Domain.Abstractions.RuleEvaluationOptions, System.Threading.CancellationToken)
+  name.vb: EvaluateAsync(Of T)(T, RuleEvaluationOptions, CancellationToken)
+  spec.csharp:
+  - uid: JD.Domain.Abstractions.IDomainEngine.EvaluateAsync``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+    name: EvaluateAsync
+    href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_EvaluateAsync__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_System_Threading_CancellationToken_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleEvaluationOptions
+    name: RuleEvaluationOptions
+    href: JD.Domain.Abstractions.RuleEvaluationOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Abstractions.IDomainEngine.EvaluateAsync``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions,System.Threading.CancellationToken)
+    name: EvaluateAsync
+    href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_EvaluateAsync__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleEvaluationOptions
+    name: RuleEvaluationOptions
+    href: JD.Domain.Abstractions.RuleEvaluationOptions.html
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.ValueTask`1
+  commentId: T:System.Threading.Tasks.ValueTask`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  name: ValueTask<TResult>
+  nameWithType: ValueTask<TResult>
+  fullName: System.Threading.Tasks.ValueTask<TResult>
+  nameWithType.vb: ValueTask(Of TResult)
+  fullName.vb: System.Threading.Tasks.ValueTask(Of TResult)
+  name.vb: ValueTask(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.ValueTask`1
+    name: ValueTask
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: JD.Domain.Runtime.DomainEngine.Evaluate*
+  commentId: Overload:JD.Domain.Runtime.DomainEngine.Evaluate
+  href: JD.Domain.Runtime.DomainEngine.html#JD_Domain_Runtime_DomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_
+  name: Evaluate
+  nameWithType: DomainEngine.Evaluate
+  fullName: JD.Domain.Runtime.DomainEngine.Evaluate
+- uid: JD.Domain.Abstractions.IDomainEngine.Evaluate``1({T},JD.Domain.Abstractions.RuleEvaluationOptions)
+  commentId: M:JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions)
+  parent: JD.Domain.Abstractions.IDomainEngine
+  definition: JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions)
+  href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_
+  name: Evaluate<T>(T, RuleEvaluationOptions)
+  nameWithType: IDomainEngine.Evaluate<T>(T, RuleEvaluationOptions)
+  fullName: JD.Domain.Abstractions.IDomainEngine.Evaluate<T>(T, JD.Domain.Abstractions.RuleEvaluationOptions)
+  nameWithType.vb: IDomainEngine.Evaluate(Of T)(T, RuleEvaluationOptions)
+  fullName.vb: JD.Domain.Abstractions.IDomainEngine.Evaluate(Of T)(T, JD.Domain.Abstractions.RuleEvaluationOptions)
+  name.vb: Evaluate(Of T)(T, RuleEvaluationOptions)
+  spec.csharp:
+  - uid: JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions)
+    name: Evaluate
+    href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleEvaluationOptions
+    name: RuleEvaluationOptions
+    href: JD.Domain.Abstractions.RuleEvaluationOptions.html
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions)
+    name: Evaluate
+    href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleEvaluationOptions
+    name: RuleEvaluationOptions
+    href: JD.Domain.Abstractions.RuleEvaluationOptions.html
+  - name: )
+- uid: JD.Domain.Abstractions.RuleEvaluationResult
+  commentId: T:JD.Domain.Abstractions.RuleEvaluationResult
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.RuleEvaluationResult.html
+  name: RuleEvaluationResult
+  nameWithType: RuleEvaluationResult
+  fullName: JD.Domain.Abstractions.RuleEvaluationResult
+- uid: JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions)
+  commentId: M:JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions)
+  href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_
+  name: Evaluate<T>(T, RuleEvaluationOptions)
+  nameWithType: IDomainEngine.Evaluate<T>(T, RuleEvaluationOptions)
+  fullName: JD.Domain.Abstractions.IDomainEngine.Evaluate<T>(T, JD.Domain.Abstractions.RuleEvaluationOptions)
+  nameWithType.vb: IDomainEngine.Evaluate(Of T)(T, RuleEvaluationOptions)
+  fullName.vb: JD.Domain.Abstractions.IDomainEngine.Evaluate(Of T)(T, JD.Domain.Abstractions.RuleEvaluationOptions)
+  name.vb: Evaluate(Of T)(T, RuleEvaluationOptions)
+  spec.csharp:
+  - uid: JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions)
+    name: Evaluate
+    href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleEvaluationOptions
+    name: RuleEvaluationOptions
+    href: JD.Domain.Abstractions.RuleEvaluationOptions.html
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleEvaluationOptions)
+    name: Evaluate
+    href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleEvaluationOptions_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleEvaluationOptions
+    name: RuleEvaluationOptions
+    href: JD.Domain.Abstractions.RuleEvaluationOptions.html
+  - name: )
+- uid: JD.Domain.Abstractions.IDomainEngine.Evaluate``1({T},JD.Domain.Abstractions.RuleSetManifest)
+  commentId: M:JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleSetManifest)
+  parent: JD.Domain.Abstractions.IDomainEngine
+  definition: JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleSetManifest)
+  href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleSetManifest_
+  name: Evaluate<T>(T, RuleSetManifest)
+  nameWithType: IDomainEngine.Evaluate<T>(T, RuleSetManifest)
+  fullName: JD.Domain.Abstractions.IDomainEngine.Evaluate<T>(T, JD.Domain.Abstractions.RuleSetManifest)
+  nameWithType.vb: IDomainEngine.Evaluate(Of T)(T, RuleSetManifest)
+  fullName.vb: JD.Domain.Abstractions.IDomainEngine.Evaluate(Of T)(T, JD.Domain.Abstractions.RuleSetManifest)
+  name.vb: Evaluate(Of T)(T, RuleSetManifest)
+  spec.csharp:
+  - uid: JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleSetManifest)
+    name: Evaluate
+    href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleSetManifest_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleSetManifest
+    name: RuleSetManifest
+    href: JD.Domain.Abstractions.RuleSetManifest.html
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleSetManifest)
+    name: Evaluate
+    href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleSetManifest_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleSetManifest
+    name: RuleSetManifest
+    href: JD.Domain.Abstractions.RuleSetManifest.html
+  - name: )
+- uid: JD.Domain.Abstractions.RuleSetManifest
+  commentId: T:JD.Domain.Abstractions.RuleSetManifest
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.RuleSetManifest.html
+  name: RuleSetManifest
+  nameWithType: RuleSetManifest
+  fullName: JD.Domain.Abstractions.RuleSetManifest
+- uid: JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleSetManifest)
+  commentId: M:JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleSetManifest)
+  href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleSetManifest_
+  name: Evaluate<T>(T, RuleSetManifest)
+  nameWithType: IDomainEngine.Evaluate<T>(T, RuleSetManifest)
+  fullName: JD.Domain.Abstractions.IDomainEngine.Evaluate<T>(T, JD.Domain.Abstractions.RuleSetManifest)
+  nameWithType.vb: IDomainEngine.Evaluate(Of T)(T, RuleSetManifest)
+  fullName.vb: JD.Domain.Abstractions.IDomainEngine.Evaluate(Of T)(T, JD.Domain.Abstractions.RuleSetManifest)
+  name.vb: Evaluate(Of T)(T, RuleSetManifest)
+  spec.csharp:
+  - uid: JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleSetManifest)
+    name: Evaluate
+    href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleSetManifest_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleSetManifest
+    name: RuleSetManifest
+    href: JD.Domain.Abstractions.RuleSetManifest.html
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Abstractions.IDomainEngine.Evaluate``1(``0,JD.Domain.Abstractions.RuleSetManifest)
+    name: Evaluate
+    href: JD.Domain.Abstractions.IDomainEngine.html#JD_Domain_Abstractions_IDomainEngine_Evaluate__1___0_JD_Domain_Abstractions_RuleSetManifest_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: JD.Domain.Abstractions.RuleSetManifest
+    name: RuleSetManifest
+    href: JD.Domain.Abstractions.RuleSetManifest.html
+  - name: )
+- uid: JD.Domain.Rules.CompiledRuleSet{{T}}
+  commentId: T:JD.Domain.Rules.CompiledRuleSet{`0}
+  parent: JD.Domain.Rules
+  definition: JD.Domain.Rules.CompiledRuleSet`1
+  href: JD.Domain.Rules.CompiledRuleSet-1.html
+  name: CompiledRuleSet<T>
+  nameWithType: CompiledRuleSet<T>
+  fullName: JD.Domain.Rules.CompiledRuleSet<T>
+  nameWithType.vb: CompiledRuleSet(Of T)
+  fullName.vb: JD.Domain.Rules.CompiledRuleSet(Of T)
+  name.vb: CompiledRuleSet(Of T)
+  spec.csharp:
+  - uid: JD.Domain.Rules.CompiledRuleSet`1
+    name: CompiledRuleSet
+    href: JD.Domain.Rules.CompiledRuleSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Rules.CompiledRuleSet`1
+    name: CompiledRuleSet
+    href: JD.Domain.Rules.CompiledRuleSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.Rules.CompiledRuleSet`1
+  commentId: T:JD.Domain.Rules.CompiledRuleSet`1
+  href: JD.Domain.Rules.CompiledRuleSet-1.html
+  name: CompiledRuleSet<T>
+  nameWithType: CompiledRuleSet<T>
+  fullName: JD.Domain.Rules.CompiledRuleSet<T>
+  nameWithType.vb: CompiledRuleSet(Of T)
+  fullName.vb: JD.Domain.Rules.CompiledRuleSet(Of T)
+  name.vb: CompiledRuleSet(Of T)
+  spec.csharp:
+  - uid: JD.Domain.Rules.CompiledRuleSet`1
+    name: CompiledRuleSet
+    href: JD.Domain.Rules.CompiledRuleSet-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: JD.Domain.Rules.CompiledRuleSet`1
+    name: CompiledRuleSet
+    href: JD.Domain.Rules.CompiledRuleSet-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.Rules
+  commentId: N:JD.Domain.Rules
+  href: JD.html
+  name: JD.Domain.Rules
+  nameWithType: JD.Domain.Rules
+  fullName: JD.Domain.Rules
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Rules
+    name: Rules
+    href: JD.Domain.Rules.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Rules
+    name: Rules
+    href: JD.Domain.Rules.html

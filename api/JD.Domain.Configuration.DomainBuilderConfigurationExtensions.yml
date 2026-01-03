@@ -1,0 +1,466 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+  commentId: T:JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+  id: DomainBuilderConfigurationExtensions
+  parent: JD.Domain.Configuration
+  children:
+  - JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}})
+  langs:
+  - csharp
+  - vb
+  name: DomainBuilderConfigurationExtensions
+  nameWithType: DomainBuilderConfigurationExtensions
+  fullName: JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Configuration/DomainBuilderConfigurationExtensions.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: DomainBuilderConfigurationExtensions
+    path: src/JD.Domain.Configuration/DomainBuilderConfigurationExtensions.cs
+    startLine: 7
+  assemblies:
+  - JD.Domain.Configuration
+  namespace: JD.Domain.Configuration
+  summary: Extension methods for adding EF Core-compatible configuration to the domain builder.
+  example: []
+  syntax:
+    content: public static class DomainBuilderConfigurationExtensions
+    content.vb: Public Module DomainBuilderConfigurationExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}})
+  commentId: M:JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}})
+  id: Configure``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}})
+  isExtensionMethod: true
+  parent: JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+  langs:
+  - csharp
+  - vb
+  name: Configure<T>(DomainBuilder, Action<EntityConfigurationBuilder<T>>)
+  nameWithType: DomainBuilderConfigurationExtensions.Configure<T>(DomainBuilder, Action<EntityConfigurationBuilder<T>>)
+  fullName: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure<T>(JD.Domain.Modeling.DomainBuilder, System.Action<JD.Domain.Configuration.EntityConfigurationBuilder<T>>)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Configuration/DomainBuilderConfigurationExtensions.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Configure
+    path: src/JD.Domain.Configuration/DomainBuilderConfigurationExtensions.cs
+    startLine: 16
+  assemblies:
+  - JD.Domain.Configuration
+  namespace: JD.Domain.Configuration
+  summary: Adds configuration for the specified entity type.
+  example: []
+  syntax:
+    content: 'public static DomainBuilder Configure<T>(this DomainBuilder builder, Action<EntityConfigurationBuilder<T>> configure) where T : class'
+    parameters:
+    - id: builder
+      type: JD.Domain.Modeling.DomainBuilder
+      description: The domain builder.
+    - id: configure
+      type: System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{{T}}}
+      description: The configuration action.
+    typeParameters:
+    - id: T
+      description: The entity type.
+    return:
+      type: JD.Domain.Modeling.DomainBuilder
+      description: The domain builder for chaining.
+    content.vb: Public Shared Function Configure(Of T As Class)(builder As DomainBuilder, configure As Action(Of EntityConfigurationBuilder(Of T))) As DomainBuilder
+  overload: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure*
+  nameWithType.vb: DomainBuilderConfigurationExtensions.Configure(Of T)(DomainBuilder, Action(Of EntityConfigurationBuilder(Of T)))
+  fullName.vb: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure(Of T)(JD.Domain.Modeling.DomainBuilder, System.Action(Of JD.Domain.Configuration.EntityConfigurationBuilder(Of T)))
+  name.vb: Configure(Of T)(DomainBuilder, Action(Of EntityConfigurationBuilder(Of T)))
+references:
+- uid: JD.Domain.Configuration
+  commentId: N:JD.Domain.Configuration
+  href: JD.html
+  name: JD.Domain.Configuration
+  nameWithType: JD.Domain.Configuration
+  fullName: JD.Domain.Configuration
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Configuration
+    name: Configuration
+    href: JD.Domain.Configuration.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Configuration
+    name: Configuration
+    href: JD.Domain.Configuration.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure*
+  commentId: Overload:JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure
+  href: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.html#JD_Domain_Configuration_DomainBuilderConfigurationExtensions_Configure__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Configuration_EntityConfigurationBuilder___0___
+  name: Configure
+  nameWithType: DomainBuilderConfigurationExtensions.Configure
+  fullName: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure
+- uid: JD.Domain.Modeling.DomainBuilder
+  commentId: T:JD.Domain.Modeling.DomainBuilder
+  parent: JD.Domain.Modeling
+  href: JD.Domain.Modeling.DomainBuilder.html
+  name: DomainBuilder
+  nameWithType: DomainBuilder
+  fullName: JD.Domain.Modeling.DomainBuilder
+- uid: System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{{T}}}
+  commentId: T:System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<EntityConfigurationBuilder<T>>
+  nameWithType: Action<EntityConfigurationBuilder<T>>
+  fullName: System.Action<JD.Domain.Configuration.EntityConfigurationBuilder<T>>
+  nameWithType.vb: Action(Of EntityConfigurationBuilder(Of T))
+  fullName.vb: System.Action(Of JD.Domain.Configuration.EntityConfigurationBuilder(Of T))
+  name.vb: Action(Of EntityConfigurationBuilder(Of T))
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: JD.Domain.Configuration.EntityConfigurationBuilder`1
+    name: EntityConfigurationBuilder
+    href: JD.Domain.Configuration.EntityConfigurationBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Configuration.EntityConfigurationBuilder`1
+    name: EntityConfigurationBuilder
+    href: JD.Domain.Configuration.EntityConfigurationBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: JD.Domain.Modeling
+  commentId: N:JD.Domain.Modeling
+  href: JD.html
+  name: JD.Domain.Modeling
+  nameWithType: JD.Domain.Modeling
+  fullName: JD.Domain.Modeling
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Modeling
+    name: Modeling
+    href: JD.Domain.Modeling.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Modeling
+    name: Modeling
+    href: JD.Domain.Modeling.html
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

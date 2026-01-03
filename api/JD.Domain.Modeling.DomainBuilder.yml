@@ -1,0 +1,1379 @@
+### YamlMime:ManagedReference
+items:
+- uid: JD.Domain.Modeling.DomainBuilder
+  commentId: T:JD.Domain.Modeling.DomainBuilder
+  id: DomainBuilder
+  parent: JD.Domain.Modeling
+  children:
+  - JD.Domain.Modeling.DomainBuilder.AddConfiguration(JD.Domain.Abstractions.ConfigurationManifest)
+  - JD.Domain.Modeling.DomainBuilder.AddRuleSet(JD.Domain.Abstractions.RuleSetManifest)
+  - JD.Domain.Modeling.DomainBuilder.Build
+  - JD.Domain.Modeling.DomainBuilder.BuildManifest
+  - JD.Domain.Modeling.DomainBuilder.Entity``1(System.Action{JD.Domain.Modeling.EntityBuilder{``0}})
+  - JD.Domain.Modeling.DomainBuilder.Enum``1
+  - JD.Domain.Modeling.DomainBuilder.ValueObject``1(System.Action{JD.Domain.Modeling.ValueObjectBuilder{``0}})
+  - JD.Domain.Modeling.DomainBuilder.Version(System.Int32,System.Int32,System.Int32)
+  - JD.Domain.Modeling.DomainBuilder.WithMetadata(System.String,System.Object)
+  langs:
+  - csharp
+  - vb
+  name: DomainBuilder
+  nameWithType: DomainBuilder
+  fullName: JD.Domain.Modeling.DomainBuilder
+  type: Class
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/DomainBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: DomainBuilder
+    path: src/JD.Domain.Modeling/DomainBuilder.cs
+    startLine: 7
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Fluent builder for constructing a domain manifest.
+  example: []
+  syntax:
+    content: public sealed class DomainBuilder
+    content.vb: Public NotInheritable Class DomainBuilder
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - JD.Domain.Modeling.DomainBuilder.JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{{T}}})
+  - JD.Domain.Modeling.DomainBuilder.JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(System.Action{JD.Domain.Rules.RuleSetBuilder{{T}}})
+  - JD.Domain.Modeling.DomainBuilder.JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(System.String,System.Action{JD.Domain.Rules.RuleSetBuilder{{T}}})
+- uid: JD.Domain.Modeling.DomainBuilder.Version(System.Int32,System.Int32,System.Int32)
+  commentId: M:JD.Domain.Modeling.DomainBuilder.Version(System.Int32,System.Int32,System.Int32)
+  id: Version(System.Int32,System.Int32,System.Int32)
+  parent: JD.Domain.Modeling.DomainBuilder
+  langs:
+  - csharp
+  - vb
+  name: Version(int, int, int)
+  nameWithType: DomainBuilder.Version(int, int, int)
+  fullName: JD.Domain.Modeling.DomainBuilder.Version(int, int, int)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/DomainBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Version
+    path: src/JD.Domain.Modeling/DomainBuilder.cs
+    startLine: 41
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Sets the version of the domain.
+  example: []
+  syntax:
+    content: public DomainBuilder Version(int major, int minor, int patch)
+    parameters:
+    - id: major
+      type: System.Int32
+      description: The major version number.
+    - id: minor
+      type: System.Int32
+      description: The minor version number.
+    - id: patch
+      type: System.Int32
+      description: The patch version number.
+    return:
+      type: JD.Domain.Modeling.DomainBuilder
+      description: The domain builder for chaining.
+    content.vb: Public Function Version(major As Integer, minor As Integer, patch As Integer) As DomainBuilder
+  overload: JD.Domain.Modeling.DomainBuilder.Version*
+  nameWithType.vb: DomainBuilder.Version(Integer, Integer, Integer)
+  fullName.vb: JD.Domain.Modeling.DomainBuilder.Version(Integer, Integer, Integer)
+  name.vb: Version(Integer, Integer, Integer)
+- uid: JD.Domain.Modeling.DomainBuilder.Entity``1(System.Action{JD.Domain.Modeling.EntityBuilder{``0}})
+  commentId: M:JD.Domain.Modeling.DomainBuilder.Entity``1(System.Action{JD.Domain.Modeling.EntityBuilder{``0}})
+  id: Entity``1(System.Action{JD.Domain.Modeling.EntityBuilder{``0}})
+  parent: JD.Domain.Modeling.DomainBuilder
+  langs:
+  - csharp
+  - vb
+  name: Entity<T>(Action<EntityBuilder<T>>?)
+  nameWithType: DomainBuilder.Entity<T>(Action<EntityBuilder<T>>?)
+  fullName: JD.Domain.Modeling.DomainBuilder.Entity<T>(System.Action<JD.Domain.Modeling.EntityBuilder<T>>?)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/DomainBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Entity
+    path: src/JD.Domain.Modeling/DomainBuilder.cs
+    startLine: 53
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Adds an entity to the domain model.
+  example: []
+  syntax:
+    content: 'public DomainBuilder Entity<T>(Action<EntityBuilder<T>>? configure = null) where T : class'
+    parameters:
+    - id: configure
+      type: System.Action{JD.Domain.Modeling.EntityBuilder{{T}}}
+      description: The entity configuration action.
+    typeParameters:
+    - id: T
+      description: The entity type.
+    return:
+      type: JD.Domain.Modeling.DomainBuilder
+      description: The domain builder for chaining.
+    content.vb: Public Function Entity(Of T As Class)(configure As Action(Of EntityBuilder(Of T)) = Nothing) As DomainBuilder
+  overload: JD.Domain.Modeling.DomainBuilder.Entity*
+  nameWithType.vb: DomainBuilder.Entity(Of T)(Action(Of EntityBuilder(Of T)))
+  fullName.vb: JD.Domain.Modeling.DomainBuilder.Entity(Of T)(System.Action(Of JD.Domain.Modeling.EntityBuilder(Of T)))
+  name.vb: Entity(Of T)(Action(Of EntityBuilder(Of T)))
+- uid: JD.Domain.Modeling.DomainBuilder.ValueObject``1(System.Action{JD.Domain.Modeling.ValueObjectBuilder{``0}})
+  commentId: M:JD.Domain.Modeling.DomainBuilder.ValueObject``1(System.Action{JD.Domain.Modeling.ValueObjectBuilder{``0}})
+  id: ValueObject``1(System.Action{JD.Domain.Modeling.ValueObjectBuilder{``0}})
+  parent: JD.Domain.Modeling.DomainBuilder
+  langs:
+  - csharp
+  - vb
+  name: ValueObject<T>(Action<ValueObjectBuilder<T>>?)
+  nameWithType: DomainBuilder.ValueObject<T>(Action<ValueObjectBuilder<T>>?)
+  fullName: JD.Domain.Modeling.DomainBuilder.ValueObject<T>(System.Action<JD.Domain.Modeling.ValueObjectBuilder<T>>?)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/DomainBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: ValueObject
+    path: src/JD.Domain.Modeling/DomainBuilder.cs
+    startLine: 70
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Adds a value object to the domain model.
+  example: []
+  syntax:
+    content: 'public DomainBuilder ValueObject<T>(Action<ValueObjectBuilder<T>>? configure = null) where T : class'
+    parameters:
+    - id: configure
+      type: System.Action{JD.Domain.Modeling.ValueObjectBuilder{{T}}}
+      description: The value object configuration action.
+    typeParameters:
+    - id: T
+      description: The value object type.
+    return:
+      type: JD.Domain.Modeling.DomainBuilder
+      description: The domain builder for chaining.
+    content.vb: Public Function ValueObject(Of T As Class)(configure As Action(Of ValueObjectBuilder(Of T)) = Nothing) As DomainBuilder
+  overload: JD.Domain.Modeling.DomainBuilder.ValueObject*
+  nameWithType.vb: DomainBuilder.ValueObject(Of T)(Action(Of ValueObjectBuilder(Of T)))
+  fullName.vb: JD.Domain.Modeling.DomainBuilder.ValueObject(Of T)(System.Action(Of JD.Domain.Modeling.ValueObjectBuilder(Of T)))
+  name.vb: ValueObject(Of T)(Action(Of ValueObjectBuilder(Of T)))
+- uid: JD.Domain.Modeling.DomainBuilder.Enum``1
+  commentId: M:JD.Domain.Modeling.DomainBuilder.Enum``1
+  id: Enum``1
+  parent: JD.Domain.Modeling.DomainBuilder
+  langs:
+  - csharp
+  - vb
+  name: Enum<T>()
+  nameWithType: DomainBuilder.Enum<T>()
+  fullName: JD.Domain.Modeling.DomainBuilder.Enum<T>()
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/DomainBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Enum
+    path: src/JD.Domain.Modeling/DomainBuilder.cs
+    startLine: 86
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Adds an enumeration to the domain model.
+  example: []
+  syntax:
+    content: 'public DomainBuilder Enum<T>() where T : Enum'
+    typeParameters:
+    - id: T
+      description: The enumeration type.
+    return:
+      type: JD.Domain.Modeling.DomainBuilder
+      description: The domain builder for chaining.
+    content.vb: Public Function [Enum](Of T As [Enum])() As DomainBuilder
+  overload: JD.Domain.Modeling.DomainBuilder.Enum*
+  nameWithType.vb: DomainBuilder.Enum(Of T)()
+  fullName.vb: JD.Domain.Modeling.DomainBuilder.Enum(Of T)()
+  name.vb: Enum(Of T)()
+- uid: JD.Domain.Modeling.DomainBuilder.WithMetadata(System.String,System.Object)
+  commentId: M:JD.Domain.Modeling.DomainBuilder.WithMetadata(System.String,System.Object)
+  id: WithMetadata(System.String,System.Object)
+  parent: JD.Domain.Modeling.DomainBuilder
+  langs:
+  - csharp
+  - vb
+  name: WithMetadata(string, object?)
+  nameWithType: DomainBuilder.WithMetadata(string, object?)
+  fullName: JD.Domain.Modeling.DomainBuilder.WithMetadata(string, object?)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/DomainBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: WithMetadata
+    path: src/JD.Domain.Modeling/DomainBuilder.cs
+    startLine: 101
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Adds metadata to the domain.
+  example: []
+  syntax:
+    content: public DomainBuilder WithMetadata(string key, object? value)
+    parameters:
+    - id: key
+      type: System.String
+      description: The metadata key.
+    - id: value
+      type: System.Object
+      description: The metadata value.
+    return:
+      type: JD.Domain.Modeling.DomainBuilder
+      description: The domain builder for chaining.
+    content.vb: Public Function WithMetadata(key As String, value As Object) As DomainBuilder
+  overload: JD.Domain.Modeling.DomainBuilder.WithMetadata*
+  nameWithType.vb: DomainBuilder.WithMetadata(String, Object)
+  fullName.vb: JD.Domain.Modeling.DomainBuilder.WithMetadata(String, Object)
+  name.vb: WithMetadata(String, Object)
+- uid: JD.Domain.Modeling.DomainBuilder.BuildManifest
+  commentId: M:JD.Domain.Modeling.DomainBuilder.BuildManifest
+  id: BuildManifest
+  parent: JD.Domain.Modeling.DomainBuilder
+  langs:
+  - csharp
+  - vb
+  name: BuildManifest()
+  nameWithType: DomainBuilder.BuildManifest()
+  fullName: JD.Domain.Modeling.DomainBuilder.BuildManifest()
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/DomainBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: BuildManifest
+    path: src/JD.Domain.Modeling/DomainBuilder.cs
+    startLine: 112
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Builds the domain manifest.
+  example: []
+  syntax:
+    content: public DomainManifest BuildManifest()
+    return:
+      type: JD.Domain.Abstractions.DomainManifest
+      description: The constructed domain manifest.
+    content.vb: Public Function BuildManifest() As DomainManifest
+  overload: JD.Domain.Modeling.DomainBuilder.BuildManifest*
+- uid: JD.Domain.Modeling.DomainBuilder.Build
+  commentId: M:JD.Domain.Modeling.DomainBuilder.Build
+  id: Build
+  parent: JD.Domain.Modeling.DomainBuilder
+  langs:
+  - csharp
+  - vb
+  name: Build()
+  nameWithType: DomainBuilder.Build()
+  fullName: JD.Domain.Modeling.DomainBuilder.Build()
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/DomainBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: Build
+    path: src/JD.Domain.Modeling/DomainBuilder.cs
+    startLine: 133
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Builds the domain manifest.
+  example: []
+  syntax:
+    content: public DomainManifest Build()
+    return:
+      type: JD.Domain.Abstractions.DomainManifest
+      description: The constructed domain manifest.
+    content.vb: Public Function Build() As DomainManifest
+  overload: JD.Domain.Modeling.DomainBuilder.Build*
+- uid: JD.Domain.Modeling.DomainBuilder.AddRuleSet(JD.Domain.Abstractions.RuleSetManifest)
+  commentId: M:JD.Domain.Modeling.DomainBuilder.AddRuleSet(JD.Domain.Abstractions.RuleSetManifest)
+  id: AddRuleSet(JD.Domain.Abstractions.RuleSetManifest)
+  parent: JD.Domain.Modeling.DomainBuilder
+  langs:
+  - csharp
+  - vb
+  name: AddRuleSet(RuleSetManifest)
+  nameWithType: DomainBuilder.AddRuleSet(RuleSetManifest)
+  fullName: JD.Domain.Modeling.DomainBuilder.AddRuleSet(JD.Domain.Abstractions.RuleSetManifest)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/DomainBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: AddRuleSet
+    path: src/JD.Domain.Modeling/DomainBuilder.cs
+    startLine: 139
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Adds a rule set to the domain.
+  example: []
+  syntax:
+    content: public void AddRuleSet(RuleSetManifest ruleSet)
+    parameters:
+    - id: ruleSet
+      type: JD.Domain.Abstractions.RuleSetManifest
+      description: The rule set manifest.
+    content.vb: Public Sub AddRuleSet(ruleSet As RuleSetManifest)
+  overload: JD.Domain.Modeling.DomainBuilder.AddRuleSet*
+- uid: JD.Domain.Modeling.DomainBuilder.AddConfiguration(JD.Domain.Abstractions.ConfigurationManifest)
+  commentId: M:JD.Domain.Modeling.DomainBuilder.AddConfiguration(JD.Domain.Abstractions.ConfigurationManifest)
+  id: AddConfiguration(JD.Domain.Abstractions.ConfigurationManifest)
+  parent: JD.Domain.Modeling.DomainBuilder
+  langs:
+  - csharp
+  - vb
+  name: AddConfiguration(ConfigurationManifest)
+  nameWithType: DomainBuilder.AddConfiguration(ConfigurationManifest)
+  fullName: JD.Domain.Modeling.DomainBuilder.AddConfiguration(JD.Domain.Abstractions.ConfigurationManifest)
+  type: Method
+  source:
+    remote:
+      path: src/JD.Domain.Modeling/DomainBuilder.cs
+      branch: copilot/complete-implementation-plan-v1
+      repo: https://github.com/JerrettDavis/JD.Domain.git
+    id: AddConfiguration
+    path: src/JD.Domain.Modeling/DomainBuilder.cs
+    startLine: 149
+  assemblies:
+  - JD.Domain.Modeling
+  namespace: JD.Domain.Modeling
+  summary: Adds a configuration to the domain.
+  example: []
+  syntax:
+    content: public void AddConfiguration(ConfigurationManifest configuration)
+    parameters:
+    - id: configuration
+      type: JD.Domain.Abstractions.ConfigurationManifest
+      description: The configuration manifest.
+    content.vb: Public Sub AddConfiguration(configuration As ConfigurationManifest)
+  overload: JD.Domain.Modeling.DomainBuilder.AddConfiguration*
+references:
+- uid: JD.Domain.Modeling
+  commentId: N:JD.Domain.Modeling
+  href: JD.html
+  name: JD.Domain.Modeling
+  nameWithType: JD.Domain.Modeling
+  fullName: JD.Domain.Modeling
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Modeling
+    name: Modeling
+    href: JD.Domain.Modeling.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Modeling
+    name: Modeling
+    href: JD.Domain.Modeling.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: JD.Domain.Modeling.DomainBuilder.JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{{T}}})
+  commentId: M:JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}})
+  parent: JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+  definition: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}})
+  href: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.html#JD_Domain_Configuration_DomainBuilderConfigurationExtensions_Configure__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Configuration_EntityConfigurationBuilder___0___
+  name: Configure<T>(DomainBuilder, Action<EntityConfigurationBuilder<T>>)
+  nameWithType: DomainBuilderConfigurationExtensions.Configure<T>(DomainBuilder, Action<EntityConfigurationBuilder<T>>)
+  fullName: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure<T>(JD.Domain.Modeling.DomainBuilder, System.Action<JD.Domain.Configuration.EntityConfigurationBuilder<T>>)
+  nameWithType.vb: DomainBuilderConfigurationExtensions.Configure(Of T)(DomainBuilder, Action(Of EntityConfigurationBuilder(Of T)))
+  fullName.vb: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure(Of T)(JD.Domain.Modeling.DomainBuilder, System.Action(Of JD.Domain.Configuration.EntityConfigurationBuilder(Of T)))
+  name.vb: Configure(Of T)(DomainBuilder, Action(Of EntityConfigurationBuilder(Of T)))
+  spec.csharp:
+  - uid: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}})
+    name: Configure
+    href: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.html#JD_Domain_Configuration_DomainBuilderConfigurationExtensions_Configure__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Configuration_EntityConfigurationBuilder___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    href: JD.Domain.Modeling.DomainBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: JD.Domain.Configuration.EntityConfigurationBuilder`1
+    name: EntityConfigurationBuilder
+    href: JD.Domain.Configuration.EntityConfigurationBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}})
+    name: Configure
+    href: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.html#JD_Domain_Configuration_DomainBuilderConfigurationExtensions_Configure__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Configuration_EntityConfigurationBuilder___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    href: JD.Domain.Modeling.DomainBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Configuration.EntityConfigurationBuilder`1
+    name: EntityConfigurationBuilder
+    href: JD.Domain.Configuration.EntityConfigurationBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: JD.Domain.Modeling.DomainBuilder.JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(System.Action{JD.Domain.Rules.RuleSetBuilder{{T}}})
+  commentId: M:JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+  parent: JD.Domain.Rules.DomainBuilderRulesExtensions
+  definition: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+  href: JD.Domain.Rules.DomainBuilderRulesExtensions.html#JD_Domain_Rules_DomainBuilderRulesExtensions_Rules__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Rules_RuleSetBuilder___0___
+  name: Rules<T>(DomainBuilder, Action<RuleSetBuilder<T>>)
+  nameWithType: DomainBuilderRulesExtensions.Rules<T>(DomainBuilder, Action<RuleSetBuilder<T>>)
+  fullName: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules<T>(JD.Domain.Modeling.DomainBuilder, System.Action<JD.Domain.Rules.RuleSetBuilder<T>>)
+  nameWithType.vb: DomainBuilderRulesExtensions.Rules(Of T)(DomainBuilder, Action(Of RuleSetBuilder(Of T)))
+  fullName.vb: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules(Of T)(JD.Domain.Modeling.DomainBuilder, System.Action(Of JD.Domain.Rules.RuleSetBuilder(Of T)))
+  name.vb: Rules(Of T)(DomainBuilder, Action(Of RuleSetBuilder(Of T)))
+  spec.csharp:
+  - uid: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+    name: Rules
+    href: JD.Domain.Rules.DomainBuilderRulesExtensions.html#JD_Domain_Rules_DomainBuilderRulesExtensions_Rules__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Rules_RuleSetBuilder___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    href: JD.Domain.Modeling.DomainBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: JD.Domain.Rules.RuleSetBuilder`1
+    name: RuleSetBuilder
+    href: JD.Domain.Rules.RuleSetBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+    name: Rules
+    href: JD.Domain.Rules.DomainBuilderRulesExtensions.html#JD_Domain_Rules_DomainBuilderRulesExtensions_Rules__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Rules_RuleSetBuilder___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    href: JD.Domain.Modeling.DomainBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Rules.RuleSetBuilder`1
+    name: RuleSetBuilder
+    href: JD.Domain.Rules.RuleSetBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: JD.Domain.Modeling.DomainBuilder.JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(System.String,System.Action{JD.Domain.Rules.RuleSetBuilder{{T}}})
+  commentId: M:JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.String,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+  parent: JD.Domain.Rules.DomainBuilderRulesExtensions
+  definition: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.String,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+  href: JD.Domain.Rules.DomainBuilderRulesExtensions.html#JD_Domain_Rules_DomainBuilderRulesExtensions_Rules__1_JD_Domain_Modeling_DomainBuilder_System_String_System_Action_JD_Domain_Rules_RuleSetBuilder___0___
+  name: Rules<T>(DomainBuilder, string, Action<RuleSetBuilder<T>>)
+  nameWithType: DomainBuilderRulesExtensions.Rules<T>(DomainBuilder, string, Action<RuleSetBuilder<T>>)
+  fullName: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules<T>(JD.Domain.Modeling.DomainBuilder, string, System.Action<JD.Domain.Rules.RuleSetBuilder<T>>)
+  nameWithType.vb: DomainBuilderRulesExtensions.Rules(Of T)(DomainBuilder, String, Action(Of RuleSetBuilder(Of T)))
+  fullName.vb: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules(Of T)(JD.Domain.Modeling.DomainBuilder, String, System.Action(Of JD.Domain.Rules.RuleSetBuilder(Of T)))
+  name.vb: Rules(Of T)(DomainBuilder, String, Action(Of RuleSetBuilder(Of T)))
+  spec.csharp:
+  - uid: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.String,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+    name: Rules
+    href: JD.Domain.Rules.DomainBuilderRulesExtensions.html#JD_Domain_Rules_DomainBuilderRulesExtensions_Rules__1_JD_Domain_Modeling_DomainBuilder_System_String_System_Action_JD_Domain_Rules_RuleSetBuilder___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    href: JD.Domain.Modeling.DomainBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: JD.Domain.Rules.RuleSetBuilder`1
+    name: RuleSetBuilder
+    href: JD.Domain.Rules.RuleSetBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.String,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+    name: Rules
+    href: JD.Domain.Rules.DomainBuilderRulesExtensions.html#JD_Domain_Rules_DomainBuilderRulesExtensions_Rules__1_JD_Domain_Modeling_DomainBuilder_System_String_System_Action_JD_Domain_Rules_RuleSetBuilder___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    href: JD.Domain.Modeling.DomainBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Rules.RuleSetBuilder`1
+    name: RuleSetBuilder
+    href: JD.Domain.Rules.RuleSetBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}})
+  commentId: M:JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}})
+  isExternal: true
+  href: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.html#JD_Domain_Configuration_DomainBuilderConfigurationExtensions_Configure__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Configuration_EntityConfigurationBuilder___0___
+  name: Configure<T>(DomainBuilder, Action<EntityConfigurationBuilder<T>>)
+  nameWithType: DomainBuilderConfigurationExtensions.Configure<T>(DomainBuilder, Action<EntityConfigurationBuilder<T>>)
+  fullName: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure<T>(JD.Domain.Modeling.DomainBuilder, System.Action<JD.Domain.Configuration.EntityConfigurationBuilder<T>>)
+  nameWithType.vb: DomainBuilderConfigurationExtensions.Configure(Of T)(DomainBuilder, Action(Of EntityConfigurationBuilder(Of T)))
+  fullName.vb: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure(Of T)(JD.Domain.Modeling.DomainBuilder, System.Action(Of JD.Domain.Configuration.EntityConfigurationBuilder(Of T)))
+  name.vb: Configure(Of T)(DomainBuilder, Action(Of EntityConfigurationBuilder(Of T)))
+  spec.csharp:
+  - uid: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}})
+    name: Configure
+    href: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.html#JD_Domain_Configuration_DomainBuilderConfigurationExtensions_Configure__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Configuration_EntityConfigurationBuilder___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    href: JD.Domain.Modeling.DomainBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: JD.Domain.Configuration.EntityConfigurationBuilder`1
+    name: EntityConfigurationBuilder
+    href: JD.Domain.Configuration.EntityConfigurationBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.Configure``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Configuration.EntityConfigurationBuilder{``0}})
+    name: Configure
+    href: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.html#JD_Domain_Configuration_DomainBuilderConfigurationExtensions_Configure__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Configuration_EntityConfigurationBuilder___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    href: JD.Domain.Modeling.DomainBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Configuration.EntityConfigurationBuilder`1
+    name: EntityConfigurationBuilder
+    href: JD.Domain.Configuration.EntityConfigurationBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+  commentId: T:JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+  parent: JD.Domain.Configuration
+  href: JD.Domain.Configuration.DomainBuilderConfigurationExtensions.html
+  name: DomainBuilderConfigurationExtensions
+  nameWithType: DomainBuilderConfigurationExtensions
+  fullName: JD.Domain.Configuration.DomainBuilderConfigurationExtensions
+- uid: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+  commentId: M:JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+  isExternal: true
+  href: JD.Domain.Rules.DomainBuilderRulesExtensions.html#JD_Domain_Rules_DomainBuilderRulesExtensions_Rules__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Rules_RuleSetBuilder___0___
+  name: Rules<T>(DomainBuilder, Action<RuleSetBuilder<T>>)
+  nameWithType: DomainBuilderRulesExtensions.Rules<T>(DomainBuilder, Action<RuleSetBuilder<T>>)
+  fullName: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules<T>(JD.Domain.Modeling.DomainBuilder, System.Action<JD.Domain.Rules.RuleSetBuilder<T>>)
+  nameWithType.vb: DomainBuilderRulesExtensions.Rules(Of T)(DomainBuilder, Action(Of RuleSetBuilder(Of T)))
+  fullName.vb: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules(Of T)(JD.Domain.Modeling.DomainBuilder, System.Action(Of JD.Domain.Rules.RuleSetBuilder(Of T)))
+  name.vb: Rules(Of T)(DomainBuilder, Action(Of RuleSetBuilder(Of T)))
+  spec.csharp:
+  - uid: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+    name: Rules
+    href: JD.Domain.Rules.DomainBuilderRulesExtensions.html#JD_Domain_Rules_DomainBuilderRulesExtensions_Rules__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Rules_RuleSetBuilder___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    href: JD.Domain.Modeling.DomainBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: JD.Domain.Rules.RuleSetBuilder`1
+    name: RuleSetBuilder
+    href: JD.Domain.Rules.RuleSetBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+    name: Rules
+    href: JD.Domain.Rules.DomainBuilderRulesExtensions.html#JD_Domain_Rules_DomainBuilderRulesExtensions_Rules__1_JD_Domain_Modeling_DomainBuilder_System_Action_JD_Domain_Rules_RuleSetBuilder___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    href: JD.Domain.Modeling.DomainBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Rules.RuleSetBuilder`1
+    name: RuleSetBuilder
+    href: JD.Domain.Rules.RuleSetBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: JD.Domain.Rules.DomainBuilderRulesExtensions
+  commentId: T:JD.Domain.Rules.DomainBuilderRulesExtensions
+  parent: JD.Domain.Rules
+  href: JD.Domain.Rules.DomainBuilderRulesExtensions.html
+  name: DomainBuilderRulesExtensions
+  nameWithType: DomainBuilderRulesExtensions
+  fullName: JD.Domain.Rules.DomainBuilderRulesExtensions
+- uid: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.String,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+  commentId: M:JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.String,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+  isExternal: true
+  href: JD.Domain.Rules.DomainBuilderRulesExtensions.html#JD_Domain_Rules_DomainBuilderRulesExtensions_Rules__1_JD_Domain_Modeling_DomainBuilder_System_String_System_Action_JD_Domain_Rules_RuleSetBuilder___0___
+  name: Rules<T>(DomainBuilder, string, Action<RuleSetBuilder<T>>)
+  nameWithType: DomainBuilderRulesExtensions.Rules<T>(DomainBuilder, string, Action<RuleSetBuilder<T>>)
+  fullName: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules<T>(JD.Domain.Modeling.DomainBuilder, string, System.Action<JD.Domain.Rules.RuleSetBuilder<T>>)
+  nameWithType.vb: DomainBuilderRulesExtensions.Rules(Of T)(DomainBuilder, String, Action(Of RuleSetBuilder(Of T)))
+  fullName.vb: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules(Of T)(JD.Domain.Modeling.DomainBuilder, String, System.Action(Of JD.Domain.Rules.RuleSetBuilder(Of T)))
+  name.vb: Rules(Of T)(DomainBuilder, String, Action(Of RuleSetBuilder(Of T)))
+  spec.csharp:
+  - uid: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.String,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+    name: Rules
+    href: JD.Domain.Rules.DomainBuilderRulesExtensions.html#JD_Domain_Rules_DomainBuilderRulesExtensions_Rules__1_JD_Domain_Modeling_DomainBuilder_System_String_System_Action_JD_Domain_Rules_RuleSetBuilder___0___
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    href: JD.Domain.Modeling.DomainBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: JD.Domain.Rules.RuleSetBuilder`1
+    name: RuleSetBuilder
+    href: JD.Domain.Rules.RuleSetBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: JD.Domain.Rules.DomainBuilderRulesExtensions.Rules``1(JD.Domain.Modeling.DomainBuilder,System.String,System.Action{JD.Domain.Rules.RuleSetBuilder{``0}})
+    name: Rules
+    href: JD.Domain.Rules.DomainBuilderRulesExtensions.html#JD_Domain_Rules_DomainBuilderRulesExtensions_Rules__1_JD_Domain_Modeling_DomainBuilder_System_String_System_Action_JD_Domain_Rules_RuleSetBuilder___0___
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: JD.Domain.Modeling.DomainBuilder
+    name: DomainBuilder
+    href: JD.Domain.Modeling.DomainBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Rules.RuleSetBuilder`1
+    name: RuleSetBuilder
+    href: JD.Domain.Rules.RuleSetBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+  - name: )
+- uid: JD.Domain.Configuration
+  commentId: N:JD.Domain.Configuration
+  href: JD.html
+  name: JD.Domain.Configuration
+  nameWithType: JD.Domain.Configuration
+  fullName: JD.Domain.Configuration
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Configuration
+    name: Configuration
+    href: JD.Domain.Configuration.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Configuration
+    name: Configuration
+    href: JD.Domain.Configuration.html
+- uid: JD.Domain.Rules
+  commentId: N:JD.Domain.Rules
+  href: JD.html
+  name: JD.Domain.Rules
+  nameWithType: JD.Domain.Rules
+  fullName: JD.Domain.Rules
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Rules
+    name: Rules
+    href: JD.Domain.Rules.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Rules
+    name: Rules
+    href: JD.Domain.Rules.html
+- uid: JD.Domain.Modeling.DomainBuilder.Version*
+  commentId: Overload:JD.Domain.Modeling.DomainBuilder.Version
+  href: JD.Domain.Modeling.DomainBuilder.html#JD_Domain_Modeling_DomainBuilder_Version_System_Int32_System_Int32_System_Int32_
+  name: Version
+  nameWithType: DomainBuilder.Version
+  fullName: JD.Domain.Modeling.DomainBuilder.Version
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: JD.Domain.Modeling.DomainBuilder
+  commentId: T:JD.Domain.Modeling.DomainBuilder
+  parent: JD.Domain.Modeling
+  href: JD.Domain.Modeling.DomainBuilder.html
+  name: DomainBuilder
+  nameWithType: DomainBuilder
+  fullName: JD.Domain.Modeling.DomainBuilder
+- uid: JD.Domain.Modeling.DomainBuilder.Entity*
+  commentId: Overload:JD.Domain.Modeling.DomainBuilder.Entity
+  href: JD.Domain.Modeling.DomainBuilder.html#JD_Domain_Modeling_DomainBuilder_Entity__1_System_Action_JD_Domain_Modeling_EntityBuilder___0___
+  name: Entity
+  nameWithType: DomainBuilder.Entity
+  fullName: JD.Domain.Modeling.DomainBuilder.Entity
+- uid: System.Action{JD.Domain.Modeling.EntityBuilder{{T}}}
+  commentId: T:System.Action{JD.Domain.Modeling.EntityBuilder{``0}}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<EntityBuilder<T>>
+  nameWithType: Action<EntityBuilder<T>>
+  fullName: System.Action<JD.Domain.Modeling.EntityBuilder<T>>
+  nameWithType.vb: Action(Of EntityBuilder(Of T))
+  fullName.vb: System.Action(Of JD.Domain.Modeling.EntityBuilder(Of T))
+  name.vb: Action(Of EntityBuilder(Of T))
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: JD.Domain.Modeling.EntityBuilder`1
+    name: EntityBuilder
+    href: JD.Domain.Modeling.EntityBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Modeling.EntityBuilder`1
+    name: EntityBuilder
+    href: JD.Domain.Modeling.EntityBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: JD.Domain.Modeling.DomainBuilder.ValueObject*
+  commentId: Overload:JD.Domain.Modeling.DomainBuilder.ValueObject
+  href: JD.Domain.Modeling.DomainBuilder.html#JD_Domain_Modeling_DomainBuilder_ValueObject__1_System_Action_JD_Domain_Modeling_ValueObjectBuilder___0___
+  name: ValueObject
+  nameWithType: DomainBuilder.ValueObject
+  fullName: JD.Domain.Modeling.DomainBuilder.ValueObject
+- uid: System.Action{JD.Domain.Modeling.ValueObjectBuilder{{T}}}
+  commentId: T:System.Action{JD.Domain.Modeling.ValueObjectBuilder{``0}}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<ValueObjectBuilder<T>>
+  nameWithType: Action<ValueObjectBuilder<T>>
+  fullName: System.Action<JD.Domain.Modeling.ValueObjectBuilder<T>>
+  nameWithType.vb: Action(Of ValueObjectBuilder(Of T))
+  fullName.vb: System.Action(Of JD.Domain.Modeling.ValueObjectBuilder(Of T))
+  name.vb: Action(Of ValueObjectBuilder(Of T))
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: JD.Domain.Modeling.ValueObjectBuilder`1
+    name: ValueObjectBuilder
+    href: JD.Domain.Modeling.ValueObjectBuilder-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: JD.Domain.Modeling.ValueObjectBuilder`1
+    name: ValueObjectBuilder
+    href: JD.Domain.Modeling.ValueObjectBuilder-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: JD.Domain.Modeling.DomainBuilder.Enum*
+  commentId: Overload:JD.Domain.Modeling.DomainBuilder.Enum
+  href: JD.Domain.Modeling.DomainBuilder.html#JD_Domain_Modeling_DomainBuilder_Enum__1
+  name: Enum
+  nameWithType: DomainBuilder.Enum
+  fullName: JD.Domain.Modeling.DomainBuilder.Enum
+- uid: JD.Domain.Modeling.DomainBuilder.WithMetadata*
+  commentId: Overload:JD.Domain.Modeling.DomainBuilder.WithMetadata
+  href: JD.Domain.Modeling.DomainBuilder.html#JD_Domain_Modeling_DomainBuilder_WithMetadata_System_String_System_Object_
+  name: WithMetadata
+  nameWithType: DomainBuilder.WithMetadata
+  fullName: JD.Domain.Modeling.DomainBuilder.WithMetadata
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: JD.Domain.Modeling.DomainBuilder.BuildManifest*
+  commentId: Overload:JD.Domain.Modeling.DomainBuilder.BuildManifest
+  href: JD.Domain.Modeling.DomainBuilder.html#JD_Domain_Modeling_DomainBuilder_BuildManifest
+  name: BuildManifest
+  nameWithType: DomainBuilder.BuildManifest
+  fullName: JD.Domain.Modeling.DomainBuilder.BuildManifest
+- uid: JD.Domain.Abstractions.DomainManifest
+  commentId: T:JD.Domain.Abstractions.DomainManifest
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.DomainManifest.html
+  name: DomainManifest
+  nameWithType: DomainManifest
+  fullName: JD.Domain.Abstractions.DomainManifest
+- uid: JD.Domain.Abstractions
+  commentId: N:JD.Domain.Abstractions
+  href: JD.html
+  name: JD.Domain.Abstractions
+  nameWithType: JD.Domain.Abstractions
+  fullName: JD.Domain.Abstractions
+  spec.csharp:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+  spec.vb:
+  - uid: JD
+    name: JD
+    href: JD.html
+  - name: .
+  - uid: JD.Domain
+    name: Domain
+    href: JD.Domain.html
+  - name: .
+  - uid: JD.Domain.Abstractions
+    name: Abstractions
+    href: JD.Domain.Abstractions.html
+- uid: JD.Domain.Modeling.DomainBuilder.Build*
+  commentId: Overload:JD.Domain.Modeling.DomainBuilder.Build
+  href: JD.Domain.Modeling.DomainBuilder.html#JD_Domain_Modeling_DomainBuilder_Build
+  name: Build
+  nameWithType: DomainBuilder.Build
+  fullName: JD.Domain.Modeling.DomainBuilder.Build
+- uid: JD.Domain.Modeling.DomainBuilder.AddRuleSet*
+  commentId: Overload:JD.Domain.Modeling.DomainBuilder.AddRuleSet
+  href: JD.Domain.Modeling.DomainBuilder.html#JD_Domain_Modeling_DomainBuilder_AddRuleSet_JD_Domain_Abstractions_RuleSetManifest_
+  name: AddRuleSet
+  nameWithType: DomainBuilder.AddRuleSet
+  fullName: JD.Domain.Modeling.DomainBuilder.AddRuleSet
+- uid: JD.Domain.Abstractions.RuleSetManifest
+  commentId: T:JD.Domain.Abstractions.RuleSetManifest
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.RuleSetManifest.html
+  name: RuleSetManifest
+  nameWithType: RuleSetManifest
+  fullName: JD.Domain.Abstractions.RuleSetManifest
+- uid: JD.Domain.Modeling.DomainBuilder.AddConfiguration*
+  commentId: Overload:JD.Domain.Modeling.DomainBuilder.AddConfiguration
+  href: JD.Domain.Modeling.DomainBuilder.html#JD_Domain_Modeling_DomainBuilder_AddConfiguration_JD_Domain_Abstractions_ConfigurationManifest_
+  name: AddConfiguration
+  nameWithType: DomainBuilder.AddConfiguration
+  fullName: JD.Domain.Modeling.DomainBuilder.AddConfiguration
+- uid: JD.Domain.Abstractions.ConfigurationManifest
+  commentId: T:JD.Domain.Abstractions.ConfigurationManifest
+  parent: JD.Domain.Abstractions
+  href: JD.Domain.Abstractions.ConfigurationManifest.html
+  name: ConfigurationManifest
+  nameWithType: ConfigurationManifest
+  fullName: JD.Domain.Abstractions.ConfigurationManifest
