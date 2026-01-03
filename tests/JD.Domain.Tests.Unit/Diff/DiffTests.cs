@@ -291,4 +291,242 @@ public class DiffTests
         // Required -> Optional is not breaking
         Assert.False(classifier.IsRequiredChangeBreaking(wasOptional: false, isNowRequired: false));
     }
+
+    [Fact]
+    public void DiffEngine_Compare_PropertyRequiredChange_BreakingWhenOptionalToRequired()
+    {
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0),
+            CreateEntity("Customer",
+                CreateProperty("Id", "System.Guid", true),
+                CreateProperty("Email", "System.String", false)));
+
+        var afterEntity = CreateEntity("Customer",
+            CreateProperty("Id", "System.Guid", true),
+            CreateProperty("Email", "System.String", true));
+
+        var after = CreateSnapshot("TestDomain", new Version(2, 0, 0), afterEntity);
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(before, after);
+
+        Assert.True(diff.HasChanges);
+        Assert.True(diff.HasBreakingChanges);
+    }
+
+    [Fact]
+    public void DiffEngine_Compare_PropertyRequiredChange_NonBreakingWhenRequiredToOptional()
+    {
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0),
+            CreateEntity("Customer",
+                CreateProperty("Id", "System.Guid", true),
+                CreateProperty("Email", "System.String", true)));
+
+        var afterEntity = CreateEntity("Customer",
+            CreateProperty("Id", "System.Guid", true),
+            CreateProperty("Email", "System.String", false));
+
+        var after = CreateSnapshot("TestDomain", new Version(1, 1, 0), afterEntity);
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(before, after);
+
+        Assert.True(diff.HasChanges);
+        Assert.False(diff.HasBreakingChanges);
+    }
+
+    [Fact]
+    public void DiffEngine_Compare_ModifiedEntity_DetectsChanges()
+    {
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0),
+            CreateEntity("Customer",
+                CreateProperty("Id", "System.Guid", true),
+                CreateProperty("Name", "System.String", true)));
+
+        var after = CreateSnapshot("TestDomain", new Version(1, 1, 0),
+            CreateEntity("Customer",
+                CreateProperty("Id", "System.Guid", true),
+                CreateProperty("Name", "System.String", true),
+                CreateProperty("Email", "System.String", false)));
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(before, after);
+
+        Assert.True(diff.HasChanges);
+        Assert.Equal(1, diff.EntityChanges.Count);
+        Assert.Equal(ChangeType.Modified, diff.EntityChanges[0].ChangeType);
+        Assert.Single(diff.EntityChanges[0].PropertyChanges);
+    }
+
+    [Fact]
+    public void DiffEngine_Compare_MultipleChanges_CountsCorrectly()
+    {
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0),
+            CreateEntity("Customer",
+                CreateProperty("Id", "System.Guid", true)),
+            CreateEntity("Order",
+                CreateProperty("Id", "System.Guid", true)));
+
+        var after = CreateSnapshot("TestDomain", new Version(2, 0, 0),
+            CreateEntity("Customer",
+                CreateProperty("Id", "System.Guid", true),
+                CreateProperty("Email", "System.String", false)),
+            CreateEntity("Product",
+                CreateProperty("Id", "System.Guid", true)));
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(before, after);
+
+        Assert.True(diff.HasChanges);
+        Assert.Equal(3, diff.TotalChanges); // 1 modified, 1 removed, 1 added
+    }
+
+    [Fact]
+    public void DiffFormatter_FormatAsJson_ContainsRequiredFields()
+    {
+        var customer = CreateEntity("Customer", CreateProperty("Id", "System.Guid", true));
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0), customer);
+        var after = CreateSnapshot("TestDomain", new Version(1, 1, 0), customer);
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(before, after);
+        var formatter = new DiffFormatter();
+
+        var json = formatter.FormatAsJson(diff);
+
+        Assert.Contains("\"hasBreakingChanges\":", json);
+        Assert.Contains("\"totalChanges\":", json);
+        Assert.Contains("\"domain\":", json);
+    }
+
+    [Fact]
+    public void DiffFormatter_FormatAsMarkdown_NoChanges_IndicatesNoChanges()
+    {
+        var entity = CreateEntity("Customer", CreateProperty("Id", "System.Guid", true));
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0), entity);
+        var after = CreateSnapshot("TestDomain", new Version(1, 0, 0), entity);
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(before, after);
+        var formatter = new DiffFormatter();
+
+        var markdown = formatter.FormatAsMarkdown(diff);
+
+        Assert.Contains("No changes", markdown);
+    }
+
+    [Fact]
+    public void DiffFormatter_FormatAsMarkdown_WithNonBreakingChanges_ShowsAdditions()
+    {
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0),
+            CreateEntity("Customer", CreateProperty("Id", "System.Guid", true)));
+
+        var after = CreateSnapshot("TestDomain", new Version(1, 1, 0),
+            CreateEntity("Customer", CreateProperty("Id", "System.Guid", true)),
+            CreateEntity("Order", CreateProperty("Id", "System.Guid", true)));
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(before, after);
+        var formatter = new DiffFormatter();
+
+        var markdown = formatter.FormatAsMarkdown(diff);
+
+        Assert.Contains("Entity 'Order' added", markdown);
+        Assert.Contains("**Breaking Changes**: No", markdown);
+    }
+
+    [Fact]
+    public void MigrationPlanGenerator_Generate_WithBreakingChanges_IncludesWarnings()
+    {
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0),
+            CreateEntity("Customer",
+                CreateProperty("Id", "System.Guid", true),
+                CreateProperty("Email", "System.String", true)));
+
+        var after = CreateSnapshot("TestDomain", new Version(2, 0, 0),
+            CreateEntity("Customer",
+                CreateProperty("Id", "System.Guid", true)));
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(before, after);
+        var generator = new MigrationPlanGenerator();
+
+        var plan = generator.Generate(diff);
+
+        Assert.Contains("Breaking Changes", plan);
+        Assert.Contains("⚠", plan);
+    }
+
+    [Fact]
+    public void MigrationPlanGenerator_Generate_WithNonBreakingChanges_ShowsAsNonBreaking()
+    {
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0),
+            CreateEntity("Customer", CreateProperty("Id", "System.Guid", true)));
+
+        var after = CreateSnapshot("TestDomain", new Version(1, 1, 0),
+            CreateEntity("Customer",
+                CreateProperty("Id", "System.Guid", true),
+                CreateProperty("Email", "System.String", false)));
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(before, after);
+        var generator = new MigrationPlanGenerator();
+
+        var plan = generator.Generate(diff);
+
+        Assert.Contains("Non-Breaking Changes", plan);
+        Assert.DoesNotContain("⚠", plan);
+    }
+
+    [Fact]
+    public void BreakingChangeClassifier_KeyChange_IsBreaking()
+    {
+        var classifier = new BreakingChangeClassifier();
+        Assert.True(classifier.IsKeyChangeBreaking());
+    }
+
+    [Fact]
+    public void BreakingChangeClassifier_EntityOperations_ClassifiesCorrectly()
+    {
+        var classifier = new BreakingChangeClassifier();
+
+        Assert.True(classifier.IsEntityRemovalBreaking());
+        Assert.False(classifier.IsEntityAdditionBreaking());
+    }
+
+    [Fact]
+    public void BreakingChangeClassifier_PropertyOperations_ClassifiesCorrectly()
+    {
+        var classifier = new BreakingChangeClassifier();
+
+        Assert.True(classifier.IsPropertyRemovalBreaking());
+        Assert.True(classifier.IsPropertyAdditionBreaking(isRequired: true));
+        Assert.False(classifier.IsPropertyAdditionBreaking(isRequired: false));
+        Assert.True(classifier.IsPropertyTypeChangeBreaking());
+    }
+
+    [Fact]
+    public void BreakingChangeClassifier_ValueObjectAndEnumOperations_ClassifiesCorrectly()
+    {
+        var classifier = new BreakingChangeClassifier();
+
+        Assert.True(classifier.IsValueObjectRemovalBreaking());
+        Assert.True(classifier.IsEnumRemovalBreaking());
+        Assert.True(classifier.IsEnumValueRemovalBreaking());
+    }
+
+    [Fact]
+    public void BreakingChangeClassifier_IndexOperations_AreNonBreaking()
+    {
+        var classifier = new BreakingChangeClassifier();
+
+        Assert.False(classifier.IsIndexAdditionBreaking());
+        Assert.False(classifier.IsIndexRemovalBreaking());
+    }
+
+    [Fact]
+    public void BreakingChangeClassifier_RuleChanges_AreNonBreaking()
+    {
+        var classifier = new BreakingChangeClassifier();
+        Assert.False(classifier.IsRuleChangeBreaking());
+    }
 }

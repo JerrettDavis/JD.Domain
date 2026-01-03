@@ -349,4 +349,183 @@ public sealed class DomainEngineTests
     }
 
     #endregion
+
+    [Fact]
+    public void DomainEngine_Constructor_ThrowsOnNullManifest()
+    {
+        Assert.Throws<ArgumentNullException>(() => new DomainEngine(null!));
+    }
+
+    [Fact]
+    public void Evaluate_ThrowsOnNullInstance()
+    {
+        var manifest = JD.Domain.Modeling.Domain.Create("TestDomain")
+            .Entity<Blog>()
+            .BuildManifest();
+        var engine = DomainRuntime.CreateEngine(manifest);
+
+        Assert.Throws<ArgumentNullException>(() => engine.Evaluate<Blog>(null!));
+    }
+
+    [Fact]
+    public async Task EvaluateAsync_ThrowsOnNullInstance()
+    {
+        var manifest = JD.Domain.Modeling.Domain.Create("TestDomain")
+            .Entity<Blog>()
+            .BuildManifest();
+        var engine = DomainRuntime.CreateEngine(manifest);
+
+        await Assert.ThrowsAsync<ArgumentNullException>(() => engine.EvaluateAsync<Blog>(null!).AsTask());
+    }
+
+    [Fact]
+    public void Evaluate_WithRuleSetManifest_ReturnsSuccess()
+    {
+        var manifest = JD.Domain.Modeling.Domain.Create("TestDomain")
+            .Entity<Blog>()
+            .Rules<Blog>(r => r
+                .Invariant("NameRequired", b => !string.IsNullOrWhiteSpace(b.Name))
+                    .WithMessage("Name is required"))
+            .BuildManifest();
+
+        var engine = (DomainEngine)DomainRuntime.CreateEngine(manifest);
+        var ruleSet = manifest.RuleSets.First();
+        var blog = new Blog { Name = "Test" };
+
+        var result = engine.Evaluate(blog, ruleSet);
+
+        Assert.True(result.IsValid);
+        Assert.Equal(1, result.RulesEvaluated);
+    }
+
+    [Fact]
+    public void Evaluate_WithRuleSetManifest_ThrowsOnNullRuleSet()
+    {
+        var manifest = JD.Domain.Modeling.Domain.Create("TestDomain")
+            .Entity<Blog>()
+            .BuildManifest();
+        var engine = (DomainEngine)DomainRuntime.CreateEngine(manifest);
+        var blog = new Blog { Name = "Test" };
+
+        Assert.Throws<ArgumentNullException>(() => engine.Evaluate(blog, (RuleSetManifest)null!));
+    }
+
+    [Fact]
+    public void Evaluate_WithCompiledRuleSet_ThrowsOnNullRuleSet()
+    {
+        var manifest = JD.Domain.Modeling.Domain.Create("TestDomain")
+            .Entity<Blog>()
+            .BuildManifest();
+        var engine = (DomainEngine)DomainRuntime.CreateEngine(manifest);
+        var blog = new Blog { Name = "Test" };
+
+        Assert.Throws<ArgumentNullException>(() => engine.Evaluate(blog, (CompiledRuleSet<Blog>)null!));
+    }
+
+    [Fact]
+    public void CompiledRuleSet_Constructor_CreatesRuleSet()
+    {
+        var rule = new CompiledRule<Blog>(
+            new RuleManifest
+            {
+                Id = "Test",
+                Category = "Invariant",
+                TargetType = "Blog",
+                Message = "Test message"
+            },
+            b => !string.IsNullOrWhiteSpace(b.Name));
+
+        var ruleSet = new CompiledRuleSet<Blog>("Default", new[] { rule });
+
+        Assert.Equal("Default", ruleSet.Name);
+        Assert.Single(ruleSet.Rules);
+    }
+
+    [Fact]
+    public void CompiledRule_Evaluate_ThrowsOnNullInstance()
+    {
+        var rule = new CompiledRule<Blog>(
+            new RuleManifest
+            {
+                Id = "Test",
+                Category = "Invariant",
+                TargetType = "Blog"
+            },
+            b => true);
+
+        Assert.Throws<ArgumentNullException>(() => rule.Evaluate(null!));
+    }
+
+    [Fact]
+    public async Task DomainRuntime_CreateEngine_WithOptions_ReturnsEngine()
+    {
+        var manifest = JD.Domain.Modeling.Domain.Create("TestDomain")
+            .Entity<Blog>()
+            .BuildManifest();
+
+        var engine = DomainRuntime.Create(options => options.AddManifest(manifest));
+
+        Assert.NotNull(engine);
+
+        var blog = new Blog { Name = "Test" };
+        var result = await engine.EvaluateAsync(blog);
+        Assert.True(result.IsValid);
+    }
+
+    [Fact]
+    public void Evaluate_WithInfo_IncludesInfoWhenRequested()
+    {
+        var ruleSet = new RuleSetBuilder<Blog>("Default")
+            .Invariant("Info1", b => false)  // Failing rule with Info severity
+            .WithMessage("Info message")
+            .WithSeverity(RuleSeverity.Info)
+            .BuildCompiled();
+
+        var blog = new Blog { Name = "Test" };
+        var options = new RuleEvaluationOptions { IncludeInfo = true };
+
+        var result = ruleSet.Evaluate(blog, options);
+
+        Assert.True(result.IsValid);  // Info doesn't make it invalid
+        Assert.Single(result.Info);
+        Assert.Equal("Info1", result.Info[0].Code);
+        Assert.Equal("Info message", result.Info[0].Message);
+    }
+
+    [Fact]
+    public void Evaluate_WithInfo_ExcludesInfoWhenNotRequested()
+    {
+        var ruleSet = new RuleSetBuilder<Blog>("Default")
+            .Invariant("Info1", b => true)
+            .WithMessage("Info message")
+            .WithSeverity(RuleSeverity.Info)
+            .BuildCompiled();
+
+        var blog = new Blog { Name = "Test" };
+        var options = new RuleEvaluationOptions { IncludeInfo = false };
+
+        var result = ruleSet.Evaluate(blog, options);
+
+        Assert.True(result.IsValid);
+        Assert.Empty(result.Info);
+    }
+
+    [Fact]
+    public void Evaluate_WithCriticalSeverity_ReportsAsError()
+    {
+        var ruleSet = new RuleSetBuilder<Blog>("Default")
+            .Invariant("Critical1", b => false)
+            .WithMessage("Critical error")
+            .WithSeverity(RuleSeverity.Critical)
+            .BuildCompiled();
+
+        var blog = new Blog { Name = "" };
+
+        var result = ruleSet.Evaluate(blog);
+
+        Assert.False(result.IsValid);
+        Assert.Single(result.Errors);
+        Assert.Equal(RuleSeverity.Critical, result.Errors[0].Severity);
+    }
 }
+

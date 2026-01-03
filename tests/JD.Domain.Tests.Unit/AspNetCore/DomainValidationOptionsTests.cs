@@ -472,3 +472,108 @@ public class DomainValidationServiceExtensionsTests
         Assert.Throws<ArgumentNullException>(() => services.AddDomainValidation((IDomainEngine)null!));
     }
 }
+
+public class DomainValidationAttributeTests
+{
+    private class TestModel
+    {
+        public string Name { get; set; } = string.Empty;
+        public int Age { get; set; }
+    }
+
+    [Fact]
+    public void DomainValidationAttribute_PropertyDefaults()
+    {
+        var attribute = new DomainValidationAttribute();
+
+        Assert.Null(attribute.ValidationType);
+        Assert.Null(attribute.RuleSet);
+        Assert.False(attribute.StopOnFirstError);
+    }
+
+    [Fact]
+    public void DomainValidationAttribute_CanSetProperties()
+    {
+        var attribute = new DomainValidationAttribute
+        {
+            ValidationType = typeof(TestModel),
+            RuleSet = "Create",
+            StopOnFirstError = true
+        };
+
+        Assert.Equal(typeof(TestModel), attribute.ValidationType);
+        Assert.Equal("Create", attribute.RuleSet);
+        Assert.True(attribute.StopOnFirstError);
+    }
+}
+
+public class MinimalApiExtensionsTests
+{
+    private class TestEntity
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+    }
+
+    [Fact]
+    public void WithDomainValidation_Generic_ReturnsBuilder()
+    {
+        var services = new ServiceCollection();
+        services.AddDomainValidation();
+        var app = WebApplication.Create();
+
+        var builder = app.MapPost("/test", (TestEntity entity) => Results.Ok(entity));
+        var result = builder.WithDomainValidation<TestEntity>();
+
+        Assert.NotNull(result);
+        Assert.IsAssignableFrom<RouteHandlerBuilder>(result);
+    }
+
+    [Fact]
+    public void WithDomainValidation_WithRuleSet_ReturnsBuilder()
+    {
+        var services = new ServiceCollection();
+        services.AddDomainValidation();
+        var app = WebApplication.Create();
+
+        var builder = app.MapPost("/test", (TestEntity entity) => Results.Ok(entity));
+        var result = builder.WithDomainValidation<TestEntity>("Create");
+
+        Assert.NotNull(result);
+        Assert.IsAssignableFrom<RouteHandlerBuilder>(result);
+    }
+
+    [Fact]
+    public void WithDomainValidation_WithConfigureAction_ReturnsBuilder()
+    {
+        var services = new ServiceCollection();
+        services.AddDomainValidation();
+        var app = WebApplication.Create();
+
+        var builder = app.MapPost("/test", (TestEntity entity) => Results.Ok(entity));
+        var result = builder.WithDomainValidation<TestEntity>(metadata =>
+        {
+            metadata.WithRuleSet("Update");
+            metadata.StopOnFirstError();
+        });
+
+        Assert.NotNull(result);
+        Assert.IsAssignableFrom<RouteHandlerBuilder>(result);
+    }
+}
+
+public class DomainValidationMiddlewareExtensionsTests
+{
+    [Fact]
+    public void UseDomainValidation_ReturnsApplicationBuilder()
+    {
+        var services = new ServiceCollection();
+        services.AddDomainValidation();
+        var app = WebApplication.Create();
+
+        var result = app.UseDomainValidation();
+
+        Assert.NotNull(result);
+        Assert.IsAssignableFrom<IApplicationBuilder>(result);
+    }
+}

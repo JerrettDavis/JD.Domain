@@ -196,6 +196,306 @@ public class SnapshotTests
         Assert.True(appleIndex < mangoIndex);
         Assert.True(mangoIndex < zebraIndex);
     }
+
+    [Fact]
+    public void DomainSnapshot_Create_ThrowsOnNullManifest()
+    {
+        Assert.Throws<ArgumentNullException>(() => DomainSnapshot.Create(null!, "hash123"));
+    }
+
+    [Fact]
+    public void DomainSnapshot_Create_ThrowsOnNullHash()
+    {
+        var manifest = CreateTestManifest();
+        Assert.Throws<ArgumentException>(() => DomainSnapshot.Create(manifest, null!));
+    }
+
+    [Fact]
+    public void DomainSnapshot_Create_ThrowsOnEmptyHash()
+    {
+        var manifest = CreateTestManifest();
+        Assert.Throws<ArgumentException>(() => DomainSnapshot.Create(manifest, string.Empty));
+    }
+
+    [Fact]
+    public void SnapshotWriter_Constructor_WithOptions_UsesProvidedOptions()
+    {
+        var options = new SnapshotOptions { IndentedJson = false };
+        var writer = new SnapshotWriter(options);
+        var manifest = CreateTestManifest();
+        var snapshot = writer.CreateSnapshot(manifest);
+
+        var json = writer.Serialize(snapshot);
+
+        Assert.DoesNotContain("\n", json); // Not indented
+    }
+
+    [Fact]
+    public void SnapshotWriter_CreateSnapshot_ThrowsOnNullManifest()
+    {
+        var writer = new SnapshotWriter();
+        Assert.Throws<ArgumentNullException>(() => writer.CreateSnapshot(null!));
+    }
+
+    [Fact]
+    public void SnapshotWriter_Serialize_ThrowsOnNullSnapshot()
+    {
+        var writer = new SnapshotWriter();
+        Assert.Throws<ArgumentNullException>(() => writer.Serialize(null!));
+    }
+
+    [Fact]
+    public void SnapshotWriter_SerializeManifest_ThrowsOnNullManifest()
+    {
+        var writer = new SnapshotWriter();
+        Assert.Throws<ArgumentNullException>(() => writer.SerializeManifest(null!));
+    }
+
+    [Fact]
+    public void SnapshotWriter_Serialize_WithComplexManifest_IncludesAllElements()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "ComplexDomain",
+            Version = new Version(2, 0, 0),
+            Hash = "test-hash",
+            Entities =
+            [
+                new EntityManifest
+                {
+                    Name = "Customer",
+                    TypeName = "ComplexDomain.Customer",
+                    Namespace = "ComplexDomain",
+                    TableName = "Customers",
+                    SchemaName = "dbo",
+                    Properties =
+                    [
+                        new PropertyManifest
+                        {
+                            Name = "Id",
+                            TypeName = "System.Guid",
+                            IsRequired = true
+                        },
+                        new PropertyManifest
+                        {
+                            Name = "Name",
+                            TypeName = "System.String",
+                            IsRequired = true,
+                            MaxLength = 100
+                        },
+                        new PropertyManifest
+                        {
+                            Name = "Tags",
+                            TypeName = "System.Collections.Generic.List<string>",
+                            IsCollection = true
+                        },
+                        new PropertyManifest
+                        {
+                            Name = "Balance",
+                            TypeName = "System.Decimal",
+                            Precision = 18,
+                            Scale = 2
+                        },
+                        new PropertyManifest
+                        {
+                            Name = "RowVersion",
+                            TypeName = "System.Byte[]",
+                            IsConcurrencyToken = true
+                        },
+                        new PropertyManifest
+                        {
+                            Name = "CreatedDate",
+                            TypeName = "System.DateTime",
+                            IsComputed = true
+                        }
+                    ],
+                    KeyProperties = ["Id"],
+                    Metadata = new Dictionary<string, object?> { ["Description"] = "Customer entity" }
+                }
+            ],
+            ValueObjects =
+            [
+                new ValueObjectManifest
+                {
+                    Name = "Address",
+                    TypeName = "ComplexDomain.Address",
+                    Namespace = "ComplexDomain",
+                    Properties =
+                    [
+                        new PropertyManifest { Name = "Street", TypeName = "System.String", MaxLength = 200 }
+                    ],
+                    Metadata = new Dictionary<string, object?> { ["ValueObject"] = true }
+                }
+            ],
+            Enums =
+            [
+                new EnumManifest
+                {
+                    Name = "Status",
+                    TypeName = "ComplexDomain.Status",
+                    Namespace = "ComplexDomain",
+                    UnderlyingType = "System.Byte",
+                    Values = new Dictionary<string, object> { ["Active"] = 1, ["Inactive"] = 2 },
+                    Metadata = new Dictionary<string, object?> { ["Enum"] = true }
+                }
+            ],
+            RuleSets =
+            [
+                new RuleSetManifest
+                {
+                    Name = "Default",
+                    TargetType = "ComplexDomain.Customer",
+                    Rules =
+                    [
+                        new RuleManifest
+                        {
+                            Id = "NameRequired",
+                            Category = "Invariant",
+                            TargetType = "ComplexDomain.Customer",
+                            Message = "Name is required",
+                            Severity = RuleSeverity.Critical,
+                            Expression = "!string.IsNullOrEmpty(Name)",
+                            Tags = ["Validation", "Critical"],
+                            Metadata = new Dictionary<string, object?> { ["Priority"] = 1 }
+                        }
+                    ],
+                    Includes = ["BaseRules"],
+                    Metadata = new Dictionary<string, object?> { ["RuleSet"] = true }
+                }
+            ],
+            Configurations =
+            [
+                new ConfigurationManifest
+                {
+                    EntityName = "Customer",
+                    EntityTypeName = "ComplexDomain.Customer",
+                    TableName = "Customers",
+                    SchemaName = "dbo",
+                    KeyProperties = ["Id"],
+                    PropertyConfigurations = new Dictionary<string, PropertyConfigurationManifest>
+                    {
+                        ["Name"] = new PropertyConfigurationManifest
+                        {
+                            PropertyName = "Name",
+                            ColumnName = "customer_name",
+                            ColumnType = "nvarchar(100)",
+                            IsRequired = true,
+                            MaxLength = 100,
+                            IsUnicode = true
+                        },
+                        ["Balance"] = new PropertyConfigurationManifest
+                        {
+                            PropertyName = "Balance",
+                            Precision = 18,
+                            Scale = 2,
+                            DefaultValue = "0",
+                            DefaultValueSql = "0.00",
+                            ValueGenerated = "OnAdd"
+                        },
+                        ["Total"] = new PropertyConfigurationManifest
+                        {
+                            PropertyName = "Total",
+                            ComputedColumnSql = "Balance * 1.1",
+                            IsConcurrencyToken = true
+                        }
+                    },
+                    Indexes =
+                    [
+                        new IndexManifest
+                        {
+                            Name = "IX_Customer_Name",
+                            Properties = ["Name"],
+                            IsUnique = true,
+                            Filter = "Name IS NOT NULL",
+                            IncludedProperties = ["Balance"]
+                        }
+                    ],
+                    Relationships =
+                    [
+                        new RelationshipManifest
+                        {
+                            PrincipalEntity = "Customer",
+                            DependentEntity = "Order",
+                            RelationshipType = "OneToMany",
+                            PrincipalNavigation = "Orders",
+                            DependentNavigation = "Customer",
+                            ForeignKeyProperties = ["CustomerId"],
+                            IsRequired = true,
+                            DeleteBehavior = "Cascade"
+                        },
+                        new RelationshipManifest
+                        {
+                            PrincipalEntity = "Product",
+                            DependentEntity = "Category",
+                            RelationshipType = "ManyToMany",
+                            JoinEntity = "ProductCategory"
+                        }
+                    ],
+                    Metadata = new Dictionary<string, object?> { ["Configuration"] = true }
+                }
+            ],
+            Sources =
+            [
+                new SourceInfo
+                {
+                    Type = "Code",
+                    Location = "Customer.cs",
+                    Timestamp = new DateTimeOffset(2025, 1, 1, 0, 0, 0, TimeSpan.Zero),
+                    Metadata = new Dictionary<string, string> { ["Author"] = "System" }
+                }
+            ],
+            Metadata = new Dictionary<string, object?> { ["Version"] = "2.0" }
+        };
+
+        var writer = new SnapshotWriter(new SnapshotOptions { IncludeSchema = true });
+        var snapshot = writer.CreateSnapshot(manifest);
+
+        var json = writer.Serialize(snapshot);
+
+        Assert.Contains("\"$schema\":", json);
+        Assert.Contains("\"namespace\": \"ComplexDomain\"", json);
+        Assert.Contains("\"tableName\"", json);
+        Assert.Contains("\"schemaName\"", json);
+        Assert.Contains("\"maxLength\"", json);
+        Assert.Contains("\"isCollection\": true", json);
+        Assert.Contains("\"precision\"", json);
+        Assert.Contains("\"scale\"", json);
+        Assert.Contains("\"isConcurrencyToken\": true", json);
+        Assert.Contains("\"isComputed\": true", json);
+        Assert.Contains("\"underlyingType\": \"System.Byte\"", json);
+        Assert.Contains("\"severity\": \"Critical\"", json);
+        Assert.Contains("\"expression\"", json);
+        Assert.Contains("\"includes\"", json);
+        Assert.Contains("\"columnName\"", json);
+        Assert.Contains("\"columnType\"", json);
+        Assert.Contains("\"isUnicode\"", json);
+        Assert.Contains("\"defaultValue\"", json);
+        Assert.Contains("\"defaultValueSql\"", json);
+        Assert.Contains("\"computedColumnSql\"", json);
+        Assert.Contains("\"valueGenerated\"", json);
+        Assert.Contains("\"isUnique\": true", json);
+        Assert.Contains("\"filter\"", json);
+        Assert.Contains("\"includedProperties\"", json);
+        Assert.Contains("\"principalNavigation\"", json);
+        Assert.Contains("\"dependentNavigation\"", json);
+        Assert.Contains("\"foreignKeyProperties\"", json);
+        Assert.Contains("\"deleteBehavior\"", json);
+        Assert.Contains("\"joinEntity\"", json);
+        Assert.Contains("\"sources\"", json);
+        Assert.Contains("\"hash\": \"test-hash\"", json);
+    }
+
+    [Fact]
+    public void SnapshotWriter_SerializeManifest_DirectSerialization_ProducesCanonicalJson()
+    {
+        var manifest = CreateTestManifest();
+        var writer = new SnapshotWriter();
+
+        var json = writer.SerializeManifest(manifest);
+
+        Assert.Contains("\"name\": \"TestDomain\"", json);
+        Assert.Contains("\"version\": \"1.0.0\"", json);
+    }
 }
 
 public class SnapshotStorageTests
