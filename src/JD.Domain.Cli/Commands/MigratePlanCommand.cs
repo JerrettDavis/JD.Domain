@@ -24,10 +24,12 @@ public static class MigratePlanCommand
             Description = "Path to the 'after' snapshot file"
         };
 
-        var outputOption = new Option<FileInfo?>("--output", "-o")
+        var outputOption = new Option<FileInfo?>("--output")
         {
             Description = "Output file (defaults to stdout)"
         };
+        outputOption.Aliases.Add("--output");
+        outputOption.Aliases.Add("-o");
 
         var command = new Command("migrate-plan", "Generate a migration plan between snapshots");
         command.Arguments.Add(beforeArg);

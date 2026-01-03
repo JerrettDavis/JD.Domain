@@ -24,16 +24,20 @@ public static class DiffCommand
             Description = "Path to the 'after' snapshot file"
         };
 
-        var formatOption = new Option<string>("--format", "-f")
+        var formatOption = new Option<string>("--format")
         {
             Description = "Output format: md (Markdown) or json",
             DefaultValueFactory = _ => "md"
         };
+        formatOption.Aliases.Add("--format");
+        formatOption.Aliases.Add("-f");
 
-        var outputOption = new Option<FileInfo?>("--output", "-o")
+        var outputOption = new Option<FileInfo?>("--output")
         {
             Description = "Output file (defaults to stdout)"
         };
+        outputOption.Aliases.Add("--output");
+        outputOption.Aliases.Add("-o");
 
         var command = new Command("diff", "Compare two domain snapshots");
         command.Arguments.Add(beforeArg);

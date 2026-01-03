@@ -14,22 +14,28 @@ public static class SnapshotCommand
     /// </summary>
     public static Command Create()
     {
-        var manifestOption = new Option<FileInfo>("--manifest", "-m")
+        var manifestOption = new Option<FileInfo>("--manifest")
         {
             Description = "Path to the domain manifest JSON file",
             Required = true
         };
+        manifestOption.Aliases.Add("--manifest");
+        manifestOption.Aliases.Add("-m");
 
-        var outputOption = new Option<DirectoryInfo>("--output", "-o")
+        var outputOption = new Option<DirectoryInfo>("--output")
         {
             Description = "Output directory for snapshots",
             Required = true
         };
+        outputOption.Aliases.Add("--output");
+        outputOption.Aliases.Add("-o");
 
-        var versionOption = new Option<string?>("--version", "-v")
+        var versionOption = new Option<string?>("--version")
         {
             Description = "Version override (defaults to manifest version)"
         };
+        versionOption.Aliases.Add("--version");
+        versionOption.Aliases.Add("-v");
 
         var command = new Command("snapshot", "Create a snapshot of a domain manifest");
         command.Options.Add(manifestOption);
