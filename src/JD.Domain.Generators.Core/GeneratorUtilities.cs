@@ -119,6 +119,10 @@ public static class GeneratorUtilities
     public static string GenerateFileName(string baseName, string suffix, string extension = ".g.cs")
     {
         var identifier = ToIdentifier(baseName);
+        if (string.IsNullOrEmpty(suffix))
+        {
+            return $"{identifier}{extension}";
+        }
         return $"{identifier}.{suffix}{extension}";
     }
 
@@ -132,7 +136,7 @@ public static class GeneratorUtilities
             return content;
         }
 
-        // Normalize to \n first, then convert to platform-specific
+        // Normalize all line endings to \n for consistent source generation output
         return content.Replace("\r\n", "\n").Replace("\r", "\n");
     }
 }
