@@ -11,15 +11,13 @@ public static class Program
     /// <summary>
     /// Main entry point.
     /// </summary>
-    public static async Task<int> Main(string[] args)
+    public static int Main(string[] args)
     {
-        var rootCommand = new RootCommand("JD.Domain CLI - Domain model tooling")
-        {
-            SnapshotCommand.Create(),
-            DiffCommand.Create(),
-            MigratePlanCommand.Create()
-        };
+        var rootCommand = new RootCommand("JD.Domain CLI - Domain model tooling");
+        rootCommand.Subcommands.Add(SnapshotCommand.Create());
+        rootCommand.Subcommands.Add(DiffCommand.Create());
+        rootCommand.Subcommands.Add(MigratePlanCommand.Create());
 
-        return await rootCommand.InvokeAsync(args);
+        return rootCommand.Parse(args).Invoke();
     }
 }

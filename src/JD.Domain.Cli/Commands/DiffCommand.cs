@@ -14,35 +14,42 @@ public static class DiffCommand
     /// </summary>
     public static Command Create()
     {
-        var beforeArg = new Argument<FileInfo>(
-            name: "before",
-            description: "Path to the 'before' snapshot file");
-
-        var afterArg = new Argument<FileInfo>(
-            name: "after",
-            description: "Path to the 'after' snapshot file");
-
-        var formatOption = new Option<string>(
-            aliases: ["--format", "-f"],
-            getDefaultValue: () => "md",
-            description: "Output format: md (Markdown) or json");
-
-        var outputOption = new Option<FileInfo?>(
-            aliases: ["--output", "-o"],
-            description: "Output file (defaults to stdout)");
-
-        var command = new Command("diff", "Compare two domain snapshots")
+        var beforeArg = new Argument<FileInfo>("before")
         {
-            beforeArg,
-            afterArg,
-            formatOption,
-            outputOption
+            Description = "Path to the 'before' snapshot file"
         };
 
-        command.SetHandler(async (before, after, format, output) =>
+        var afterArg = new Argument<FileInfo>("after")
         {
-            await ExecuteAsync(before, after, format, output);
-        }, beforeArg, afterArg, formatOption, outputOption);
+            Description = "Path to the 'after' snapshot file"
+        };
+
+        var formatOption = new Option<string>("--format", "-f")
+        {
+            Description = "Output format: md (Markdown) or json",
+            DefaultValueFactory = _ => "md"
+        };
+
+        var outputOption = new Option<FileInfo?>("--output", "-o")
+        {
+            Description = "Output file (defaults to stdout)"
+        };
+
+        var command = new Command("diff", "Compare two domain snapshots");
+        command.Arguments.Add(beforeArg);
+        command.Arguments.Add(afterArg);
+        command.Options.Add(formatOption);
+        command.Options.Add(outputOption);
+
+        command.SetAction(async (parseResult, cancellationToken) =>
+        {
+            var before = parseResult.GetValue(beforeArg);
+            var after = parseResult.GetValue(afterArg);
+            var format = parseResult.GetValue(formatOption);
+            var output = parseResult.GetValue(outputOption);
+
+            await ExecuteAsync(before!, after!, format!, output);
+        });
 
         return command;
     }

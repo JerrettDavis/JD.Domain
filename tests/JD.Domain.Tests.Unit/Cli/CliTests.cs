@@ -20,9 +20,9 @@ public class CliTests
     {
         var command = SnapshotCommand.Create();
 
-        var manifestOption = command.Options.FirstOrDefault(o => o.HasAlias("--manifest"));
+        var manifestOption = command.Options.FirstOrDefault(o => o.Aliases.Contains("--manifest"));
         Assert.NotNull(manifestOption);
-        Assert.True(manifestOption.IsRequired);
+        Assert.True(manifestOption.Required);
     }
 
     [Fact]
@@ -30,9 +30,9 @@ public class CliTests
     {
         var command = SnapshotCommand.Create();
 
-        var outputOption = command.Options.FirstOrDefault(o => o.HasAlias("--output"));
+        var outputOption = command.Options.FirstOrDefault(o => o.Aliases.Contains("--output"));
         Assert.NotNull(outputOption);
-        Assert.True(outputOption.IsRequired);
+        Assert.True(outputOption.Required);
     }
 
     [Fact]
@@ -40,9 +40,9 @@ public class CliTests
     {
         var command = SnapshotCommand.Create();
 
-        var versionOption = command.Options.FirstOrDefault(o => o.HasAlias("--version"));
+        var versionOption = command.Options.FirstOrDefault(o => o.Aliases.Contains("--version"));
         Assert.NotNull(versionOption);
-        Assert.False(versionOption.IsRequired);
+        Assert.False(versionOption.Required);
     }
 
     [Fact]
@@ -50,9 +50,9 @@ public class CliTests
     {
         var command = SnapshotCommand.Create();
 
-        Assert.Contains(command.Options, o => o.HasAlias("-m"));
-        Assert.Contains(command.Options, o => o.HasAlias("-o"));
-        Assert.Contains(command.Options, o => o.HasAlias("-v"));
+        Assert.Contains(command.Options, o => o.Aliases.Contains("-m"));
+        Assert.Contains(command.Options, o => o.Aliases.Contains("-o"));
+        Assert.Contains(command.Options, o => o.Aliases.Contains("-v"));
     }
 
     [Fact]
@@ -88,9 +88,9 @@ public class CliTests
     {
         var command = DiffCommand.Create();
 
-        var formatOption = command.Options.FirstOrDefault(o => o.HasAlias("--format"));
+        var formatOption = command.Options.FirstOrDefault(o => o.Aliases.Contains("--format"));
         Assert.NotNull(formatOption);
-        Assert.False(formatOption.IsRequired);
+        Assert.False(formatOption.Required);
     }
 
     [Fact]
@@ -98,8 +98,8 @@ public class CliTests
     {
         var command = DiffCommand.Create();
 
-        Assert.Contains(command.Options, o => o.HasAlias("-f"));
-        Assert.Contains(command.Options, o => o.HasAlias("-o"));
+        Assert.Contains(command.Options, o => o.Aliases.Contains("-f"));
+        Assert.Contains(command.Options, o => o.Aliases.Contains("-o"));
     }
 
     [Fact]
@@ -135,9 +135,9 @@ public class CliTests
     {
         var command = MigratePlanCommand.Create();
 
-        var outputOption = command.Options.FirstOrDefault(o => o.HasAlias("--output"));
+        var outputOption = command.Options.FirstOrDefault(o => o.Aliases.Contains("--output"));
         Assert.NotNull(outputOption);
-        Assert.False(outputOption.IsRequired);
+        Assert.False(outputOption.Required);
     }
 
     [Fact]
@@ -145,6 +145,6 @@ public class CliTests
     {
         var command = MigratePlanCommand.Create();
 
-        Assert.Contains(command.Options, o => o.HasAlias("-o"));
+        Assert.Contains(command.Options, o => o.Aliases.Contains("-o"));
     }
 }

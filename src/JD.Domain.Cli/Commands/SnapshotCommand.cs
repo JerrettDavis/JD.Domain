@@ -14,35 +14,36 @@ public static class SnapshotCommand
     /// </summary>
     public static Command Create()
     {
-        var manifestOption = new Option<FileInfo>(
-            aliases: ["--manifest", "-m"],
-            description: "Path to the domain manifest JSON file")
+        var manifestOption = new Option<FileInfo>("--manifest", "-m")
         {
-            IsRequired = true
+            Description = "Path to the domain manifest JSON file",
+            Required = true
         };
 
-        var outputOption = new Option<DirectoryInfo>(
-            aliases: ["--output", "-o"],
-            description: "Output directory for snapshots")
+        var outputOption = new Option<DirectoryInfo>("--output", "-o")
         {
-            IsRequired = true
+            Description = "Output directory for snapshots",
+            Required = true
         };
 
-        var versionOption = new Option<string?>(
-            aliases: ["--version", "-v"],
-            description: "Version override (defaults to manifest version)");
-
-        var command = new Command("snapshot", "Create a snapshot of a domain manifest")
+        var versionOption = new Option<string?>("--version", "-v")
         {
-            manifestOption,
-            outputOption,
-            versionOption
+            Description = "Version override (defaults to manifest version)"
         };
 
-        command.SetHandler(async (manifest, output, version) =>
+        var command = new Command("snapshot", "Create a snapshot of a domain manifest");
+        command.Options.Add(manifestOption);
+        command.Options.Add(outputOption);
+        command.Options.Add(versionOption);
+
+        command.SetAction(async (parseResult, cancellationToken) =>
         {
-            await ExecuteAsync(manifest, output, version);
-        }, manifestOption, outputOption, versionOption);
+            var manifest = parseResult.GetValue(manifestOption);
+            var output = parseResult.GetValue(outputOption);
+            var version = parseResult.GetValue(versionOption);
+
+            await ExecuteAsync(manifest!, output!, version);
+        });
 
         return command;
     }

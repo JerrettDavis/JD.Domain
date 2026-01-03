@@ -14,29 +14,34 @@ public static class MigratePlanCommand
     /// </summary>
     public static Command Create()
     {
-        var beforeArg = new Argument<FileInfo>(
-            name: "before",
-            description: "Path to the 'before' snapshot file");
-
-        var afterArg = new Argument<FileInfo>(
-            name: "after",
-            description: "Path to the 'after' snapshot file");
-
-        var outputOption = new Option<FileInfo?>(
-            aliases: ["--output", "-o"],
-            description: "Output file (defaults to stdout)");
-
-        var command = new Command("migrate-plan", "Generate a migration plan between snapshots")
+        var beforeArg = new Argument<FileInfo>("before")
         {
-            beforeArg,
-            afterArg,
-            outputOption
+            Description = "Path to the 'before' snapshot file"
         };
 
-        command.SetHandler(async (before, after, output) =>
+        var afterArg = new Argument<FileInfo>("after")
         {
-            await ExecuteAsync(before, after, output);
-        }, beforeArg, afterArg, outputOption);
+            Description = "Path to the 'after' snapshot file"
+        };
+
+        var outputOption = new Option<FileInfo?>("--output", "-o")
+        {
+            Description = "Output file (defaults to stdout)"
+        };
+
+        var command = new Command("migrate-plan", "Generate a migration plan between snapshots");
+        command.Arguments.Add(beforeArg);
+        command.Arguments.Add(afterArg);
+        command.Options.Add(outputOption);
+
+        command.SetAction(async (parseResult, cancellationToken) =>
+        {
+            var before = parseResult.GetValue(beforeArg);
+            var after = parseResult.GetValue(afterArg);
+            var output = parseResult.GetValue(outputOption);
+
+            await ExecuteAsync(before!, after!, output);
+        });
 
         return command;
     }
