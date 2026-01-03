@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>JD.Domain.Cli</RootNamespace>
+    <AssemblyName>jd-domain</AssemblyName>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>jd-domain</ToolCommandName>
+    <PackageId>JD.Domain.Cli</PackageId>
+    <Description>CLI tool for JD.Domain - snapshot, diff, and code generation</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JD.Domain.Abstractions\JD.Domain.Abstractions.csproj" />
+    <ProjectReference Include="..\JD.Domain.Snapshot\JD.Domain.Snapshot.csproj" />
+    <ProjectReference Include="..\JD.Domain.Diff\JD.Domain.Diff.csproj" />
+  </ItemGroup>
+
+</Project>
