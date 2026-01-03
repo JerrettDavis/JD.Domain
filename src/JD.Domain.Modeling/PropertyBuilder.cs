@@ -43,7 +43,7 @@ public sealed class PropertyBuilder<TEntity, TProperty> where TEntity : class
     {
         _entityBuilder.UpdateProperty(_propertyName, property =>
         {
-            var updated = new PropertyManifest
+            return new PropertyManifest
             {
                 Name = property.Name,
                 TypeName = property.TypeName,
@@ -73,8 +73,19 @@ public sealed class PropertyBuilder<TEntity, TProperty> where TEntity : class
 
         _entityBuilder.UpdateProperty(_propertyName, property =>
         {
-            // Property manifest is immutable, so this is just for validation
-            // The actual update would need to reconstruct the manifest
+            return new PropertyManifest
+            {
+                Name = property.Name,
+                TypeName = property.TypeName,
+                IsRequired = property.IsRequired,
+                IsCollection = property.IsCollection,
+                MaxLength = maxLength,
+                Precision = property.Precision,
+                Scale = property.Scale,
+                IsConcurrencyToken = property.IsConcurrencyToken,
+                IsComputed = property.IsComputed,
+                Metadata = property.Metadata
+            };
         });
         
         return this;
