@@ -12,7 +12,7 @@ public class CliTests
 
         Assert.NotNull(command);
         Assert.Equal("snapshot", command.Name);
-        Assert.Contains("snapshot", command.Description.ToLowerInvariant());
+        Assert.Contains("snapshot", command.Description?.ToLowerInvariant() ?? string.Empty);
     }
 
     [Fact]
@@ -62,7 +62,7 @@ public class CliTests
 
         Assert.NotNull(command);
         Assert.Equal("diff", command.Name);
-        Assert.Contains("compare", command.Description.ToLowerInvariant());
+        Assert.Contains("compare", command.Description?.ToLowerInvariant() ?? string.Empty);
     }
 
     [Fact]
@@ -109,7 +109,7 @@ public class CliTests
 
         Assert.NotNull(command);
         Assert.Equal("migrate-plan", command.Name);
-        Assert.Contains("migration", command.Description.ToLowerInvariant());
+        Assert.Contains("migration", command.Description?.ToLowerInvariant() ?? string.Empty);
     }
 
     [Fact]

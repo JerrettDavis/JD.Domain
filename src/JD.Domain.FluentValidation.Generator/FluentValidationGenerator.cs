@@ -165,7 +165,7 @@ public sealed class FluentValidationGenerator : BaseCodeGenerator
         // Add message if provided
         if (!string.IsNullOrEmpty(rule.Message))
         {
-            var escapedMessage = EscapeMessage(rule.Message);
+            var escapedMessage = EscapeMessage(rule.Message!);
             validations.Add($"WithMessage(\"{escapedMessage}\")");
         }
 
