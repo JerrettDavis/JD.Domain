@@ -1,6 +1,5 @@
 using JD.Domain.Abstractions;
 using JD.Domain.Rules;
-using JD.Domain.Runtime;
 using JD.Domain.Snapshot;
 
 namespace JD.Domain.Samples.DbFirst;

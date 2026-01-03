@@ -1,6 +1,5 @@
 using JD.Domain.Abstractions;
 using Microsoft.CodeAnalysis;
-using System.Collections.Generic;
 
 namespace JD.Domain.Generators.Core;
 

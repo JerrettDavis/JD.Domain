@@ -1,6 +1,5 @@
 using JD.Domain.Abstractions;
 using JD.Domain.T4.Shims;
-using Xunit;
 
 namespace JD.Domain.Tests.Unit.T4Shims;
 

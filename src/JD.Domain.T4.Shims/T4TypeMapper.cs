@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace JD.Domain.T4.Shims;
 
 /// <summary>

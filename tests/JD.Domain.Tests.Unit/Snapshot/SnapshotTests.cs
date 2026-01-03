@@ -1,6 +1,5 @@
 using JD.Domain.Abstractions;
 using JD.Domain.Snapshot;
-using Xunit;
 
 namespace JD.Domain.Tests.Unit.Snapshot;
 

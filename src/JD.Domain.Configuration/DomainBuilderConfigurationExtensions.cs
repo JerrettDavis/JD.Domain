@@ -1,4 +1,3 @@
-using System;
 using JD.Domain.Modeling;
 
 namespace JD.Domain.Configuration;

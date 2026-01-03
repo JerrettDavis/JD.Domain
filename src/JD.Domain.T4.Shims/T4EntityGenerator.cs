@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using JD.Domain.Abstractions;
 
 namespace JD.Domain.T4.Shims;

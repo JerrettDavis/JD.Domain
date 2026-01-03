@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 
 namespace JD.Domain.T4.Shims;

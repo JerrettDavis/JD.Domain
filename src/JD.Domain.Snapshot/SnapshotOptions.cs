@@ -1,5 +1,3 @@
-using System;
-
 namespace JD.Domain.Snapshot;
 
 /// <summary>

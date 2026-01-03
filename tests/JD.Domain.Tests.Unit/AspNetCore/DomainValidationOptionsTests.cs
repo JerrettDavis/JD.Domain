@@ -1,6 +1,5 @@
 using JD.Domain.Abstractions;
 using JD.Domain.AspNetCore;
-using JD.Domain.Modeling;
 using JD.Domain.Runtime;
 using JD.Domain.Validation;
 using Microsoft.AspNetCore.Builder;
@@ -8,7 +7,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
-using System.Text.Json;
 
 namespace JD.Domain.Tests.Unit.AspNetCore;
 
