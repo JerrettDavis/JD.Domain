@@ -66,7 +66,7 @@ public sealed class PropertyBuilder<TEntity, TProperty> where TEntity : class
         if (maxLength <= 0)
             throw new ArgumentException("Max length must be greater than zero", nameof(maxLength));
 
-        _entityBuilder.UpdateProperty(_propertyName, _ =>
+        _entityBuilder.UpdateProperty(_propertyName, property =>
         {
             return new PropertyManifest
             {
@@ -82,7 +82,7 @@ public sealed class PropertyBuilder<TEntity, TProperty> where TEntity : class
                 Metadata = property.Metadata
             };
         });
-        
+
         return this;
     }
 
