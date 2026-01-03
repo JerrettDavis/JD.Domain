@@ -209,7 +209,7 @@ public sealed class FluentValidationGenerator : BaseCodeGenerator
     private int ExtractNumber(string expression)
     {
         // Split by common expression delimiters including parentheses
-        var parts = expression.Split(new[] { ' ', '=', '<', '>', '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
+        var parts = expression.Split([' ', '=', '<', '>', '(', ')'], StringSplitOptions.RemoveEmptyEntries);
         foreach (var part in parts)
         {
             if (int.TryParse(part, out var number))

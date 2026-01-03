@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace JD.Domain.Abstractions;
 
@@ -30,7 +27,7 @@ public sealed class ValueObjectManifest
     /// Gets the properties of the value object.
     /// </summary>
     public IReadOnlyList<PropertyManifest> Properties { get; init; } = 
-        Array.Empty<PropertyManifest>();
+        [];
 
     /// <summary>
     /// Gets additional metadata about the value object.

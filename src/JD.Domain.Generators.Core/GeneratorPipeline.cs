@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 
 namespace JD.Domain.Generators.Core;
@@ -10,7 +9,7 @@ namespace JD.Domain.Generators.Core;
 /// </summary>
 public sealed class GeneratorPipeline
 {
-    private readonly List<ICodeGenerator> _generators = new();
+    private readonly List<ICodeGenerator> _generators = [];
 
     /// <summary>
     /// Adds a generator to the pipeline.

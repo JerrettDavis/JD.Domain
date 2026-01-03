@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace JD.Domain.Abstractions;
 
@@ -30,13 +27,13 @@ public sealed class EntityManifest
     /// Gets the properties of the entity.
     /// </summary>
     public IReadOnlyList<PropertyManifest> Properties { get; init; } = 
-        Array.Empty<PropertyManifest>();
+        [];
 
     /// <summary>
     /// Gets the names of key properties.
     /// </summary>
     public IReadOnlyList<string> KeyProperties { get; init; } = 
-        Array.Empty<string>();
+        [];
 
     /// <summary>
     /// Gets the table name for persistence, if applicable.

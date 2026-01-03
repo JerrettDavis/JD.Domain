@@ -1,5 +1,4 @@
 using JD.Domain.Abstractions;
-using JD.Domain.Modeling;
 using JD.Domain.Rules;
 using JD.Domain.Runtime;
 

@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-
 using JD.Domain.Abstractions;
 
 namespace JD.Domain.Rules;
@@ -111,7 +109,7 @@ public sealed class RuleBuilder<T> where T : class
     {
         if (string.IsNullOrWhiteSpace(key)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(key));
 
-        var metadata = new Dictionary<string, object?>(_rule.Metadata)
+        var metadata = new Dictionary<string, object?>(_rule.Metadata.ToDictionary(x => x.Key, x => x.Value))
         {
             [key] = value
         };
@@ -125,7 +123,7 @@ public sealed class RuleBuilder<T> where T : class
             Severity = _rule.Severity,
             Tags = _rule.Tags,
             Expression = _rule.Expression,
-            Metadata = metadata.ToDictionary(x => x.Key, x => x.Value) as IReadOnlyDictionary<string, object?>
+            Metadata = metadata.ToDictionary(x => x.Key, x => x.Value)
         };
 
         _ruleSetBuilder.ReplaceRule(_rule);

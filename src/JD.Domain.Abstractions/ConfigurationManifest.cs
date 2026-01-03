@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace JD.Domain.Abstractions;
 
@@ -35,7 +32,7 @@ public sealed class ConfigurationManifest
     /// Gets the key configuration.
     /// </summary>
     public IReadOnlyList<string> KeyProperties { get; init; } = 
-        Array.Empty<string>();
+        [];
 
     /// <summary>
     /// Gets the property configurations.
@@ -47,13 +44,13 @@ public sealed class ConfigurationManifest
     /// Gets the index configurations.
     /// </summary>
     public IReadOnlyList<IndexManifest> Indexes { get; init; } = 
-        Array.Empty<IndexManifest>();
+        [];
 
     /// <summary>
     /// Gets the relationship configurations.
     /// </summary>
     public IReadOnlyList<RelationshipManifest> Relationships { get; init; } = 
-        Array.Empty<RelationshipManifest>();
+        [];
 
     /// <summary>
     /// Gets additional configuration metadata.

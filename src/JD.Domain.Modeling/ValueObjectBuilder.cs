@@ -13,7 +13,7 @@ namespace JD.Domain.Modeling;
 public sealed class ValueObjectBuilder<T> where T : class
 {
     private readonly Type _valueObjectType = typeof(T);
-    private readonly List<PropertyManifest> _properties = new();
+    private readonly List<PropertyManifest> _properties = [];
     private readonly Dictionary<string, object?> _metadata = new();
 
     /// <summary>

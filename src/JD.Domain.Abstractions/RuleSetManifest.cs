@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace JD.Domain.Abstractions;
 
@@ -25,13 +22,13 @@ public sealed class RuleSetManifest
     /// Gets the rules in this set.
     /// </summary>
     public IReadOnlyList<RuleManifest> Rules { get; init; } = 
-        Array.Empty<RuleManifest>();
+        [];
 
     /// <summary>
     /// Gets the names of other rule sets that this set includes.
     /// </summary>
     public IReadOnlyList<string> Includes { get; init; } = 
-        Array.Empty<string>();
+        [];
 
     /// <summary>
     /// Gets additional metadata about the rule set.

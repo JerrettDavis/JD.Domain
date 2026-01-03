@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-
 using JD.Domain.Abstractions;
 
 namespace JD.Domain.Modeling;
@@ -71,7 +67,7 @@ public sealed class PropertyBuilder<TEntity, TProperty> where TEntity : class
         if (maxLength <= 0)
             throw new ArgumentException("Max length must be greater than zero", nameof(maxLength));
 
-        _entityBuilder.UpdateProperty(_propertyName, property =>
+        _entityBuilder.UpdateProperty(_propertyName, _ =>
         {
             // Property manifest is immutable, so this is just for validation
             // The actual update would need to reconstruct the manifest

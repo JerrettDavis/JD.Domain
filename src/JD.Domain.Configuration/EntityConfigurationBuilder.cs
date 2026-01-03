@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using JD.Domain.Abstractions;
 
 namespace JD.Domain.Configuration;
@@ -13,8 +12,8 @@ namespace JD.Domain.Configuration;
 public sealed class EntityConfigurationBuilder<T> where T : class
 {
     private readonly Type _entityType = typeof(T);
-    private readonly List<IndexManifest> _indexes = new();
-    private readonly List<RelationshipManifest> _relationships = new();
+    private readonly List<IndexManifest> _indexes = [];
+    private readonly List<RelationshipManifest> _relationships = [];
     private readonly Dictionary<string, object?> _metadata = new();
     private string? _tableName;
     private string? _schemaName;

@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace JD.Domain.Abstractions;
 
@@ -39,8 +36,7 @@ public sealed class RelationshipManifest
     /// <summary>
     /// Gets the foreign key property names.
     /// </summary>
-    public IReadOnlyList<string> ForeignKeyProperties { get; init; } = 
-        Array.Empty<string>();
+    public IReadOnlyList<string> ForeignKeyProperties { get; init; } = [];
 
     /// <summary>
     /// Gets a value indicating whether the relationship is required.

@@ -1,5 +1,3 @@
-using JD.Domain.Modeling;
-
 namespace JD.Domain.Tests.Unit.Modeling;
 
 /// <summary>

@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-
 using JD.Domain.Abstractions;
 
 namespace JD.Domain.Modeling;
@@ -14,12 +12,12 @@ public sealed class DomainBuilder
 {
     private readonly string _name;
     private Version _version = new(1, 0, 0);
-    private readonly List<EntityManifest> _entities = new();
-    private readonly List<ValueObjectManifest> _valueObjects = new();
-    private readonly List<EnumManifest> _enums = new();
-    private readonly List<RuleSetManifest> _ruleSets = new();
-    private readonly List<ConfigurationManifest> _configurations = new();
-    private readonly List<SourceInfo> _sources = new();
+    private readonly List<EntityManifest> _entities = [];
+    private readonly List<ValueObjectManifest> _valueObjects = [];
+    private readonly List<EnumManifest> _enums = [];
+    private readonly List<RuleSetManifest> _ruleSets = [];
+    private readonly List<ConfigurationManifest> _configurations = [];
+    private readonly List<SourceInfo> _sources = [];
     private readonly Dictionary<string, object?> _metadata = new();
 
     /// <summary>

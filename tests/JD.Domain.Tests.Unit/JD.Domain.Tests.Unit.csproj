@@ -27,6 +27,7 @@
     <ProjectReference Include="..\..\src\JD.Domain.Runtime\JD.Domain.Runtime.csproj" />
     <ProjectReference Include="..\..\src\JD.Domain.Generators.Core\JD.Domain.Generators.Core.csproj" />
     <ProjectReference Include="..\..\src\JD.Domain.FluentValidation.Generator\JD.Domain.FluentValidation.Generator.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.DomainModel.Generator\JD.Domain.DomainModel.Generator.csproj" />
   </ItemGroup>
 
   <ItemGroup>

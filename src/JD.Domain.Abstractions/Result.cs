@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace JD.Domain.Abstractions;
 
@@ -49,7 +48,7 @@ public sealed class Result<T>
     private Result(T value)
     {
         _value = value;
-        _errors = Array.Empty<DomainError>();
+        _errors = [];
         IsSuccess = true;
     }
 
@@ -74,8 +73,8 @@ public sealed class Result<T>
     /// <returns>A successful result.</returns>
     public static Result<T> Success(T value)
     {
-        if (value == null) throw new ArgumentNullException(nameof(value));
-        return new Result<T>(value);
+        return value == null 
+            ? throw new ArgumentNullException(nameof(value)) : new Result<T>(value);
     }
 
     /// <summary>
@@ -86,7 +85,7 @@ public sealed class Result<T>
     public static Result<T> Failure(DomainError error)
     {
         if (error == null) throw new ArgumentNullException(nameof(error));
-        return new Result<T>(new[] { error });
+        return new Result<T>([error]);
     }
 
     /// <summary>

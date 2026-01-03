@@ -88,7 +88,7 @@ public sealed class ResultTests
         // Act
         var matchResult = result.Match(
             onSuccess: value => $"Success: {value}",
-            onFailure: errors => "Failure");
+            onFailure: _ => "Failure");
 
         // Assert
         Assert.Equal("Success: test-value", matchResult);
@@ -102,7 +102,7 @@ public sealed class ResultTests
 
         // Act
         var matchResult = result.Match(
-            onSuccess: value => "Success",
+            onSuccess: _ => "Success",
             onFailure: errors => $"Failure: {errors.Count} errors");
 
         // Assert

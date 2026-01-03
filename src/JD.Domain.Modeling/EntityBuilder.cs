@@ -14,8 +14,8 @@ namespace JD.Domain.Modeling;
 public sealed class EntityBuilder<T> where T : class
 {
     private readonly Type _entityType = typeof(T);
-    private readonly List<PropertyManifest> _properties = new();
-    private readonly List<string> _keyProperties = new();
+    private readonly List<PropertyManifest> _properties = [];
+    private readonly List<string> _keyProperties = [];
     private string? _tableName;
     private string? _schemaName;
     private readonly Dictionary<string, object?> _metadata = new();

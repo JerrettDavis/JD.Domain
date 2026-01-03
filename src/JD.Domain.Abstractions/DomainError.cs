@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace JD.Domain.Abstractions;
 
@@ -34,7 +31,7 @@ public sealed class DomainError
     /// <summary>
     /// Gets the collection of tags associated with this error for categorization.
     /// </summary>
-    public IReadOnlyList<string> Tags { get; init; } = Array.Empty<string>();
+    public IReadOnlyList<string> Tags { get; init; } = [];
 
     /// <summary>
     /// Gets additional metadata associated with this error.

@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace JD.Domain.Abstractions;
 
@@ -20,7 +17,7 @@ public sealed class IndexManifest
     /// Gets the properties included in the index.
     /// </summary>
     public IReadOnlyList<string> Properties { get; init; } = 
-        Array.Empty<string>();
+        [];
 
     /// <summary>
     /// Gets a value indicating whether the index is unique.
@@ -36,7 +33,7 @@ public sealed class IndexManifest
     /// Gets the included properties (for covering indexes).
     /// </summary>
     public IReadOnlyList<string> IncludedProperties { get; init; } = 
-        Array.Empty<string>();
+        [];
 
     /// <summary>
     /// Gets additional index metadata.

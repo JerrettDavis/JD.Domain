@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace JD.Domain.Abstractions;
 
@@ -20,19 +17,19 @@ public sealed class RuleEvaluationResult
     /// Gets the collection of errors from failed rules.
     /// </summary>
     public IReadOnlyList<DomainError> Errors { get; init; } = 
-        Array.Empty<DomainError>();
+        [];
 
     /// <summary>
     /// Gets the collection of warnings from rules.
     /// </summary>
     public IReadOnlyList<DomainError> Warnings { get; init; } = 
-        Array.Empty<DomainError>();
+        [];
 
     /// <summary>
     /// Gets the collection of informational messages from rules.
     /// </summary>
     public IReadOnlyList<DomainError> Info { get; init; } = 
-        Array.Empty<DomainError>();
+        [];
 
     /// <summary>
     /// Gets the total number of rules evaluated.
@@ -43,7 +40,7 @@ public sealed class RuleEvaluationResult
     /// Gets the names of rule sets that were evaluated.
     /// </summary>
     public IReadOnlyList<string> RuleSetsEvaluated { get; init; } = 
-        Array.Empty<string>();
+        [];
 
     /// <summary>
     /// Gets additional evaluation metadata.

@@ -1,8 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace JD.Domain.Abstractions;
 
@@ -15,6 +11,12 @@ public sealed class RuleEvaluationOptions
     /// Gets the name of the rule set to evaluate. If null, evaluates all rules.
     /// </summary>
     public string? RuleSet { get; init; }
+
+    /// <summary>
+    /// Gets the name of a specific property to evaluate rules for.
+    /// If null, evaluates rules for all properties.
+    /// </summary>
+    public string? PropertyName { get; init; }
 
     /// <summary>
     /// Gets a value indicating whether to stop on first error.

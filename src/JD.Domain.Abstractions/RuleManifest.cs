@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace JD.Domain.Abstractions;
 
@@ -39,7 +36,7 @@ public sealed class RuleManifest
     /// <summary>
     /// Gets the tags associated with this rule.
     /// </summary>
-    public IReadOnlyList<string> Tags { get; init; } = Array.Empty<string>();
+    public IReadOnlyList<string> Tags { get; init; } = [];
 
     /// <summary>
     /// Gets the expression representation of the rule, if serializable.

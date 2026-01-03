@@ -14,8 +14,8 @@ public sealed class RuleSetBuilder<T> where T : class
 {
     private readonly string _name;
     private readonly Type _targetType = typeof(T);
-    private readonly List<RuleManifest> _rules = new();
-    private readonly List<string> _includes = new();
+    private readonly List<RuleManifest> _rules = [];
+    private readonly List<string> _includes = [];
     private readonly Dictionary<string, object?> _metadata = new();
 
     /// <summary>
