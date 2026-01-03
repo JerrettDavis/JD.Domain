@@ -52,7 +52,7 @@ public sealed class Result<T>
     private Result(IReadOnlyList<DomainError> errors)
     {
         if (errors == null) throw new ArgumentNullException(nameof(errors));
-        
+
         if (errors.Count == 0)
         {
             throw new ArgumentException("At least one error is required for a failure result.", nameof(errors));
@@ -70,7 +70,7 @@ public sealed class Result<T>
     /// <returns>A successful result.</returns>
     public static Result<T> Success(T value)
     {
-        return value == null 
+        return value == null
             ? throw new ArgumentNullException(nameof(value)) : new Result<T>(value);
     }
 

@@ -54,13 +54,13 @@ public sealed class ValueObjectBuilder<T> where T : class
     private void DiscoverProperties()
     {
         var properties = _valueObjectType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-        
+
         foreach (var propertyInfo in properties)
         {
             var propertyType = propertyInfo.PropertyType;
             var isNullable = IsNullableType(propertyType);
             var underlyingType = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
-            
+
             _properties.Add(new PropertyManifest
             {
                 Name = propertyInfo.Name,
@@ -75,7 +75,7 @@ public sealed class ValueObjectBuilder<T> where T : class
     {
         if (!type.IsValueType)
             return true;
-        
+
         return Nullable.GetUnderlyingType(type) != null;
     }
 
@@ -84,8 +84,8 @@ public sealed class ValueObjectBuilder<T> where T : class
         if (type == typeof(string))
             return false;
 
-        return type.IsArray || 
-               (type.IsGenericType && 
+        return type.IsArray ||
+               (type.IsGenericType &&
                 (type.GetGenericTypeDefinition() == typeof(IEnumerable<>) ||
                  type.GetGenericTypeDefinition() == typeof(ICollection<>) ||
                  type.GetGenericTypeDefinition() == typeof(IList<>) ||

@@ -151,7 +151,7 @@ public static class ModelBuilderExtensions
                 .Property(propertyConfig.Key);
 
             var propManifest = propertyConfig.Value;
-            
+
             if (propManifest.IsRequired)
             {
                 propertyBuilder.IsRequired();

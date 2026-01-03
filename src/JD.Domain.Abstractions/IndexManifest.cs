@@ -13,7 +13,7 @@ public sealed class IndexManifest
     /// <summary>
     /// Gets the properties included in the index.
     /// </summary>
-    public IReadOnlyList<string> Properties { get; init; } = 
+    public IReadOnlyList<string> Properties { get; init; } =
         [];
 
     /// <summary>
@@ -29,12 +29,12 @@ public sealed class IndexManifest
     /// <summary>
     /// Gets the included properties (for covering indexes).
     /// </summary>
-    public IReadOnlyList<string> IncludedProperties { get; init; } = 
+    public IReadOnlyList<string> IncludedProperties { get; init; } =
         [];
 
     /// <summary>
     /// Gets additional index metadata.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 }

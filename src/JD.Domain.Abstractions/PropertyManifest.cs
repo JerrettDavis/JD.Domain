@@ -53,6 +53,6 @@ public sealed class PropertyManifest
     /// <summary>
     /// Gets additional metadata about the property.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 }

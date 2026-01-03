@@ -18,7 +18,7 @@ public sealed class EnumBuilder<T> where T : Enum
     {
         var underlyingType = Enum.GetUnderlyingType(_enumType);
         var values = new Dictionary<string, object>();
-        
+
         foreach (var value in Enum.GetValues(_enumType))
         {
             var name = Enum.GetName(_enumType, value);

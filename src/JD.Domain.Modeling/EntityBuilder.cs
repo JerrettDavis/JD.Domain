@@ -35,7 +35,7 @@ public sealed class EntityBuilder<T> where T : class
     public PropertyBuilder<T, TProperty> Key<TProperty>(Expression<Func<T, TProperty>> propertyExpression)
     {
         var propertyName = GetPropertyName(propertyExpression);
-        
+
         if (!_keyProperties.Contains(propertyName))
         {
             _keyProperties.Add(propertyName);
@@ -54,7 +54,7 @@ public sealed class EntityBuilder<T> where T : class
     {
         var propertyName = GetPropertyName(propertyExpression);
         var propertyInfo = GetPropertyInfo(propertyExpression);
-        
+
         // Find or create property manifest
         var existingProperty = _properties.FirstOrDefault(p => p.Name == propertyName);
         if (existingProperty == null)
@@ -132,7 +132,7 @@ public sealed class EntityBuilder<T> where T : class
     private void DiscoverProperties()
     {
         var properties = _entityType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-        
+
         foreach (var propertyInfo in properties)
         {
             if (!_properties.Any(p => p.Name == propertyInfo.Name))
@@ -147,7 +147,7 @@ public sealed class EntityBuilder<T> where T : class
         var propertyType = propertyInfo.PropertyType;
         var isNullable = IsNullableType(propertyType);
         var underlyingType = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
-        
+
         return new PropertyManifest
         {
             Name = propertyInfo.Name,
@@ -161,7 +161,7 @@ public sealed class EntityBuilder<T> where T : class
     {
         if (!type.IsValueType)
             return true; // Reference types are nullable by default in this context
-        
+
         return Nullable.GetUnderlyingType(type) != null;
     }
 
@@ -170,8 +170,8 @@ public sealed class EntityBuilder<T> where T : class
         if (type == typeof(string))
             return false;
 
-        return type.IsArray || 
-               (type.IsGenericType && 
+        return type.IsArray ||
+               (type.IsGenericType &&
                 (type.GetGenericTypeDefinition() == typeof(IEnumerable<>) ||
                  type.GetGenericTypeDefinition() == typeof(ICollection<>) ||
                  type.GetGenericTypeDefinition() == typeof(IList<>) ||

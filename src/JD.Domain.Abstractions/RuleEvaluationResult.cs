@@ -13,19 +13,19 @@ public sealed class RuleEvaluationResult
     /// <summary>
     /// Gets the collection of errors from failed rules.
     /// </summary>
-    public IReadOnlyList<DomainError> Errors { get; init; } = 
+    public IReadOnlyList<DomainError> Errors { get; init; } =
         [];
 
     /// <summary>
     /// Gets the collection of warnings from rules.
     /// </summary>
-    public IReadOnlyList<DomainError> Warnings { get; init; } = 
+    public IReadOnlyList<DomainError> Warnings { get; init; } =
         [];
 
     /// <summary>
     /// Gets the collection of informational messages from rules.
     /// </summary>
-    public IReadOnlyList<DomainError> Info { get; init; } = 
+    public IReadOnlyList<DomainError> Info { get; init; } =
         [];
 
     /// <summary>
@@ -36,13 +36,13 @@ public sealed class RuleEvaluationResult
     /// <summary>
     /// Gets the names of rule sets that were evaluated.
     /// </summary>
-    public IReadOnlyList<string> RuleSetsEvaluated { get; init; } = 
+    public IReadOnlyList<string> RuleSetsEvaluated { get; init; } =
         [];
 
     /// <summary>
     /// Gets additional evaluation metadata.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 
     /// <summary>
@@ -65,7 +65,7 @@ public sealed class RuleEvaluationResult
     public static RuleEvaluationResult Failure(IReadOnlyList<DomainError> errors)
     {
         if (errors == null) throw new ArgumentNullException(nameof(errors));
-        
+
         return new RuleEvaluationResult
         {
             IsValid = false,
@@ -81,7 +81,7 @@ public sealed class RuleEvaluationResult
     public static RuleEvaluationResult Failure(params DomainError[] errors)
     {
         if (errors == null) throw new ArgumentNullException(nameof(errors));
-        
+
         return new RuleEvaluationResult
         {
             IsValid = false,

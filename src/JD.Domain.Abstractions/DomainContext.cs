@@ -28,7 +28,7 @@ public sealed class DomainContext
     /// <summary>
     /// Gets additional context properties.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Properties { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Properties { get; init; } =
         new Dictionary<string, object?>();
 
     /// <summary>
@@ -45,7 +45,7 @@ public sealed class DomainContext
     public static DomainContext WithCorrelationId(string correlationId)
     {
         if (string.IsNullOrWhiteSpace(correlationId)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(correlationId));
-        
+
         return new DomainContext
         {
             CorrelationId = correlationId

@@ -18,7 +18,7 @@ public sealed class SourceInfo
     /// <summary>
     /// Gets additional metadata about the source.
     /// </summary>
-    public IReadOnlyDictionary<string, string> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, string> Metadata { get; init; } =
         new Dictionary<string, string>();
 
     /// <summary>

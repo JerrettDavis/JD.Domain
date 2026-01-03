@@ -24,43 +24,43 @@ public sealed class DomainManifest
     /// <summary>
     /// Gets the entities in the domain model.
     /// </summary>
-    public IReadOnlyList<EntityManifest> Entities { get; init; } = 
+    public IReadOnlyList<EntityManifest> Entities { get; init; } =
         [];
 
     /// <summary>
     /// Gets the value objects in the domain model.
     /// </summary>
-    public IReadOnlyList<ValueObjectManifest> ValueObjects { get; init; } = 
+    public IReadOnlyList<ValueObjectManifest> ValueObjects { get; init; } =
         [];
 
     /// <summary>
     /// Gets the enumerations in the domain model.
     /// </summary>
-    public IReadOnlyList<EnumManifest> Enums { get; init; } = 
+    public IReadOnlyList<EnumManifest> Enums { get; init; } =
         [];
 
     /// <summary>
     /// Gets the rule sets defined for the domain.
     /// </summary>
-    public IReadOnlyList<RuleSetManifest> RuleSets { get; init; } = 
+    public IReadOnlyList<RuleSetManifest> RuleSets { get; init; } =
         [];
 
     /// <summary>
     /// Gets the entity configurations for the domain.
     /// </summary>
-    public IReadOnlyList<ConfigurationManifest> Configurations { get; init; } = 
+    public IReadOnlyList<ConfigurationManifest> Configurations { get; init; } =
         [];
 
     /// <summary>
     /// Gets the source information describing where the domain model came from.
     /// </summary>
-    public IReadOnlyList<SourceInfo> Sources { get; init; } = 
+    public IReadOnlyList<SourceInfo> Sources { get; init; } =
         [];
 
     /// <summary>
     /// Gets additional metadata about the domain.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 
     /// <summary>

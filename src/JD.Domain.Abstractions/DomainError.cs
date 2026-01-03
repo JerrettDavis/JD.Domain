@@ -33,7 +33,7 @@ public sealed class DomainError
     /// <summary>
     /// Gets additional metadata associated with this error.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 
     /// <summary>

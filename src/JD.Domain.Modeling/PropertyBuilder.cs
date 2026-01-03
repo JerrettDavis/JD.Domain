@@ -52,7 +52,7 @@ public sealed class PropertyBuilder<TEntity, TProperty> where TEntity : class
                 Metadata = property.Metadata
             };
         });
-        
+
         return this;
     }
 
@@ -96,7 +96,7 @@ public sealed class PropertyBuilder<TEntity, TProperty> where TEntity : class
     {
         if (precision <= 0)
             throw new ArgumentException("Precision must be greater than zero", nameof(precision));
-        
+
         if (scale.HasValue && scale.Value < 0)
             throw new ArgumentException("Scale cannot be negative", nameof(scale));
 

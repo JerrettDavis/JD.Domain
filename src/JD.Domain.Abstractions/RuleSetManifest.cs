@@ -18,18 +18,18 @@ public sealed class RuleSetManifest
     /// <summary>
     /// Gets the rules in this set.
     /// </summary>
-    public IReadOnlyList<RuleManifest> Rules { get; init; } = 
+    public IReadOnlyList<RuleManifest> Rules { get; init; } =
         [];
 
     /// <summary>
     /// Gets the names of other rule sets that this set includes.
     /// </summary>
-    public IReadOnlyList<string> Includes { get; init; } = 
+    public IReadOnlyList<string> Includes { get; init; } =
         [];
 
     /// <summary>
     /// Gets additional metadata about the rule set.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 }

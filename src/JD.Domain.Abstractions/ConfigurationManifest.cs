@@ -28,30 +28,30 @@ public sealed class ConfigurationManifest
     /// <summary>
     /// Gets the key configuration.
     /// </summary>
-    public IReadOnlyList<string> KeyProperties { get; init; } = 
+    public IReadOnlyList<string> KeyProperties { get; init; } =
         [];
 
     /// <summary>
     /// Gets the property configurations.
     /// </summary>
-    public IReadOnlyDictionary<string, PropertyConfigurationManifest> PropertyConfigurations { get; init; } = 
+    public IReadOnlyDictionary<string, PropertyConfigurationManifest> PropertyConfigurations { get; init; } =
         new Dictionary<string, PropertyConfigurationManifest>();
 
     /// <summary>
     /// Gets the index configurations.
     /// </summary>
-    public IReadOnlyList<IndexManifest> Indexes { get; init; } = 
+    public IReadOnlyList<IndexManifest> Indexes { get; init; } =
         [];
 
     /// <summary>
     /// Gets the relationship configurations.
     /// </summary>
-    public IReadOnlyList<RelationshipManifest> Relationships { get; init; } = 
+    public IReadOnlyList<RelationshipManifest> Relationships { get; init; } =
         [];
 
     /// <summary>
     /// Gets additional configuration metadata.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 }

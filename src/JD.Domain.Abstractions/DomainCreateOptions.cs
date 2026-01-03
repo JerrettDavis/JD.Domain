@@ -23,7 +23,7 @@ public sealed class DomainCreateOptions
     /// <summary>
     /// Gets additional creation options.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Properties { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Properties { get; init; } =
         new Dictionary<string, object?>();
 
     /// <summary>

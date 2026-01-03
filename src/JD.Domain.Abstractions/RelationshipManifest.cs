@@ -53,6 +53,6 @@ public sealed class RelationshipManifest
     /// <summary>
     /// Gets additional relationship metadata.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 }

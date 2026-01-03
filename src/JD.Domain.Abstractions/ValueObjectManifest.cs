@@ -23,12 +23,12 @@ public sealed class ValueObjectManifest
     /// <summary>
     /// Gets the properties of the value object.
     /// </summary>
-    public IReadOnlyList<PropertyManifest> Properties { get; init; } = 
+    public IReadOnlyList<PropertyManifest> Properties { get; init; } =
         [];
 
     /// <summary>
     /// Gets additional metadata about the value object.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 }

@@ -29,7 +29,7 @@ public sealed class RuleEvaluationOptions
     /// <summary>
     /// Gets additional context data for rule evaluation.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Context { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Context { get; init; } =
         new Dictionary<string, object?>();
 
     /// <summary>

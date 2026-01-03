@@ -28,12 +28,12 @@ public sealed class EnumManifest
     /// <summary>
     /// Gets the enumeration values and their names.
     /// </summary>
-    public IReadOnlyDictionary<string, object> Values { get; init; } = 
+    public IReadOnlyDictionary<string, object> Values { get; init; } =
         new Dictionary<string, object>();
 
     /// <summary>
     /// Gets additional metadata about the enumeration.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 }

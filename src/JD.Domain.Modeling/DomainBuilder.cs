@@ -55,10 +55,10 @@ public sealed class DomainBuilder
     {
         var builder = new EntityBuilder<T>();
         configure?.Invoke(builder);
-        
+
         var manifest = builder.Build();
         _entities.Add(manifest);
-        
+
         return this;
     }
 
@@ -72,10 +72,10 @@ public sealed class DomainBuilder
     {
         var builder = new ValueObjectBuilder<T>();
         configure?.Invoke(builder);
-        
+
         var manifest = builder.Build();
         _valueObjects.Add(manifest);
-        
+
         return this;
     }
 
@@ -89,7 +89,7 @@ public sealed class DomainBuilder
         var builder = new EnumBuilder<T>();
         var manifest = builder.Build();
         _enums.Add(manifest);
-        
+
         return this;
     }
 

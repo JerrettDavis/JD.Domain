@@ -27,7 +27,7 @@ public sealed class DomainEngine : IDomainEngine
         CancellationToken cancellationToken = default) where T : class
     {
         if (instance == null) throw new ArgumentNullException(nameof(instance));
-        
+
         var result = Evaluate(instance, options);
         return new ValueTask<RuleEvaluationResult>(result);
     }
@@ -38,7 +38,7 @@ public sealed class DomainEngine : IDomainEngine
         RuleEvaluationOptions? options = null) where T : class
     {
         if (instance == null) throw new ArgumentNullException(nameof(instance));
-        
+
         options ??= RuleEvaluationOptions.Default;
 
         var typeName = typeof(T).FullName ?? typeof(T).Name;
@@ -61,15 +61,15 @@ public sealed class DomainEngine : IDomainEngine
         foreach (var ruleSet in ruleSets)
         {
             ruleSetsEvaluated.Add(ruleSet.Name);
-            
+
             foreach (var rule in ruleSet.Rules)
             {
                 rulesEvaluated++;
-                
+
                 // For now, we create placeholder errors for demonstration
                 // In a full implementation, this would compile and execute the expression
                 var message = rule.Message ?? $"Rule {rule.Id} validation";
-                
+
                 // Create a domain error for rules that have a message
                 // In reality, we would evaluate the expression here
                 if (!string.IsNullOrEmpty(rule.Message))

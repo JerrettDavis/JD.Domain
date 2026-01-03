@@ -351,7 +351,7 @@ public class DiffTests
         var diff = engine.Compare(before, after);
 
         Assert.True(diff.HasChanges);
-        Assert.Equal(1, diff.EntityChanges.Count);
+        Assert.Single(diff.EntityChanges);
         Assert.Equal(ChangeType.Modified, diff.EntityChanges[0].ChangeType);
         Assert.Single(diff.EntityChanges[0].PropertyChanges);
     }

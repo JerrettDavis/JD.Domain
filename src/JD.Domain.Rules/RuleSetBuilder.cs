@@ -90,7 +90,7 @@ public sealed class RuleSetBuilder<T> where T : class
     public RuleSetBuilder<T> Include(string ruleSetName)
     {
         if (string.IsNullOrWhiteSpace(ruleSetName)) throw new ArgumentException("Value cannot be null or whitespace.", nameof(ruleSetName));
-        
+
         if (!_includes.Contains(ruleSetName))
         {
             _includes.Add(ruleSetName);

@@ -132,7 +132,7 @@ public sealed class DomainBuilderTests
     {
         // Arrange
         var beforeCreate = DateTimeOffset.UtcNow;
-        
+
         // Act
         var manifest = JD.Domain.Modeling.Domain.Create("TestDomain").BuildManifest();
         var afterCreate = DateTimeOffset.UtcNow;

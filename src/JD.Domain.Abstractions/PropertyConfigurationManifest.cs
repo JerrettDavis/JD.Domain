@@ -73,6 +73,6 @@ public sealed class PropertyConfigurationManifest
     /// <summary>
     /// Gets additional property configuration metadata.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 }

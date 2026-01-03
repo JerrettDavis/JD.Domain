@@ -43,6 +43,6 @@ public sealed class RuleManifest
     /// <summary>
     /// Gets additional metadata about the rule.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 }

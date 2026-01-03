@@ -23,13 +23,13 @@ public sealed class EntityManifest
     /// <summary>
     /// Gets the properties of the entity.
     /// </summary>
-    public IReadOnlyList<PropertyManifest> Properties { get; init; } = 
+    public IReadOnlyList<PropertyManifest> Properties { get; init; } =
         [];
 
     /// <summary>
     /// Gets the names of key properties.
     /// </summary>
-    public IReadOnlyList<string> KeyProperties { get; init; } = 
+    public IReadOnlyList<string> KeyProperties { get; init; } =
         [];
 
     /// <summary>
@@ -45,6 +45,6 @@ public sealed class EntityManifest
     /// <summary>
     /// Gets additional metadata about the entity.
     /// </summary>
-    public IReadOnlyDictionary<string, object?> Metadata { get; init; } = 
+    public IReadOnlyDictionary<string, object?> Metadata { get; init; } =
         new Dictionary<string, object?>();
 }

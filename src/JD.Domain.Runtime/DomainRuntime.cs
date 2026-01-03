@@ -26,7 +26,7 @@ public static class DomainRuntime
     public static IDomainEngine Create(Action<DomainRuntimeOptions> configure)
     {
         if (configure == null) throw new ArgumentNullException(nameof(configure));
-        
+
         var options = new DomainRuntimeOptions();
         configure(options);
 
