@@ -1,0 +1,26 @@
+- name: Overview
+  href: index.md
+
+- name: Getting Started Tutorials
+  items:
+  - name: Code-First Walkthrough
+    href: code-first-walkthrough.md
+  - name: Database-First Walkthrough
+    href: db-first-walkthrough.md
+  - name: Hybrid Workflow
+    href: hybrid-workflow.md
+
+- name: Feature Tutorials
+  items:
+  - name: Domain Modeling
+    href: domain-modeling.md
+  - name: Business Rules
+    href: business-rules.md
+  - name: EF Core Integration
+    href: ef-core-integration.md
+  - name: ASP.NET Core Integration
+    href: aspnet-core-integration.md
+  - name: Source Generators
+    href: source-generators.md
+  - name: Version Management
+    href: version-management.md
