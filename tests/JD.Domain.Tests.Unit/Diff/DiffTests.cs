@@ -529,4 +529,232 @@ public class DiffTests
         var classifier = new BreakingChangeClassifier();
         Assert.False(classifier.IsRuleChangeBreaking());
     }
+
+    [Fact]
+    public void EntityChange_CanBeCreated()
+    {
+        var propertyChanges = new List<PropertyChange>
+        {
+            new PropertyChange
+            {
+                ChangeType = ChangeType.Added,
+                EntityName = "Customer",
+                PropertyName = "Email",
+                Description = "Property 'Email' added",
+                NewValue = "string"
+            }
+        };
+
+        var change = new EntityChange
+        {
+            ChangeType = ChangeType.Modified,
+            EntityName = "Customer",
+            Description = "Entity 'Customer' modified",
+            IsBreaking = false,
+            PropertyChanges = propertyChanges
+        };
+
+        Assert.Equal(ChangeType.Modified, change.ChangeType);
+        Assert.Equal("Customer", change.EntityName);
+        Assert.Equal("Entity 'Customer' modified", change.Description);
+        Assert.False(change.IsBreaking);
+        Assert.Single(change.PropertyChanges);
+    }
+
+    [Fact]
+    public void PropertyChange_CanBeCreated()
+    {
+        var change = new PropertyChange
+        {
+            ChangeType = ChangeType.Modified,
+            EntityName = "Customer",
+            PropertyName = "Name",
+            Description = "Property 'Name' type changed",
+            IsBreaking = true,
+            OldValue = "string?",
+            NewValue = "string"
+        };
+
+        Assert.Equal(ChangeType.Modified, change.ChangeType);
+        Assert.Equal("Customer", change.EntityName);
+        Assert.Equal("Name", change.PropertyName);
+        Assert.Equal("Property 'Name' type changed", change.Description);
+        Assert.True(change.IsBreaking);
+        Assert.Equal("string?", change.OldValue);
+        Assert.Equal("string", change.NewValue);
+    }
+
+    [Fact]
+    public void RuleSetChange_CanBeCreated()
+    {
+        var ruleChanges = new List<RuleChange>
+        {
+            new RuleChange
+            {
+                ChangeType = ChangeType.Added,
+                RuleId = "Rule1",
+                RuleSetName = "Default",
+                TargetType = "Customer",
+                Description = "Rule 'Rule1' added"
+            }
+        };
+
+        var change = new RuleSetChange
+        {
+            ChangeType = ChangeType.Modified,
+            RuleSetName = "Default",
+            TargetType = "Customer",
+            Description = "RuleSet 'Default' modified",
+            RuleChanges = ruleChanges
+        };
+
+        Assert.Equal(ChangeType.Modified, change.ChangeType);
+        Assert.Equal("Default", change.RuleSetName);
+        Assert.Equal("Customer", change.TargetType);
+        Assert.Single(change.RuleChanges);
+    }
+
+    [Fact]
+    public void RuleChange_CanBeCreated()
+    {
+        var change = new RuleChange
+        {
+            ChangeType = ChangeType.Removed,
+            RuleId = "NameRequired",
+            RuleSetName = "Default",
+            TargetType = "Customer",
+            Description = "Rule 'NameRequired' removed",
+            IsBreaking = true
+        };
+
+        Assert.Equal(ChangeType.Removed, change.ChangeType);
+        Assert.Equal("NameRequired", change.RuleId);
+        Assert.Equal("Default", change.RuleSetName);
+        Assert.Equal("Customer", change.TargetType);
+        Assert.True(change.IsBreaking);
+    }
+
+    [Fact]
+    public void ConfigurationChange_CanBeCreated()
+    {
+        var change = new ConfigurationChange
+        {
+            ChangeType = ChangeType.Modified,
+            EntityName = "Customer",
+            Aspect = "TableName",
+            Description = "Table name changed",
+            OldValue = "Customers",
+            NewValue = "tbl_Customers",
+            IsBreaking = false
+        };
+
+        Assert.Equal(ChangeType.Modified, change.ChangeType);
+        Assert.Equal("Customer", change.EntityName);
+        Assert.Equal("TableName", change.Aspect);
+        Assert.Equal("Customers", change.OldValue);
+        Assert.Equal("tbl_Customers", change.NewValue);
+    }
+
+    [Fact]
+    public void ValueObjectChange_CanBeCreated()
+    {
+        var propertyChanges = new List<PropertyChange>
+        {
+            new PropertyChange
+            {
+                ChangeType = ChangeType.Added,
+                EntityName = "Address",
+                PropertyName = "ZipCode",
+                Description = "Property 'ZipCode' added"
+            }
+        };
+
+        var change = new ValueObjectChange
+        {
+            ChangeType = ChangeType.Modified,
+            ValueObjectName = "Address",
+            Description = "ValueObject 'Address' modified",
+            PropertyChanges = propertyChanges
+        };
+
+        Assert.Equal(ChangeType.Modified, change.ChangeType);
+        Assert.Equal("Address", change.ValueObjectName);
+        Assert.Single(change.PropertyChanges);
+    }
+
+    [Fact]
+    public void EnumChange_CanBeCreated()
+    {
+        var valueChanges = new List<string> { "Pending", "Cancelled" };
+
+        var change = new EnumChange
+        {
+            ChangeType = ChangeType.Modified,
+            EnumName = "OrderStatus",
+            Description = "Enum 'OrderStatus' modified",
+            ValueChanges = valueChanges,
+            IsBreaking = true
+        };
+
+        Assert.Equal(ChangeType.Modified, change.ChangeType);
+        Assert.Equal("OrderStatus", change.EnumName);
+        Assert.Equal(2, change.ValueChanges.Count);
+        Assert.True(change.IsBreaking);
+    }
+
+    [Fact]
+    public void ChangeModels_DefaultPropertyChanges_AreEmpty()
+    {
+        var entityChange = new EntityChange
+        {
+            ChangeType = ChangeType.Added,
+            EntityName = "Customer",
+            Description = "Entity added"
+        };
+
+        var valueObjectChange = new ValueObjectChange
+        {
+            ChangeType = ChangeType.Added,
+            ValueObjectName = "Address",
+            Description = "ValueObject added"
+        };
+
+        var ruleSetChange = new RuleSetChange
+        {
+            ChangeType = ChangeType.Added,
+            RuleSetName = "Default",
+            TargetType = "Customer",
+            Description = "RuleSet added"
+        };
+
+        var enumChange = new EnumChange
+        {
+            ChangeType = ChangeType.Added,
+            EnumName = "Status",
+            Description = "Enum added"
+        };
+
+        Assert.Empty(entityChange.PropertyChanges);
+        Assert.Empty(valueObjectChange.PropertyChanges);
+        Assert.Empty(ruleSetChange.RuleChanges);
+        Assert.Empty(enumChange.ValueChanges);
+    }
+
+    [Fact]
+    public void DiffEngine_Compare_ThrowsOnNullBefore()
+    {
+        var engine = new DiffEngine();
+        var after = CreateSnapshot("Test", new Version(1, 0, 0));
+
+        Assert.Throws<ArgumentNullException>(() => engine.Compare(null!, after));
+    }
+
+    [Fact]
+    public void DiffEngine_Compare_ThrowsOnNullAfter()
+    {
+        var engine = new DiffEngine();
+        var before = CreateSnapshot("Test", new Version(1, 0, 0));
+
+        Assert.Throws<ArgumentNullException>(() => engine.Compare(before, null!));
+    }
 }
