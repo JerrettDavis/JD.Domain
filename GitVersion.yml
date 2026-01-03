@@ -1,6 +1,7 @@
 # GitVersion configuration for semantic versioning
 # White-label: This configuration can be reused across projects
 
+next-version: 0.1.0
 mode: Mainline
 branches:
   main:
