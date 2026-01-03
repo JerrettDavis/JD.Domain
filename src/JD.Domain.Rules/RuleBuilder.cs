@@ -161,4 +161,13 @@ public sealed class RuleBuilder<T> where T : class
     {
         return _ruleSetBuilder.Build();
     }
+
+    /// <summary>
+    /// Builds a compiled rule set that can be evaluated at runtime.
+    /// </summary>
+    /// <returns>The compiled rule set.</returns>
+    public CompiledRuleSet<T> BuildCompiled()
+    {
+        return _ruleSetBuilder.BuildCompiled();
+    }
 }

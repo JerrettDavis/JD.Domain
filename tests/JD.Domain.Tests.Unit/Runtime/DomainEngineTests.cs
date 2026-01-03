@@ -187,4 +187,166 @@ public sealed class DomainEngineTests
         Assert.Equal(2, result.RulesEvaluated);
         Assert.Equal(2, result.RuleSetsEvaluated.Count);
     }
+
+    #region CompiledRuleSet Tests - Actual Expression Evaluation
+
+    [Fact]
+    public void CompiledRuleSet_WhenRulePasses_ReturnsValid()
+    {
+        // Arrange
+        var ruleSet = new RuleSetBuilder<Blog>("Default")
+            .Invariant("NameRequired", b => !string.IsNullOrWhiteSpace(b.Name))
+            .WithMessage("Name is required")
+            .BuildCompiled();
+
+        var blog = new Blog { Name = "Valid Name" };
+
+        // Act
+        var result = ruleSet.Evaluate(blog);
+
+        // Assert
+        Assert.True(result.IsValid);
+        Assert.Empty(result.Errors);
+        Assert.Equal(1, result.RulesEvaluated);
+    }
+
+    [Fact]
+    public void CompiledRuleSet_WhenRuleFails_ReturnsInvalid()
+    {
+        // Arrange
+        var ruleSet = new RuleSetBuilder<Blog>("Default")
+            .Invariant("NameRequired", b => !string.IsNullOrWhiteSpace(b.Name))
+            .WithMessage("Name is required")
+            .BuildCompiled();
+
+        var blog = new Blog { Name = "" };
+
+        // Act
+        var result = ruleSet.Evaluate(blog);
+
+        // Assert
+        Assert.False(result.IsValid);
+        Assert.Single(result.Errors);
+        Assert.Equal("NameRequired", result.Errors[0].Code);
+        Assert.Equal("Name is required", result.Errors[0].Message);
+    }
+
+    [Fact]
+    public void CompiledRuleSet_WithMultipleRules_EvaluatesAll()
+    {
+        // Arrange
+        var ruleSet = new RuleSetBuilder<Blog>("Default")
+            .Invariant("NameRequired", b => !string.IsNullOrWhiteSpace(b.Name))
+            .WithMessage("Name is required")
+            .Invariant("NameLength", b => b.Name.Length <= 100)
+            .WithMessage("Name too long")
+            .Invariant("PostCountValid", b => b.PostCount >= 0)
+            .WithMessage("Post count must be non-negative")
+            .BuildCompiled();
+
+        var blog = new Blog { Name = "Valid", PostCount = 5 };
+
+        // Act
+        var result = ruleSet.Evaluate(blog);
+
+        // Assert
+        Assert.True(result.IsValid);
+        Assert.Equal(3, result.RulesEvaluated);
+    }
+
+    [Fact]
+    public void CompiledRuleSet_WithMultipleFailures_ReturnsAllErrors()
+    {
+        // Arrange
+        var ruleSet = new RuleSetBuilder<Blog>("Default")
+            .Invariant("NameRequired", b => !string.IsNullOrWhiteSpace(b.Name))
+            .WithMessage("Name is required")
+            .Invariant("PostCountValid", b => b.PostCount >= 0)
+            .WithMessage("Post count must be non-negative")
+            .BuildCompiled();
+
+        var blog = new Blog { Name = "", PostCount = -5 };
+
+        // Act
+        var result = ruleSet.Evaluate(blog);
+
+        // Assert
+        Assert.False(result.IsValid);
+        Assert.Equal(2, result.Errors.Count);
+    }
+
+    [Fact]
+    public void CompiledRuleSet_WithStopOnFirstError_StopsAfterFirstError()
+    {
+        // Arrange
+        var ruleSet = new RuleSetBuilder<Blog>("Default")
+            .Invariant("NameRequired", b => !string.IsNullOrWhiteSpace(b.Name))
+            .WithMessage("Name is required")
+            .Invariant("PostCountValid", b => b.PostCount >= 0)
+            .WithMessage("Post count must be non-negative")
+            .BuildCompiled();
+
+        var blog = new Blog { Name = "", PostCount = -5 };
+        var options = new RuleEvaluationOptions { StopOnFirstError = true };
+
+        // Act
+        var result = ruleSet.Evaluate(blog, options);
+
+        // Assert
+        Assert.False(result.IsValid);
+        Assert.Single(result.Errors);
+        Assert.Equal("NameRequired", result.Errors[0].Code);
+    }
+
+    [Fact]
+    public void CompiledRuleSet_WithWarning_IncludesWarningButStillValid()
+    {
+        // Arrange
+        var ruleSet = new RuleSetBuilder<Blog>("Default")
+            .Invariant("NameLength", b => b.Name.Length <= 10)
+            .WithMessage("Name is quite long")
+            .WithSeverity(RuleSeverity.Warning)
+            .BuildCompiled();
+
+        var blog = new Blog { Name = "This is a very long name that exceeds the limit" };
+
+        // Act
+        var result = ruleSet.Evaluate(blog);
+
+        // Assert
+        Assert.True(result.IsValid); // Warnings don't make it invalid
+        Assert.Single(result.Warnings);
+        Assert.Empty(result.Errors);
+    }
+
+    [Fact]
+    public void DomainEngine_EvaluateWithCompiledRuleSet_ActuallyEvaluatesPredicates()
+    {
+        // Arrange
+        var manifest = JD.Domain.Modeling.Domain.Create("TestDomain")
+            .Entity<Blog>()
+            .BuildManifest();
+
+        var engine = (DomainEngine)DomainRuntime.CreateEngine(manifest);
+        var ruleSet = new RuleSetBuilder<Blog>("Default")
+            .Invariant("NameRequired", b => !string.IsNullOrWhiteSpace(b.Name))
+            .WithMessage("Name is required")
+            .BuildCompiled();
+
+        var invalidBlog = new Blog { Name = "" };
+        var validBlog = new Blog { Name = "Valid" };
+
+        // Act
+        var invalidResult = engine.Evaluate(invalidBlog, ruleSet);
+        var validResult = engine.Evaluate(validBlog, ruleSet);
+
+        // Assert
+        Assert.False(invalidResult.IsValid);
+        Assert.Single(invalidResult.Errors);
+
+        Assert.True(validResult.IsValid);
+        Assert.Empty(validResult.Errors);
+    }
+
+    #endregion
 }

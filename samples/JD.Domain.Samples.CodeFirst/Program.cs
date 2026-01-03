@@ -32,19 +32,18 @@ public static class Program
             .WithMessage("Customer name cannot be empty")
             .Invariant("Customer.Email.Required", c => !string.IsNullOrWhiteSpace(c.Email))
             .WithMessage("Customer email cannot be empty")
-            .Build();
+            .BuildCompiled();
 
         var orderRules = new RuleSetBuilder<Order>("Default")
             .Invariant("Order.Items.Required", o => o.Items.Count > 0)
             .WithMessage("An order must contain at least one item")
-            .Build();
+            .BuildCompiled();
 
         Console.WriteLine($"   Customer rules: {customerRules.Rules.Count}");
         Console.WriteLine($"   Order rules: {orderRules.Rules.Count}");
 
-        // Step 3: Create runtime and validate sample data
+        // Step 3: Validate sample data using compiled rules
         Console.WriteLine("\n3. Validating sample data...");
-        var engine = DomainRuntime.CreateEngine(domain);
 
         // Valid customer
         var validCustomer = new Customer
@@ -54,10 +53,10 @@ public static class Program
             Email = "john@example.com"
         };
 
-        var validResult = engine.Evaluate(validCustomer, customerRules);
+        var validResult = customerRules.Evaluate(validCustomer);
         Console.WriteLine($"   Valid customer: {(validResult.IsValid ? "PASSED" : "FAILED")}");
 
-        // Invalid customer
+        // Invalid customer (empty name triggers rule)
         var invalidCustomer = new Customer
         {
             Id = Guid.NewGuid(),
@@ -65,7 +64,7 @@ public static class Program
             Email = "invalid-email"
         };
 
-        var invalidResult = engine.Evaluate(invalidCustomer, customerRules);
+        var invalidResult = customerRules.Evaluate(invalidCustomer);
         Console.WriteLine($"   Invalid customer: {(invalidResult.IsValid ? "PASSED" : "FAILED")}");
         foreach (var error in invalidResult.Errors)
         {

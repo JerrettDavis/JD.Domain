@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JD.Domain.Abstractions\JD.Domain.Abstractions.csproj" />
+    <ProjectReference Include="..\JD.Domain.Rules\JD.Domain.Rules.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

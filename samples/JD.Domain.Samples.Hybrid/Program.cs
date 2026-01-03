@@ -68,19 +68,18 @@ public static class Program
             .WithMessage("Username must be at least 3 characters")
             .Invariant("User.Email.Required", u => !string.IsNullOrWhiteSpace(u.Email))
             .WithMessage("Email is required")
-            .Build();
+            .BuildCompiled();
 
         var profileRules = new RuleSetBuilder<UserProfile>("Default")
             .Invariant("Profile.DisplayName.MaxLength", p => p.DisplayName == null || p.DisplayName.Length <= 50)
             .WithMessage("Display name cannot exceed 50 characters")
-            .Build();
+            .BuildCompiled();
 
-        // Step 7: Create runtime and validate
+        // Step 7: Validate entities using compiled rules
         Console.WriteLine("\n7. Validating entities...");
-        var engine = DomainRuntime.CreateEngine(v1_1);
 
-        var user = new User { Id = 1, Username = "jd", Email = "jd@example.com" };
-        var userResult = engine.Evaluate(user, userRules);
+        var user = new User { Id = 1, Username = "jdavis", Email = "jd@example.com" };
+        var userResult = userRules.Evaluate(user);
         Console.WriteLine($"   User validation: {(userResult.IsValid ? "PASSED" : "FAILED")}");
         foreach (var error in userResult.Errors)
         {
@@ -88,7 +87,7 @@ public static class Program
         }
 
         var profile = new UserProfile { Id = 1, UserId = 1, DisplayName = "John Doe" };
-        var profileResult = engine.Evaluate(profile, profileRules);
+        var profileResult = profileRules.Evaluate(profile);
         Console.WriteLine($"   Profile validation: {(profileResult.IsValid ? "PASSED" : "FAILED")}");
 
         Console.WriteLine("\n=== Sample Complete ===");

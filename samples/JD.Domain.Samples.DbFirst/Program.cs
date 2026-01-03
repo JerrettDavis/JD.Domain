@@ -27,14 +27,14 @@ public static class Program
             .WithMessage("Blog must have a valid URL")
             .Invariant("Blog.Url.Protocol", b => b.Url.StartsWith("http"))
             .WithMessage("Blog URL must start with http:// or https://")
-            .Build();
+            .BuildCompiled();
 
         var postRules = new RuleSetBuilder<Post>("Default")
             .Invariant("Post.Title.Required", p => !string.IsNullOrWhiteSpace(p.Title))
             .WithMessage("Post must have a title")
             .Invariant("Post.Title.MaxLength", p => p.Title.Length <= 200)
             .WithMessage("Post title cannot exceed 200 characters")
-            .Build();
+            .BuildCompiled();
 
         Console.WriteLine($"   Blog rules: {blogRules.Rules.Count}");
         Console.WriteLine($"   Post rules: {postRules.Rules.Count}");
@@ -46,18 +46,17 @@ public static class Program
         Console.WriteLine($"   Snapshot hash: {snapshot.Hash}");
         Console.WriteLine($"   Created at: {snapshot.CreatedAt:O}");
 
-        // Step 4: Validate entities at runtime
+        // Step 4: Validate entities using compiled rules
         Console.WriteLine("\n4. Validating sample entities...");
-        var engine = DomainRuntime.CreateEngine(manifest);
 
         // Valid blog
         var validBlog = new Blog { BlogId = 1, Url = "https://example.com/blog" };
-        var blogResult = engine.Evaluate(validBlog, blogRules);
+        var blogResult = blogRules.Evaluate(validBlog);
         Console.WriteLine($"   Valid blog: {(blogResult.IsValid ? "PASSED" : "FAILED")}");
 
-        // Invalid blog
+        // Invalid blog (empty URL triggers rule)
         var invalidBlog = new Blog { BlogId = 2, Url = "" };
-        var invalidBlogResult = engine.Evaluate(invalidBlog, blogRules);
+        var invalidBlogResult = blogRules.Evaluate(invalidBlog);
         Console.WriteLine($"   Invalid blog: {(invalidBlogResult.IsValid ? "PASSED" : "FAILED")}");
         foreach (var error in invalidBlogResult.Errors)
         {

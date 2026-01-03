@@ -15,6 +15,7 @@ public sealed class RuleSetBuilder<T> where T : class
     private readonly string _name;
     private readonly Type _targetType = typeof(T);
     private readonly List<RuleManifest> _rules = [];
+    private readonly Dictionary<string, Func<T, bool>> _compiledPredicates = new();
     private readonly List<string> _includes = [];
     private readonly Dictionary<string, object?> _metadata = new();
 
@@ -56,6 +57,7 @@ public sealed class RuleSetBuilder<T> where T : class
         };
 
         _rules.Add(rule);
+        _compiledPredicates[id] = predicate.Compile();
         return new RuleBuilder<T>(this, rule);
     }
 
@@ -79,6 +81,7 @@ public sealed class RuleSetBuilder<T> where T : class
         };
 
         _rules.Add(rule);
+        _compiledPredicates[id] = predicate.Compile();
         return new RuleBuilder<T>(this, rule);
     }
 
@@ -126,6 +129,20 @@ public sealed class RuleSetBuilder<T> where T : class
             Includes = _includes.ToList().AsReadOnly(),
             Metadata = _metadata.ToDictionary(x => x.Key, x => x.Value) as IReadOnlyDictionary<string, object?>
         };
+    }
+
+    /// <summary>
+    /// Builds a compiled rule set that can be evaluated at runtime.
+    /// </summary>
+    /// <returns>The compiled rule set.</returns>
+    public CompiledRuleSet<T> BuildCompiled()
+    {
+        var compiledRules = _rules
+            .Where(r => _compiledPredicates.ContainsKey(r.Id))
+            .Select(r => new CompiledRule<T>(r, _compiledPredicates[r.Id]))
+            .ToList();
+
+        return new CompiledRuleSet<T>(_name, compiledRules);
     }
 
     /// <summary>

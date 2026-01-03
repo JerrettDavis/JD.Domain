@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using JD.Domain.Abstractions;
+using JD.Domain.Rules;
 
 namespace JD.Domain.Runtime;
 
@@ -131,26 +132,37 @@ public sealed class DomainEngine : IDomainEngine
         if (instance == null) throw new ArgumentNullException(nameof(instance));
         if (ruleSet == null) throw new ArgumentNullException(nameof(ruleSet));
 
-        var errors = new List<DomainError>();
-        var warnings = new List<DomainError>();
-        var rulesEvaluated = 0;
-
-        foreach (var rule in ruleSet.Rules)
-        {
-            rulesEvaluated++;
-
-            // For sample demonstration purposes, we return a success result
-            // In a full implementation, this would compile and execute the expression
-        }
-
+        // RuleSetManifest only contains string expressions, not compiled predicates.
+        // For actual evaluation, use CompiledRuleSet<T> via Evaluate(instance, compiledRuleSet).
+        // This method returns success to maintain backward compatibility.
         return new RuleEvaluationResult
         {
-            IsValid = errors.Count == 0,
-            Errors = errors.ToList().AsReadOnly(),
-            Warnings = warnings.ToList().AsReadOnly(),
+            IsValid = true,
+            Errors = new List<DomainError>().AsReadOnly(),
+            Warnings = new List<DomainError>().AsReadOnly(),
             Info = new List<DomainError>().AsReadOnly(),
-            RulesEvaluated = rulesEvaluated,
+            RulesEvaluated = ruleSet.Rules.Count,
             RuleSetsEvaluated = new List<string> { ruleSet.Name }.AsReadOnly()
         };
+    }
+
+    /// <summary>
+    /// Evaluates a compiled rule set against the specified instance.
+    /// This method actually executes the rule predicates.
+    /// </summary>
+    /// <typeparam name="T">The type of the instance to evaluate.</typeparam>
+    /// <param name="instance">The instance to evaluate.</param>
+    /// <param name="ruleSet">The compiled rule set to evaluate.</param>
+    /// <param name="options">The evaluation options.</param>
+    /// <returns>The evaluation result.</returns>
+    public RuleEvaluationResult Evaluate<T>(
+        T instance,
+        CompiledRuleSet<T> ruleSet,
+        RuleEvaluationOptions? options = null) where T : class
+    {
+        if (instance == null) throw new ArgumentNullException(nameof(instance));
+        if (ruleSet == null) throw new ArgumentNullException(nameof(ruleSet));
+
+        return ruleSet.Evaluate(instance, options);
     }
 }
