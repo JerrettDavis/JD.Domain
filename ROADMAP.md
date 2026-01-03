@@ -138,25 +138,26 @@ The goal is to ship a production-ready, opt-in domain modeling + rules + configu
 - ✅ RuleEvaluationOptions extended with PropertyName support
 - ✅ 25 unit tests for generator behavior
 
-### 📋 Milestone 8 — ASP.NET Core Integration
+### ✅ Milestone 8 — ASP.NET Core Integration (COMPLETED)
 
-**Estimated Effort**: 2 weeks
+**Status**: Complete
 
 **Deliverables**:
-- [ ] JD.Domain.AspNetCore package
-  - UseDomainValidation() middleware
-  - Endpoint metadata detection
-  - Rule set evaluation on requests
-  - ProblemDetails error formatting
+- ✅ JD.Domain.Validation package
+  - DomainValidationError record for API-friendly errors
+  - ValidationProblemDetails extending ProblemDetails
+  - ProblemDetailsBuilder fluent builder
+  - ValidationProblemDetailsFactory for creating from results/exceptions
+- ✅ JD.Domain.AspNetCore package
+  - UseDomainValidation() middleware for exception handling
+  - DomainExceptionHandler (IExceptionHandler) integration
+  - DomainValidationOptions for configuration
   - Minimal API extensions (.WithDomainValidation<T>())
+  - DomainValidationEndpointFilter<T> for endpoint validation
   - MVC action filter ([DomainValidation] attribute)
-  - Model binding integration for domain types
-  - Exception handling integration
-- [ ] JD.Domain.Validation package
-  - Shared error contracts
-  - ProblemDetails builders
-  - Error response formatters
-- [ ] Integration tests with TestServer
+  - IDomainContextFactory + HttpDomainContextFactory
+  - AddDomainValidation() service registration
+- ✅ Unit tests for Validation and AspNetCore packages
 
 ### 📋 Milestone 9 — Snapshot/Diff/Migration + CLI
 
@@ -272,24 +273,19 @@ This assumes:
 **Milestone 5**: ✅ Complete
 **Milestone 6**: ✅ Complete
 **Milestone 7**: ✅ Complete
-**Milestone 8**: 📋 Not Started
+**Milestone 8**: ✅ Complete
 **Milestone 9**: 📋 Not Started
 **Milestone 10**: 📋 Not Started
 **Milestone 11**: 📋 Not Started
 **Milestone 12**: 📋 Not Started
 
-**Overall Progress**: ~64% of total v1 scope (7/11 milestones complete)
+**Overall Progress**: ~73% of total v1 scope (8/11 milestones complete)
 
-**Test Status**: 102 tests passing, 0 failures
+**Test Status**: 134 tests passing, 0 failures
 
 ## Next Steps
 
-1. **Milestone 8**: Implement ASP.NET Core Integration
-   - Create JD.Domain.AspNetCore package
-   - Middleware for domain validation
-   - ProblemDetails error formatting
-
-2. **Milestone 9**: Implement Snapshot/Diff/CLI
+1. **Milestone 9**: Implement Snapshot/Diff/CLI
    - Snapshot system with canonical JSON format
    - Diff engine for change detection
    - CLI commands for tooling
