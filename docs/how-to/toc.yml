@@ -1,0 +1,65 @@
+- name: Overview
+  href: index.md
+
+- name: Domain Modeling
+  items:
+  - name: Define Entities
+    href: define-entities.md
+  - name: Define Value Objects
+    href: define-value-objects.md
+  - name: Define Enums
+    href: define-enums.md
+
+- name: Business Rules
+  items:
+  - name: Create Invariants
+    href: create-invariants.md
+  - name: Create Validators
+    href: create-validators.md
+  - name: Create Policies
+    href: create-policies.md
+  - name: Create Derivations
+    href: create-derivations.md
+  - name: Compose Rules
+    href: compose-rules.md
+
+- name: Configuration
+  items:
+  - name: Configure Keys
+    href: configure-keys.md
+  - name: Configure Indexes
+    href: configure-indexes.md
+  - name: Configure Relationships
+    href: configure-relationships.md
+
+- name: Integration
+  items:
+  - name: Apply to ModelBuilder
+    href: apply-to-modelbuilder.md
+  - name: Validate in ASP.NET
+    href: validate-in-aspnet.md
+
+- name: Generators
+  items:
+  - name: Generate FluentValidation
+    href: generate-fluentvalidation.md
+  - name: Generate Domain Types
+    href: generate-domain-types.md
+
+- name: Version Management
+  items:
+  - name: Create Snapshots
+    href: create-snapshots.md
+  - name: Compare Snapshots
+    href: compare-snapshots.md
+  - name: Detect Breaking Changes
+    href: detect-breaking-changes.md
+  - name: Generate Migration Plans
+    href: generate-migration-plans.md
+
+- name: Tooling
+  items:
+  - name: Use CLI Tools
+    href: use-cli-tools.md
+  - name: Use T4 Templates
+    href: use-t4-templates.md
