@@ -117,15 +117,15 @@ public sealed class EntityBuilder<T> where T : class
     /// Updates a property manifest.
     /// </summary>
     /// <param name="propertyName">The property name.</param>
-    /// <param name="updater">The update action.</param>
-    internal void UpdateProperty(string propertyName, Action<PropertyManifest> updater)
+    /// <param name="updater">The update function that returns a new property manifest.</param>
+    internal void UpdateProperty(string propertyName, Func<PropertyManifest, PropertyManifest> updater)
     {
         var property = _properties.FirstOrDefault(p => p.Name == propertyName);
         if (property != null)
         {
             _properties.Remove(property);
-            updater(property);
-            _properties.Add(property);
+            var updated = updater(property);
+            _properties.Add(updated);
         }
     }
 
