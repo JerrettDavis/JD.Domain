@@ -32,6 +32,7 @@
     <ProjectReference Include="..\..\src\JD.Domain.AspNetCore\JD.Domain.AspNetCore.csproj" />
     <ProjectReference Include="..\..\src\JD.Domain.Snapshot\JD.Domain.Snapshot.csproj" />
     <ProjectReference Include="..\..\src\JD.Domain.Diff\JD.Domain.Diff.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.T4.Shims\JD.Domain.T4.Shims.csproj" />
   </ItemGroup>
 
   <ItemGroup>

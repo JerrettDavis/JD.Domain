@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using JD.Domain.Abstractions;
 
 namespace JD.Domain.Rules;
@@ -113,7 +114,7 @@ public sealed class RuleBuilder<T> where T : class
         {
             [key] = value
         };
-        
+
         _rule = new RuleManifest
         {
             Id = _rule.Id,
@@ -128,5 +129,36 @@ public sealed class RuleBuilder<T> where T : class
 
         _ruleSetBuilder.ReplaceRule(_rule);
         return this;
+    }
+
+    /// <summary>
+    /// Adds another invariant rule to the rule set.
+    /// </summary>
+    /// <param name="id">The unique identifier for the rule.</param>
+    /// <param name="predicate">The rule predicate expression.</param>
+    /// <returns>A rule builder for further configuration.</returns>
+    public RuleBuilder<T> Invariant(string id, Expression<Func<T, bool>> predicate)
+    {
+        return _ruleSetBuilder.Invariant(id, predicate);
+    }
+
+    /// <summary>
+    /// Adds a validator rule to the rule set.
+    /// </summary>
+    /// <param name="id">The unique identifier for the rule.</param>
+    /// <param name="predicate">The rule predicate expression.</param>
+    /// <returns>A rule builder for further configuration.</returns>
+    public RuleBuilder<T> Validator(string id, Expression<Func<T, bool>> predicate)
+    {
+        return _ruleSetBuilder.Validator(id, predicate);
+    }
+
+    /// <summary>
+    /// Builds the rule set manifest.
+    /// </summary>
+    /// <returns>The constructed rule set manifest.</returns>
+    public RuleSetManifest Build()
+    {
+        return _ruleSetBuilder.Build();
     }
 }

@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>JD.Domain.Samples.Hybrid</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\JD.Domain.Abstractions\JD.Domain.Abstractions.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Modeling\JD.Domain.Modeling.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Rules\JD.Domain.Rules.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Runtime\JD.Domain.Runtime.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Diff\JD.Domain.Diff.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Snapshot\JD.Domain.Snapshot.csproj" />
+  </ItemGroup>
+
+</Project>

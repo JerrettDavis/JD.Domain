@@ -31,4 +31,15 @@ public interface IDomainEngine
     RuleEvaluationResult Evaluate<T>(
         T instance,
         RuleEvaluationOptions? options = null) where T : class;
+
+    /// <summary>
+    /// Evaluates the specified rule set against the instance.
+    /// </summary>
+    /// <typeparam name="T">The type of the instance to evaluate.</typeparam>
+    /// <param name="instance">The instance to evaluate.</param>
+    /// <param name="ruleSet">The rule set to evaluate.</param>
+    /// <returns>The evaluation result.</returns>
+    RuleEvaluationResult Evaluate<T>(
+        T instance,
+        RuleSetManifest ruleSet) where T : class;
 }

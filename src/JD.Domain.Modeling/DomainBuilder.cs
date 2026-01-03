@@ -131,6 +131,12 @@ public sealed class DomainBuilder
     }
 
     /// <summary>
+    /// Builds the domain manifest.
+    /// </summary>
+    /// <returns>The constructed domain manifest.</returns>
+    public DomainManifest Build() => BuildManifest();
+
+    /// <summary>
     /// Adds a rule set to the domain.
     /// </summary>
     /// <param name="ruleSet">The rule set manifest.</param>

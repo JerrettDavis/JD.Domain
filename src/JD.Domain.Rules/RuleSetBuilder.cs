@@ -116,7 +116,7 @@ public sealed class RuleSetBuilder<T> where T : class
     /// Builds the rule set manifest.
     /// </summary>
     /// <returns>The constructed rule set manifest.</returns>
-    internal RuleSetManifest Build()
+    public RuleSetManifest Build()
     {
         return new RuleSetManifest
         {

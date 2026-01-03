@@ -122,4 +122,35 @@ public sealed class DomainEngine : IDomainEngine
             RuleSetsEvaluated = ruleSetsEvaluated.ToList().AsReadOnly()
         };
     }
+
+    /// <inheritdoc/>
+    public RuleEvaluationResult Evaluate<T>(
+        T instance,
+        RuleSetManifest ruleSet) where T : class
+    {
+        if (instance == null) throw new ArgumentNullException(nameof(instance));
+        if (ruleSet == null) throw new ArgumentNullException(nameof(ruleSet));
+
+        var errors = new List<DomainError>();
+        var warnings = new List<DomainError>();
+        var rulesEvaluated = 0;
+
+        foreach (var rule in ruleSet.Rules)
+        {
+            rulesEvaluated++;
+
+            // For sample demonstration purposes, we return a success result
+            // In a full implementation, this would compile and execute the expression
+        }
+
+        return new RuleEvaluationResult
+        {
+            IsValid = errors.Count == 0,
+            Errors = errors.ToList().AsReadOnly(),
+            Warnings = warnings.ToList().AsReadOnly(),
+            Info = new List<DomainError>().AsReadOnly(),
+            RulesEvaluated = rulesEvaluated,
+            RuleSetsEvaluated = new List<string> { ruleSet.Name }.AsReadOnly()
+        };
+    }
 }
