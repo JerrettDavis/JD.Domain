@@ -45,6 +45,13 @@ Initial alpha release of JD.Domain Suite.
   - Rule set filtering by name
   - Error/warning/info collection
 
+- **JD.Domain.ManifestGeneration** ⭐ NEW - Opt-in attributes for automatic manifest generation
+  - `[GenerateManifest]` - Assembly or DbContext-level manifest configuration
+  - `[DomainEntity]` - Marks entity classes for manifest inclusion
+  - `[DomainValueObject]` - Marks value object classes for manifest inclusion
+  - `[ExcludeFromManifest]` - Opt-out for specific properties or classes
+  - NO manual string writing required - metadata extracted automatically from code
+
 #### Integration Packages
 - **JD.Domain.EFCore** - Entity Framework Core integration
   - `ModelBuilder.ApplyDomainManifest()` extension
@@ -70,6 +77,15 @@ Initial alpha release of JD.Domain Suite.
   - `GeneratorPipeline` for chaining generators
   - `CodeBuilder` fluent API with auto-generated headers
   - Deterministic generation infrastructure
+
+- **JD.Domain.ManifestGeneration.Generator** ⭐ NEW - Roslyn source generator for automatic manifest creation
+  - Analyzes entity classes at compile-time using Roslyn incremental generator
+  - Automatically extracts property metadata from data annotations ([Key], [Required], [MaxLength], etc.)
+  - Generates `DomainManifest` code from `[DomainEntity]` and `[DomainValueObject]` attributes
+  - Supports assembly-level `[GenerateManifest]` configuration
+  - Respects `[ExcludeFromManifest]` opt-out attribute
+  - Eliminates manual string writing - all metadata from code
+  - Generates at build time, no runtime reflection required
 
 - **JD.Domain.DomainModel.Generator** - Rich domain type generator
   - Domain proxy types (e.g., `DomainBlog`)

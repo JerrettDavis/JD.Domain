@@ -40,6 +40,8 @@
     <ProjectReference Include="..\..\src\JD.Domain.Configuration\JD.Domain.Configuration.csproj" />
     <ProjectReference Include="..\..\src\JD.Domain.EFCore\JD.Domain.EFCore.csproj" />
     <ProjectReference Include="..\..\src\JD.Domain.Cli\JD.Domain.Cli.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.ManifestGeneration\JD.Domain.ManifestGeneration.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.ManifestGeneration.Generator\JD.Domain.ManifestGeneration.Generator.csproj" />
   </ItemGroup>
 
   <ItemGroup>
