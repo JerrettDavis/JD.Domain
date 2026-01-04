@@ -17,4 +17,8 @@
     <ProjectReference Include="..\..\src\JD.Domain.Snapshot\JD.Domain.Snapshot.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Update="Nerdbank.GitVersioning" Version="3.9.50" />
+  </ItemGroup>
+
 </Project>
