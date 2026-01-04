@@ -1,0 +1,11 @@
+<Project>
+  <!-- Inherit from parent Directory.Build.props -->
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <!-- Disable XML documentation for tests -->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <!-- Tests don't need to be published as packages -->
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+</Project>

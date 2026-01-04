@@ -1,0 +1,131 @@
+name: Stale Issues and PRs
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run daily at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    name: Mark Stale Items
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Mark stale issues and PRs
+        uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Stale issues configuration
+          stale-issue-message: |
+            This issue has been automatically marked as stale because it has not had recent activity.
+            It will be closed in 7 days if no further activity occurs.
+
+            If this issue is still relevant, please:
+            - Add a comment to keep it open
+            - Add the `keep-open` label
+            - Remove the `stale` label
+
+            Thank you for your contributions!
+
+          close-issue-message: |
+            This issue was automatically closed because it has been stale for 7 days with no activity.
+
+            If you believe this issue should be reopened, please create a new issue with:
+            - A reference to this closed issue
+            - Updated context or information
+            - Current relevance to the project
+
+          stale-issue-label: 'stale'
+          days-before-stale: 60
+          days-before-close: 7
+          exempt-issue-labels: 'keep-open,pinned,security,bug,enhancement'
+
+          # Stale PRs configuration
+          stale-pr-message: |
+            This pull request has been automatically marked as stale because it has not had recent activity.
+            It will be closed in 14 days if no further activity occurs.
+
+            If this PR is still being worked on, please:
+            - Push new commits
+            - Add a comment explaining the current status
+            - Add the `keep-open` label
+            - Remove the `stale` label
+
+            If you need help completing this PR, please let us know!
+
+          close-pr-message: |
+            This pull request was automatically closed because it has been stale for 14 days with no activity.
+
+            If you would like to continue this work, please:
+            - Reopen this PR (if you have permissions)
+            - Create a new PR referencing this one
+            - Rebase on the latest main branch
+
+          stale-pr-label: 'stale'
+          days-before-pr-stale: 30
+          days-before-pr-close: 14
+          exempt-pr-labels: 'keep-open,pinned,security,work-in-progress,blocked'
+
+          # Additional configuration
+          operations-per-run: 100
+          remove-stale-when-updated: true
+          ascending: true
+          enable-statistics: true
+
+          # Exempt milestones
+          exempt-milestones: true
+
+          # Exempt all issues/PRs with assignees
+          exempt-all-assignees: true
+
+          # Exempt draft PRs
+          exempt-draft-pr: true
+
+          # Custom messages for different scenarios
+          any-of-labels: ''
+          only-labels: ''
+
+  # Report stale statistics
+  report:
+    name: Stale Items Report
+    runs-on: ubuntu-latest
+    needs: stale
+
+    steps:
+      - name: Generate report
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Get stale issues
+            const staleIssues = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              labels: 'stale',
+              state: 'open',
+              per_page: 100
+            });
+
+            // Get stale PRs
+            const stalePRs = await github.rest.pulls.list({
+              owner,
+              repo,
+              state: 'open',
+              per_page: 100
+            });
+
+            const stalePRsFiltered = stalePRs.data.filter(pr =>
+              pr.labels.some(label => label.name === 'stale')
+            );
+
+            console.log(`📊 Stale Items Report:`);
+            console.log(`- Stale Issues: ${staleIssues.data.length}`);
+            console.log(`- Stale PRs: ${stalePRsFiltered.length}`);
+            console.log(`- Total: ${staleIssues.data.length + stalePRsFiltered.length}`);

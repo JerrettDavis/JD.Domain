@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\JD.Domain.Abstractions\JD.Domain.Abstractions.csproj" />
+    <ProjectReference Include="..\JD.Domain.Modeling\JD.Domain.Modeling.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Authors>Jerrett Davis</Authors>
+    <Description>Fluent DSL for defining domain rules, invariants, validators, and policies for JD.Domain suite</Description>
+    <PackageProjectUrl>https://github.com/JerrettDavis/JD.Domain</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/JerrettDavis/JD.Domain</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+</Project>

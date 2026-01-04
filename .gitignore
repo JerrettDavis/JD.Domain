@@ -35,6 +35,8 @@ ScaffoldingReadMe.txt
 *.nupkg
 # NuGet Symbol Packages
 *.snupkg
+# NuGet package cache (local)
+.nuget/
 
 # Others
 ~$*
@@ -52,3 +54,11 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# DocFX build output
+_site/
+api/.manifest
+
+api/
+
+*.user

@@ -1,0 +1,35 @@
+<Project>
+  <PropertyGroup>
+    <!-- Common package metadata -->
+    <Authors>Jerrett Davis</Authors>
+    <Company>JD Software</Company>
+    <Copyright>Copyright (c) Jerrett Davis 2025</Copyright>
+    <PackageProjectUrl>https://github.com/JerrettDavis/JD.Domain</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/JerrettDavis/JD.Domain</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>domain;ddd;domain-driven-design;efcore;entity-framework;validation;rules;modeling</PackageTags>
+
+    <!-- Build settings -->
+    <Deterministic>true</Deterministic>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <DebugType>embedded</DebugType>
+
+    <!-- Enable nullable and latest language features -->
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Documentation -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <!-- Source Link for debugging -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
+</Project>

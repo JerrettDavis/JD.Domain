@@ -1,0 +1,188 @@
+- name: Overview
+  href: index.md
+
+- name: Getting Started
+  items:
+    - name: Overview
+      href: getting-started/index.md
+    - name: Installation
+      href: getting-started/installation.md
+    - name: Quick Start
+      href: getting-started/quick-start.md
+    - name: Choose Your Workflow
+      href: getting-started/choose-workflow.md
+    - name: Next Steps
+      href: getting-started/next-steps.md
+
+- name: Tutorials
+  items:
+    - name: Overview
+      href: tutorials/index.md
+    - name: Getting Started Tutorials
+      items:
+        - name: Code-First Walkthrough
+          href: tutorials/code-first-walkthrough.md
+        - name: Database-First Walkthrough
+          href: tutorials/db-first-walkthrough.md
+        - name: Hybrid Workflow
+          href: tutorials/hybrid-workflow.md
+    - name: Feature Tutorials
+      items:
+        - name: Domain Modeling
+          href: tutorials/domain-modeling.md
+        - name: Business Rules
+          href: tutorials/business-rules.md
+        - name: EF Core Integration
+          href: tutorials/ef-core-integration.md
+        - name: ASP.NET Core Integration
+          href: tutorials/aspnet-core-integration.md
+        - name: Source Generators
+          href: tutorials/source-generators.md
+        - name: Version Management
+          href: tutorials/version-management.md
+
+- name: How-To Guides
+  items:
+    - name: Overview
+      href: how-to/index.md
+    - name: Domain Modeling
+      items:
+        - name: Define Entities
+          href: how-to/define-entities.md
+        - name: Define Value Objects
+          href: how-to/define-value-objects.md
+        - name: Define Enums
+          href: how-to/define-enums.md
+    - name: Business Rules
+      items:
+        - name: Create Invariants
+          href: how-to/create-invariants.md
+        - name: Create Validators
+          href: how-to/create-validators.md
+        - name: Create Policies
+          href: how-to/create-policies.md
+        - name: Create Derivations
+          href: how-to/create-derivations.md
+        - name: Compose Rules
+          href: how-to/compose-rules.md
+    - name: Configuration
+      items:
+        - name: Configure Keys
+          href: how-to/configure-keys.md
+        - name: Configure Indexes
+          href: how-to/configure-indexes.md
+        - name: Configure Relationships
+          href: how-to/configure-relationships.md
+    - name: Integration
+      items:
+        - name: Apply to ModelBuilder
+          href: how-to/apply-to-modelbuilder.md
+        - name: Validate in ASP.NET
+          href: how-to/validate-in-aspnet.md
+    - name: Generators
+      items:
+        - name: Generate FluentValidation
+          href: how-to/generate-fluentvalidation.md
+        - name: Generate Domain Types
+          href: how-to/generate-domain-types.md
+    - name: Version Management
+      items:
+        - name: Create Snapshots
+          href: how-to/create-snapshots.md
+        - name: Compare Snapshots
+          href: how-to/compare-snapshots.md
+        - name: Detect Breaking Changes
+          href: how-to/detect-breaking-changes.md
+        - name: Generate Migration Plans
+          href: how-to/generate-migration-plans.md
+    - name: Tooling
+      items:
+        - name: Use CLI Tools
+          href: how-to/use-cli-tools.md
+        - name: Use T4 Templates
+          href: how-to/use-t4-templates.md
+
+- name: Concepts
+  items:
+    - name: Overview
+      href: concepts/index.md
+    - name: Architecture
+      href: concepts/architecture.md
+    - name: Design Principles
+      href: concepts/design-principles.md
+    - name: Domain Manifest
+      href: concepts/domain-manifest.md
+    - name: DSL Overview
+      href: concepts/dsl-overview.md
+    - name: Rule System
+      href: concepts/rule-system.md
+    - name: Runtime Engine
+      href: concepts/runtime-engine.md
+    - name: Source Generators
+      href: concepts/source-generators.md
+    - name: Snapshot Format
+      href: concepts/snapshot-format.md
+    - name: Diff Algorithm
+      href: concepts/diff-algorithm.md
+    - name: Breaking Changes
+      href: concepts/breaking-changes.md
+    - name: Result Monad
+      href: concepts/result-monad.md
+    - name: Validation Errors
+      href: concepts/validation-errors.md
+    - name: Extensibility
+      href: concepts/extensibility.md
+
+- name: Reference
+  items:
+    - name: Overview
+      href: reference/index.md
+    - name: Package Matrix
+      href: reference/package-matrix.md
+    - name: CLI Commands
+      href: reference/cli-commands.md
+    - name: Configuration Options
+      href: reference/configuration-options.md
+    - name: Error Codes
+      href: reference/error-codes.md
+    - name: Samples
+      href: reference/samples.md
+
+- name: Migration Guides
+  items:
+    - name: Overview
+      href: migration/index.md
+    - name: From Anemic Models
+      href: migration/from-anemic-models.md
+    - name: From FluentValidation
+      href: migration/from-fluentvalidation.md
+
+- name: Advanced Topics
+  items:
+    - name: Overview
+      href: advanced/index.md
+    - name: Performance
+      href: advanced/performance.md
+    - name: Telemetry
+      href: advanced/telemetry.md
+    - name: Custom Generators
+      href: advanced/custom-generators.md
+    - name: Integration Patterns
+      href: advanced/integration-patterns.md
+
+- name: Contributing
+  items:
+    - name: Overview
+      href: contributing/index.md
+    - name: Development Setup
+      href: contributing/development-setup.md
+    - name: Coding Standards
+      href: contributing/coding-standards.md
+    - name: Testing Guidelines
+      href: contributing/testing-guidelines.md
+
+- name: Changelog
+  href: changelog/index.md
+
+- name: Roadmap
+  href: changelog/roadmap.md

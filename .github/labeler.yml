@@ -1,0 +1,121 @@
+# Configuration for automatic PR labeling based on changed files
+# White-label: Update package/project names to match your project
+
+# Documentation changes
+'area/documentation':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'docs/**/*'
+      - '*.md'
+      - 'docfx.json'
+      - 'toc.yml'
+
+# CI/CD changes
+'area/ci-cd':
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.github/workflows/**/*'
+      - '.github/actions/**/*'
+      - 'GitVersion.yml'
+      - '.editorconfig'
+
+# Test changes
+'area/tests':
+  - changed-files:
+    - any-glob-to-any-file:
+      - '**/*.Tests/**/*'
+      - '**/*Tests.cs'
+      - '**/*Test.cs'
+
+# Core packages
+'package/Abstractions':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.Abstractions/**/*'
+
+'package/Modeling':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.Modeling/**/*'
+
+'package/Configuration':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.Configuration/**/*'
+
+'package/Rules':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.Rules/**/*'
+
+'package/Runtime':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.Runtime/**/*'
+
+'package/Validation':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.Validation/**/*'
+
+# Integration packages
+'package/AspNetCore':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.AspNetCore/**/*'
+
+'package/EFCore':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.EFCore/**/*'
+
+# Generator packages
+'package/Generators':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.Generators.Core/**/*'
+      - 'src/JD.Domain.DomainModel.Generator/**/*'
+      - 'src/JD.Domain.FluentValidation.Generator/**/*'
+
+# Tooling packages
+'package/Snapshot':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.Snapshot/**/*'
+
+'package/Diff':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.Diff/**/*'
+
+'package/Cli':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.Cli/**/*'
+
+'package/T4':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/JD.Domain.T4.Shims/**/*'
+
+# Sample applications
+'area/samples':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'samples/**/*'
+
+# Dependencies
+'dependencies':
+  - changed-files:
+    - any-glob-to-any-file:
+      - '**/packages.lock.json'
+      - '**/*.csproj'
+      - 'Directory.Build.props'
+      - 'Directory.Packages.props'
+
+# Breaking changes
+'breaking-change':
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/**/*Abstractions*/**/*'
+      - 'src/**/Public/**/*'

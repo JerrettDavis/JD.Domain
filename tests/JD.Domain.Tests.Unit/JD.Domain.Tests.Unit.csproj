@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+    <PackageReference Include="TinyBDD" Version="0.18.1" />
+    <PackageReference Include="TinyBDD.Xunit" Version="0.18.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.1" />
+    <PackageReference Include="System.CommandLine" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\JD.Domain.Abstractions\JD.Domain.Abstractions.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Modeling\JD.Domain.Modeling.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Rules\JD.Domain.Rules.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Runtime\JD.Domain.Runtime.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Generators.Core\JD.Domain.Generators.Core.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.FluentValidation.Generator\JD.Domain.FluentValidation.Generator.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.DomainModel.Generator\JD.Domain.DomainModel.Generator.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Validation\JD.Domain.Validation.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.AspNetCore\JD.Domain.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Snapshot\JD.Domain.Snapshot.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Diff\JD.Domain.Diff.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.T4.Shims\JD.Domain.T4.Shims.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Configuration\JD.Domain.Configuration.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.EFCore\JD.Domain.EFCore.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.Cli\JD.Domain.Cli.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.ManifestGeneration\JD.Domain.ManifestGeneration.csproj" />
+    <ProjectReference Include="..\..\src\JD.Domain.ManifestGeneration.Generator\JD.Domain.ManifestGeneration.Generator.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>
