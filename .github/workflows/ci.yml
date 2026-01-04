@@ -11,7 +11,7 @@ on:
         description: 'JSON array of .NET versions to test'
         required: false
         type: string
-        default: '["8.0.x", "9.0.x", "10.0.x"]'
+        default: '["8.0.x", "9.0.x"]'
       enable-benchmarks:
         description: 'Enable benchmark tests'
         required: false
@@ -22,8 +22,8 @@ env:
   # White-label configuration - customize these for your project
   SOLUTION_NAME: JD.Domain.sln
   PROJECT_NAME: JD.Domain
-  DOTNET_VERSION: '10.0.x'
-  DOTNET_TEST_VERSIONS: '["8.0.x", "9.0.x", "10.0.x"]'
+  DOTNET_VERSION: '9.0.x'
+  DOTNET_TEST_VERSIONS: '["8.0.x", "9.0.x"]'
   ENABLE_BENCHMARKS: false
 
   # Standard configuration
@@ -79,7 +79,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        dotnet-version: ${{ fromJson(inputs.dotnet-test-versions || '["8.0.x", "9.0.x", "10.0.x"]') }}
+        dotnet-version: ${{ fromJson(inputs.dotnet-test-versions || '["8.0.x", "9.0.x"]') }}
 
     steps:
       - name: Checkout code
@@ -102,7 +102,7 @@ jobs:
         run: dotnet test ${{ env.SOLUTION_NAME }} --no-build --configuration Release --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
 
       - name: Upload coverage to Codecov
-        if: matrix.os == 'ubuntu-latest' && matrix.dotnet-version == '10.0.x'
+        if: matrix.os == 'ubuntu-latest' && matrix.dotnet-version == '9.0.x'
         uses: codecov/codecov-action@v4
         with:
           directory: ./coverage

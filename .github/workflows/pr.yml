@@ -7,7 +7,7 @@ on:
 env:
   # White-label configuration - customize these for your project
   SOLUTION_NAME: JD.Domain.sln
-  DOTNET_VERSION: '10.0.x'
+  DOTNET_VERSION: '9.0.x'
 
   # Standard configuration
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
