@@ -58,3 +58,7 @@ nunit-*.xml
 # DocFX build output
 _site/
 api/.manifest
+
+api/
+
+*.user
