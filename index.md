@@ -16,17 +16,17 @@ Choose your workflow to get started in 5 minutes:
   <div class="column">
     <h3>Code-First</h3>
     <p>Define your domain using the fluent DSL</p>
-    <a href="docs/tutorials/code-first-walkthrough.html">Code-First Tutorial →</a>
+    <a href="docs/tutorials/code-first-walkthrough.md">Code-First Tutorial →</a>
   </div>
   <div class="column">
     <h3>Database-First</h3>
     <p>Add rules to existing EF Core entities</p>
-    <a href="docs/tutorials/db-first-walkthrough.html">Database-First Tutorial →</a>
+    <a href="docs/tutorials/db-first-walkthrough.md">Database-First Tutorial →</a>
   </div>
   <div class="column">
     <h3>Hybrid</h3>
     <p>Mix and match with version management</p>
-    <a href="docs/tutorials/hybrid-workflow.html">Hybrid Tutorial →</a>
+    <a href="docs/tutorials/hybrid-workflow.md">Hybrid Tutorial →</a>
   </div>
 </div>
 
