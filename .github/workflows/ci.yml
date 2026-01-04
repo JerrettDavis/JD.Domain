@@ -186,6 +186,7 @@ jobs:
           SHOULD_PUBLISH="false"
 
           # Check if this is a release version (not prerelease)
+          # PrereleaseVersion is empty for release versions, contains prerelease label otherwise
           if [[ "${{ steps.nbgv.outputs.PrereleaseVersion }}" == "" ]]; then
             SHOULD_PUBLISH="true"
           fi
