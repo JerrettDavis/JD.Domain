@@ -94,6 +94,8 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 
 # JD.Domain packages
 dotnet add package JD.Domain.Abstractions
+dotnet add package JD.Domain.ManifestGeneration
+dotnet add package JD.Domain.ManifestGeneration.Generator
 dotnet add package JD.Domain.Rules
 dotnet add package JD.Domain.Runtime
 dotnet add package JD.Domain.AspNetCore
@@ -136,69 +138,77 @@ public partial class Post
 }
 ```
 
-### Important: Don't Modify Scaffolded Code
+### Using Partial Classes for Annotations
 
-The scaffolded entities are marked `partial` so you can extend them without modification. We'll add rules externally.
+The scaffolded entities are marked `partial`, which allows us to extend them in separate files without modifying the generated code. We'll use this to add JD.Domain attributes and data annotations.
 
-## Step 5: Create Domain Manifest
+## Step 5: Add Domain Annotations (Automatic Manifest Generation)
 
-Create a manifest describing the scaffolded entities.
+Instead of manually writing manifests with strings, we'll use **automatic manifest generation** via source generators. This respects the scaffolded entities as the source of truth and eliminates manual string writing.
 
-Create `Domain/BloggingManifest.cs`:
+### 5a. Configure Assembly-Level Manifest
+
+Create `Properties/AssemblyInfo.cs`:
 
 ```csharp
-using JD.Domain.Abstractions;
+using JD.Domain.ManifestGeneration;
 
-namespace JD.Domain.Tutorial.DbFirst.Domain;
+[assembly: GenerateManifest("Blogging", Version = "1.0.0")]
+```
 
-public static class BloggingManifest
+### 5b. Extend Scaffolded Entities with Attributes
+
+Since scaffolded entities are `partial`, we can add attributes in separate files without touching the generated code.
+
+Create `Data/Entities/Blog.Annotations.cs`:
+
+```csharp
+using System.ComponentModel.DataAnnotations;
+using JD.Domain.ManifestGeneration;
+
+namespace JD.Domain.Tutorial.DbFirst.Data.Entities;
+
+[DomainEntity(TableName = "Blogs")]
+public partial class Blog
 {
-    public static DomainManifest Create()
-    {
-        return new DomainManifest
-        {
-            Name = "Blogging",
-            Version = new Version(1, 0, 0),
-            Entities =
-            [
-                new EntityManifest
-                {
-                    Name = "Blog",
-                    TypeName = "JD.Domain.Tutorial.DbFirst.Data.Entities.Blog",
-                    TableName = "Blogs",
-                    Properties =
-                    [
-                        new PropertyManifest { Name = "BlogId", TypeName = "System.Int32", IsRequired = true },
-                        new PropertyManifest { Name = "Url", TypeName = "System.String", IsRequired = true, MaxLength = 500 },
-                        new PropertyManifest { Name = "Rating", TypeName = "System.Int32?", IsRequired = false },
-                        new PropertyManifest { Name = "CreatedDate", TypeName = "System.DateTime", IsRequired = true }
-                    ],
-                    KeyProperties = ["BlogId"]
-                },
-                new EntityManifest
-                {
-                    Name = "Post",
-                    TypeName = "JD.Domain.Tutorial.DbFirst.Data.Entities.Post",
-                    TableName = "Posts",
-                    Properties =
-                    [
-                        new PropertyManifest { Name = "PostId", TypeName = "System.Int32", IsRequired = true },
-                        new PropertyManifest { Name = "BlogId", TypeName = "System.Int32", IsRequired = true },
-                        new PropertyManifest { Name = "Title", TypeName = "System.String", IsRequired = true, MaxLength = 200 },
-                        new PropertyManifest { Name = "Content", TypeName = "System.String", IsRequired = false },
-                        new PropertyManifest { Name = "PublishedDate", TypeName = "System.DateTime?", IsRequired = false }
-                    ],
-                    KeyProperties = ["PostId"]
-                }
-            ]
-        };
-    }
+    // Properties are automatically discovered from the main partial class
+    // We just need to add data annotations for metadata extraction
+}
+
+// Extension class for adding data annotations without modifying scaffolded code
+public static class BlogAnnotations
+{
+    // Metadata will be extracted from the actual Blog class properties
+    // Data annotations on the scaffolded class will be auto-detected
+}
+```
+
+Create `Data/Entities/Post.Annotations.cs`:
+
+```csharp
+using System.ComponentModel.DataAnnotations;
+using JD.Domain.ManifestGeneration;
+
+namespace JD.Domain.Tutorial.DbFirst.Data.Entities;
+
+[DomainEntity(TableName = "Posts")]
+public partial class Post
+{
+    // Properties are automatically discovered from the main partial class
 }
 ```
 
 ### Explanation
 
-Since we're working with existing entities, we create the manifest manually rather than using the fluent DSL. This manifest describes the structure without changing the scaffolded code.
+**NO MANUAL STRING WRITING REQUIRED!** The manifest source generator will:
+
+- Automatically discover all properties from the scaffolded entities
+- Extract property types, names, and nullability from the actual code
+- Read `[Key]` attributes from EF scaffolding
+- Detect required vs optional based on nullable reference types
+- Infer `MaxLength` from string property configurations if present
+
+The scaffolded entities remain **completely unchanged**, while JD.Domain attributes live in separate partial class files.
 
 ## Step 6: Define Business Rules
 
@@ -301,10 +311,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BloggingDbContext>(options =>
     options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=BloggingDb;Trusted_Connection=True;TrustServerCertificate=True"));
 
-// Add domain validation
+// Add domain validation with auto-generated manifest
 builder.Services.AddDomainValidation(options =>
 {
-    options.AddManifest(BloggingManifest.Create());
+    // Use the auto-generated manifest (BloggingManifest class is created by the source generator)
+    options.AddManifest(BloggingManifest.GeneratedManifest);
 });
 
 // Add FluentValidation

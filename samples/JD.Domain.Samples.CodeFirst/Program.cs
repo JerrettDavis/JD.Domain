@@ -1,26 +1,27 @@
+using System.ComponentModel.DataAnnotations;
+using JD.Domain.ManifestGeneration;
 using JD.Domain.Rules;
 
 namespace JD.Domain.Samples.CodeFirst;
 
 /// <summary>
-/// Demonstrates code-first workflow: define domain using JD DSL, then generate EF configs.
+/// Demonstrates code-first workflow with automatic manifest generation.
+/// NO manual string writing required - all metadata extracted from entity classes!
 /// </summary>
 public static class Program
 {
     public static void Main()
     {
-        Console.WriteLine("=== JD.Domain Code-First Sample ===\n");
+        Console.WriteLine("=== JD.Domain Code-First Sample (Automatic Manifest Generation) ===\n");
 
-        // Step 1: Define domain model using fluent DSL
-        Console.WriteLine("1. Defining domain model...");
-        var domain = Modeling.Domain.Create("ECommerce")
-            .Entity<Customer>()
-            .Entity<Order>()
-            .Entity<Product>()
-            .Build();
+        // Step 1: Access auto-generated manifest
+        Console.WriteLine("1. Using auto-generated domain manifest...");
+        var manifest = ECommerceManifest.GeneratedManifest;
 
-        Console.WriteLine($"   Created domain: {domain.Name} v{domain.Version}");
-        Console.WriteLine($"   Entities: {domain.Entities.Count}");
+        Console.WriteLine($"   Domain: {manifest.Name} v{manifest.Version}");
+        Console.WriteLine($"   Entities: {manifest.Entities.Count}");
+        Console.WriteLine($"   Source: {manifest.Sources[0].Type}");
+        Console.WriteLine($"   NO MANUAL STRING WRITING REQUIRED!");
 
         // Step 2: Define business rules
         Console.WriteLine("\n2. Defining business rules...");
@@ -69,28 +70,70 @@ public static class Program
         }
 
         Console.WriteLine("\n=== Sample Complete ===");
+        Console.WriteLine("Manifest was generated automatically from entity attributes!");
     }
 }
 
-// Domain entities
+// Domain entities with automatic manifest generation
+[DomainEntity]
 public class Customer
 {
+    [Key]
     public Guid Id { get; set; }
+
+    [Required]
+    [MaxLength(200)]
     public string Name { get; set; } = "";
+
+    [Required]
+    [MaxLength(500)]
     public string Email { get; set; } = "";
+
+    [ExcludeFromManifest]
     public List<Order> Orders { get; set; } = new();
 }
 
+[DomainEntity]
 public class Order
 {
+    [Key]
     public Guid Id { get; set; }
+
+    [Required]
     public Guid CustomerId { get; set; }
-    public Customer Customer { get; set; } = null!;
+
     public DateTime OrderDate { get; set; }
+
+    [Required]
     public decimal TotalAmount { get; set; }
+
+    [ExcludeFromManifest]
+    public Customer Customer { get; set; } = null!;
+
+    [ExcludeFromManifest]
     public List<OrderItem> Items { get; set; } = new();
 }
 
+[DomainEntity]
+public class Product
+{
+    [Key]
+    public Guid Id { get; set; }
+
+    [Required]
+    [MaxLength(200)]
+    public string Name { get; set; } = "";
+
+    [MaxLength(1000)]
+    public string? Description { get; set; }
+
+    [Required]
+    public decimal Price { get; set; }
+
+    public int StockQuantity { get; set; }
+}
+
+// OrderItem is not included in manifest (no [DomainEntity] attribute)
 public class OrderItem
 {
     public Guid Id { get; set; }
@@ -100,13 +143,4 @@ public class OrderItem
     public Product Product { get; set; } = null!;
     public int Quantity { get; set; }
     public decimal UnitPrice { get; set; }
-}
-
-public class Product
-{
-    public Guid Id { get; set; }
-    public string Name { get; set; } = "";
-    public string? Description { get; set; }
-    public decimal Price { get; set; }
-    public int StockQuantity { get; set; }
 }

@@ -25,8 +25,11 @@ Traditional EF Core models often end up anemic—plain data bags with validation
 Install the core packages:
 
 ```bash
-# Core domain modeling
-dotnet add package JD.Domain.Modeling
+# Automatic manifest generation
+dotnet add package JD.Domain.ManifestGeneration
+dotnet add package JD.Domain.ManifestGeneration.Generator
+
+# Core runtime and rules
 dotnet add package JD.Domain.Rules
 dotnet add package JD.Domain.Runtime
 
@@ -39,21 +42,47 @@ dotnet add package JD.Domain.AspNetCore
 
 ### Define Your Domain
 
+Add attributes to your entity classes for **automatic manifest generation**:
+
 ```csharp
-using JD.Domain.Modeling;
+using System.ComponentModel.DataAnnotations;
+using JD.Domain.ManifestGeneration;
 using JD.Domain.Rules;
 
-// Define your domain model
-var domain = Domain.Create("ECommerce")
-    .Entity<Customer>(e => e
-        .Property(c => c.Id)
-        .Property(c => c.Name)
-        .Property(c => c.Email))
-    .Entity<Order>(e => e
-        .Property(o => o.Id)
-        .Property(o => o.CustomerId)
-        .Property(o => o.Total))
-    .Build();
+// Configure manifest generation
+[assembly: GenerateManifest("ECommerce", Version = "1.0.0")]
+
+// Define entities with attributes
+[DomainEntity]
+public class Customer
+{
+    [Key]
+    public int Id { get; set; }
+
+    [Required]
+    [MaxLength(200)]
+    public string Name { get; set; } = string.Empty;
+
+    [Required]
+    [MaxLength(500)]
+    public string Email { get; set; } = string.Empty;
+}
+
+[DomainEntity]
+public class Order
+{
+    [Key]
+    public int Id { get; set; }
+
+    [Required]
+    public int CustomerId { get; set; }
+
+    [Required]
+    public decimal Total { get; set; }
+}
+
+// Build generates ECommerceManifest.GeneratedManifest automatically
+// NO manual string writing required!
 
 // Define business rules
 var customerRules = new RuleSetBuilder<Customer>("Default")
@@ -63,8 +92,9 @@ var customerRules = new RuleSetBuilder<Customer>("Default")
         .WithMessage("Email must be valid")
     .Build();
 
-// Evaluate rules at runtime
-var runtime = DomainRuntime.CreateEngine(domain, customerRules);
+// Use auto-generated manifest and evaluate rules at runtime
+using JD.Domain.Generated;
+var runtime = DomainRuntime.CreateEngine(ECommerceManifest.GeneratedManifest, customerRules);
 var customer = new Customer { Name = "", Email = "invalid" };
 var result = await runtime.EvaluateAsync(customer);
 
@@ -79,13 +109,14 @@ if (!result.IsValid)
 
 ```csharp
 using JD.Domain.EFCore;
+using JD.Domain.Generated;
 
 public class AppDbContext : DbContext
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Apply domain configuration to EF Core
-        modelBuilder.ApplyDomainManifest(domain.Manifest);
+        // Apply auto-generated domain configuration to EF Core
+        modelBuilder.ApplyDomainManifest(ECommerceManifest.GeneratedManifest);
 
         base.OnModelCreating(modelBuilder);
     }
@@ -96,11 +127,15 @@ public class AppDbContext : DbContext
 
 ```csharp
 using JD.Domain.AspNetCore;
+using JD.Domain.Generated;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Register domain validation
-builder.Services.AddDomainValidation(domain, rules);
+// Register domain validation with auto-generated manifest
+builder.Services.AddDomainValidation(options =>
+{
+    options.AddManifest(ECommerceManifest.GeneratedManifest);
+});
 
 var app = builder.Build();
 
@@ -175,7 +210,9 @@ JD.Domain is organized into focused, composable packages:
 | Package | Purpose |
 |---------|---------|
 | **JD.Domain.Abstractions** | Core contracts and the DomainManifest model |
-| **JD.Domain.Modeling** | Fluent DSL for domain modeling |
+| **JD.Domain.ManifestGeneration** ⭐ | Attributes for automatic manifest generation |
+| **JD.Domain.ManifestGeneration.Generator** ⭐ | Roslyn source generator for manifests (NO manual strings!) |
+| **JD.Domain.Modeling** | Fluent DSL for domain modeling (alternative approach) |
 | **JD.Domain.Configuration** | EF Core-compatible configuration DSL |
 | **JD.Domain.Rules** | Business rules (invariants, validators, policies) |
 | **JD.Domain.Runtime** | Rule evaluation engine |
@@ -196,6 +233,7 @@ JD.Domain is organized into focused, composable packages:
 
 Explore complete working examples:
 
+- **[Manifest Generation](samples/ManifestGeneration.Sample)** ⭐: Automatic manifest generation from entity classes (NO manual strings!)
 - **[CodeFirst](samples/JD.Domain.Samples.CodeFirst)**: Define domain with DSL, generate EF configs
 - **[DbFirst](samples/JD.Domain.Samples.DbFirst)**: Add rules to reverse-engineered entities
 - **[Hybrid](samples/JD.Domain.Samples.Hybrid)**: Mix approaches with snapshot versioning

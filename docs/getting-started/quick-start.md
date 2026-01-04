@@ -25,23 +25,46 @@ Install the core JD.Domain packages:
 
 ```bash
 dotnet add package JD.Domain.Abstractions
-dotnet add package JD.Domain.Modeling
+dotnet add package JD.Domain.ManifestGeneration
+dotnet add package JD.Domain.ManifestGeneration.Generator
 dotnet add package JD.Domain.Rules
 dotnet add package JD.Domain.Runtime
 ```
 
-## Step 3: Define Your Domain Entities
+## Step 3: Configure Automatic Manifest Generation
 
-Create simple POCO classes for your entities. Create `Entities/Customer.cs`:
+Create `Properties/AssemblyInfo.cs` to configure manifest generation:
 
 ```csharp
+using JD.Domain.ManifestGeneration;
+
+[assembly: GenerateManifest("ECommerce", Version = "1.0.0")]
+```
+
+## Step 4: Define Your Domain Entities
+
+Create entity classes with JD.Domain attributes. Create `Entities/Customer.cs`:
+
+```csharp
+using System.ComponentModel.DataAnnotations;
+using JD.Domain.ManifestGeneration;
+
 namespace JD.Domain.QuickStart.Entities;
 
+[DomainEntity]
 public class Customer
 {
+    [Key]
     public int Id { get; set; }
+
+    [Required]
+    [MaxLength(100)]
     public string Name { get; set; } = string.Empty;
+
+    [Required]
+    [MaxLength(255)]
     public string Email { get; set; } = string.Empty;
+
     public DateTime CreatedAt { get; set; }
 }
 ```
@@ -49,46 +72,28 @@ public class Customer
 Create `Entities/Order.cs`:
 
 ```csharp
+using System.ComponentModel.DataAnnotations;
+using JD.Domain.ManifestGeneration;
+
 namespace JD.Domain.QuickStart.Entities;
 
+[DomainEntity]
 public class Order
 {
+    [Key]
     public int Id { get; set; }
+
+    [Required]
     public int CustomerId { get; set; }
+
+    [Required]
     public decimal TotalAmount { get; set; }
+
     public DateTime OrderDate { get; set; }
 }
 ```
 
-## Step 4: Define Domain Model
-
-Create a domain model that describes your entities. Create `DomainModel.cs`:
-
-```csharp
-using JD.Domain.Modeling;
-using JD.Domain.QuickStart.Entities;
-
-namespace JD.Domain.QuickStart;
-
-public static class DomainModel
-{
-    public static DomainManifest Create()
-    {
-        return Domain.Create("ECommerce")
-            .Entity<Customer>(e => e
-                .Property(c => c.Id)
-                .Property(c => c.Name)
-                .Property(c => c.Email)
-                .Property(c => c.CreatedAt))
-            .Entity<Order>(e => e
-                .Property(o => o.Id)
-                .Property(o => o.CustomerId)
-                .Property(o => o.TotalAmount)
-                .Property(o => o.OrderDate))
-            .Build();
-    }
-}
-```
+**The manifest is generated automatically at build time - no manual string writing required!**
 
 ## Step 5: Define Business Rules
 
@@ -162,12 +167,12 @@ Update `Program.cs` to create and validate entities:
 
 ```csharp
 using JD.Domain.Runtime;
-using JD.Domain.QuickStart;
+using JD.Domain.Generated; // Auto-generated namespace
 using JD.Domain.QuickStart.Entities;
 using JD.Domain.QuickStart.Rules;
 
-// Create domain manifest
-var domain = DomainModel.Create();
+// Use auto-generated manifest
+var domain = ECommerceManifest.GeneratedManifest;
 
 // Create domain engine
 var engine = DomainRuntime.CreateEngine(domain);
@@ -286,18 +291,30 @@ You should see output like:
 
 Congratulations! You've created:
 
-1. **Domain entities** - Simple POCO classes with no special requirements
-2. **Domain manifest** - Metadata describing your entities
+1. **Domain entities** - Simple POCO classes with standard data annotations
+2. **Automatic manifest generation** - Metadata extracted automatically from your code at build time
 3. **Business rules** - Declarative rules that validate entity state
 4. **Runtime validation** - Automatic validation using the domain engine
 
+**No manual string writing was required!** The manifest was generated automatically from your entity classes.
+
 ## Key Concepts Demonstrated
 
-### 1. Opt-In Design
+### 1. Automatic Manifest Generation
 
-Notice how your `Customer` and `Order` classes don't inherit from any base class or implement any interface. JD.Domain is completely opt-in.
+The `ManifestSourceGenerator` analyzes your entity classes at compile-time and automatically extracts:
+- Property names and types
+- Data annotations ([Key], [Required], [MaxLength])
+- Nullability information
+- Table and schema names
 
-### 2. Declarative Rules
+**No manual string writing required!** Your code is the source of truth.
+
+### 2. Opt-In Design
+
+Your `Customer` and `Order` classes use standard data annotations. JD.Domain attributes (`[DomainEntity]`) are explicit and opt-in - no magic discovery.
+
+### 3. Declarative Rules
 
 Rules are defined declaratively using lambda expressions:
 
