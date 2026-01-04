@@ -152,7 +152,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     outputs:
-      version: ${{ steps.gitversion.outputs.semVer }}
+      version: ${{ steps.nbgv.outputs.SemVer2 }}
       should-publish: ${{ steps.check-version.outputs.should-publish }}
 
     steps:
@@ -161,17 +161,24 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v1
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
-          versionSpec: '6.x'
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Install Nerdbank.GitVersioning
+        run: dotnet tool install --global nbgv
 
       - name: Determine Version
-        id: gitversion
-        uses: gittools/actions/gitversion/execute@v1
-        with:
-          useConfigFile: true
-          configFilePath: GitVersion.yml
+        id: nbgv
+        run: |
+          nbgv cloud
+          echo "SemVer2=$(nbgv get-version -v SemVer2)" >> $GITHUB_OUTPUT
+          echo "NuGetPackageVersion=$(nbgv get-version -v NuGetPackageVersion)" >> $GITHUB_OUTPUT
+          echo "AssemblyVersion=$(nbgv get-version -v AssemblyVersion)" >> $GITHUB_OUTPUT
+          echo "FileVersion=$(nbgv get-version -v AssemblyFileVersion)" >> $GITHUB_OUTPUT
+          echo "InformationalVersion=$(nbgv get-version -v AssemblyInformationalVersion)" >> $GITHUB_OUTPUT
+          echo "PrereleaseVersion=$(nbgv get-version -v PrereleaseVersion)" >> $GITHUB_OUTPUT
 
       - name: Check if version should be published
         id: check-version
@@ -179,26 +186,20 @@ jobs:
           SHOULD_PUBLISH="false"
 
           # Check if this is a release version (not prerelease)
-          if [[ "${{ steps.gitversion.outputs.preReleaseLabel }}" == "" ]]; then
+          # PrereleaseVersion is empty for release versions, contains prerelease label otherwise
+          if [[ "${{ steps.nbgv.outputs.PrereleaseVersion }}" == "" ]]; then
             SHOULD_PUBLISH="true"
           fi
 
           # Check if tag already exists
-          if git rev-parse "v${{ steps.gitversion.outputs.semVer }}" >/dev/null 2>&1; then
-            echo "Tag v${{ steps.gitversion.outputs.semVer }} already exists, skipping publish"
+          if git rev-parse "v${{ steps.nbgv.outputs.SemVer2 }}" >/dev/null 2>&1; then
+            echo "Tag v${{ steps.nbgv.outputs.SemVer2 }} already exists, skipping publish"
             SHOULD_PUBLISH="false"
           fi
 
           echo "should-publish=$SHOULD_PUBLISH" >> $GITHUB_OUTPUT
-          echo "Version: ${{ steps.gitversion.outputs.semVer }}"
+          echo "Version: ${{ steps.nbgv.outputs.SemVer2 }}"
           echo "Should publish: $SHOULD_PUBLISH"
-
-      - name: Setup .NET
-        if: steps.check-version.outputs.should-publish == 'true'
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-          cache: true
 
       - name: Restore dependencies
         if: steps.check-version.outputs.should-publish == 'true'
@@ -209,11 +210,7 @@ jobs:
         run: |
           dotnet build ${{ env.SOLUTION_NAME }} \
             --no-restore \
-            --configuration Release \
-            /p:Version=${{ steps.gitversion.outputs.semVer }} \
-            /p:AssemblyVersion=${{ steps.gitversion.outputs.assemblySemVer }} \
-            /p:FileVersion=${{ steps.gitversion.outputs.assemblySemFileVer }} \
-            /p:InformationalVersion=${{ steps.gitversion.outputs.informationalVersion }}
+            --configuration Release
 
       - name: Pack NuGet packages
         if: steps.check-version.outputs.should-publish == 'true'
@@ -221,9 +218,7 @@ jobs:
           dotnet pack ${{ env.SOLUTION_NAME }} \
             --no-build \
             --configuration Release \
-            --output ./artifacts \
-            /p:PackageVersion=${{ steps.gitversion.outputs.semVer }} \
-            /p:Version=${{ steps.gitversion.outputs.semVer }}
+            --output ./artifacts
 
       - name: Publish to NuGet.org
         if: steps.check-version.outputs.should-publish == 'true'
@@ -245,8 +240,8 @@ jobs:
         if: steps.check-version.outputs.should-publish == 'true'
         uses: ncipollo/release-action@v1
         with:
-          tag: v${{ steps.gitversion.outputs.semVer }}
-          name: Release v${{ steps.gitversion.outputs.semVer }}
+          tag: v${{ steps.nbgv.outputs.SemVer2 }}
+          name: Release v${{ steps.nbgv.outputs.SemVer2 }}
           artifacts: "./artifacts/*.nupkg"
           token: ${{ secrets.GITHUB_TOKEN }}
           generateReleaseNotes: true
