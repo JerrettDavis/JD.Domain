@@ -242,10 +242,9 @@ var extendedManifest = new DomainManifest
    - `JD.Domain.ManifestGeneration`
    - `JD.Domain.ManifestGeneration.Generator`
 
-2. Check that the generator package reference includes analyzer settings:
+2. If you're referencing the generator project directly, ensure the reference is marked as an analyzer:
    ```xml
-   <PackageReference Include="JD.Domain.ManifestGeneration.Generator"
-                     Version="*"
+   <ProjectReference Include="..\..\src\JD.Domain.ManifestGeneration.Generator\JD.Domain.ManifestGeneration.Generator.csproj"
                      OutputItemType="Analyzer"
                      ReferenceOutputAssembly="false" />
    ```

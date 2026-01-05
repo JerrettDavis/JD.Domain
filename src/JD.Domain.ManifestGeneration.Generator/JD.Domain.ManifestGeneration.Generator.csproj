@@ -1,42 +1,53 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-    <IsRoslynComponent>true</IsRoslynComponent>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Authors>Jerrett Davis</Authors>
-    <Description>Source generator for automatic manifest generation from entity classes and DbContext configurations</Description>
-    <PackageProjectUrl>https://github.com/JerrettDavis/JD.Domain</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/JerrettDavis/JD.Domain</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <Version>1.0.0</Version>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <IsRoslynComponent>true</IsRoslynComponent>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <Authors>Jerrett Davis</Authors>
+        <Description>Source generator for automatic manifest generation from entity classes and DbContext configurations</Description>
+        <PackageProjectUrl>https://github.com/JerrettDavis/JD.Domain</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/JerrettDavis/JD.Domain</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <Version>1.0.0</Version>
 
-    <!-- This is a Roslyn analyzer/generator package -->
-    <IncludeBuildOutput>false</IncludeBuildOutput>
-    <DevelopmentDependency>true</DevelopmentDependency>
-  </PropertyGroup>
+        <!-- This is a Roslyn analyzer/generator package -->
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <DevelopmentDependency>true</DevelopmentDependency>
+    </PropertyGroup>
 
-  <!-- Package the generator in the analyzer directory -->
-  <ItemGroup>
-    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-    <None Include="$(OutputPath)\JD.Domain.Abstractions.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-  </ItemGroup>
+    <!-- Package the generator in the analyzer directory -->
+    <ItemGroup>
+        <None Include="$(TargetDir)$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+        <None Include="$(TargetDir)JD.Domain.Abstractions.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"
+              Condition="Exists('$(TargetDir)JD.Domain.Abstractions.dll')" />
+        <None Include="$(TargetDir)JD.Domain.ManifestGeneration.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"
+              Condition="Exists('$(TargetDir)JD.Domain.ManifestGeneration.dll')" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" PrivateAssets="all" />
-    <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" />
-    <PackageReference Update="Nerdbank.GitVersioning" Version="3.9.50" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" PrivateAssets="all" />
+        <PackageReference Include="IsExternalInit">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="PolySharp">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
 
-  <ItemGroup>
-    <ProjectReference Include="..\JD.Domain.Abstractions\JD.Domain.Abstractions.csproj" PrivateAssets="all" />
-    <ProjectReference Include="..\JD.Domain.ManifestGeneration\JD.Domain.ManifestGeneration.csproj" />
-  </ItemGroup>
+        
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\JD.Domain.Abstractions\JD.Domain.Abstractions.csproj" PrivateAssets="all" />
+        <ProjectReference Include="..\JD.Domain.ManifestGeneration\JD.Domain.ManifestGeneration.csproj" />
+    </ItemGroup>
 
 </Project>
