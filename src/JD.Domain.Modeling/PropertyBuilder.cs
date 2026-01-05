@@ -100,6 +100,23 @@ public sealed class PropertyBuilder<TEntity, TProperty> where TEntity : class
         if (scale.HasValue && scale.Value < 0)
             throw new ArgumentException("Scale cannot be negative", nameof(scale));
 
+        _entityBuilder.UpdateProperty(_propertyName, property =>
+        {
+            return new PropertyManifest
+            {
+                Name = property.Name,
+                TypeName = property.TypeName,
+                IsRequired = property.IsRequired,
+                IsCollection = property.IsCollection,
+                MaxLength = property.MaxLength,
+                Precision = precision,
+                Scale = scale,
+                IsConcurrencyToken = property.IsConcurrencyToken,
+                IsComputed = property.IsComputed,
+                Metadata = property.Metadata
+            };
+        });
+
         return this;
     }
 
@@ -109,6 +126,23 @@ public sealed class PropertyBuilder<TEntity, TProperty> where TEntity : class
     /// <returns>The property builder for chaining.</returns>
     public PropertyBuilder<TEntity, TProperty> IsConcurrencyToken()
     {
+        _entityBuilder.UpdateProperty(_propertyName, property =>
+        {
+            return new PropertyManifest
+            {
+                Name = property.Name,
+                TypeName = property.TypeName,
+                IsRequired = property.IsRequired,
+                IsCollection = property.IsCollection,
+                MaxLength = property.MaxLength,
+                Precision = property.Precision,
+                Scale = property.Scale,
+                IsConcurrencyToken = true,
+                IsComputed = property.IsComputed,
+                Metadata = property.Metadata
+            };
+        });
+
         return this;
     }
 
@@ -118,6 +152,23 @@ public sealed class PropertyBuilder<TEntity, TProperty> where TEntity : class
     /// <returns>The property builder for chaining.</returns>
     public PropertyBuilder<TEntity, TProperty> IsComputed()
     {
+        _entityBuilder.UpdateProperty(_propertyName, property =>
+        {
+            return new PropertyManifest
+            {
+                Name = property.Name,
+                TypeName = property.TypeName,
+                IsRequired = property.IsRequired,
+                IsCollection = property.IsCollection,
+                MaxLength = property.MaxLength,
+                Precision = property.Precision,
+                Scale = property.Scale,
+                IsConcurrencyToken = property.IsConcurrencyToken,
+                IsComputed = true,
+                Metadata = property.Metadata
+            };
+        });
+
         return this;
     }
 }

@@ -66,5 +66,6 @@ public sealed class DomainManifest
     /// <summary>
     /// Gets the timestamp when this manifest was created.
     /// </summary>
-    public DateTimeOffset CreatedAt { get; init; } = DateTimeOffset.UtcNow;
+    public DateTimeOffset CreatedAt { get; init; } =
+        new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
 }

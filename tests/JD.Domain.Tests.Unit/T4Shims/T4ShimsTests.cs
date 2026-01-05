@@ -1,4 +1,5 @@
 using JD.Domain.Abstractions;
+using JD.Domain.Snapshot;
 using JD.Domain.T4.Shims;
 
 namespace JD.Domain.Tests.Unit.T4Shims;
@@ -20,6 +21,19 @@ public class T4ShimsTests
         Assert.Equal(expected, result);
     }
 
+    [Fact]
+    public void T4TypeMapper_ToCSharpType_ReturnsEmptyForEmptyString()
+    {
+        Assert.Equal(string.Empty, T4TypeMapper.ToCSharpType(string.Empty));
+    }
+
+    [Fact]
+    public void T4TypeMapper_ToCSharpType_HandlesNullableGenericSyntax()
+    {
+        var result = T4TypeMapper.ToCSharpType("System.Nullable`1[System.Int32]");
+        Assert.Equal("int?", result);
+    }
+
     [Theory]
     [InlineData("System.String", null, "nvarchar(max)")]
     [InlineData("System.String", 100, "nvarchar(100)")]
@@ -31,6 +45,20 @@ public class T4ShimsTests
     {
         var result = T4TypeMapper.ToSqlServerType(clrType, maxLength);
         Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void T4TypeMapper_ToSqlServerType_DefaultsForUnknown()
+    {
+        var result = T4TypeMapper.ToSqlServerType(null!);
+        Assert.Equal("nvarchar(max)", result);
+    }
+
+    [Fact]
+    public void T4TypeMapper_ToSqlServerType_ReturnsDefaultForUnknownType()
+    {
+        var result = T4TypeMapper.ToSqlServerType("Custom.Type");
+        Assert.Equal("nvarchar(max)", result);
     }
 
     [Theory]
@@ -45,6 +73,12 @@ public class T4ShimsTests
         Assert.Equal(expected, result);
     }
 
+    [Fact]
+    public void T4TypeMapper_IsPrimitiveOrSimple_ReturnsFalseForNull()
+    {
+        Assert.False(T4TypeMapper.IsPrimitiveOrSimple(null!));
+    }
+
     [Theory]
     [InlineData("System.Collections.Generic.ICollection`1[System.String]", true)]
     [InlineData("System.Collections.Generic.List`1[System.Int32]", true)]
@@ -54,6 +88,18 @@ public class T4ShimsTests
     {
         var result = T4TypeMapper.IsCollection(clrType);
         Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void T4TypeMapper_IsCollection_DetectsHashSet()
+    {
+        Assert.True(T4TypeMapper.IsCollection("System.Collections.Generic.HashSet`1[System.Int32]"));
+    }
+
+    [Fact]
+    public void T4TypeMapper_IsCollection_ReturnsFalseForEmpty()
+    {
+        Assert.False(T4TypeMapper.IsCollection(string.Empty));
     }
 
     [Fact]
@@ -193,6 +239,42 @@ public class T4ShimsTests
     }
 
     [Fact]
+    public void T4EntityGenerator_GenerateConfiguration_WithCompositeKey_UsesAnonymousKey()
+    {
+        var entity = new EntityManifest
+        {
+            Name = "Product",
+            TypeName = "TestDomain.Product",
+            Properties =
+            [
+                new PropertyManifest { Name = "Id", TypeName = "System.Guid", IsRequired = true },
+                new PropertyManifest { Name = "TenantId", TypeName = "System.Guid", IsRequired = true },
+                new PropertyManifest { Name = "Name", TypeName = "System.String", IsRequired = true }
+            ],
+            KeyProperties = ["Id", "TenantId"]
+        };
+
+        var config = new ConfigurationManifest
+        {
+            EntityName = "Product",
+            EntityTypeName = "TestDomain.Product",
+            PropertyConfigurations = new Dictionary<string, PropertyConfigurationManifest>
+            {
+                ["Name"] = new PropertyConfigurationManifest
+                {
+                    PropertyName = "Name",
+                    ColumnName = "product_name"
+                }
+            }
+        };
+
+        var code = T4EntityGenerator.GenerateConfiguration(entity, config, "TestNamespace");
+
+        Assert.Contains("builder.HasKey(e => new { e.Id, e.TenantId })", code);
+        Assert.Contains(".HasColumnName(\"product_name\")", code);
+    }
+
+    [Fact]
     public void T4EntityGenerator_GenerateRulesPartial_IncludesRuleSetInfo()
     {
         var entity = new EntityManifest
@@ -227,5 +309,147 @@ public class T4ShimsTests
         Assert.Contains("Rule set: Default", code);
         Assert.Contains("Customer.Name.Required", code);
         Assert.Contains("Name is required", code);
+    }
+
+    [Fact]
+    public void T4OutputManager_WritesFilesAndCleansDirectory()
+    {
+        var tempDir = Path.Combine(Path.GetTempPath(), $"JD.Domain.Tests.{Guid.NewGuid()}");
+        Directory.CreateDirectory(tempDir);
+        var staleFile = Path.Combine(tempDir, "stale.cs");
+        File.WriteAllText(staleFile, "// stale");
+
+        try
+        {
+            var manager = new T4OutputManager(tempDir);
+            manager.AddFile("Generated/One.cs", "// one");
+            manager.AddFile("Two.cs", "// two");
+
+            manager.WriteAll(cleanDirectory: true);
+
+            Assert.False(File.Exists(staleFile));
+            Assert.True(File.Exists(Path.Combine(tempDir, "Generated", "One.cs")));
+            Assert.True(File.Exists(Path.Combine(tempDir, "Two.cs")));
+            Assert.Equal(new[] { "Generated/One.cs", "Two.cs" }, manager.GetFileNames());
+        }
+        finally
+        {
+            if (Directory.Exists(tempDir))
+            {
+                Directory.Delete(tempDir, true);
+            }
+        }
+    }
+
+    [Fact]
+    public void T4OutputManager_WriteAll_CreatesDirectory_WhenMissing()
+    {
+        var tempDir = Path.Combine(Path.GetTempPath(), $"JD.Domain.Tests.{Guid.NewGuid()}");
+
+        try
+        {
+            var manager = new T4OutputManager(tempDir);
+            manager.AddFile("One.cs", "// one");
+
+            manager.WriteAll();
+
+            Assert.True(Directory.Exists(tempDir));
+            Assert.True(File.Exists(Path.Combine(tempDir, "One.cs")));
+        }
+        finally
+        {
+            if (Directory.Exists(tempDir))
+            {
+                Directory.Delete(tempDir, true);
+            }
+        }
+    }
+
+    [Fact]
+    public void T4OutputManager_Clear_RemovesPendingFiles()
+    {
+        var tempDir = Path.Combine(Path.GetTempPath(), $"JD.Domain.Tests.{Guid.NewGuid()}");
+        Directory.CreateDirectory(tempDir);
+
+        try
+        {
+            var manager = new T4OutputManager(tempDir);
+            manager.AddFile("One.cs", "// one");
+            manager.Clear();
+
+            Assert.Empty(manager.GetFileNames());
+        }
+        finally
+        {
+            if (Directory.Exists(tempDir))
+            {
+                Directory.Delete(tempDir, true);
+            }
+        }
+    }
+
+    [Fact]
+    public void T4ManifestLoader_LoadsManifestAndSnapshot()
+    {
+        var tempDir = Path.Combine(Path.GetTempPath(), $"JD.Domain.Tests.{Guid.NewGuid()}");
+        Directory.CreateDirectory(tempDir);
+
+        try
+        {
+            var manifest = new DomainManifest
+            {
+                Name = "TestDomain",
+                Version = new Version(1, 0, 0)
+            };
+            var writer = new SnapshotWriter();
+
+            var manifestPath = Path.Combine(tempDir, "manifest.json");
+            File.WriteAllText(manifestPath, writer.SerializeManifest(manifest));
+
+            var snapshot = writer.CreateSnapshot(manifest);
+            var snapshotPath = Path.Combine(tempDir, "snapshot.json");
+            File.WriteAllText(snapshotPath, writer.Serialize(snapshot));
+
+            var loadedManifest = T4ManifestLoader.LoadManifest(manifestPath);
+            var loadedSnapshot = T4ManifestLoader.LoadSnapshot(snapshotPath);
+
+            Assert.Equal("TestDomain", loadedManifest.Name);
+            Assert.Equal("TestDomain", loadedSnapshot.Name);
+        }
+        finally
+        {
+            if (Directory.Exists(tempDir))
+            {
+                Directory.Delete(tempDir, true);
+            }
+        }
+    }
+
+    [Fact]
+    public void T4ManifestLoader_TryLoadManifest_ReturnsNullForMissingFile()
+    {
+        var result = T4ManifestLoader.TryLoadManifest(Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString(), "missing.json"));
+
+        Assert.Null(result);
+    }
+
+    [Fact]
+    public void T4ManifestLoader_LoadManifest_ThrowsOnInvalidPath()
+    {
+        Assert.Throws<ArgumentException>(() => T4ManifestLoader.LoadManifest(string.Empty));
+    }
+
+    [Fact]
+    public void T4ManifestLoader_LoadSnapshot_ThrowsOnMissingFile()
+    {
+        var missingPath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString(), "missing.json");
+
+        Assert.Throws<FileNotFoundException>(() => T4ManifestLoader.LoadSnapshot(missingPath));
+    }
+
+    [Fact]
+    public void T4ManifestLoader_LoadSnapshot_ThrowsOnEmptyPath()
+    {
+        Assert.Throws<ArgumentException>(() => T4ManifestLoader.LoadSnapshot(string.Empty));
     }
 }

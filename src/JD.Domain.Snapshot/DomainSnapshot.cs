@@ -58,7 +58,7 @@ public sealed class DomainSnapshot
             Name = manifest.Name,
             Version = manifest.Version,
             Hash = hash,
-            CreatedAt = DateTimeOffset.UtcNow,
+            CreatedAt = manifest.CreatedAt,
             Manifest = manifest
         };
     }

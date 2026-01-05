@@ -184,4 +184,31 @@ public sealed class RulesTests
         Assert.True(ruleSet.Metadata.ContainsKey("Author"));
         Assert.Equal("Test", ruleSet.Metadata["Author"]);
     }
+
+    [Fact]
+    public void RuleBuilder_ThrowsOnInvalidArguments()
+    {
+        var builder = new RuleSetBuilder<Blog>();
+
+        Assert.Throws<ArgumentException>(() => builder.Invariant("Rule1", _ => true).WithMessage(" "));
+        Assert.Throws<ArgumentException>(() => builder.Invariant("Rule2", _ => true).WithTag(" "));
+        Assert.Throws<ArgumentException>(() => builder.Invariant("Rule3", _ => true).WithMetadata(" ", "value"));
+    }
+
+    [Fact]
+    public void RuleBuilder_WithMetadataAndValidator_BuildsRuleSet()
+    {
+        var ruleSet = new RuleSetBuilder<Blog>("Custom")
+            .Invariant("Rule1", _ => true)
+            .WithMetadata("Owner", "RulesTest")
+            .Validator("Rule2", _ => true)
+            .Build();
+
+        Assert.Equal("Custom", ruleSet.Name);
+        Assert.Contains(ruleSet.Rules, rule => rule.Id == "Rule1");
+        Assert.Contains(ruleSet.Rules, rule => rule.Id == "Rule2");
+
+        var rule1 = ruleSet.Rules.First(rule => rule.Id == "Rule1");
+        Assert.Equal("RulesTest", rule1.Metadata["Owner"]);
+    }
 }

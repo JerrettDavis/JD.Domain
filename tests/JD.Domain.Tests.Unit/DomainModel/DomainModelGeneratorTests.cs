@@ -256,6 +256,31 @@ public class DomainModelGeneratorTests
     }
 
     [Fact]
+    public void Generate_WithMethods_OmitDomainContextWhenDisabled()
+    {
+        var manifest = Create("TestDomain")
+            .Version(1, 0, 0)
+            .Entity<Blog>(e =>
+            {
+                e.Key(x => x.Id);
+                e.Property(x => x.Name);
+            })
+            .BuildManifest();
+
+        var properties = new Dictionary<string, string>
+        {
+            ["IncludeDomainContext"] = "false"
+        };
+        var context = CreateContext(manifest, properties);
+        var generator = new DomainModelGenerator();
+        var files = generator.Generate(context).ToList();
+
+        var content = files[0].Content;
+        Assert.Contains("public Result<DomainBlog> WithName(string name)", content);
+        Assert.DoesNotContain("WithName(string name, DomainContext? context = null)", content);
+    }
+
+    [Fact]
     public void Generate_IncludesValidateMethod()
     {
         var manifest = Create("TestDomain")
@@ -406,6 +431,56 @@ public class DomainModelGeneratorTests
     }
 
     [Fact]
+    public void Generate_DoesNotTreatNonPropertyRuleExpressionsAsPropertyRules()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            Entities =
+            [
+                new EntityManifest
+                {
+                    Name = "Widget",
+                    TypeName = "MyApp.Widget",
+                    Namespace = "MyApp",
+                    Properties =
+                    [
+                        new PropertyManifest { Name = "Id", TypeName = "System.Guid", IsRequired = true },
+                        new PropertyManifest { Name = "Name", TypeName = "System.String", IsRequired = true }
+                    ],
+                    KeyProperties = ["Id"]
+                }
+            ],
+            RuleSets =
+            [
+                new RuleSetManifest
+                {
+                    Name = "Default",
+                    TargetType = "Widget",
+                    Rules =
+                    [
+                        new RuleManifest
+                        {
+                            Id = "RuleWithoutProperty",
+                            Category = "Invariant",
+                            TargetType = "Widget",
+                            Expression = "x != null"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var context = CreateContext(manifest);
+        var generator = new DomainModelGenerator();
+        var content = generator.Generate(context).Single().Content;
+
+        Assert.DoesNotContain("ValidateProperty(nameof(Name)", content);
+        Assert.Contains("set => _entity.Name = value;", content);
+    }
+
+    [Fact]
     public void Generate_PropertiesWithRulesHaveValidation()
     {
         var manifest = Create("TestDomain")
@@ -466,5 +541,191 @@ public class DomainModelGeneratorTests
         Assert.Single(files);
         Assert.Equal("RichBlog.g.cs", files[0].FileName);
         Assert.Contains("public sealed partial class RichBlog", files[0].Content);
+    }
+
+    [Fact]
+    public void Generate_FormatsMappedTypeNames()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            Entities =
+            [
+                new EntityManifest
+                {
+                    Name = "Widget",
+                    TypeName = "MyApp.Widget",
+                    Namespace = "MyApp",
+                    Properties =
+                    [
+                        new PropertyManifest { Name = "Id", TypeName = "System.Guid", IsRequired = true },
+                        new PropertyManifest { Name = "LongValue", TypeName = "System.Int64", IsRequired = true },
+                        new PropertyManifest { Name = "BoolValue", TypeName = "System.Boolean", IsRequired = true },
+                        new PropertyManifest { Name = "DecimalValue", TypeName = "System.Decimal", IsRequired = true },
+                        new PropertyManifest { Name = "DoubleValue", TypeName = "System.Double", IsRequired = true },
+                        new PropertyManifest { Name = "FloatValue", TypeName = "System.Single", IsRequired = true },
+                        new PropertyManifest { Name = "DateValue", TypeName = "System.DateTime", IsRequired = true },
+                        new PropertyManifest { Name = "OffsetValue", TypeName = "System.DateTimeOffset", IsRequired = true },
+                        new PropertyManifest { Name = "ByteValue", TypeName = "System.Byte", IsRequired = true },
+                        new PropertyManifest { Name = "ShortValue", TypeName = "System.Int16", IsRequired = true },
+                        new PropertyManifest { Name = "IntValue", TypeName = "System.Int32", IsRequired = false },
+                        new PropertyManifest { Name = "Name", TypeName = "System.String", IsRequired = false },
+                        new PropertyManifest { Name = "Owner", TypeName = "MyApp.Owner", IsRequired = false }
+                    ],
+                    KeyProperties = ["Id"]
+                }
+            ]
+        };
+
+        var context = CreateContext(manifest);
+        var generator = new DomainModelGenerator();
+        var content = generator.Generate(context).Single().Content;
+
+        Assert.Contains("public Guid Id => _entity.Id;", content);
+        Assert.Contains("public long LongValue", content);
+        Assert.Contains("public bool BoolValue", content);
+        Assert.Contains("public decimal DecimalValue", content);
+        Assert.Contains("public double DoubleValue", content);
+        Assert.Contains("public float FloatValue", content);
+        Assert.Contains("public DateTime DateValue", content);
+        Assert.Contains("public DateTimeOffset OffsetValue", content);
+        Assert.Contains("public byte ByteValue", content);
+        Assert.Contains("public short ShortValue", content);
+        Assert.Contains("public int IntValue", content);
+        Assert.Contains("public string Name", content);
+        Assert.Contains("public Owner? Owner", content);
+    }
+
+    private sealed class Owner
+    {
+    }
+
+    [Fact]
+    public void Generate_RespectsOptions_DisablesOptionalFeatures()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            Entities =
+            [
+                new EntityManifest
+                {
+                    Name = "Widget",
+                    TypeName = "MyApp.Widget",
+                    Namespace = "MyApp",
+                    Properties =
+                    [
+                        new PropertyManifest { Name = "Id", TypeName = "System.Guid", IsRequired = true },
+                        new PropertyManifest { Name = "Name", TypeName = "System.String", IsRequired = false },
+                        new PropertyManifest { Name = "Owner", TypeName = "MyApp.Owner", IsRequired = false },
+                        new PropertyManifest { Name = "Computed", TypeName = "System.Int32", IsComputed = true },
+                        new PropertyManifest { Name = string.Empty, TypeName = "System.String", IsRequired = false }
+                    ],
+                    KeyProperties = ["Id"]
+                }
+            ],
+            RuleSets =
+            [
+                new RuleSetManifest
+                {
+                    Name = "Default",
+                    TargetType = "Widget",
+                    Rules =
+                    [
+                        new RuleManifest
+                        {
+                            Id = "NameRequired",
+                            Category = "Invariant",
+                            TargetType = "Widget",
+                            Expression = "x.Name.Length > 0"
+                        },
+                        new RuleManifest
+                        {
+                            Id = "OtherRule",
+                            Category = "Invariant",
+                            TargetType = "Widget",
+                            Expression = null
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var properties = new Dictionary<string, string>
+        {
+            ["GenerateWithMethods"] = "false",
+            ["GeneratePartialClasses"] = "false",
+            ["GenerateImplicitConversion"] = "false",
+            ["IncludeDomainContext"] = "false",
+            ["PropertyValidationMode"] = "OnDemand",
+            ["CreateRuleSet"] = "CreateRules",
+            ["DefaultRuleSet"] = "DefaultRules"
+        };
+        var context = CreateContext(manifest, properties);
+        var generator = new DomainModelGenerator();
+        var content = generator.Generate(context).Single().Content;
+
+        Assert.DoesNotContain("WithName", content);
+        Assert.DoesNotContain("implicit operator", content);
+        Assert.DoesNotContain("// Add custom methods here", content);
+        Assert.DoesNotContain("DomainContext? context", content);
+        Assert.DoesNotContain("_context", content);
+        Assert.DoesNotContain("ValidateProperty(nameof(Name)", content);
+        Assert.Contains("string name = default", content);
+        Assert.Contains("Owner? owner = default", content);
+        Assert.Contains("CreateRules", content);
+        Assert.Contains("public int Computed => _entity.Computed;", content);
+    }
+
+    [Fact]
+    public void Generate_MatchesNestedTypesAndAddsValidation()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            Entities =
+            [
+                new EntityManifest
+                {
+                    Name = "Inner",
+                    TypeName = "MyApp.Outer+Inner",
+                    Namespace = "MyApp",
+                    Properties =
+                    [
+                        new PropertyManifest { Name = "Id", TypeName = "System.Guid", IsRequired = true },
+                        new PropertyManifest { Name = "Name", TypeName = "System.String", IsRequired = true }
+                    ],
+                    KeyProperties = ["Id"]
+                }
+            ],
+            RuleSets =
+            [
+                new RuleSetManifest
+                {
+                    Name = "Default",
+                    TargetType = "Inner",
+                    Rules =
+                    [
+                        new RuleManifest
+                        {
+                            Id = "NameRequired",
+                            Category = "Invariant",
+                            TargetType = "Inner",
+                            Expression = "x.Name.Length > 0"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var context = CreateContext(manifest);
+        var generator = new DomainModelGenerator();
+        var content = generator.Generate(context).Single().Content;
+
+        Assert.Contains("ValidateProperty(nameof(Name)", content);
+        Assert.Contains("namespace MyApp.Domain", content);
     }
 }

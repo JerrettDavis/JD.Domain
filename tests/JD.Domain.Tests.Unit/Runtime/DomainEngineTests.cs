@@ -47,6 +47,12 @@ public sealed class DomainEngineTests
     }
 
     [Fact]
+    public void Create_WithOptions_ThrowsWhenManifestMissing()
+    {
+        Assert.Throws<InvalidOperationException>(() => DomainRuntime.Create(_ => { }));
+    }
+
+    [Fact]
     public void Evaluate_WithNoRules_ReturnsSuccess()
     {
         // Arrange
@@ -161,6 +167,45 @@ public sealed class DomainEngineTests
         // Assert
         Assert.Single(result.Warnings);
         Assert.True(result.IsValid); // Warnings don't make it invalid
+    }
+
+    [Fact]
+    public void Evaluate_WithInfoSeverity_IncludesInfo()
+    {
+        var manifest = JD.Domain.Modeling.Domain.Create("TestDomain")
+            .Entity<Blog>()
+            .Rules<Blog>(r => r
+                .Invariant("NameInfo", b => !string.IsNullOrEmpty(b.Name))
+                    .WithMessage("Name info")
+                    .WithSeverity(RuleSeverity.Info))
+            .BuildManifest();
+
+        var engine = DomainRuntime.CreateEngine(manifest);
+        var result = engine.Evaluate(new Blog { Name = "Value" }, new RuleEvaluationOptions
+        {
+            IncludeInfo = true
+        });
+
+        Assert.Single(result.Info);
+    }
+
+    [Fact]
+    public void Evaluate_StopOnFirstError_StopsAfterFirstFailure()
+    {
+        var manifest = JD.Domain.Modeling.Domain.Create("TestDomain")
+            .Entity<Blog>()
+            .Rules<Blog>(r => r
+                .Invariant("Rule1", b => true).WithMessage("First")
+                .Invariant("Rule2", b => true).WithMessage("Second"))
+            .BuildManifest();
+
+        var engine = DomainRuntime.CreateEngine(manifest);
+        var result = engine.Evaluate(new Blog(), new RuleEvaluationOptions
+        {
+            StopOnFirstError = true
+        });
+
+        Assert.Single(result.Errors);
     }
 
     [Fact]

@@ -19,17 +19,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="IsExternalInit" Version="1.0.3">
+    <PackageReference Include="IsExternalInit">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="PolySharp" Version="1.15.0">
+    <PackageReference Include="PolySharp">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.IO.Hashing" Version="10.0.1" />
-    <PackageReference Include="System.Text.Json" Version="10.0.1" />
-    <PackageReference Update="Nerdbank.GitVersioning" Version="3.9.50" />
+    <PackageReference Include="System.IO.Hashing" />
+    <PackageReference Include="System.Text.Json" />
+    
   </ItemGroup>
 
 </Project>
