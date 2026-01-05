@@ -4,8 +4,10 @@ using JD.Domain.Runtime;
 using JD.Domain.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System.Security.Claims;
 
 namespace JD.Domain.Tests.Unit.AspNetCore;
@@ -370,6 +372,33 @@ public class DomainValidationServiceExtensionsTests
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
+    }
+
+    [Fact]
+    public void AddDomainValidation_ConfiguresProblemDetails()
+    {
+        var services = new ServiceCollection();
+        services.AddDomainValidation();
+
+        var provider = services.BuildServiceProvider();
+        var options = provider.GetRequiredService<IOptions<ProblemDetailsOptions>>().Value;
+
+        Assert.NotNull(options.CustomizeProblemDetails);
+
+        var httpContext = new DefaultHttpContext
+        {
+            TraceIdentifier = "trace-123"
+        };
+        var problemDetails = new ProblemDetails();
+        var context = new ProblemDetailsContext
+        {
+            HttpContext = httpContext,
+            ProblemDetails = problemDetails
+        };
+
+        options.CustomizeProblemDetails!(context);
+
+        Assert.Equal("trace-123", problemDetails.Extensions["correlationId"]);
     }
 
     [Fact]

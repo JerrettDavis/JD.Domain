@@ -221,6 +221,61 @@ public class EFCoreTests
     }
 
     [Fact]
+    public void ApplyDomainManifest_WithConfiguration_TableNameOnly()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "Test",
+            Version = new Version(1, 0, 0),
+            Configurations =
+            [
+                new ConfigurationManifest
+                {
+                    EntityName = "TestEntity",
+                    EntityTypeName = typeof(TestEntity).FullName!,
+                    TableName = "config_entities"
+                }
+            ]
+        };
+
+        var builder = new ModelBuilder();
+        builder.Entity<TestEntity>();
+        builder.ApplyDomainManifest(manifest);
+
+        var model = builder.FinalizeModel();
+        var entityType = model.FindEntityType(typeof(TestEntity));
+
+        Assert.NotNull(entityType);
+        Assert.Equal("config_entities", entityType.GetTableName());
+    }
+
+    [Fact]
+    public void ApplyDomainManifest_SkipsConfiguration_WhenEntityMissing()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "Test",
+            Version = new Version(1, 0, 0),
+            Configurations =
+            [
+                new ConfigurationManifest
+                {
+                    EntityName = "MissingEntity",
+                    EntityTypeName = "Missing.Type",
+                    TableName = "ignored"
+                }
+            ]
+        };
+
+        var builder = new ModelBuilder();
+        builder.Entity<TestEntity>();
+        builder.ApplyDomainManifest(manifest);
+
+        var model = builder.FinalizeModel();
+        Assert.Null(model.FindEntityType("Missing.Type"));
+    }
+
+    [Fact]
     public void ApplyDomainManifest_WithConfigurationManifest_AppliesTableMapping()
     {
         var manifest = new DomainManifest

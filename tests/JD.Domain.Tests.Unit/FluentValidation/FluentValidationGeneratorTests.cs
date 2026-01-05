@@ -370,4 +370,224 @@ public class FluentValidationGeneratorTests
         var content = files[0].Content;
         Assert.Contains("// Includes: Default", content);
     }
+
+    [Fact]
+    public void Generate_UsesMustForGenericExpressionAndMapsInfoSeverity()      
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            RuleSets =
+            [
+                new RuleSetManifest
+                {
+                    Name = "Default",
+                    TargetType = "TestEntity",
+                    Rules =
+                    [
+                        new RuleManifest
+                        {
+                            Id = "NameStartsWith",
+                            Category = "Invariant",
+                            TargetType = "TestEntity",
+                            Expression = "x.Name.StartsWith(\"A\")",
+                            Message = "Name must start with A",
+                            Severity = RuleSeverity.Info
+                        },
+                        new RuleManifest
+                        {
+                            Id = "CriticalRule",
+                            Category = "Invariant",
+                            TargetType = "TestEntity",
+                            Expression = "x.Name.EndsWith(\"Z\")",
+                            Severity = RuleSeverity.Critical
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var context = CreateContext(manifest);
+        var generator = new FluentValidationGenerator();
+        var content = generator.Generate(context).Single().Content;
+
+        Assert.Contains("Must(x => /* x.Name.StartsWith(\"A\") */ true)", content);
+        Assert.Contains("WithSeverity(Severity.Info)", content);
+        Assert.Contains("WithSeverity(Severity.Error)", content);
+    }
+
+    [Fact]
+    public void Generate_UsesObjectRuleWhenExpressionMissing()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            RuleSets =
+            [
+                new RuleSetManifest
+                {
+                    Name = "Default",
+                    TargetType = "TestEntity",
+                    Rules =
+                    [
+                        new RuleManifest
+                        {
+                            Id = "ObjectRule",
+                            Category = "Invariant",
+                            TargetType = "TestEntity"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var context = CreateContext(manifest);
+        var generator = new FluentValidationGenerator();
+        var content = generator.Generate(context).Single().Content;
+
+        Assert.Contains("RuleFor(x => x)", content);
+        Assert.Contains("Must(x => /* ObjectRule */ true)", content);
+    }
+
+    [Fact]
+    public void Generate_SkipsMaxLength_WhenNumberMissing()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            RuleSets =
+            [
+                new RuleSetManifest
+                {
+                    Name = "Default",
+                    TargetType = "TestEntity",
+                    Rules =
+                    [
+                        new RuleManifest
+                        {
+                            Id = "LengthRule",
+                            Category = "Invariant",
+                            TargetType = "TestEntity",
+                            Expression = "x.Name.Length <= abc"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var context = CreateContext(manifest);
+        var generator = new FluentValidationGenerator();
+        var content = generator.Generate(context).Single().Content;
+
+        Assert.Contains("RuleFor(x => x.Name)", content);
+        Assert.DoesNotContain("MaximumLength", content);
+    }
+
+    [Fact]
+    public void Generate_UsesDefaultSeverityForUnknownValue()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            RuleSets =
+            [
+                new RuleSetManifest
+                {
+                    Name = "Default",
+                    TargetType = "TestEntity",
+                    Rules =
+                    [
+                        new RuleManifest
+                        {
+                            Id = "UnknownSeverity",
+                            Category = "Invariant",
+                            TargetType = "TestEntity",
+                            Expression = "x.Name.Length <= 10",
+                            Severity = (RuleSeverity)99
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var context = CreateContext(manifest);
+        var generator = new FluentValidationGenerator();
+        var content = generator.Generate(context).Single().Content;
+
+        Assert.Contains("WithSeverity(Severity.Error)", content);
+    }
+
+    [Fact]
+    public void Generate_ExtractsClassName_FromNamespace()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            RuleSets =
+            [
+                new RuleSetManifest
+                {
+                    Name = "Default",
+                    TargetType = "My.Namespace.TestEntity",
+                    Rules =
+                    [
+                        new RuleManifest
+                        {
+                            Id = "NameRule",
+                            Category = "Invariant",
+                            TargetType = "My.Namespace.TestEntity",
+                            Expression = "x.Name.Length <= 10"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var context = CreateContext(manifest);
+        var generator = new FluentValidationGenerator();
+        var files = generator.Generate(context).ToList();
+
+        Assert.Single(files);
+        Assert.Equal("TestEntityDefaultValidator.g.cs", files[0].FileName);
+    }
+
+    [Fact]
+    public void Generate_WritesCommentForUnmappedRules()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            RuleSets =
+            [
+                new RuleSetManifest
+                {
+                    Name = "Default",
+                    TargetType = "TestEntity",
+                    Rules =
+                    [
+                        new RuleManifest
+                        {
+                            Id = "Rule1",
+                            Category = "Invariant",
+                            TargetType = "TestEntity",
+                            Expression = "x != null",
+                            Message = "Not mappable"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var context = CreateContext(manifest);
+        var generator = new FluentValidationGenerator();
+        var content = generator.Generate(context).Single().Content;
+
+        Assert.Contains("// Rule 'Rule1': Not mappable", content);
+    }
 }

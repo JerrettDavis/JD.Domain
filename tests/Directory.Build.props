@@ -7,5 +7,13 @@
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <!-- Tests don't need to be published as packages -->
     <IsPackable>false</IsPackable>
+    <!-- Enforce full line coverage for test runs -->
+    <CollectCoverage>true</CollectCoverage>
+    <CoverletOutputFormat>json</CoverletOutputFormat>
+    <CoverletOutput>$(MSBuildProjectDirectory)\TestResults\coverage\</CoverletOutput>
+    <Threshold>100</Threshold>
+    <ThresholdType>line</ThresholdType>
+    <ThresholdStat>total</ThresholdStat>
+    <ExcludeByFile>**/*.g.cs</ExcludeByFile>
   </PropertyGroup>
 </Project>

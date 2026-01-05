@@ -155,10 +155,7 @@ internal sealed class ManifestEmitter
             sb.AppendLine("                },");
 
             // Key properties (inferred from [Key] attribute)
-            var keyProps = entity.Properties
-                .Where(p => p.IsKey)
-                .OrderBy(p => p.Name, StringComparer.Ordinal)
-                .ToArray();
+            var keyProps = entity.Properties.Where(p => p.IsKey).OrderBy(p => p.Name, StringComparer.Ordinal).ToArray();
             if (keyProps.Length > 0)
             {
                 sb.Append("                KeyProperties = new List<string> { ");

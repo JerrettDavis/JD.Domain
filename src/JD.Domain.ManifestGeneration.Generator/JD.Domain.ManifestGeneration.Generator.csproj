@@ -19,6 +19,7 @@
         <!-- This is a Roslyn analyzer/generator package -->
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <DevelopmentDependency>true</DevelopmentDependency>
+        <PackageType>Analyzer</PackageType>
     </PropertyGroup>
 
     <!-- Package the generator in the analyzer directory -->
@@ -28,6 +29,7 @@
               Condition="Exists('$(TargetDir)JD.Domain.Abstractions.dll')" />
         <None Include="$(TargetDir)JD.Domain.ManifestGeneration.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"
               Condition="Exists('$(TargetDir)JD.Domain.ManifestGeneration.dll')" />
+        <None Include="_._" Pack="true" PackagePath="lib/netstandard2.0" Visible="false" />
     </ItemGroup>
 
     <ItemGroup>

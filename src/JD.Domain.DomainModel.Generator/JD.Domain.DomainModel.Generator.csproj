@@ -5,7 +5,21 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <IsRoslynComponent>true</IsRoslynComponent>
+    <Description>Source generator for JD.Domain domain model proxy types with built-in validation</Description>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <PackageType>Analyzer</PackageType>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(TargetDir)$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(TargetDir)JD.Domain.Abstractions.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"
+          Condition="Exists('$(TargetDir)JD.Domain.Abstractions.dll')" />
+    <None Include="$(TargetDir)JD.Domain.Generators.Core.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"
+          Condition="Exists('$(TargetDir)JD.Domain.Generators.Core.dll')" />
+    <None Include="_._" Pack="true" PackagePath="lib/netstandard2.0" Visible="false" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="IsExternalInit">

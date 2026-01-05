@@ -24,6 +24,19 @@ public class GeneratorsTests
     }
 
     [Fact]
+    public void CodeBuilder_Append_RespectsIndentation()
+    {
+        var builder = new CodeBuilder();
+        builder.AppendLine("start");
+        builder.Indent();
+        builder.Append("value");
+
+        var result = builder.ToString();
+
+        Assert.Contains("    value", result);
+    }
+
+    [Fact]
     public void CodeBuilder_OpenAndCloseBrace_WorksCorrectly()
     {
         var builder = new CodeBuilder();
@@ -93,12 +106,36 @@ public class GeneratorsTests
         Assert.NotEmpty(hash1);
     }
 
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    public void GeneratorUtilities_ComputeHash_ReturnsEmptyForNullOrEmpty(string? content)
+    {
+        var hash = GeneratorUtilities.ComputeHash(content!);
+
+        Assert.Equal(string.Empty, hash);
+    }
+
     [Fact]
     public void GeneratorUtilities_ToIdentifier_ConvertsInvalidCharacters()
     {
         var result = GeneratorUtilities.ToIdentifier("Test-Name.With Invalid");
 
         Assert.Equal("Test_Name_With_Invalid", result);
+    }
+
+    [Fact]
+    public void GeneratorUtilities_ToIdentifier_ThrowsOnInvalidInput()
+    {
+        Assert.Throws<ArgumentException>(() => GeneratorUtilities.ToIdentifier(" "));
+    }
+
+    [Fact]
+    public void GeneratorUtilities_ToIdentifier_ReturnsUnderscoreForNoValidChars()
+    {
+        var result = GeneratorUtilities.ToIdentifier("$$$");
+
+        Assert.Equal("_", result);
     }
 
     [Fact]
@@ -121,11 +158,37 @@ public class GeneratorsTests
     }
 
     [Fact]
+    public void GeneratorUtilities_EscapeStringLiteral_ReturnsNullLiteralWhenNull()
+    {
+        var result = GeneratorUtilities.EscapeStringLiteral(null!);
+
+        Assert.Equal("null", result);
+    }
+
+    [Fact]
     public void GeneratorUtilities_GenerateFileName_CreatesValidFileName()
     {
         var result = GeneratorUtilities.GenerateFileName("TestEntity", "Configuration");
 
         Assert.Equal("TestEntity.Configuration.g.cs", result);
+    }
+
+    [Fact]
+    public void GeneratorUtilities_GenerateFileName_UsesDefaultExtensionForNoSuffix()
+    {
+        var result = GeneratorUtilities.GenerateFileName("TestEntity", "");
+
+        Assert.Equal("TestEntity.g.cs", result);
+    }
+
+    [Fact]
+    public void GeneratorUtilities_SortDeterministically_OrdersValues()
+    {
+        var values = new[] { 3, 1, 2 };
+
+        var result = values.SortDeterministically(x => x).ToList();
+
+        Assert.Equal(new[] { 1, 2, 3 }, result);
     }
 
     [Fact]
@@ -142,6 +205,28 @@ public class GeneratorsTests
     }
 
     [Fact]
+    public void GeneratorUtilities_NormalizeLineEndings_ReturnsEmptyForEmptyInput()
+    {
+        var result = GeneratorUtilities.NormalizeLineEndings(string.Empty);
+
+        Assert.Equal(string.Empty, result);
+    }
+
+    [Fact]
+    public void GeneratorUtilities_FormatTypeName_HandlesGenerics()
+    {
+        var result = GeneratorUtilities.FormatTypeName(typeof(Dictionary<string, List<int>>));
+
+        Assert.Equal("Dictionary<String, List<Int32>>", result);
+    }
+
+    [Fact]
+    public void GeneratorUtilities_FormatTypeName_ThrowsOnNull()
+    {
+        Assert.Throws<ArgumentNullException>(() => GeneratorUtilities.FormatTypeName(null!));
+    }
+
+    [Fact]
     public void GeneratorPipeline_Add_AddsGenerator()
     {
         var pipeline = new GeneratorPipeline();
@@ -151,6 +236,22 @@ public class GeneratorsTests
 
         Assert.Single(pipeline.Generators);
         Assert.Same(generator, pipeline.Generators[0]);
+    }
+
+    [Fact]
+    public void GeneratorPipeline_Add_ThrowsOnNull()
+    {
+        var pipeline = new GeneratorPipeline();
+
+        Assert.Throws<ArgumentNullException>(() => pipeline.Add(null!));
+    }
+
+    [Fact]
+    public void GeneratorPipeline_Execute_ThrowsOnNullContext()
+    {
+        var pipeline = new GeneratorPipeline();
+
+        Assert.Throws<ArgumentNullException>(() => pipeline.Execute(null!));
     }
 
     [Fact]

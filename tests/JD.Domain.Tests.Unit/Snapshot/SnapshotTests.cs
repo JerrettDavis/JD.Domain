@@ -1,3 +1,5 @@
+using System.Reflection;
+using System.Text.Json;
 using JD.Domain.Abstractions;
 using JD.Domain.Snapshot;
 
@@ -158,6 +160,21 @@ public class SnapshotTests
     }
 
     [Fact]
+    public void SnapshotOptions_GetFilePath_UsesRootWhenNotOrganized()
+    {
+        var options = new SnapshotOptions
+        {
+            OutputDirectory = "snapshots",
+            OrganizeByDomainName = false
+        };
+
+        var path = options.GetFilePath("TestDomain", new Version(1, 0, 0));
+
+        Assert.DoesNotContain(Path.Combine("snapshots", "TestDomain"), path);
+        Assert.Contains(Path.Combine("snapshots", "v1.0.0.json"), path);
+    }
+
+    [Fact]
     public void SnapshotOptions_FormatFileName_AppliesPattern()
     {
         var options = new SnapshotOptions
@@ -265,6 +282,7 @@ public class SnapshotTests
                     Name = "Customer",
                     TypeName = "ComplexDomain.Customer",
                     Namespace = "ComplexDomain",
+                    Description = "Customer description",
                     TableName = "Customers",
                     SchemaName = "dbo",
                     Properties =
@@ -273,7 +291,8 @@ public class SnapshotTests
                         {
                             Name = "Id",
                             TypeName = "System.Guid",
-                            IsRequired = true
+                            IsRequired = true,
+                            Metadata = new Dictionary<string, object?> { ["Source"] = "Test" }
                         },
                         new PropertyManifest
                         {
@@ -319,6 +338,7 @@ public class SnapshotTests
                     Name = "Address",
                     TypeName = "ComplexDomain.Address",
                     Namespace = "ComplexDomain",
+                    Description = "Address description",
                     Properties =
                     [
                         new PropertyManifest { Name = "Street", TypeName = "System.String", MaxLength = 200 }
@@ -389,7 +409,8 @@ public class SnapshotTests
                             Scale = 2,
                             DefaultValue = "0",
                             DefaultValueSql = "0.00",
-                            ValueGenerated = "OnAdd"
+                            ValueGenerated = "OnAdd",
+                            Metadata = new Dictionary<string, object?> { ["Configured"] = true }
                         },
                         ["Total"] = new PropertyConfigurationManifest
                         {
@@ -406,7 +427,8 @@ public class SnapshotTests
                             Properties = ["Name"],
                             IsUnique = true,
                             Filter = "Name IS NOT NULL",
-                            IncludedProperties = ["Balance"]
+                            IncludedProperties = ["Balance"],
+                            Metadata = new Dictionary<string, object?> { ["IndexType"] = "Filtered" }
                         }
                     ],
                     Relationships =
@@ -420,7 +442,8 @@ public class SnapshotTests
                             DependentNavigation = "Customer",
                             ForeignKeyProperties = ["CustomerId"],
                             IsRequired = true,
-                            DeleteBehavior = "Cascade"
+                            DeleteBehavior = "Cascade",
+                            Metadata = new Dictionary<string, object?> { ["Cascade"] = true }
                         },
                         new RelationshipManifest
                         {
@@ -455,12 +478,14 @@ public class SnapshotTests
         Assert.Contains("\"namespace\": \"ComplexDomain\"", json);
         Assert.Contains("\"tableName\"", json);
         Assert.Contains("\"schemaName\"", json);
+        Assert.Contains("\"description\"", json);
         Assert.Contains("\"maxLength\"", json);
         Assert.Contains("\"isCollection\": true", json);
         Assert.Contains("\"precision\"", json);
         Assert.Contains("\"scale\"", json);
         Assert.Contains("\"isConcurrencyToken\": true", json);
         Assert.Contains("\"isComputed\": true", json);
+        Assert.Contains("\"metadata\"", json);
         Assert.Contains("\"underlyingType\": \"System.Byte\"", json);
         Assert.Contains("\"severity\": \"Critical\"", json);
         Assert.Contains("\"expression\"", json);
@@ -497,6 +522,15 @@ public class SnapshotTests
     }
 
     [Fact]
+    public void SnapshotWriter_ComputeHash_EmptyContent_ReturnsEmpty()
+    {
+        var method = typeof(SnapshotWriter).GetMethod("ComputeHash", BindingFlags.NonPublic | BindingFlags.Static);
+        var result = (string)method!.Invoke(null, new object?[] { string.Empty })!;
+
+        Assert.Equal(string.Empty, result);
+    }
+
+    [Fact]
     public void SnapshotReader_Deserialize_ThrowsOnNullJson()
     {
         var reader = new SnapshotReader();
@@ -508,6 +542,86 @@ public class SnapshotTests
     {
         var reader = new SnapshotReader();
         Assert.Throws<ArgumentException>(() => reader.Deserialize(string.Empty));
+    }
+
+    [Fact]
+    public void SnapshotWriter_Serialize_ExcludesSchema_WhenDisabled()
+    {
+        var manifest = CreateTestManifest();
+        var writer = new SnapshotWriter(new SnapshotOptions { IncludeSchema = false });
+        var snapshot = writer.CreateSnapshot(manifest);
+
+        var json = writer.Serialize(snapshot);
+
+        Assert.DoesNotContain("\"$schema\"", json);
+    }
+
+    [Fact]
+    public void SnapshotReader_DeserializeManifest_WithMissingCollections_ReturnsEmpty()
+    {
+        var manifestJson = """
+        {
+            "name": "TestDomain",
+            "version": "1.0.0",
+            "createdAt": "2025-01-01T00:00:00Z"
+        }
+        """;
+
+        var reader = new SnapshotReader();
+        var manifest = reader.DeserializeManifest(manifestJson);
+
+        Assert.Empty(manifest.Entities);
+        Assert.Empty(manifest.ValueObjects);
+        Assert.Empty(manifest.Enums);
+        Assert.Empty(manifest.RuleSets);
+        Assert.Empty(manifest.Configurations);
+        Assert.Empty(manifest.Sources);
+    }
+
+    [Fact]
+    public void SnapshotReader_DeserializeManifest_ReadsMetadataTypes()
+    {
+        var manifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            Metadata = new Dictionary<string, object?>
+            {
+                ["Count"] = 2,
+                ["Threshold"] = 1.5,
+                ["Tags"] = new List<object?> { "one", 2 },
+                ["Nested"] = new Dictionary<string, object?> { ["Inner"] = "Value" },
+                ["IsActive"] = true,
+                ["IsArchived"] = false,
+                ["Optional"] = null
+            }
+        };
+
+        var writer = new SnapshotWriter();
+        var json = writer.SerializeManifest(manifest);
+
+        var reader = new SnapshotReader();
+        var readManifest = reader.DeserializeManifest(json);
+
+        var count = Assert.IsType<double>(readManifest.Metadata["Count"]);
+        Assert.Equal(2d, count);
+        var threshold = Assert.IsType<double>(readManifest.Metadata["Threshold"]);
+        Assert.Equal(1.5d, threshold);
+        Assert.IsType<List<object?>>(readManifest.Metadata["Tags"]);
+        Assert.IsType<Dictionary<string, object?>>(readManifest.Metadata["Nested"]);
+        Assert.Equal(true, readManifest.Metadata["IsActive"]);
+        Assert.Equal(false, readManifest.Metadata["IsArchived"]);
+        Assert.Null(readManifest.Metadata["Optional"]);
+    }
+
+    [Fact]
+    public void SnapshotReader_ReadJsonValue_Undefined_Throws()
+    {
+        var method = typeof(SnapshotReader).GetMethod("ReadJsonValue", BindingFlags.NonPublic | BindingFlags.Static);
+        var jsonElement = default(JsonElement);
+
+        var exception = Assert.Throws<TargetInvocationException>(() => method!.Invoke(null, new object?[] { jsonElement }));
+        Assert.IsType<InvalidOperationException>(exception.InnerException);
     }
 
     [Fact]
@@ -1006,6 +1120,32 @@ public class SnapshotStorageTests
             Assert.Equal(new Version(1, 0, 0), versions[0]);
             Assert.Equal(new Version(1, 1, 0), versions[1]);
             Assert.Equal(new Version(2, 0, 0), versions[2]);
+        }
+        finally
+        {
+            Cleanup();
+        }
+    }
+
+    [Fact]
+    public void ListVersions_SkipsInvalidSnapshots()
+    {
+        try
+        {
+            var options = new SnapshotOptions
+            {
+                OutputDirectory = _testDirectory,
+                OrganizeByDomainName = true
+            };
+            var storage = new SnapshotStorage(options);
+            storage.Save(CreateTestManifest("TestDomain", new Version(1, 0, 0)));
+
+            var domainDirectory = Path.Combine(_testDirectory, "TestDomain");
+            File.WriteAllText(Path.Combine(domainDirectory, "invalid.json"), "not-json");
+
+            var versions = storage.ListVersions("TestDomain");
+
+            Assert.Single(versions);
         }
         finally
         {

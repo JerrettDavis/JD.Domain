@@ -19,6 +19,12 @@ public class DiffTests
         return writer.CreateSnapshot(manifest);
     }
 
+    private static DomainSnapshot CreateSnapshot(DomainManifest manifest)
+    {
+        var writer = new SnapshotWriter();
+        return writer.CreateSnapshot(manifest);
+    }
+
     private static EntityManifest CreateEntity(string name, params PropertyManifest[] properties)
     {
         return new EntityManifest
@@ -434,6 +440,90 @@ public class DiffTests
     }
 
     [Fact]
+    public void DiffFormatter_FormatAsMarkdown_IncludesPropertyChanges()
+    {
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0));
+        var after = CreateSnapshot("TestDomain", new Version(1, 0, 1));
+
+        var diff = new DomainDiff
+        {
+            Before = before,
+            After = after,
+            EntityChanges =
+            [
+                new EntityChange
+                {
+                    ChangeType = ChangeType.Modified,
+                    IsBreaking = false,
+                    Description = "Entity 'Customer' modified",
+                    EntityName = "Customer",
+                    PropertyChanges =
+                    [
+                        new PropertyChange
+                        {
+                            ChangeType = ChangeType.Modified,
+                            IsBreaking = false,
+                            Description = "Property 'Name' changed",
+                            EntityName = "Customer",
+                            PropertyName = "Name",
+                            OldValue = "Old",
+                            NewValue = "New"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var formatter = new DiffFormatter();
+        var markdown = formatter.FormatAsMarkdown(diff);
+
+        Assert.Contains("Property 'Name' changed", markdown);
+    }
+
+    [Fact]
+    public void DiffFormatter_FormatAsJson_IncludesPropertyChanges()
+    {
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0));
+        var after = CreateSnapshot("TestDomain", new Version(1, 0, 1));
+
+        var diff = new DomainDiff
+        {
+            Before = before,
+            After = after,
+            EntityChanges =
+            [
+                new EntityChange
+                {
+                    ChangeType = ChangeType.Modified,
+                    IsBreaking = false,
+                    Description = "Entity 'Customer' modified",
+                    EntityName = "Customer",
+                    PropertyChanges =
+                    [
+                        new PropertyChange
+                        {
+                            ChangeType = ChangeType.Modified,
+                            IsBreaking = false,
+                            Description = "Property 'Name' changed",
+                            EntityName = "Customer",
+                            PropertyName = "Name",
+                            OldValue = "Old",
+                            NewValue = "New"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var formatter = new DiffFormatter();
+        var json = formatter.FormatAsJson(diff);
+
+        Assert.Contains("\"propertyName\":", json);
+        Assert.Contains("\"oldValue\":", json);
+        Assert.Contains("\"newValue\":", json);
+    }
+
+    [Fact]
     public void MigrationPlanGenerator_Generate_WithBreakingChanges_IncludesWarnings()
     {
         var before = CreateSnapshot("TestDomain", new Version(1, 0, 0),
@@ -474,6 +564,80 @@ public class DiffTests
 
         Assert.Contains("Non-Breaking Changes", plan);
         Assert.DoesNotContain("⚠", plan);
+    }
+
+    [Fact]
+    public void MigrationPlanGenerator_Generate_WithRemovedEntity_IncludesSchemaAndCodeUpdates()
+    {
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0));
+        var after = CreateSnapshot("TestDomain", new Version(2, 0, 0));
+
+        var diff = new DomainDiff
+        {
+            Before = before,
+            After = after,
+            HasBreakingChanges = true,
+            BreakingChangeDescriptions = ["Entity 'Order' removed"],
+            EntityChanges =
+            [
+                new EntityChange
+                {
+                    ChangeType = ChangeType.Removed,
+                    IsBreaking = true,
+                    Description = "Entity 'Order' removed",
+                    EntityName = "Order"
+                }
+            ],
+            ValueObjectChanges =
+            [
+                new ValueObjectChange
+                {
+                    ChangeType = ChangeType.Added,
+                    IsBreaking = false,
+                    Description = "Value object 'Address' added",
+                    ValueObjectName = "Address"
+                }
+            ],
+            EnumChanges =
+            [
+                new EnumChange
+                {
+                    ChangeType = ChangeType.Added,
+                    IsBreaking = false,
+                    Description = "Enum 'Status' added",
+                    EnumName = "Status"
+                }
+            ],
+            RuleSetChanges =
+            [
+                new RuleSetChange
+                {
+                    ChangeType = ChangeType.Added,
+                    IsBreaking = false,
+                    Description = "Rule set 'Default' added",
+                    RuleSetName = "Default",
+                    TargetType = "Order"
+                }
+            ],
+            ConfigurationChanges =
+            [
+                new ConfigurationChange
+                {
+                    ChangeType = ChangeType.Added,
+                    IsBreaking = false,
+                    Description = "Configuration for Order added",
+                    EntityName = "Order",
+                    Aspect = "Table"
+                }
+            ]
+        };
+
+        var generator = new MigrationPlanGenerator();
+        var plan = generator.Generate(diff);
+
+        Assert.Contains("Drop table for `Order`", plan);
+        Assert.Contains("Remove references to `Order`", plan);
+        Assert.Contains("Non-Breaking Changes", plan);
     }
 
     [Fact]
@@ -737,6 +901,220 @@ public class DiffTests
         Assert.Empty(valueObjectChange.PropertyChanges);
         Assert.Empty(ruleSetChange.RuleChanges);
         Assert.Empty(enumChange.ValueChanges);
+    }
+
+    [Fact]
+    public void DiffEngine_Compare_KeyChanges_AreBreaking()
+    {
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0),
+            new EntityManifest
+            {
+                Name = "Customer",
+                TypeName = "TestDomain.Customer",
+                Properties = [CreateProperty("Id", "System.Guid", true), CreateProperty("TenantId", "System.Guid", true)],
+                KeyProperties = ["Id"]
+            });
+
+        var after = CreateSnapshot("TestDomain", new Version(2, 0, 0),
+            new EntityManifest
+            {
+                Name = "Customer",
+                TypeName = "TestDomain.Customer",
+                Properties = [CreateProperty("Id", "System.Guid", true), CreateProperty("TenantId", "System.Guid", true)],
+                KeyProperties = ["Id", "TenantId"]
+            });
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(before, after);
+
+        Assert.True(diff.HasBreakingChanges);
+        Assert.Single(diff.EntityChanges);
+        Assert.Equal(ChangeType.Modified, diff.EntityChanges[0].ChangeType);
+    }
+
+    [Fact]
+    public void DiffEngine_Compare_IncludesValueObjectEnumRuleSetAndConfigChanges()
+    {
+        var beforeManifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            Entities = [CreateEntity("Customer", CreateProperty("Id", "System.Guid", true))],
+            ValueObjects =
+            [
+                new ValueObjectManifest { Name = "Address", TypeName = "TestDomain.Address" }
+            ],
+            Enums =
+            [
+                new EnumManifest { Name = "Status", TypeName = "TestDomain.Status" }
+            ],
+            RuleSets =
+            [
+                new RuleSetManifest { Name = "Default", TargetType = "TestDomain.Customer" }
+            ],
+            Configurations =
+            [
+                new ConfigurationManifest { EntityName = "Customer", EntityTypeName = "TestDomain.Customer", TableName = "Customers" },
+                new ConfigurationManifest { EntityName = "Legacy", EntityTypeName = "TestDomain.Legacy", TableName = "Legacy" }
+            ]
+        };
+
+        var afterManifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(2, 0, 0),
+            Entities = [CreateEntity("Customer", CreateProperty("Id", "System.Guid", true))],
+            ValueObjects =
+            [
+                new ValueObjectManifest { Name = "Location", TypeName = "TestDomain.Location" }
+            ],
+            Enums =
+            [
+                new EnumManifest { Name = "State", TypeName = "TestDomain.State" }
+            ],
+            RuleSets =
+            [
+                new RuleSetManifest { Name = "Create", TargetType = "TestDomain.Customer" }
+            ],
+            Configurations =
+            [
+                new ConfigurationManifest { EntityName = "Customer", EntityTypeName = "TestDomain.Customer", TableName = "tbl_Customers" },
+                new ConfigurationManifest { EntityName = "NewConfig", EntityTypeName = "TestDomain.NewConfig", TableName = "NewConfig" }
+            ]
+        };
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(CreateSnapshot(beforeManifest), CreateSnapshot(afterManifest));
+
+        Assert.NotEmpty(diff.ValueObjectChanges);
+        Assert.NotEmpty(diff.EnumChanges);
+        Assert.NotEmpty(diff.RuleSetChanges);
+        Assert.NotEmpty(diff.ConfigurationChanges);
+    }
+
+    [Fact]
+    public void MigrationPlanGenerator_Generate_WithSchemaDataAndRequiredChanges_IncludesSections()
+    {
+        var before = CreateSnapshot("TestDomain", new Version(1, 0, 0),
+            CreateEntity("Customer",
+                CreateProperty("Id", "System.Guid", true),
+                CreateProperty("Email", "System.String?", false)));
+
+        var after = CreateSnapshot("TestDomain", new Version(2, 0, 0),
+            CreateEntity("Customer",
+                CreateProperty("Id", "System.Guid", true),
+                CreateProperty("Email", "System.String", false),
+                CreateProperty("Status", "System.String", true)));
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(before, after);
+
+        var generator = new MigrationPlanGenerator();
+        var plan = generator.Generate(diff);
+
+        Assert.Contains("Database Schema Migration", plan);
+        Assert.Contains("Data Migration", plan);
+        Assert.Contains("Handle New Required Properties", plan);
+        Assert.Contains("Code Updates", plan);
+    }
+
+    [Fact]
+    public void DiffFormatter_FormatAsMarkdown_IncludesAllChangeSections()
+    {
+        var beforeManifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            Entities = [CreateEntity("Customer", CreateProperty("Id", "System.Guid", true))],
+            ValueObjects = [new ValueObjectManifest { Name = "Address", TypeName = "TestDomain.Address" }],
+            Enums = [new EnumManifest { Name = "Status", TypeName = "TestDomain.Status" }],
+            RuleSets = [new RuleSetManifest { Name = "Default", TargetType = "TestDomain.Customer" }],
+            Configurations = [new ConfigurationManifest { EntityName = "Customer", EntityTypeName = "TestDomain.Customer", TableName = "Customers" }]
+        };
+
+        var afterManifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(2, 0, 0),
+            Entities = [CreateEntity("Customer", CreateProperty("Id", "System.Guid", true))],
+            ValueObjects = [new ValueObjectManifest { Name = "Location", TypeName = "TestDomain.Location" }],
+            Enums = [new EnumManifest { Name = "State", TypeName = "TestDomain.State" }],
+            RuleSets = [new RuleSetManifest { Name = "Create", TargetType = "TestDomain.Customer" }],
+            Configurations = [new ConfigurationManifest { EntityName = "Customer", EntityTypeName = "TestDomain.Customer", TableName = "tbl_Customers" }]
+        };
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(CreateSnapshot(beforeManifest), CreateSnapshot(afterManifest));
+
+        var formatter = new DiffFormatter();
+        var markdown = formatter.FormatAsMarkdown(diff);
+
+        Assert.Contains("Value Object Changes", markdown);
+        Assert.Contains("Enum Changes", markdown);
+        Assert.Contains("Rule Set Changes", markdown);
+        Assert.Contains("Configuration Changes", markdown);
+    }
+
+    [Fact]
+    public void DiffFormatter_FormatAsJson_IncludesNonEntityChanges()
+    {
+        var beforeManifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(1, 0, 0),
+            Entities = [CreateEntity("Customer", CreateProperty("Id", "System.Guid", true))],
+            ValueObjects = [new ValueObjectManifest { Name = "Address", TypeName = "TestDomain.Address" }],
+            Enums = [new EnumManifest { Name = "Status", TypeName = "TestDomain.Status" }],
+            RuleSets = [new RuleSetManifest { Name = "Default", TargetType = "TestDomain.Customer" }],
+            Configurations = [new ConfigurationManifest { EntityName = "Customer", EntityTypeName = "TestDomain.Customer", TableName = "Customers" }]
+        };
+
+        var afterManifest = new DomainManifest
+        {
+            Name = "TestDomain",
+            Version = new Version(2, 0, 0),
+            Entities = [CreateEntity("Customer", CreateProperty("Id", "System.Guid", true))],
+            ValueObjects = [new ValueObjectManifest { Name = "Location", TypeName = "TestDomain.Location" }],
+            Enums = [new EnumManifest { Name = "State", TypeName = "TestDomain.State" }],
+            RuleSets = [new RuleSetManifest { Name = "Create", TargetType = "TestDomain.Customer" }],
+            Configurations = [new ConfigurationManifest { EntityName = "Customer", EntityTypeName = "TestDomain.Customer", TableName = "tbl_Customers" }]
+        };
+
+        var engine = new DiffEngine();
+        var diff = engine.Compare(CreateSnapshot(beforeManifest), CreateSnapshot(afterManifest));
+
+        var formatter = new DiffFormatter();
+        var json = formatter.FormatAsJson(diff, indented: false);
+
+        Assert.Contains("\"valueObjectChanges\":", json);
+        Assert.Contains("\"enumChanges\":", json);
+        Assert.Contains("\"ruleSetChanges\":", json);
+        Assert.Contains("\"configurationChanges\":", json);
+    }
+
+    [Fact]
+    public void DiffFormatter_FormatAsMarkdown_UsesDefaultIconForUnknownChangeType()
+    {
+        var snapshot = CreateSnapshot("TestDomain", new Version(1, 0, 0));
+        var diff = new DomainDiff
+        {
+            Before = snapshot,
+            After = snapshot,
+            EntityChanges =
+            [
+                new EntityChange
+                {
+                    ChangeType = (ChangeType)123,
+                    EntityName = "Customer",
+                    Description = "Unknown change"
+                }
+            ]
+        };
+
+        var formatter = new DiffFormatter();
+        var markdown = formatter.FormatAsMarkdown(diff);
+
+        Assert.Contains("•", markdown);
     }
 
     [Fact]

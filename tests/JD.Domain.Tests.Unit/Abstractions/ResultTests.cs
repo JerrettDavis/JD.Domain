@@ -70,6 +70,14 @@ public sealed class ResultTests
     }
 
     [Fact]
+    public void Failure_WithEmptyList_ThrowsArgumentException()
+    {
+        var errors = new List<DomainError>();
+
+        Assert.Throws<ArgumentException>(() => Result<string>.Failure((IReadOnlyList<DomainError>)errors));
+    }
+
+    [Fact]
     public void Value_OnFailureResult_ThrowsInvalidOperationException()
     {
         // Arrange

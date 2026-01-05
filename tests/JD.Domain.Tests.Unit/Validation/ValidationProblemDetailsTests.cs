@@ -1,5 +1,6 @@
 using JD.Domain.Abstractions;
 using JD.Domain.Validation;
+using Microsoft.AspNetCore.Http;
 
 namespace JD.Domain.Tests.Unit.Validation;
 
@@ -114,6 +115,16 @@ public class ProblemDetailsBuilderTests
             .Build();
 
         Assert.Equal(422, details.Status);
+    }
+
+    [Fact]
+    public void WithType_SetsType()
+    {
+        var details = ProblemDetailsBuilder.Create()
+            .WithType("https://example.com/problem")
+            .Build();
+
+        Assert.Equal("https://example.com/problem", details.Type);
     }
 
     [Fact]
@@ -271,6 +282,25 @@ public class ValidationProblemDetailsFactoryTests
     }
 
     [Fact]
+    public void CreateFromResult_WithContext_SetsFields()
+    {
+        var result = new RuleEvaluationResult
+        {
+            IsValid = false,
+            Errors = new[] { DomainError.Create("TestError", "Test message") }
+        };
+        var context = new DefaultHttpContext();
+        context.TraceIdentifier = "trace-3";
+        context.Request.Path = "/api/result";
+
+        var details = _factory.CreateFromResult(result, context, statusCode: 409);
+
+        Assert.Equal("trace-3", details.CorrelationId);
+        Assert.Equal("/api/result", details.Instance);
+        Assert.Equal(409, details.Status);
+    }
+
+    [Fact]
     public void CreateFromException_CreatesProblemDetails()
     {
         var exception = new DomainValidationException("Test error");
@@ -279,6 +309,21 @@ public class ValidationProblemDetailsFactoryTests
 
         Assert.NotNull(details);
         Assert.Single(details.DomainErrors);
+    }
+
+    [Fact]
+    public void CreateFromException_WithContextAndStatusCode_SetsFields()
+    {
+        var exception = new DomainValidationException("Test error");
+        var context = new DefaultHttpContext();
+        context.TraceIdentifier = "trace-1";
+        context.Request.Path = "/api/test";
+
+        var details = _factory.CreateFromException(exception, context, statusCode: 409);
+
+        Assert.Equal("trace-1", details.CorrelationId);
+        Assert.Equal("/api/test", details.Instance);
+        Assert.Equal(409, details.Status);
     }
 
     [Fact]
@@ -295,5 +340,20 @@ public class ValidationProblemDetailsFactoryTests
         Assert.NotNull(details);
         Assert.Equal(2, details.DomainErrors.Count);
         Assert.Equal("Validation failed with 2 errors.", details.Detail);
+    }
+
+    [Fact]
+    public void CreateFromErrors_WithContextAndStatusCode_SetsFields()
+    {
+        var errors = new[] { DomainError.Create("Error1", "Message 1") };
+        var context = new DefaultHttpContext();
+        context.TraceIdentifier = "trace-2";
+        context.Request.Path = "/api/other";
+
+        var details = _factory.CreateFromErrors(errors, context, statusCode: 422);
+
+        Assert.Equal("trace-2", details.CorrelationId);
+        Assert.Equal("/api/other", details.Instance);
+        Assert.Equal(422, details.Status);
     }
 }

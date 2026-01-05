@@ -62,6 +62,18 @@ public sealed class DomainBuilderTests
     }
 
     [Fact]
+    public void Build_ReturnsManifest()
+    {
+        var builder = JD.Domain.Modeling.Domain.Create("TestDomain")
+            .Version(1, 0, 0);
+
+        var manifest = builder.Build();
+
+        Assert.Equal("TestDomain", manifest.Name);
+        Assert.Equal(new Version(1, 0, 0), manifest.Version);
+    }
+
+    [Fact]
     public void Entity_WithTypeParameter_AddsEntityToManifest()
     {
         // Arrange & Act
@@ -191,5 +203,16 @@ public sealed class DomainBuilderTests
         Assert.Single(manifest.ValueObjects);
         Assert.Equal("Address", manifest.ValueObjects[0].Name);
         Assert.Equal(3, manifest.ValueObjects[0].Properties.Count);
+    }
+
+    [Fact]
+    public void ValueObject_WithMetadata_AddsMetadataToManifest()
+    {
+        var manifest = JD.Domain.Modeling.Domain.Create("TestDomain")
+            .ValueObject<Address>(vo => vo.WithMetadata("Source", "Tests"))
+            .BuildManifest();
+
+        var valueObject = manifest.ValueObjects.Single();
+        Assert.Equal("Tests", valueObject.Metadata["Source"]);
     }
 }

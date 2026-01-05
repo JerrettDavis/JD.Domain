@@ -112,7 +112,7 @@ public sealed class FluentValidationGenerator : BaseCodeGenerator
         // Map rule to FluentValidation syntax
         var propertyName = ExtractPropertyName(rule);
 
-        if (string.IsNullOrEmpty(propertyName))
+        if (string.IsNullOrEmpty(propertyName) && !string.IsNullOrEmpty(rule.Expression))
         {
             // Complex rule that can't be easily mapped - add as comment
             builder.AppendLine($"// Rule '{rule.Id}': {rule.Message ?? "No message"}");
@@ -120,7 +120,9 @@ public sealed class FluentValidationGenerator : BaseCodeGenerator
         }
 
         // Build the rule
-        var ruleBuilder = $"RuleFor(x => x.{propertyName})";
+        var ruleBuilder = string.IsNullOrEmpty(propertyName)
+            ? "RuleFor(x => x)"
+            : $"RuleFor(x => x.{propertyName})";
 
         // Add validation based on rule category and metadata
         var validations = new List<string>();
