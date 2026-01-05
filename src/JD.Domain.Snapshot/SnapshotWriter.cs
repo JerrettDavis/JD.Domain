@@ -174,6 +174,9 @@ public sealed class SnapshotWriter
         if (!string.IsNullOrEmpty(entity.Namespace))
             doc["namespace"] = entity.Namespace;
 
+        if (!string.IsNullOrEmpty(entity.Description))
+            doc["description"] = entity.Description;
+
         if (entity.Properties.Count > 0)
         {
             doc["properties"] = entity.Properties
@@ -244,6 +247,9 @@ public sealed class SnapshotWriter
 
         if (!string.IsNullOrEmpty(vo.Namespace))
             doc["namespace"] = vo.Namespace;
+
+        if (!string.IsNullOrEmpty(vo.Description))
+            doc["description"] = vo.Description;
 
         if (vo.Properties.Count > 0)
         {

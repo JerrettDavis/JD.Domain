@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -80,6 +81,15 @@ public sealed class DomainModelGenerator : BaseCodeGenerator
             bool.TryParse(genPartial, out var genPartialVal))
         {
             options.GeneratePartialClasses = genPartialVal;
+        }
+
+        if (context.Properties.TryGetValue("ValidationMode", out var validationMode) ||
+            context.Properties.TryGetValue("PropertyValidationMode", out validationMode))
+        {
+            if (Enum.TryParse<PropertyValidationMode>(validationMode, true, out var parsedMode))
+            {
+                options.ValidationMode = parsedMode;
+            }
         }
 
         if (context.Properties.TryGetValue("CreateRuleSet", out var createRs))

@@ -21,6 +21,11 @@ public sealed class ValueObjectManifest
     public string? Namespace { get; init; }
 
     /// <summary>
+    /// Gets the description of the value object, if provided.
+    /// </summary>
+    public string? Description { get; init; }
+
+    /// <summary>
     /// Gets the properties of the value object.
     /// </summary>
     public IReadOnlyList<PropertyManifest> Properties { get; init; } =

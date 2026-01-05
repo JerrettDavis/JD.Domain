@@ -227,6 +227,10 @@ var extendedManifest = new DomainManifest
     Version = baseManifest.Version,
     Entities = baseManifest.Entities,
     ValueObjects = baseManifest.ValueObjects,
+    Enums = baseManifest.Enums,
+    Configurations = baseManifest.Configurations,
+    Sources = baseManifest.Sources,
+    Metadata = baseManifest.Metadata,
     RuleSets = new List<RuleSetManifest> { customerRules }
 };
 ```

@@ -130,16 +130,11 @@ public sealed class DomainBuilderTests
     [Fact]
     public void BuildManifest_SetsCreatedAtTimestamp()
     {
-        // Arrange
-        var beforeCreate = DateTimeOffset.UtcNow;
-
         // Act
         var manifest = JD.Domain.Modeling.Domain.Create("TestDomain").BuildManifest();
-        var afterCreate = DateTimeOffset.UtcNow;
 
         // Assert
-        Assert.True(manifest.CreatedAt >= beforeCreate);
-        Assert.True(manifest.CreatedAt <= afterCreate);
+        Assert.Equal(new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero), manifest.CreatedAt);
     }
 
     [Fact]

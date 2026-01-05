@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
@@ -65,11 +66,10 @@ internal sealed class ManifestEmitter
         sb.AppendLine("            new SourceInfo");
         sb.AppendLine("            {");
         sb.AppendLine("                Type = \"Generator\",");
-        sb.AppendLine("                Location = \"JD.Domain.ManifestGeneration.Generator\",");
-        sb.AppendLine("                Timestamp = DateTimeOffset.UtcNow");
+        sb.AppendLine("                Location = \"JD.Domain.ManifestGeneration.Generator\"");
         sb.AppendLine("            }");
         sb.AppendLine("        },");
-        sb.AppendLine($"        CreatedAt = DateTimeOffset.UtcNow,");
+        sb.AppendLine("        CreatedAt = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero),");
 
         // Entities
         if (!entities.IsEmpty)
@@ -77,7 +77,9 @@ internal sealed class ManifestEmitter
             sb.AppendLine("        Entities = new List<EntityManifest>");
             sb.AppendLine("        {");
 
-            foreach (var entity in entities)
+            foreach (var entity in entities
+                .OrderBy(e => e.Name, StringComparer.Ordinal)
+                .ThenBy(e => e.FullTypeName, StringComparer.Ordinal))
             {
                 EmitEntity(sb, entity);
             }
@@ -91,7 +93,9 @@ internal sealed class ManifestEmitter
             sb.AppendLine("        ValueObjects = new List<ValueObjectManifest>");
             sb.AppendLine("        {");
 
-            foreach (var vo in valueObjects)
+            foreach (var vo in valueObjects
+                .OrderBy(v => v.Name, StringComparer.Ordinal)
+                .ThenBy(v => v.FullTypeName, StringComparer.Ordinal))
             {
                 EmitValueObject(sb, vo);
             }
@@ -115,6 +119,16 @@ internal sealed class ManifestEmitter
         sb.AppendLine($"                Name = \"{entity.Name}\",");
         sb.AppendLine($"                TypeName = \"{EscapeString(entity.FullTypeName)}\",");
 
+        if (!string.IsNullOrEmpty(entity.Namespace))
+        {
+            sb.AppendLine($"                Namespace = \"{EscapeString(entity.Namespace!)}\",");
+        }
+
+        if (!string.IsNullOrEmpty(entity.Description))
+        {
+            sb.AppendLine($"                Description = \"{EscapeString(entity.Description!)}\",");
+        }
+
         if (!string.IsNullOrEmpty(entity.TableName))
         {
             sb.AppendLine($"                TableName = \"{EscapeString(entity.TableName!)}\",");
@@ -125,18 +139,15 @@ internal sealed class ManifestEmitter
             sb.AppendLine($"                SchemaName = \"{EscapeString(entity.Schema!)}\",");
         }
 
-        if (!string.IsNullOrEmpty(entity.Description))
-        {
-            sb.AppendLine($"                Description = \"{EscapeString(entity.Description!)}\",");
-        }
-
         // Properties
         if (!entity.Properties.IsEmpty)
         {
             sb.AppendLine("                Properties = new List<PropertyManifest>");
             sb.AppendLine("                {");
 
-            foreach (var prop in entity.Properties)
+            foreach (var prop in entity.Properties
+                .OrderBy(p => p.Name, StringComparer.Ordinal)
+                .ThenBy(p => p.TypeName, StringComparer.Ordinal))
             {
                 EmitProperty(sb, prop);
             }
@@ -144,7 +155,10 @@ internal sealed class ManifestEmitter
             sb.AppendLine("                },");
 
             // Key properties (inferred from [Key] attribute)
-            var keyProps = entity.Properties.Where(p => p.IsKey).ToArray();
+            var keyProps = entity.Properties
+                .Where(p => p.IsKey)
+                .OrderBy(p => p.Name, StringComparer.Ordinal)
+                .ToArray();
             if (keyProps.Length > 0)
             {
                 sb.Append("                KeyProperties = new List<string> { ");
@@ -166,6 +180,11 @@ internal sealed class ManifestEmitter
         sb.AppendLine($"                Name = \"{vo.Name}\",");
         sb.AppendLine($"                TypeName = \"{EscapeString(vo.FullTypeName)}\",");
 
+        if (!string.IsNullOrEmpty(vo.Namespace))
+        {
+            sb.AppendLine($"                Namespace = \"{EscapeString(vo.Namespace!)}\",");
+        }
+
         if (!string.IsNullOrEmpty(vo.Description))
         {
             sb.AppendLine($"                Description = \"{EscapeString(vo.Description!)}\",");
@@ -177,7 +196,9 @@ internal sealed class ManifestEmitter
             sb.AppendLine("                Properties = new List<PropertyManifest>");
             sb.AppendLine("                {");
 
-            foreach (var prop in vo.Properties)
+            foreach (var prop in vo.Properties
+                .OrderBy(p => p.Name, StringComparer.Ordinal)
+                .ThenBy(p => p.TypeName, StringComparer.Ordinal))
             {
                 EmitProperty(sb, prop);
             }

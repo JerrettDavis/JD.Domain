@@ -1,7 +1,5 @@
 # Domain Modeling
 
-**Status:** Coming Soon
-
 Master the domain modeling DSL for defining entities, value objects, and enums with properties, keys, and relationships.
 
 **Time:** 45 minutes | **Level:** Beginner-Intermediate

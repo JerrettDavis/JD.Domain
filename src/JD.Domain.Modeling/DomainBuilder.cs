@@ -27,8 +27,7 @@ public sealed class DomainBuilder
         _sources.Add(new SourceInfo
         {
             Type = "DSL",
-            Location = "Fluent API",
-            Timestamp = DateTimeOffset.UtcNow
+            Location = "Fluent API"
         });
     }
 
@@ -123,7 +122,7 @@ public sealed class DomainBuilder
             Configurations = _configurations.ToList().AsReadOnly(),
             Sources = _sources.ToList().AsReadOnly(),
             Metadata = _metadata.ToDictionary(x => x.Key, x => x.Value) as IReadOnlyDictionary<string, object?>,
-            CreatedAt = DateTimeOffset.UtcNow
+            CreatedAt = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)
         };
     }
 

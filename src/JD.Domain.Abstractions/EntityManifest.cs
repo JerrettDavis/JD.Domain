@@ -21,6 +21,11 @@ public sealed class EntityManifest
     public string? Namespace { get; init; }
 
     /// <summary>
+    /// Gets the description of the entity, if provided.
+    /// </summary>
+    public string? Description { get; init; }
+
+    /// <summary>
     /// Gets the properties of the entity.
     /// </summary>
     public IReadOnlyList<PropertyManifest> Properties { get; init; } =

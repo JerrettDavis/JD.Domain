@@ -76,6 +76,7 @@ public sealed class SnapshotReader
             Name = element.GetProperty("name").GetString()!,
             TypeName = element.GetProperty("typeName").GetString()!,
             Namespace = element.TryGetProperty("namespace", out var ns) ? ns.GetString() : null,
+            Description = element.TryGetProperty("description", out var desc) ? desc.GetString() : null,
             Properties = ReadArray(element, "properties", ReadProperty),
             KeyProperties = ReadStringArray(element, "keyProperties"),
             TableName = element.TryGetProperty("tableName", out var tn) ? tn.GetString() : null,
@@ -108,6 +109,7 @@ public sealed class SnapshotReader
             Name = element.GetProperty("name").GetString()!,
             TypeName = element.GetProperty("typeName").GetString()!,
             Namespace = element.TryGetProperty("namespace", out var ns) ? ns.GetString() : null,
+            Description = element.TryGetProperty("description", out var desc) ? desc.GetString() : null,
             Properties = ReadArray(element, "properties", ReadProperty),
             Metadata = ReadMetadata(element, "metadata")
         };

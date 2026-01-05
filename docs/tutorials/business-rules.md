@@ -1,7 +1,5 @@
 # Business Rules
 
-**Status:** Coming Soon
-
 Learn how to define, compose, and evaluate business rules including invariants, validators, policies, and derivations.
 
 **Time:** 60 minutes | **Level:** Intermediate
