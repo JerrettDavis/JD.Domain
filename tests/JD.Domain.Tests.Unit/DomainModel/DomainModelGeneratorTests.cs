@@ -252,7 +252,7 @@ public class DomainModelGeneratorTests
         var files = generator.Generate(context).ToList();
 
         var content = files[0].Content;
-        Assert.Contains("public Result<DomainBlog> WithName(", content);        
+        Assert.Contains("public Result<DomainBlog> WithName(", content);
     }
 
     [Fact]

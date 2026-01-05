@@ -34,7 +34,7 @@ public sealed class EntityBuilderTests
     public void WithMetadata_AddsMetadataToManifest()
     {
         var manifest = JD.Domain.Modeling.Domain.Create("TestDomain")
-            .Entity<SampleEntity>(e => e.WithMetadata("Origin", "Tests"))       
+            .Entity<SampleEntity>(e => e.WithMetadata("Origin", "Tests"))
             .BuildManifest();
 
         var entity = manifest.Entities.Single();

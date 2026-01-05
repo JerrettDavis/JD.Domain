@@ -372,7 +372,7 @@ public class FluentValidationGeneratorTests
     }
 
     [Fact]
-    public void Generate_UsesMustForGenericExpressionAndMapsInfoSeverity()      
+    public void Generate_UsesMustForGenericExpressionAndMapsInfoSeverity()
     {
         var manifest = new DomainManifest
         {

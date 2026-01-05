@@ -235,7 +235,7 @@ public class T4ShimsTests
 
         var code = T4EntityGenerator.GenerateConfiguration(entity, null, "TestNamespace");
 
-        Assert.Contains("builder.ToTable(\"Orders\", \"sales\")", code);        
+        Assert.Contains("builder.ToTable(\"Orders\", \"sales\")", code);
     }
 
     [Fact]
