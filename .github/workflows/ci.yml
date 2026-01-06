@@ -215,13 +215,16 @@ jobs:
       - name: Pack NuGet packages
         if: steps.check-version.outputs.should-publish == 'true'
         run: |
-          dotnet pack ${{ env.SOLUTION_NAME }} \
-            --no-build \
-            --configuration Release \
-            --output ./artifacts
+          # Pack only infrastructure projects from src directory
+          for project in src/**/*.csproj; do
+            dotnet pack "$project" \
+              --no-build \
+              --configuration Release \
+              --output ./artifacts
+          done
 
       - name: Publish to NuGet.org
-        if: steps.check-version.outputs.should-publish == 'true'
+        if: steps.check-version.outputs.should-publish == 'true' && secrets.NUGET_API_KEY != ''
         run: |
           dotnet nuget push ./artifacts/*.nupkg \
             --source https://api.nuget.org/v3/index.json \
@@ -236,6 +239,30 @@ jobs:
             --api-key ${{ secrets.GITHUB_TOKEN }} \
             --skip-duplicate
 
+      - name: Extract Changelog
+        if: steps.check-version.outputs.should-publish == 'true'
+        id: changelog
+        run: |
+          # Extract changelog content for the current version
+          VERSION="${{ steps.nbgv.outputs.SemVer2 }}"
+          
+          # Get the changelog section for this version or use the entire unreleased section
+          if grep -q "\[${VERSION}\]" CHANGELOG.md; then
+            CHANGELOG_CONTENT=$(awk "/## \[${VERSION}\]/,/## \[/" CHANGELOG.md | sed '$d' | tail -n +2)
+          else
+            CHANGELOG_CONTENT=$(awk '/## \[Unreleased\]/,/## \[/' CHANGELOG.md | sed '$d' | tail -n +2)
+          fi
+          
+          # Save to file for use in release
+          echo "$CHANGELOG_CONTENT" > /tmp/changelog.txt
+          
+          # Also set as output (escape for GitHub Actions)
+          {
+            echo 'content<<EOF'
+            echo "$CHANGELOG_CONTENT"
+            echo 'EOF'
+          } >> $GITHUB_OUTPUT
+
       - name: Create GitHub Release
         if: steps.check-version.outputs.should-publish == 'true'
         uses: ncipollo/release-action@v1
@@ -243,6 +270,7 @@ jobs:
           tag: v${{ steps.nbgv.outputs.SemVer2 }}
           name: Release v${{ steps.nbgv.outputs.SemVer2 }}
           artifacts: "./artifacts/*.nupkg"
+          body: ${{ steps.changelog.outputs.content }}
           token: ${{ secrets.GITHUB_TOKEN }}
           generateReleaseNotes: true
           draft: false
