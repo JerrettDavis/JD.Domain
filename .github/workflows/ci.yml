@@ -277,13 +277,17 @@ jobs:
       - name: Publish to GitHub Packages
         if: steps.check-version.outputs.should-publish == 'true'
         run: |
-          # Configure GitHub Packages source
-          dotnet nuget add source \
-            --username ${{ github.repository_owner }} \
-            --password ${{ secrets.GITHUB_TOKEN }} \
-            --store-password-in-clear-text \
-            --name github \
-            "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" || true
+          # Configure GitHub Packages source if not already configured
+          if ! dotnet nuget list source | grep -q "github"; then
+            dotnet nuget add source \
+              --username ${{ github.repository_owner }} \
+              --password ${{ secrets.GITHUB_TOKEN }} \
+              --store-password-in-clear-text \
+              --name github \
+              "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+          else
+            echo "GitHub Packages source already configured"
+          fi
           
           # Push packages
           dotnet nuget push ./artifacts/*.nupkg \
@@ -297,18 +301,28 @@ jobs:
         run: |
           # Extract changelog content for the current version
           VERSION="${{ steps.nbgv.outputs.SemVer2 }}"
+          CHANGELOG_CONTENT=""
           
-          # Get the changelog section for this version or use the entire unreleased section
+          # Try to extract changelog for this version
           if grep -q "\[${VERSION}\]" CHANGELOG.md; then
-            CHANGELOG_CONTENT=$(awk "/## \[${VERSION}\]/,/## \[/" CHANGELOG.md | sed '$d' | tail -n +2)
-          else
-            CHANGELOG_CONTENT=$(awk '/## \[Unreleased\]/,/## \[/' CHANGELOG.md | sed '$d' | tail -n +2)
+            # Get all lines between this version header and the next version header
+            CHANGELOG_CONTENT=$(sed -n "/## \[${VERSION}\]/,/## \[/p" CHANGELOG.md | sed '1d;$d' | sed '/^$/d' || true)
           fi
           
-          # Save to file for use in release
+          # If empty, try unreleased section
+          if [[ -z "$CHANGELOG_CONTENT" ]] && grep -q "## \[Unreleased\]" CHANGELOG.md; then
+            CHANGELOG_CONTENT=$(sed -n '/## \[Unreleased\]/,/## \[/p' CHANGELOG.md | sed '1d;$d' | sed '/^$/d' || true)
+          fi
+          
+          # If still empty, use default message
+          if [[ -z "$CHANGELOG_CONTENT" ]]; then
+            CHANGELOG_CONTENT="See commit history and pull requests for detailed changes in this release."
+          fi
+          
+          # Save to file for debugging
           echo "$CHANGELOG_CONTENT" > /tmp/changelog.txt
           
-          # Also set as output (escape for GitHub Actions)
+          # Set as output for GitHub Actions
           {
             echo 'content<<EOF'
             echo "$CHANGELOG_CONTENT"
