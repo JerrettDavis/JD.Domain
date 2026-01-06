@@ -26,9 +26,11 @@ All workflows are designed to be:
 - **Multi-platform Testing**: Tests on Ubuntu, Windows, and macOS
 - **Multi-version Testing**: Tests .NET 8, 9, and 10
 - **Code Coverage**: Uploads coverage to Codecov
-- **Automated Releases**: Uses GitVersion for semantic versioning
-- **Package Publishing**: Publishes to both NuGet.org and GitHub Packages
-- **GitHub Releases**: Creates release with artifacts
+- **Automated Releases**: Uses Nerdbank.GitVersioning for semantic versioning
+- **Selective Packing**: Only packs infrastructure projects from src/ directory
+- **Package Publishing**: Publishes to both NuGet.org (when API key is present) and GitHub Packages
+- **GitHub Releases**: Creates release with changelog content and auto-generated notes
+- **Resilient Publishing**: Includes error handling and verification steps
 
 **Environment Variables**:
 ```yaml
@@ -39,8 +41,18 @@ DOTNET_TEST_VERSIONS: '["8.0.x", "9.0.x", "10.0.x"]'  # Test versions
 ```
 
 **Required Secrets**:
-- `NUGET_API_KEY`: NuGet.org API key for package publishing
+- `NUGET_API_KEY` or `NUGET_TOKEN`: NuGet.org API key for package publishing (optional)
 - `CODECOV_TOKEN`: Codecov token for coverage uploads (optional)
+
+**Release Workflow**:
+- Triggers on push to `main` branch
+- Only publishes stable releases (non-prerelease versions)
+- Skips if tag already exists
+- Packs only projects in `src/` directory (excludes samples and tests)
+- Publishes to NuGet.org if API key is present (supports both `NUGET_API_KEY` and `NUGET_TOKEN`)
+- Always publishes to GitHub Packages
+- Creates GitHub release with changelog content extracted from CHANGELOG.md
+- Includes build artifacts (.nupkg files) in the release
 
 ### 2. Documentation (`docfx.yml`)
 
@@ -198,8 +210,8 @@ To use these workflows in another project:
    - Update package paths to match your structure
    - Add/remove labels as needed
 
-4. **Configure repository secrets**:
-   - `NUGET_API_KEY`: For package publishing
+4. **Configure repository secrets** (as needed):
+   - `NUGET_API_KEY` or `NUGET_TOKEN`: For NuGet.org package publishing (optional)
    - `CODECOV_TOKEN`: For code coverage (optional)
 
 5. **Enable GitHub Pages**:
@@ -263,10 +275,12 @@ To use these workflows in another project:
 
 ### Release Not Publishing
 
-1. Verify `NUGET_API_KEY` secret is set
-2. Check GitVersion.yml configuration
-3. Ensure version doesn't already exist
+1. Verify `NUGET_API_KEY` or `NUGET_TOKEN` secret is set (if publishing to NuGet.org)
+2. Check Nerdbank.GitVersioning configuration in `version.json`
+3. Ensure version doesn't already exist (check tags)
 4. Check that commit is on `main` branch
+5. Verify it's a stable release (not a prerelease)
+6. Check that all tests passed before the release job
 
 ### Labels Not Applied
 
