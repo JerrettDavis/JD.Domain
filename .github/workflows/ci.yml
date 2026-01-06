@@ -216,26 +216,78 @@ jobs:
         if: steps.check-version.outputs.should-publish == 'true'
         run: |
           # Pack only infrastructure projects from src directory
+          mkdir -p ./artifacts
+          PACK_COUNT=0
+          
           for project in src/**/*.csproj; do
-            dotnet pack "$project" \
-              --no-build \
-              --configuration Release \
-              --output ./artifacts
+            if [[ -f "$project" ]]; then
+              echo "Packing $project..."
+              if dotnet pack "$project" \
+                --no-build \
+                --configuration Release \
+                --output ./artifacts; then
+                PACK_COUNT=$((PACK_COUNT + 1))
+              else
+                echo "::error::Failed to pack $project"
+                exit 1
+              fi
+            fi
           done
+          
+          echo "Successfully packed $PACK_COUNT projects"
+          echo "packages-count=$PACK_COUNT" >> $GITHUB_OUTPUT
+          
+          # Verify packages were created
+          if [[ $PACK_COUNT -eq 0 ]]; then
+            echo "::error::No packages were created"
+            exit 1
+          fi
+        id: pack
+
+      - name: Determine NuGet API Key
+        if: steps.check-version.outputs.should-publish == 'true'
+        id: nuget-key
+        run: |
+          # Support both NUGET_API_KEY and NUGET_TOKEN for backward compatibility
+          if [[ -n "${{ secrets.NUGET_API_KEY }}" ]]; then
+            echo "has-key=true" >> $GITHUB_OUTPUT
+            echo "Using NUGET_API_KEY"
+          elif [[ -n "${{ secrets.NUGET_TOKEN }}" ]]; then
+            echo "has-key=true" >> $GITHUB_OUTPUT
+            echo "Using NUGET_TOKEN"
+          else
+            echo "has-key=false" >> $GITHUB_OUTPUT
+            echo "No NuGet.org API key found, will skip NuGet.org publishing"
+          fi
 
       - name: Publish to NuGet.org
-        if: steps.check-version.outputs.should-publish == 'true' && secrets.NUGET_API_KEY != ''
+        if: steps.check-version.outputs.should-publish == 'true' && steps.nuget-key.outputs.has-key == 'true'
         run: |
+          # Use NUGET_API_KEY if available, otherwise use NUGET_TOKEN
+          API_KEY="${{ secrets.NUGET_API_KEY }}"
+          if [[ -z "$API_KEY" ]]; then
+            API_KEY="${{ secrets.NUGET_TOKEN }}"
+          fi
+          
           dotnet nuget push ./artifacts/*.nupkg \
             --source https://api.nuget.org/v3/index.json \
-            --api-key ${{ secrets.NUGET_API_KEY }} \
+            --api-key "$API_KEY" \
             --skip-duplicate
 
       - name: Publish to GitHub Packages
         if: steps.check-version.outputs.should-publish == 'true'
         run: |
+          # Configure GitHub Packages source
+          dotnet nuget add source \
+            --username ${{ github.repository_owner }} \
+            --password ${{ secrets.GITHUB_TOKEN }} \
+            --store-password-in-clear-text \
+            --name github \
+            "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" || true
+          
+          # Push packages
           dotnet nuget push ./artifacts/*.nupkg \
-            --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json \
+            --source github \
             --api-key ${{ secrets.GITHUB_TOKEN }} \
             --skip-duplicate
 
