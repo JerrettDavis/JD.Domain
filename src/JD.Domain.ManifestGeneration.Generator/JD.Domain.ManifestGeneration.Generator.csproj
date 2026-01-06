@@ -20,6 +20,8 @@
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <DevelopmentDependency>true</DevelopmentDependency>
         <PackageType>Analyzer</PackageType>
+        <!-- Disable symbol packages for analyzer packages since they don't include standard build output -->
+        <IncludeSymbols>false</IncludeSymbols>
     </PropertyGroup>
 
     <!-- Package the generator in the analyzer directory -->
