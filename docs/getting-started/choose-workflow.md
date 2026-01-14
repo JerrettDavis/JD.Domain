@@ -152,31 +152,26 @@ Start with an existing database, scaffold EF Core entities, then add domain rule
 ### Example
 
 ```csharp
-// 1. Entities scaffolded from database
+// 1. Entities scaffolded from database with [DomainEntity] attributes added
+[assembly: GenerateManifest("ECommerce", Version = "1.0.0")]
+
+[DomainEntity(TableName = "Customers")]
 public class Customer
 {
+    [Key]
     public int Id { get; set; }
-    public string Name { get; set; }
-    public string Email { get; set; }
+
+    [Required]
+    [MaxLength(200)]
+    public string Name { get; set; } = "";
+
+    [Required]
+    [MaxLength(500)]
+    public string Email { get; set; } = "";
 }
 
-// 2. Create manifest from existing entities
-var manifest = new DomainManifest
-{
-    Name = "ECommerce",
-    Entities = [
-        new EntityManifest
-        {
-            Name = "Customer",
-            TypeName = "MyApp.Customer",
-            Properties = [
-                new PropertyManifest { Name = "Id", TypeName = "System.Int32" },
-                new PropertyManifest { Name = "Name", TypeName = "System.String" },
-                new PropertyManifest { Name = "Email", TypeName = "System.String" }
-            ]
-        }
-    ]
-};
+// 2. Manifest is automatically generated - NO manual creation needed!
+var manifest = ECommerceManifest.GeneratedManifest;
 
 // 3. Add rules to scaffolded entities
 var rules = new RuleSetBuilder<Customer>("Default")
@@ -189,6 +184,8 @@ var rules = new RuleSetBuilder<Customer>("Default")
 
 ```bash
 dotnet add package JD.Domain.Abstractions
+dotnet add package JD.Domain.ManifestGeneration
+dotnet add package JD.Domain.ManifestGeneration.Generator
 dotnet add package JD.Domain.Rules
 dotnet add package JD.Domain.Runtime
 dotnet add package JD.Domain.DomainModel.Generator  # Optional
@@ -208,7 +205,7 @@ dotnet add package JD.Domain.FluentValidation.Generator  # Optional
 - ❌ Database remains source of truth (potential drift)
 - ❌ Less control over domain design
 - ❌ EF scaffolding can produce suboptimal models
-- ❌ Requires manual manifest creation or tooling
+- ❌ Requires adding attributes to scaffolded entities
 
 ### Next Steps
 
@@ -251,33 +248,41 @@ Mix code-first domain definitions with database-first scaffolded entities, using
 ### Example
 
 ```csharp
+// All entities use source generation - NO manual manifest creation!
+[assembly: GenerateManifest("ECommerce", Version = "1.1.0")]
+
 // Code-first entity
-var codeFirstPart = Domain.Create("ECommerce")
-    .Entity<Customer>(e => e
-        .Property(c => c.Id)
-        .Property(c => c.Name))
-    .Build();
-
-// Database-first entity
-var dbFirstPart = new DomainManifest
+[DomainEntity]
+public class Customer
 {
-    Name = "ECommerce",
-    Entities = [
-        new EntityManifest
-        {
-            Name = "Order",
-            TypeName = "MyApp.Order",
-            Properties = [ /* scaffolded properties */ ]
-        }
-    ]
-};
+    [Key]
+    public int Id { get; set; }
 
-// Merge manifests
-var merged = MergeManifests(codeFirstPart, dbFirstPart);
+    [Required]
+    [MaxLength(200)]
+    public string Name { get; set; } = "";
+}
+
+// Database-first entity (scaffolded with attributes added)
+[DomainEntity(TableName = "Orders")]
+public class Order
+{
+    [Key]
+    public int Id { get; set; }
+
+    [Required]
+    public int CustomerId { get; set; }
+
+    [Required]
+    public decimal Total { get; set; }
+}
+
+// Access auto-generated manifest
+var manifest = ECommerceManifest.GeneratedManifest;
 
 // Create snapshot
 var writer = new SnapshotWriter();
-var snapshot = writer.CreateSnapshot(merged);
+var snapshot = writer.CreateSnapshot(manifest);
 
 // Later: compare versions
 var diff = diffEngine.Compare(snapshotV1, snapshotV2);
@@ -408,6 +413,8 @@ dotnet add package JD.Domain.AspNetCore
 
 ```bash
 dotnet add package JD.Domain.Abstractions
+dotnet add package JD.Domain.ManifestGeneration
+dotnet add package JD.Domain.ManifestGeneration.Generator
 dotnet add package JD.Domain.Rules
 dotnet add package JD.Domain.Runtime
 ```
