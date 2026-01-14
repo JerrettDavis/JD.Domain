@@ -1,4 +1,5 @@
-using JD.Domain.Abstractions;
+using System.ComponentModel.DataAnnotations;
+using JD.Domain.ManifestGeneration;
 using JD.Domain.Rules;
 using JD.Domain.Snapshot;
 
@@ -6,18 +7,21 @@ namespace JD.Domain.Samples.DbFirst;
 
 /// <summary>
 /// Demonstrates database-first workflow: existing EF entities + JD rules as partials.
+/// Manifests are now automatically generated from entity attributes - NO manual string writing!
 /// </summary>
 public static class Program
 {
     public static void Main()
     {
-        Console.WriteLine("=== JD.Domain Database-First Sample ===\n");
+        Console.WriteLine("=== JD.Domain Database-First Sample (Automatic Manifest Generation) ===\n");
 
-        // Step 1: Simulate loading manifest from scaffolded EF entities
-        Console.WriteLine("1. Loading manifest from existing EF entities...");
-        var manifest = CreateManifestFromScaffoldedEntities();
-        Console.WriteLine($"   Loaded: {manifest.Name} v{manifest.Version}");
+        // Step 1: Access auto-generated manifest from scaffolded EF entities
+        Console.WriteLine("1. Using auto-generated manifest from EF entities...");
+        var manifest = BloggingDbManifest.GeneratedManifest;
+        Console.WriteLine($"   Domain: {manifest.Name} v{manifest.Version}");
         Console.WriteLine($"   Entities: {manifest.Entities.Count}");
+        Console.WriteLine($"   Source: {(manifest.Sources.Count > 0 ? manifest.Sources[0].Type : "Unknown")}");
+        Console.WriteLine($"   NO MANUAL STRING WRITING REQUIRED!");
 
         // Step 2: Add JD rules as partial classes (rules defined separately)
         Console.WriteLine("\n2. Defining rules for existing entities...");
@@ -63,63 +67,41 @@ public static class Program
         }
 
         Console.WriteLine("\n=== Sample Complete ===");
-    }
-
-    /// <summary>
-    /// Simulates creating a manifest from EF Core scaffolded entities.
-    /// </summary>
-    private static DomainManifest CreateManifestFromScaffoldedEntities()
-    {
-        return new DomainManifest
-        {
-            Name = "BloggingDb",
-            Version = new Version(1, 0, 0),
-            Entities =
-            [
-                new EntityManifest
-                {
-                    Name = "Blog",
-                    TypeName = "JD.Domain.Samples.DbFirst.Blog",
-                    TableName = "Blogs",
-                    Properties =
-                    [
-                        new PropertyManifest { Name = "BlogId", TypeName = "System.Int32", IsRequired = true },
-                        new PropertyManifest { Name = "Url", TypeName = "System.String", IsRequired = true, MaxLength = 500 }
-                    ],
-                    KeyProperties = ["BlogId"]
-                },
-                new EntityManifest
-                {
-                    Name = "Post",
-                    TypeName = "JD.Domain.Samples.DbFirst.Post",
-                    TableName = "Posts",
-                    Properties =
-                    [
-                        new PropertyManifest { Name = "PostId", TypeName = "System.Int32", IsRequired = true },
-                        new PropertyManifest { Name = "Title", TypeName = "System.String", IsRequired = true, MaxLength = 200 },
-                        new PropertyManifest { Name = "Content", TypeName = "System.String", IsRequired = false },
-                        new PropertyManifest { Name = "BlogId", TypeName = "System.Int32", IsRequired = true }
-                    ],
-                    KeyProperties = ["PostId"]
-                }
-            ]
-        };
+        Console.WriteLine("Manifest was generated automatically from entity attributes!");
     }
 }
 
-// These represent EF Core scaffolded entities
+// These represent EF Core scaffolded entities with [DomainEntity] attributes added
+// This demonstrates how you can add JD.Domain attributes to existing scaffolded entities
+[DomainEntity(TableName = "Blogs")]
 public class Blog
 {
+    [Key]
     public int BlogId { get; set; }
+
+    [Required]
+    [MaxLength(500)]
     public string Url { get; set; } = "";
+
+    [ExcludeFromManifest]
     public List<Post> Posts { get; set; } = new();
 }
 
+[DomainEntity(TableName = "Posts")]
 public class Post
 {
+    [Key]
     public int PostId { get; set; }
+
+    [Required]
+    [MaxLength(200)]
     public string Title { get; set; } = "";
+
     public string? Content { get; set; }
+
+    [Required]
     public int BlogId { get; set; }
+
+    [ExcludeFromManifest]
     public Blog Blog { get; set; } = null!;
 }
