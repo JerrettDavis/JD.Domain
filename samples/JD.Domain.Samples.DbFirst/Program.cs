@@ -20,7 +20,7 @@ public static class Program
         var manifest = BloggingDbManifest.GeneratedManifest;
         Console.WriteLine($"   Domain: {manifest.Name} v{manifest.Version}");
         Console.WriteLine($"   Entities: {manifest.Entities.Count}");
-        Console.WriteLine($"   Source: {manifest.Sources[0].Type}");
+        Console.WriteLine($"   Source: {(manifest.Sources.Count > 0 ? manifest.Sources[0].Type : "Unknown")}");
         Console.WriteLine($"   NO MANUAL STRING WRITING REQUIRED!");
 
         // Step 2: Add JD rules as partial classes (rules defined separately)
