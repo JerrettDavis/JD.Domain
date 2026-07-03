@@ -33,8 +33,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Debug - Check PR author type
+        run: |
+          echo "Actor: ${{ github.actor }}"
+          echo "PR Author: ${{ github.event.pull_request.user.login }}"
+          echo "PR Author Type: ${{ github.event.pull_request.user.type }}"
+
       - name: Validate PR title
-        if: github.event.pull_request.user.type != 'Bot'
+        if: github.event.pull_request.user.type == 'User'
         uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
