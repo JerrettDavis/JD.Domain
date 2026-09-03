@@ -11,7 +11,7 @@ on:
         description: 'JSON array of .NET versions to test'
         required: false
         type: string
-        default: '["8.0.x", "9.0.x", "10.0.x"]'
+        default: '["10.0.x"]'
       enable-benchmarks:
         description: 'Enable benchmark tests'
         required: false
@@ -23,7 +23,7 @@ env:
   SOLUTION_NAME: JD.Domain.sln
   PROJECT_NAME: JD.Domain
   DOTNET_VERSION: '10.0.x'
-  DOTNET_TEST_VERSIONS: '["8.0.x", "9.0.x", "10.0.x"]'
+  DOTNET_TEST_VERSIONS: '["10.0.x"]'
   ENABLE_BENCHMARKS: false
 
   # Standard configuration
@@ -79,7 +79,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        dotnet-version: ${{ fromJson(inputs.dotnet-test-versions || '["8.0.x", "9.0.x", "10.0.x"]') }}
+        dotnet-version: ${{ fromJson(inputs.dotnet-test-versions || '["10.0.x"]') }}
 
     steps:
       - name: Checkout code

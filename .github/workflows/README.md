@@ -37,7 +37,7 @@ All workflows are designed to be:
 SOLUTION_NAME: JD.Domain.sln          # Your solution file
 PROJECT_NAME: JD.Domain                # Your project name
 DOTNET_VERSION: '10.0.x'              # Primary .NET version
-DOTNET_TEST_VERSIONS: '["8.0.x", "9.0.x", "10.0.x"]'  # Test versions
+DOTNET_TEST_VERSIONS: '["10.0.x"]'  # Test versions
 ```
 
 **Required Secrets**:
