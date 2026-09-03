@@ -155,6 +155,11 @@ jobs:
       version: ${{ steps.nbgv.outputs.SemVer2 }}
       should-publish: ${{ steps.check-version.outputs.should-publish }}
 
+    environment: production
+    permissions:
+      contents: write
+      id-token: write
+      packages: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -244,29 +249,19 @@ jobs:
           fi
         id: pack
 
-      - name: Determine NuGet API Key
-        if: steps.check-version.outputs.should-publish == 'true'
-        id: nuget-key
-        run: |
-          # Support both NUGET_API_KEY and NUGET_TOKEN for backward compatibility
-          if [[ -n "${{ secrets.NUGET_API_KEY }}" ]]; then
-            echo "has-key=true" >> $GITHUB_OUTPUT
-            echo "Using NUGET_API_KEY"
-          elif [[ -n "${{ secrets.NUGET_TOKEN }}" ]]; then
-            echo "has-key=true" >> $GITHUB_OUTPUT
-            echo "Using NUGET_TOKEN"
-          else
-            echo "has-key=false" >> $GITHUB_OUTPUT
-            echo "No NuGet.org API key found, will skip NuGet.org publishing"
-          fi
+      - name: NuGet login
+        id: nuget-login
+        uses: NuGet/login@v1
+        with:
+          user: JerrettDavis
 
       - name: Publish to NuGet.org
-        if: steps.check-version.outputs.should-publish == 'true' && steps.nuget-key.outputs.has-key == 'true'
+        if: steps.check-version.outputs.should-publish == 'true'
         run: |
           # Use NUGET_API_KEY if available, otherwise use NUGET_TOKEN
-          API_KEY="${{ secrets.NUGET_API_KEY }}"
+          API_KEY="${{ steps.nuget-login.outputs.NUGET_API_KEY }}"
           if [[ -z "$API_KEY" ]]; then
-            API_KEY="${{ secrets.NUGET_TOKEN }}"
+            API_KEY="${{ steps.nuget-login.outputs.NUGET_API_KEY }}"
           fi
           
           dotnet nuget push ./artifacts/*.nupkg \
